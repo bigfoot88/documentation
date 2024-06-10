@@ -1,68 +1,48 @@
 ==========================
-Import QIF statement files
+导入 QIF 账单文件
 ==========================
 
-Quicken Interchange Format (QIF) is an open specification for reading
-and writing financial data to media (i.e. files). Although still widely
-used, QIF is an older format than Open Financial Exchange (OFX) and you
-should use the OFX version if you can export to both file formats.
+Quicken Interchange Format (QIF) 是一个用于读取和写入财务数据的开放规范（即文件）。虽然仍被广泛使用，但 QIF 比开放财务交换（OFX）格式更早，如果可以导出这两种文件格式，建议使用 OFX 版本。
 
-With Odoo, you can download a QIF file from your bank or accounting
-software and import it directly in your Odoo instance. This will create
-all bank statements.
+在 Odoo 中，您可以从银行或会计软件中下载 QIF 文件，并直接导入到您的 Odoo 实例中。这将创建所有的银行对账单。
 
-.. tip::
+.. 提示::
 
-	Test now the feature `with this sample QIF file <https://drive.google.com/file/d/0B5BDHVRYo-q5X1ZkUWYzWmtCX0E/view>`__
+	现在使用 `这个示例 QIF 文件 <https://drive.google.com/file/d/0B5BDHVRYo-q5X1ZkUWYzWmtCX0E/view>`__ 测试该功能。
 
-Configuration
+配置
 =============
 
-In order to import QIF statements, you need to activate the feature in
-Odoo. In the Accounting application, go to the menu :menuselection:`Configuration -->
-Settings`. From the accounting settings, check the bank statements option
-**Import in .QIF Format** and apply.
+要导入 QIF 对账单，您需要在 Odoo 中激活此功能。在会计应用程序中，进入菜单 :menuselection:`配置 --> 设置`。在会计设置中，勾选 **以 .QIF 格式导入银行对账单** 选项并应用。
 
 .. image:: media/qif01.png
    :align: center
 
-Once you have installed this feature, you can setup your bank account to
-allow importing bank statement files. To do this, go to the accounting
-Dashboard, and click on the **More** button of the bank account.
-Then, click on **Import Statement** to load your first QIF file.
+安装此功能后，您可以设置您的银行账户以允许导入银行对账单文件。为此，请前往会计仪表板，点击银行账户的 **更多** 按钮。然后，点击 **导入对账单** 以加载您的第一个 QIF 文件。
 
 .. image:: media/qif02.png
    :align: center
 
-Load your QIF file in the following screen and click **Import** to
-create all your bank statements.
+在接下来的屏幕中加载您的 QIF 文件并点击 **导入** 以创建所有的银行对账单。
 
 .. image:: media/qif03.png
    :align: center
 
-If the file is successfully loaded, you will get redirected to the bank
-reconciliation screen with all the transactions to reconcile.
+如果文件成功加载，您将被重定向到银行对账页面，显示所有待对账的交易记录。
 
-Importing QIF files
+导入 QIF 文件
 ===================
 
-After having imported your first file, the Odoo accounting dashboard
-will automatically propose you to import more files for your bank. For
-the next import, you don't need to go to the **More** menu anymore,
-you can directly click on the link **Import Statement**.
+在导入第一个文件后，Odoo 会计仪表板会自动建议您为银行导入更多文件。对于下次导入，您不再需要进入 **更多** 菜单，可以直接点击 **导入对账单** 链接。
 
 .. image:: media/qif04.png
    :align: center
 
-Every time you get a statement related to a new customer / supplier,
-Odoo will ask you to select the right contact to reconcile the
-transaction. Odoo learns from that operation and will automatically
-complete the next payments you get or do to these contacts. This will
-speed up a lot the reconciliation process.
+每次收到与新客户/供应商相关的对账单时，Odoo 会要求您选择正确的联系人以进行交易对账。Odoo 会从该操作中学习，并在您下一次收到或支付给这些联系人的款项时自动完成。这将大大加快对账过程。
 
-.. seealso::
+.. 参见::
 
 	* :doc:`ofx`
 	* :doc:`coda`
-	* :doc:`synchronize`
-	* :doc:`manual`
+	* :doc:`同步`
+	* :doc:`手动`
