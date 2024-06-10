@@ -1,161 +1,112 @@
 =================================
-How to manage a financial budget?
+如何管理财务预算？
 =================================
 
-Overview
+概述
 ========
 
-Managing budgets is an essential part of running a business. Budgets help
-people become more intentional with the way money is spent and direct people
-to organize and prioritize their work to meet financial goals. They allows 
-you to plan your desired financial outcome and then measure your actual 
-performance against the plan. Odoo manages budgets using both General and Analytic 
-Accounts.
+管理预算是经营企业的重要组成部分。预算帮助人们更有计划地花钱，并引导人们组织和优先处理工作，以实现财务目标。它们允许您计划预期的财务结果，然后将实际表现与计划进行比较。 Odoo 通过使用总账和分析账户来管理预算。
 
-We will use the following example to illustrate. We just started a
-project with Smith&Co and we would like to budget the incomes and
-expenses of that project. We plan to have a revenue of 1000 and we don't
-want to spend more than 700.
+我们将使用以下示例来说明。我们刚刚开始与 Smith&Co 的项目，并希望预算该项目的收入和支出。我们计划收入为 1000，并且不希望支出超过 700。
 
-Configuration 
+配置
 =============
 
-First we need to install the relevant apps to use budgeting. The main
-module is the accounting app. Go in the app module and install the
-**Accounting and Finance** app.
+首先，我们需要安装相关应用以使用预算功能。主要模块是会计应用。在应用模块中安装 **Accounting and Finance** 应用。
 
 .. image:: media/budget01.png
    :align: center
 
-Further configuration is as well necessary. Go to :menuselection:`Accounting
-module --> Configuration --> Settings` and enable the **Budget
-management** feature
+进一步的配置也是必要的。进入 :menuselection:`Accounting module --> Configuration --> Settings` 并启用 **Budget management** 功能
 
 .. image:: media/budget02.png
    :align: center
 
-Budgetary Positions
+预算位置
 -------------------
 
-Budgetary positions are lists of accounts for which you want to keep
-budgets (typically expense or income accounts). They need to be defined
-so Odoo can know it which accounts he needs to go get the budget
-information. 
+预算位置是您希望保持预算的账户列表（通常是支出或收入账户）。需要定义这些位置，以便 Odoo 知道需要从哪些账户获取预算信息。
 
-The budgetary positions act as a type of restriction on what can be recorded
-in the 'practical amount' column in a budget.
+预算位置充当对可以记录在预算“实际金额”列中的内容的限制。
 
-Each budgetary position can have any number of accounts from the general 
-ledger (the main chart of accounts) assigned to it, though it must have at least one.  
+每个预算位置可以从总账（主要账户图表）中分配任意数量的账户，但必须至少有一个账户。
 
-If you record a transaction that has an analytic account assigned to it that *is* 
-included in a budget line but one of the general ledger accounts *is not* included 
-in the budgetary position for that same budget line, it will not appear within the 
-'practical amount' column of that budget line.
+如果您记录的交易有分配的分析账户，并且该账户包含在预算行中，但其中一个总账账户不包含在该预算行的预算位置中，则该交易不会出现在该预算行的“实际金额”列中。
 
-Some budgetary positions might be already installed with your chart of
-accounts.
+一些预算位置可能已经随您的账户图表一起安装。
 
-To define the positions enter the :menuselection:`Accounting module --> Configuration -->
-Budgetary Positions`.
+要定义这些位置，进入 :menuselection:`Accounting module --> Configuration --> Budgetary Positions`。
 
-For our example we need to define what accounts relates to our project's
-expenses. Create a position and add items to select the accounts.
+对于我们的示例，我们需要定义哪些账户与我们项目的支出相关。创建一个位置并添加项目以选择账户。
 
 .. image:: media/budget03.png
    :align: center
 
-In this case we select the three relevant accounts used wherein we will
-book our expenses.
+在这种情况下，我们选择三个相关账户，用于记录我们的支出。
 
 .. image:: media/budget04.png
    :align: center
 
-Click on *Select*.
+点击 *Select*。
 
 .. image:: media/budget05.png
    :align: center
 
-Save the changes to confirm your Budgetary position.
+保存更改以确认您的预算位置。
 
-Repeat this steps to create a revenue budgetary position. Only in this
-case select the relevant income accounts.
+重复这些步骤以创建收入预算位置。只是这次选择相关的收入账户。
 
-Analytical account
+分析账户
 ------------------
 
-Odoo needs to know which costs or
-expenses are relevant to a specified budget. To do so we need to link
-our invoices and expenses to a defined analytical account. Create an
-analytical account by entering the Accounting module and clicking
-:menuselection:`Advisers --> Analytic Accounts --> Open Charts`. Create a new Account
-called Smith&Co project and select the related partner.
+Odoo 需要知道哪些成本或费用与指定预算相关。为此，我们需要将我们的发票和费用链接到定义的分析账户。通过进入会计模块并点击 :menuselection:`Advisers --> Analytic Accounts --> Open Charts` 创建一个新的账户，命名为 Smith&Co 项目，并选择相关的合作伙伴。
 
 .. image:: media/budget06.png
    :align: center
 
-Set a budget
+设定预算
 ============
 
-Let's now set our targets for our budget. We specified that we expect to
-gain 1000 with this project and we would like not to spend more than
-700.
+现在让我们为预算设定目标。我们指定期望通过该项目获得 1000 的收入，并希望支出不超过 700。
 
-To set those targets, enter the accounting app, select :menuselection:`Advisers -->
-Budgets` and create a new Budget.
+要设定这些目标，进入会计应用，选择 :menuselection:`Advisers --> Budgets` 并创建一个新的预算。
 
-We have to give a name to the budget. In this case we'll call it "Smith
-Project". Select the period wherein the budget will be applicable. Next
-add an item to specify your targets in the Budget Line.
+我们必须给预算命名。在这种情况下，我们将其命名为“Smith Project”。选择预算适用的期间。接下来添加一个项目以在预算行中指定您的目标。
 
 .. image:: media/budget07.png
    :align: center
 
-Select the Budgetary Position related to the Budget Line. In other
-words, select the position that points to the accounts you want to
-budget. In this case we will start with our 700 maximum charge target.
-Select the "Cost" Budgetary Position and specify the Planned Amount.
-As we are recording a cost, we need to specify a **negative amount**.
-Finally, select the corresponding analytic account.
+选择与预算行相关的预算位置。换句话说，选择指向您希望预算的账户的位置。在这种情况下，我们将从 700 的最高支出目标开始。选择“成本”预算位置并指定计划金额。由于我们记录的是成本，需要指定一个**负数金额**。最后，选择相应的分析账户。
 
 .. image:: media/budget08.png
    :align: center
 
-Click on **Save & new** to input the revenue budget. The Budgetary
-Position is Revenue and the Planned Amount is 1000. Save and close
+点击 **Save & new** 以输入收入预算。预算位置为收入，计划金额为 1000。保存并关闭。
 
-You'll need to **Confirm** and **Approve** the budget.
+您需要**确认**并**批准**预算。
 
-Check your budget
+检查您的预算
 =================
 
-You can check your budget at any time. To see the evolution, let's book
-some Invoices and Vendors Bills.
+您可以随时检查您的预算。为了查看进展情况，让我们记录一些发票和供应商账单。
 
 .. tip::
 	
-	if you use analytical accounts remember that you need to specify the account in the invoice and / or purchase line.
+	如果您使用分析账户，请记住需要在发票和/或采购行中指定账户。
 
 .. seealso::
 
-	for more information about booking invoices and purchase orders see:
+	欲了解更多关于记录发票和采购订单的信息，请参阅：
 
 	* :doc:`../../receivables/customer_invoices/overview`
 
-Go back in the budget list and find the Smith Project.
+返回预算列表并找到 Smith 项目。
 
-Via the analytical account, Odoo can account the invoice lines and
-purchase lines booked in the accounts and will display them in the
-**Practical Amount** column.
+通过分析账户， Odoo 可以计算记入账户的发票行和采购行，并将在“实际金额”列中显示它们。
 
 .. image:: media/budget09.png
    :align: center
 
 .. note::
 
-	The theoretical amount represents the amount of money you theoretically could
-	have spend / should have received in function of the date. When your budget
-	is 1200 for 12 months (january to december), and today is 31 of january, the
-	theoretical amount will be 100, since this is the actual amount that could
-	have been realised.
-
+	理论金额表示您根据日期理论上可以花费/应该收到的金额。当您的预算为 1200 用于 12 个月（1 月到 12 月），而今天是 1 月 31 日，理论金额将为 100，因为这是实际可以实现的金额。
