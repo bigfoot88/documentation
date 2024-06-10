@@ -1,81 +1,69 @@
-
 ========================================
-Deploying with Content Delivery Networks
+使用内容分发网络进行部署
 ========================================
 
 .. _reference/cdn/keycdn:
 
-Deploying with KeyCDN_
+使用 KeyCDN_ 进行部署
 ======================
 
 .. sectionauthor:: Fabien Meghazi
 
-This document will guide you through the setup of a KeyCDN_ account with your
-Odoo powered website.
+本文将指导您如何在使用 Odoo 驱动的网站上设置 KeyCDN_ 账户。
 
-Step 1: Create a pull zone in the KeyCDN dashboard
+步骤 1：在 KeyCDN 仪表板中创建一个拉取区
 --------------------------------------------------
 
 .. image:: cdn/keycdn_create_a_pull_zone.png
    :class: img-fluid
 
-When creating the zone, enable the CORS option in the
-:guilabel:`advanced features` submenu. (more on that later)
+在创建拉取区时，请在 :guilabel:`advanced features` 子菜单中启用 CORS 选项。（稍后会详细介绍）
 
 .. image:: cdn/keycdn_enable_CORS.png
    :class: img-fluid
 
-Once done, you'll have to wait a bit while KeyCDN_ is crawling your website.
+完成后，您需要等待一段时间，KeyCDN_ 会抓取您的网站。
 
 .. image:: cdn/keycdn_progressbar.png
    :class: img-fluid
 
-.. note:: a new URL has been generated for your Zone, in this case it is
+.. note:: 一个新的 URL 已经为您的拉取区生成，在这个例子中是
           ``http://pulltest-b49.kxcdn.com``
 
-Step 2: Configure the odoo instance with your zone
+步骤 2：使用您的拉取区配置 Odoo 实例
 --------------------------------------------------
 
-In the Odoo back end, go to the :guilabel:`Website Settings`: menu, then
-activate the CDN support and copy/paste your zone URL in the
-:guilabel:`CDN Base URL` field. This field is only visible and configurable if
-you have developer mode activated.
+在 Odoo 后端，进入 :guilabel:`Website Settings` 菜单，然后启用 CDN 支持并在
+:guilabel:`CDN Base URL` 字段中复制/粘贴您的拉取区 URL。此字段仅在开发者模式激活时可见和可配置。
 
 .. image:: cdn/odoo_cdn_base_url.png
    :class: img-fluid
 
-Now your website is using the CDN for the resources matching the
-:guilabel:`CDN filters` regular expressions.
+现在，您的网站正在为与 :guilabel:`CDN filters` 正则表达式匹配的资源使用 CDN。
 
-You can have a look to the HTML of your website in order to check if the CDN
-integration is properly working.
+您可以查看网站的 HTML 以检查 CDN 集成是否正常工作。
 
 .. image:: cdn/odoo_check_your_html.png
    :class: img-fluid
 
 
-Why should I activate CORS?
+为什么我需要启用 CORS？
 ---------------------------
 
-A security restriction in some browsers (Firefox and Chrome at time of writing)
-prevents a remotely linked CSS file to fetch relative resources on this same
-external server.
+由于一些浏览器（撰写本文时的 Firefox 和 Chrome）的安全限制，阻止远程链接的 CSS 文件在同一外部服务器上获取相对资源。
 
-If you don't activate the CORS option in the CDN zone, the more obvious
-resulting problem on a default Odoo website will be the lack of font-awesome
-icons because the font file declared in the font-awesome CSS won't be loaded on
-the remote server.
+如果您不在 CDN 区域中启用 CORS 选项，在默认 Odoo 网站上最明显的问题将是缺少 font-awesome 图标，因为 font-awesome CSS 中声明的字体文件不会在远程服务器上加载。
 
-Here's what you would see on your homepage in such a case:
+在这种情况下，您会在主页上看到以下内容：
 
 .. image:: cdn/odoo_font_file_not_loaded.png
    :class: img-fluid
 
-A security error message will also appear in the browser's console:
+浏览器控制台中也会出现安全错误消息：
 
 .. image:: cdn/odoo_security_message.png
    :class: img-fluid
 
-Enabling the CORS option in the CDN fixes this issue.
+在 CDN 中启用 CORS 选项可以解决此问题。
 
 .. _KeyCDN: https://www.keycdn.com
