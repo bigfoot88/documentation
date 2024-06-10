@@ -1,6 +1,5 @@
-
 ==============================
-Introduction to Odoo.sh
+Odoo.sh 简介
 ==============================
 
 .. youtube:: QuNsa9n9PMg
@@ -8,4 +7,4 @@ Introduction to Odoo.sh
     :width: 700
     :height: 394
 
-The documentation will help you go live with your Odoo.sh project in no time.
+本指南将帮助您快速上线您的 Odoo.sh 项目。
