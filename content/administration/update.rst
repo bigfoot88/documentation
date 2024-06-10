@@ -1,150 +1,99 @@
-
 .. _setup/update:
 
 =============================
-Updating an Odoo installation
+更新odoo安装
 =============================
 
-Introduction
+指南
 ============
 
-In order to benefit from the latest improvements, security fixes, bug corrections and
-performance boosts, you may need to update your Odoo installation from time to time.
+为了享受最新的改进、安全修复、错误修正和性能提升，你可能需要不时更新你的 Odoo 安装。
 
-This guide only applies when are using Odoo on your own hosting infrastructure.
-If you are using one of the Odoo Cloud solutions, updates are automatically performed for you.
+本指南仅适用于在你自己的托管基础设施上使用 Odoo 的情况。如果你使用的是 Odoo 云解决方案之一，更新会自动为你执行。
 
-The terminology surrounding software updates is often confusing, so here are some preliminary
-definitions:
+软件更新相关的术语往往令人困惑，因此这里有一些初步定义：
 
 Updating (an Odoo installation)
-  Refers to the process of obtaining the latest revision of the source code for
-  your current Odoo Edition. For example, updating your Odoo Enterprise 12.0 to the
-  latest revision.
-  This does not directly cause any change to the contents of your Odoo database, and
-  can be undone by reinstalling the previous revision of the source code.
+  指的是获取你当前 Odoo 版本最新修订版的过程。例如，将你的 Odoo Enterprise 12.0 更新到最新修订版。
+  这不会直接改变你 Odoo 数据库的内容，并且可以通过重新安装以前的源代码修订版来撤销。
 
 Upgrading (an Odoo database)
-  Refers to a complex data processing operation where the structure and contents of your
-  database is permanently altered to make it compatible with a new release of Odoo.
-  This operation is irreversible and typically accomplished via Odoo's
-  `database upgrade service <https://upgrade.odoo.com>`_, when you decide to
-  switch to a newer release of Odoo.
-  Historically, this process has also been known as a "migration" because it involves moving data
-  around inside the database, even though the database may end up at the same physical location
-  after the upgrade.
+  指的是一种复杂的数据处理操作，数据库的结构和内容会被永久性地更改以使其兼容新的 Odoo 版本。
+  这个操作是不可逆的，通常通过 Odoo 的 `数据库升级服务 <https://upgrade.odoo.com>`_ 来完成，当你决定切换到新的 Odoo 版本时。
+  历史上，这个过程也被称为“迁移”，因为它涉及在数据库内部移动数据，即使数据库在升级后可能仍在相同的物理位置。
 
-This page describes the typical steps needed to *update* an Odoo installation to the latest
-version. If you'd like more information about upgrading a database, please visit the
-`Odoo Upgrade page <https://upgrade.odoo.com>`_ instead.
+本页描述了将 Odoo 安装更新到最新版本的典型步骤。如果你想了解有关升级数据库的更多信息，请访问 `Odoo 升级页面 <https://upgrade.odoo.com>`_。
 
+简而言之
+=========
 
-In a nutshell
-=============
+更新 Odoo 通过简单地在当前安装上重新安装最新版本的 Odoo Edition 来完成。这将保留你的数据而不做任何更改，只要你不卸载 Odoo 附带的数据库引擎 PostgreSQL。
 
-Updating Odoo is accomplished by simply reinstalling the latest version of your Odoo
-Edition on top of your current installation. This will preserve your data without any alteration,
-as long as you do not uninstall PostgreSQL (the database engine that comes with Odoo).
+更新的主要参考是我们的 :ref:`安装指南 <setup/install>`，其中解释了常见的安装方法。
 
-The main reference for updating is logically our :ref:`installation guide <setup/install>`,
-which explains the common installation methods.
+更新也最适合由最初部署 Odoo 的人来完成，因为过程非常相似。
 
-Updating is also most appropriately accomplished by the person who deployed Odoo initially,
-because the procedure is very similar.
+.. note:: 我们总是建议下载一个全新的最新 Odoo 版本，而不是手动应用补丁，例如随安全公告一起发布的安全补丁。
+          补丁主要是为高度定制的安装提供的，或者为那些在测试完整更新时更喜欢临时应用最小更改的技术人员提供。
 
-.. note:: We always recommend to download a complete new up-to-date Odoo version, rather than
-          manually applying patches, such as the security patches that come with Security
-          Advisories.
-          The patches are mainly provided for installations that are heavily customized, or for
-          technical personnel who prefer to apply minimal changes temporarily while testing a
-          complete update.
+步骤 1：下载更新的 Odoo 版本
+=============================
 
+中央下载页面是 https://www.odoo.com/page/download。如果你看到 Odoo Enterprise 下载的“购买”链接，请确保你使用链接到你的 Odoo Enterprise 订阅的相同登录账户登录 Odoo.com。
 
-Step 1: Download an updated Odoo version
-========================================
+或者，你可以使用包含在你的 Odoo Enterprise 购买确认邮件中的唯一下载链接。
 
-The central download page is https://www.odoo.com/page/download. If you see a "Buy" link for the
-Odoo Enterprise download, make sure you are logged into Odoo.com with the same login that is
-linked to your Odoo Enterprise subscription.
+.. note:: 如果你通过 Github 安装，下载更新版本不是必需的（见下文）
 
-Alternatively, you can use the unique download link that was included with your Odoo Enterprise
-purchase confirmation email.
+步骤 2：备份你的数据库
+=======================
 
-.. note:: Downloading an updated version is not necessary if you installed via Github (see below)
+更新过程非常安全，不会更改你的数据。但是，在对安装进行任何更改之前，最好进行完整的数据库备份，并将其存储在安全的地方，如另一台计算机上。
 
+如果你没有禁用数据库管理器屏幕（参见 :ref:`此处 <security>` 了解为何你应该禁用它），你可以使用它（在你的数据库选择屏幕底部的链接）来下载你的数据库备份。如果你禁用了它，请使用与你平时备份相同的程序。
 
-Step 2: Make a backup of your database
-======================================
+步骤 3：安装更新版本
+======================
 
-The update procedure is quite safe and should not alter you data. However it's always best to take
-a full database backup before performing any change on your installation, and to store it somewhere
-safe, on a different computer.
+选择与你当前安装匹配的方法：
 
-If you have not disabled the database manager screen (see :ref:`here <security>` why you should), you
-can use it (link at bottom of your database selection screen) to download a backup of your
-database(s). If you disabled it, use the same procedure than for your usual backups.
+打包安装程序
+-------------
 
+如果你使用我们网站上下载的安装包安装了 Odoo（推荐的方法），更新非常简单。
+你所需要做的就是下载与你的系统对应的安装包（见步骤 #1）并安装在你的服务器上。它们每天更新并包含最新的安全修复。
+通常，你只需双击安装包即可在当前安装上安装。
+安装包后，请务必重启 Odoo 服务或重新启动服务器，便可完成更新。
 
-Step 3: Install the updated version
-===================================
+源代码安装（Tarball）
+----------------------
+如果你最初使用“tarball”版本（源代码归档）安装了 Odoo，你需要用更新版本替换安装目录。首先从 Odoo.com 下载最新的 tarball。它们每天更新并包含最新的安全修复（见步骤 #1）。
+下载包后，将其解压缩到服务器上的临时位置。
 
-Choose the method that matches your current installation:
+你将得到一个标有源代码版本的文件夹，例如“odoo-12.0+e.20180719”，其中包含一个“odoo.egg-info”文件夹和实际的源代码文件夹“odoo”（对于 Odoo 10 及更高版本）或“openerp”（对于旧版本）。
+你可以忽略 odoo.egg-info 文件夹。找到当前安装部署的文件夹，并用你刚刚解压的归档文件中的新“odoo”或“openerp”文件夹替换它。
 
+确保匹配文件夹布局，例如，源代码中包含的新“addons”文件夹应该与之前的路径完全相同。接下来，注意你可能在旧文件夹中手动复制或修改的任何特定配置文件，并将它们复制到新文件夹中。
+最后，重启 Odoo 服务或重新启动机器，即可完成。
 
-Packaged Installers
--------------------
-
-If you installed Odoo with an installation package downloaded on our website (the recommended method),
-updating is very simple.
-All you have to do is download the installation package corresponding to your system (see step #1)
-and install it on your server. They are updated daily and include the latest security fixes.
-Usually, you can simply double-click the package to install it on top of the current installation.
-After installing the package, be sure to restart the Odoo service or reboot your server,
-and you're all set.
-
-Source Install (Tarball)
-------------------------
-If you have originally installed Odoo with the "tarball" version (source code archive), you have
-to replace the installation directory with a newer version. First download the latest tarball
-from Odoo.com. They are updated daily and include the latest security fixes (see step #1)
-After downloading the package, extract it to a temporary location on your server.
-
-You will get a folder labelled with the version of the source code, for example "odoo-12.0+e.20180719",
-that contains a folder "odoo.egg-info" and the actual source code folder named "odoo" (for Odoo 10
-and later) or "openerp" for older versions.
-You can ignore the odoo.egg-info folder. Locate the folder where your current installation is deployed,
-and replace it with the newer "odoo" or "openerp" folder that was in the archive you just extracted.
-
-Be sure to match the folder layout, for example the new "addons" folder included in the source code
-should end up exactly at the same path it was before. Next, watch out for any specific configuration
-files that you may have manually copied or modified in the old folder, and copy them over to the
-new folder.
-Finally, restart the Odoo service or reboot the machine, and you are all set.
-
-Source Install (Github)
------------------------
-If you have originally installed Odoo with a full Github clone of the official repositories, the
-update procedure requires you to pull the latest source code via git.
-Change into the directory for each repository (the main Odoo repository, and the Enterprise
-repository), and run the following commands::
+源代码安装（Github）
+---------------------
+如果你最初使用官方库的完整 Github 克隆安装了 Odoo，更新程序需要你通过 git 拉取最新的源代码。
+进入每个库的目录（主要的 Odoo 库和 Enterprise 库），并运行以下命令::
 
      git fetch
      git rebase --autostash
 
-The last command may encounter source code conflicts if you had edited the Odoo source code locally.
-The error message will give you the list of files with conflicts, and you will need to resolve
-the conflicts manually, by editing them and deciding which part of the code to keep.
+如果你在本地编辑了 Odoo 源代码，最后一条命令可能会遇到源代码冲突。
+错误消息会提供有冲突的文件列表，你需要手动解决这些冲突，通过编辑它们并决定保留哪部分代码。
 
-Alternatively, if you prefer to simply discard the conflicting changes and restore the official
-version, you can use the following command::
+或者，如果你更愿意简单地放弃冲突的更改并恢复官方版本，你可以使用以下命令::
 
      git reset --hard
 
-Finally, restart the Odoo service or reboot the machine, and you should be done.
-
+最后，重启 Odoo 服务或重新启动机器，即可完成。
 
 Docker
 ------
 
-Please refer to our `Docker image documentation <https://hub.docker.com/_/odoo/>`_ for
-specific update instructions.
+请参阅我们的 `Docker 镜像文档 <https://hub.docker.com/_/odoo/>`_ 获取特定的更新说明。
