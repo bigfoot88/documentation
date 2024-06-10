@@ -1,20 +1,12 @@
 =========================================
-Reverse an accounting entry automatically
+自动冲销会计分录
 =========================================
 
-You may want to automatically reverse an accounting entry at a specific
-date.
+您可能希望在特定日期自动冲销会计分录。
 
-This is, for example, used when you make a provision (e.g. provision for
-bad debt). When making the accounting entry for the provision, the
-amount you entered is only an estimated amount. You will only be sure of
-the amount at the end of the fiscal year. That's why, at that point, you
-want the accounting entry to be reversed to be able to enter the real
-loss that occurred.
+例如，当您进行某项准备（例如坏账准备）时会用到这一功能。进行准备的会计分录时，您输入的金额只是一个估计金额，只有在财政年度结束时，您才能确定实际金额。这就是为什么在那个时候，您需要冲销会计分录，以便输入实际发生的损失。
 
-For this, you just have to tick the box "Reverse Automatically" on the
-journal entry and to define a reversal date. The accounting entry will
-be reversed at that date.
+为此，您只需在会计分录上勾选“自动冲销”复选框，并定义一个冲销日期。会计分录将在该日期自动冲销。
 
 .. image:: media/reverse_entry01.png
     :align: center
