@@ -1,31 +1,28 @@
-
 .. _odoosh-advanced-frequent_technical_questions:
 
 ==================================
-Frequent Technical Questions
+常见技术问题
 ==================================
 
-"Scheduled actions do not run at the exact time they were expected"
--------------------------------------------------------------------
+"计划任务未在预期时间准确运行"
+-----------------------------------
 
-On the Odoo.sh platform, we cannot guarantee an exact running time for scheduled actions.
+在 Odoo.sh 平台上，我们无法保证计划任务在预定时间准确运行。
 
-This is due to the fact that there might be multiple customers on the same server, and we must guarantee a fair share of the server for every customer. Scheduled actions are therefore implemented slightly differently than on a regular Odoo server, and are run on a *best effort* policy.
+这是因为同一服务器上可能有多个客户，我们必须保证每个客户都能公平分享服务器资源。因此，计划任务的实现方式与常规 Odoo 服务器略有不同，采用的是 *尽力而为* 的策略。
 
 .. warning::
-    Do not expect any scheduled action to be run more often than every 5 min.
+    请不要期望任何计划任务运行频率超过每 5 分钟一次。
 
-Are there "best practices" regarding scheduled actions?
--------------------------------------------------------
+有关于计划任务的“最佳实践”吗？
+-----------------------------------
 
-**Odoo.sh always limits the execution time of scheduled actions (*aka* crons).**
-Therefore, you must keep this fact in mind when developing your own crons.
+**Odoo.sh 总是限制计划任务（*又称* crons）的执行时间。**
+因此，在开发自己的 crons 时必须牢记这一点。
 
-We advise that:
+我们建议：
 
-- Your scheduled actions should work on small batches of records.
-- Your scheduled actions should commit their work after processing each batch;
-  this way, if they get interrupted by the time-limit, there is no need to start over.
-- Your scheduled actions should be
-  `idempotent <https://stackoverflow.com/a/1077421/3332416>`_: they must not
-  cause side-effects if they are started more often than expected.
+- 您的计划任务应处理小批量的记录。
+- 您的计划任务在处理完每批记录后应提交工作；这样，如果因为时间限制而被中断，就无需重新开始。
+- 您的计划任务应
+  `幂等 <https://stackoverflow.com/a/1077421/3332416>`_：即它们在比预期更频繁地启动时不会引起副作用。
