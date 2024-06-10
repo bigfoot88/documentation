@@ -1,78 +1,53 @@
 ==========================================
-Import Coda statement files (Belgium only)
+导入 CODA 对账单文件（仅限比利时）
 ==========================================
 
-CODA is a file format for bank statements in Belgium. Most Belgian
-banks, as well as the Isabel software, allows to download a CODA file
-with all your bank statements.
+CODA 是一种比利时银行对账单的文件格式。大多数比利时银行以及 Isabel 软件允许下载包含所有银行对账单的 CODA 文件。
 
-With Odoo, you can download an CODA file from your bank or accounting
-software and import it directly in Odoo. This will create all bank
-statements.
+在 Odoo 中，你可以从银行或会计软件中下载 CODA 文件，并直接导入到 Odoo 中。这将创建所有的银行对账单。
 
 .. tip:: 
-    Test now the feature `with this sample CODA file <https://drive.google.com/file/d/0B5BDHVRYo-q5UVVMbGRxUmtpVDg/view?usp=sharing>`__
+    现在就通过 `这个示例 CODA 文件 <https://drive.google.com/file/d/0B5BDHVRYo-q5UVVMbGRxUmtpVDg/view?usp=sharing>`__ 测试该功能。
 
-Configuration
+配置
 =============
 
-Install the CODA feature
+安装 CODA 功能
 ------------------------
 
-If you have installed the Belgian Chart of Account provided with Odoo,
-the CODA import feature is already installed by default. In such a case,
-you can move directly to the next section `Import your first coda
-file <InstallCoda_>`_
+如果你已经安装了 Odoo 提供的比利时会计科目表，CODA 导入功能已默认安装。在这种情况下，你可以直接跳到下一节 `导入你的第一个 CODA 文件 <InstallCoda_>`_
 
-If CODA is not activated yet, you need to do it first. In the Accounting
-application, go to the menu :menuselection:`Configuration --> Settings`. From the
-accounting settings, check the option **Import of Bank Statements in
-.CODA Format** and apply.
+如果 CODA 功能尚未激活，你需要先进行激活。在会计应用中，进入菜单 :menuselection:`Configuration --> Settings`。在会计设置中，勾选 **Import of Bank Statements in .CODA Format** 选项并应用。
 
-Import your first CODA file
+导入你的第一个 CODA 文件
 ---------------------------
 
-Once you have installed this feature, you can setup your bank account to
-allow importing bank statement files. To do this, go to the accounting
-**Dashboard**, and click on the button **More** on the bank account card. Then, click
-on **Import Statement** to load your first CODA file.
+一旦安装了此功能，你可以设置你的银行账户以允许导入银行对账单文件。为此，请进入会计 **Dashboard**，点击银行账户卡上的 **More** 按钮。然后，点击 **Import Statement** 加载你的第一个 CODA 文件。
 
 .. image:: media/coda01.png
    :align: center
 
-Load your CODA file in the following screen and click **Import** to
-create all your bank statements.
+在以下屏幕中加载你的 CODA 文件并点击 **Import** 以创建所有的银行对账单。
 
 .. image:: media/coda02.png
    :align: center
 
-If the file is successfully loaded, you will get redirected to the bank
-reconciliation screen with all the transactions to reconcile.
+如果文件成功加载，你将被重定向到银行对账页面，其中包含所有待对账的交易。
 
 .. _InstallCoda:
 
-Importing CODA files
+导入 CODA 文件
 ====================
 
-After having imported your first file, the Odoo accounting dashboard
-will automatically propose you to import more files for your bank. For
-the next import, you don't need to go to the **More** button anymore, 
-you can directly click on the link **Import Statement**.
+在导入你的第一个文件后，Odoo 会计仪表板将自动建议你为你的银行导入更多文件。对于下一次导入，你不再需要点击 **More** 按钮，可以直接点击 **Import Statement** 链接。
 
 .. image:: media/coda03.png
    :align: center
 
-Every time you get a statement related to a new customer / supplier,
-Odoo will ask you to select the right contact to reconcile the
-transaction. Odoo learns from that operation and will automatically
-complete the next payments you get or make to these contacts. This will
-speed up a lot the reconciliation process.
+每次你收到与新客户/供应商相关的对账单时，Odoo 会要求你选择正确的联系人以对账。Odoo 会从该操作中学习，并在下次收到或付款给这些联系人时自动完成。这将大大加快对账过程。
 
 .. note::
-    Odoo is able to automatically detect if some files or transactions 
-    have already been imported. So, you should not worry about avoiding 
-    to import two times the same file: Odoo will check everything for you 
-    before creating new bank statements.
+    Odoo 能够自动检测某些文件或交易是否已被导入。因此，你无需担心避免重复导入同一文件：Odoo 会在创建新的银行对账单之前为你检查一切。
 
 .. seealso::
     * :doc:`ofx`
