@@ -1,195 +1,136 @@
 ======
-France
+法国
 ======
 
 FEC 
 ===
 
-If you have installed the French Accounting, you will be able to download the FEC.
-For this, go in :menuselection:`Accounting --> Reporting --> France --> FEC`. 
+如果您安装了法定会计模块，就可以下载 FEC。路径为： :menuselection:`会计 --> 报告 --> 法国 --> FEC`。
 
-.. tip::
-    If you do not see the submenu **FEC**, go in **Apps** and search for the module
-    called **France-FEC** and verify if it is well installed. 
+.. 提示::
+    如果没有看到 **FEC** 子菜单，请到 **应用程序** 中搜索 **France-FEC** 模块并确认已安装。
 
-French Accounting Reports
-=========================
+法定会计报告
+=============
 
-If you have installed the French Accounting, you will have access to some accounting reports specific to France: 
+如果您安装了法定会计模块，将可以访问一些特定于法国的会计报告：
 
-- Bilan comptable
-- Compte de résultats
-- Plan de Taxes France 
+- 资产负债表
+- 损益表
+- 法国税务计划
 
-Get the VAT anti-fraud certification with Odoo
-==============================================
+通过 Odoo 获取增值税防欺诈认证
+=============================
 
-As of January 1st 2018, a new anti-fraud legislation comes into effect 
-in France and DOM-TOM. This new legislation stipulates certain criteria 
-concerning the inalterability, security, storage and archiving of sales data. 
-These legal requirements are implemented in Odoo, version 9 onward, 
-through a module and a certificate of conformity to download.
+从 2018 年 1 月 1 日起，法国和海外省实行新的防欺诈法。新法律规定了销售数据的不可更改性、安全性、存储和归档的标准。这些法律要求在 Odoo 版本 9 及更高版本中通过一个模块和一份合格证书来实现。
 
-Is my company required to use an anti-fraud software?
------------------------------------------------------
+我的公司需要使用防欺诈软件吗？
+---------------------------------
 
-Your company is required to use an anti-fraud cash register software like 
-Odoo (CGI art. 286, I. 3° bis) if:
+如果您的公司满足以下条件，则需要使用像 Odoo 这样的防欺诈收银软件 (CGI art. 286, I. 3° bis)：
 
-* You are taxable (not VAT exempt) in France or any DOM-TOM,
-* Some of your customers are private individuals (B2C).
+* 您在法国或海外省是应税的 (非增值税豁免)；
+* 您的一些客户是个人 (B2C)。
 
-This rule applies to any company size. Auto-entrepreneurs are exempted from 
-VAT and therefore are not affected.
+这一规定适用于任何规模的公司。自营业者免征增值税，因此不受影响。
 
-Get certified with Odoo
------------------------
+通过 Odoo 获取认证
+------------------
 
-Getting compliant with Odoo is very easy.
+通过 Odoo 符合法规非常简单。
 
-Your company is requested by the tax administration to deliver a certificate 
-of conformity testifying that your software complies with the anti-fraud 
-legislation. This certificate is granted by Odoo SA to Odoo Enterprise users 
-`here <https://www.odoo.com/my/contract/french-certification/>`__. 
-If you use Odoo Community, you should
-:doc:`upgrade to Odoo Enterprise </administration/enterprise>`
-or contact your Odoo service provider.
+税务管理部门要求公司提供一份合格证书，证明您的软件符合防欺诈法律。该证书由 Odoo SA 授予 Odoo 企业版用户 `这里 <https://www.odoo.com/my/contract/french-certification/>`__。如果您使用的是 Odoo 社区版，您应该
+:doc:`升级到 Odoo 企业版 </administration/enterprise>`
+或联系您的 Odoo 服务提供商。
 
-In case of non-conformity, your company risks a fine of €7,500.
+如果不合规，您的公司将面临 7,500 欧元的罚款。
 
-To get the certification just follow the following steps:
+要获取认证，请按照以下步骤操作：
 
-* Install the anti-fraud module fitting your Odoo environment from the 
-  *Apps* menu:
+* 从 *应用程序* 菜单中安装适合您 Odoo 环境的防欺诈模块：
 
-  * if you use Odoo Point of Sale: *l10n_fr_pos_cert*: France - VAT Anti-Fraud Certification for Point of Sale (CGI 286 I-3 bis)
+  * 如果使用 Odoo 销售点：*l10n_fr_pos_cert*：法国 - 销售点增值税防欺诈认证 (CGI 286 I-3 bis)
 
-  * in any other case: *l10n_fr_certification*: France - VAT Anti-Fraud Certification (CGI 286 I-3 bis)
-* Make sure a country is set on your company, otherwise your entries won’t be 
-  encrypted for the inalterability check. To edit your company’s data, 
-  go to :menuselection:`Settings --> Users & Companies --> Companies`. 
-  Select a country from the list; Do not create a new country.
-* Download the mandatory certificate of conformity delivered by Odoo SA `here <https://www.odoo.com/my/contract/french-certification/>`__.
+  * 其他情况下：*l10n_fr_certification*：法国 - 增值税防欺诈认证 (CGI 286 I-3 bis)
+* 确保公司已设置国家，否则您的条目将不会加密以进行不可更改性检查。要编辑公司的数据，请转到 :menuselection:`设置 --> 用户和公司 --> 公司`。从列表中选择一个国家；不要创建新国家。
+* 下载由 Odoo SA 提供的合格证书 `这里 <https://www.odoo.com/my/contract/french-certification/>`__。
 
-.. note:: * To install the module in any system created before 
-   December 18th 2017, you should update the modules list.
-   To do so, activate the developer mode from the *Settings* menu.
-   Then go to the *Apps* menu and press *Update Modules List* in the top-menu.
- * In case you run Odoo on-premise, you need to update your installation 
-   and restart your server beforehand.
- * If you have installed the initial version of the anti-fraud module
-   (prior to December 18th 2017), you need to update it.
-   The module's name was *France - Accounting - Certified CGI 286 I-3 bis*.
-   After an update of the modules list, search for 
-   the updated module in *Apps*, select it and click *Upgrade*. 
-   Finally, make sure the following module *l10n_fr_sale_closing* 
-   is installed.
+.. 注意:: * 要在 2017 年 12 月 18 日之前创建的系统中安装模块，您应该更新模块列表。
+   为此，从 *设置* 菜单中激活开发者模式。
+   然后转到 *应用程序* 菜单并按顶部菜单中的 *更新模块列表*。
+ * 如果在本地运行 Odoo，需要预先更新您的安装并重新启动服务器。
+ * 如果安装了初始版本的防欺诈模块（2017 年 12 月 18 日之前），需要更新它。
+   模块的名称是 *France - Accounting - Certified CGI 286 I-3 bis*。
+   更新模块列表后，在 *应用程序* 中搜索更新的模块，选择它并点击 *升级*。
+   最后，确保安装了以下模块 *l10n_fr_sale_closing*。
 
-Anti-fraud features
--------------------
+防欺诈功能
+-----------
 
-The anti-fraud module introduces the following features:
+防欺诈模块引入了以下功能：
 
-* **Inalterability**: deactivation of all the ways to cancel or modify 
-  key data of POS orders, invoices and journal entries;
-* **Security**: chaining algorithm to verify the inalterability;
-* **Storage**: automatic sales closings with computation of both period 
-  and cumulative totals (daily, monthly, annually).
+* **不可更改性**：禁用所有取消或修改 POS 订单、发票和日记账条目的关键数据的方式；
+* **安全性**：使用链式算法验证不可更改性；
+* **存储**：自动销售结算，计算期间和累计总额（日、月、年）。
 
-Inalterability
-~~~~~~~~~~~~~~
+不可更改性
+~~~~~~~~~~
 
-All the possible ways to cancel and modify key data of paid POS orders, 
-confirmed invoices and journal entries are deactivated, 
-if the company is located in France or in any DOM-TOM. 
+如果公司位于法国或海外省，则禁用所有取消和修改已付款 POS 订单、确认发票和日记账条目关键数据的方式。
 
-.. note:: If you run a multi-companies environment, only the documents of 
- such companies are impacted.
+.. 注意:: 如果运行多公司环境，仅影响这些公司的文档。
 
-Security
+安全性
 ~~~~~~~~
 
-To ensure the inalterability, every order or journal entry is encrypted 
-upon validation. 
-This number (or hash) is calculated from the key data of the document as 
-well as from the hash of the precedent documents.
+为了确保不可更改性，每个订单或日记账条目在验证时都会加密。
+此编号（或哈希）从文档的关键数据以及前一个文档的哈希计算得出。
 
-The module introduces an interface to test the data inalterability. 
-If any information is modified on a document after its validation, 
-the test will fail. The algorithm recomputes all the hashes and compares them 
-against the initial ones. In case of failure, the system points out the first 
-corrupted document recorded in the system.
+该模块引入了一个接口来测试数据的不可更改性。
+如果在验证后修改了文档上的任何信息，测试将失败。算法重新计算所有哈希值，并将其与初始值进行比较。在失败的情况下，系统会指出系统中记录的第一个损坏文档。
 
-Users with *Manager* access rights can launch the inalterability check. 
-For POS orders, go to 
-:menuselection:`Point of Sales --> Reporting --> French Statements`. 
-For invoices or journal entries, 
-go to :menuselection:`Invoicing/Accounting --> Reporting --> French Statements`.
+具有 *管理者* 访问权限的用户可以启动不可更改性检查。
+对于 POS 订单，转到 :menuselection:`销售点 --> 报告 --> 法国声明`。
+对于发票或日记账条目，转到 :menuselection:`发票/会计 --> 报告 --> 法国声明`。
 
-Storage
-~~~~~~~
+存储
+~~~~~~
 
-The system also processes automatic sales closings on a daily, monthly 
-and annual basis.
-Such closings distinctly compute the sales total of the period as well as 
-the cumulative grand totals from the very first sales entry recorded 
-in the system.
+系统还会按日、月和年自动处理销售结算。
+这些结算分别计算期间的销售总额以及从系统中记录的第一笔销售条目开始的累计总额。
 
-Closings can be found in the *French Statements* menu of Point of Sale, 
-Invoicing and Accounting apps.
+结算可以在销售点、发票和会计应用程序的 *法国声明* 菜单中找到。
 
-.. note::
- * Closings compute the totals for journal entries of sales journals (Journal Type = Sales).
+.. 注意::
+ * 结算会计算销售日记账条目的总额（日记账类型 = 销售）。
 
- * For multi-companies environments, such closings are performed by company.
+ * 对于多公司环境，这些结算由公司执行。
 
- * POS orders are posted as journal entries at the closing of the POS session. 
-   Closing a POS session can be done anytime. 
-   To prompt users to do it on a daily basis, the module prevents from resuming 
-   a session opened more than 24 hours ago. 
-   Such a session must be closed before selling again.
+ * POS 订单在 POS 会话结束时作为日记账条目过账。
+   任何时候都可以结束 POS 会话。
+   为了提示用户每天进行结算，模块禁止恢复打开超过 24 小时的会话。
+   必须先关闭这样的会话，然后才能继续销售。
 
- * A period’s total is computed from all the journal entries posted after the 
-   previous closing of the same type, regardless of their posting date. 
-   If you record a new sales transaction for a period already closed, 
-   it will be counted in the very next closing.
+ * 期间总额是从上一同类型结算后的所有日记账条目计算的，而不论其过账日期。
+   如果您为已结算的期间记录新的销售交易，它将在下一次结算中计算。
 
-.. tip:: For test & audit purposes such closings can be manually generated in the 
- developer mode. Go to 
- :menuselection:`Settings --> Technical --> Automation --> Scheduled Actions` 
- to do so.
+.. 提示:: 为了测试和审计目的，可以在开发者模式下手动生成这些结算。
+ 转到 :menuselection:`设置 --> 技术 --> 自动化 --> 定时操作` 以执行此操作。
 
+责任
+-----
 
-Responsibilities
-----------------
+不要卸载模块！如果这样做，哈希值将被重置，您的所有历史数据将不再保证不可更改。
 
-Do not uninstall the module! If you do so, the hashes will be reset and none 
-of your past data will be longer guaranteed as being inalterable.
+用户对其 Odoo 实例仍负有责任，必须谨慎使用。禁止修改保证数据不可更改性的源代码。
 
-Users remain responsible for their Odoo instance and must use it with 
-due diligence. It is not permitted to modify the source code which guarantees 
-the inalterability of data.
- 
-Odoo absolves itself of all and any responsibility in case of changes 
-in the module’s functions caused by 3rd party applications not certified by Odoo.
+Odoo 对第三方未经认证应用程序引起的模块功能变化不承担任何责任。
 
+更多信息
+--------
 
-More Information
-----------------
+您可以在以下官方文件中找到更多关于该法律的信息：
 
-You will find more information about this legislation in the official documents:
-
-* `Frequently Asked Questions <https://www.economie.gouv.fr/files/files/directions_services/dgfip/controle_fiscal/actualites_reponses/logiciels_de_caisse.pdf>`__
-* `Official Statement <http://bofip.impots.gouv.fr/bofip/10691-PGP.html?identifiant=BOI-TVA-DECLA-30-10-30-20160803>`__
-* `Item 88 of Finance Law 2016 <https://www.legifrance.gouv.fr/affichTexteArticle.do?idArticle=JORFARTI000031732968&categorieLien=id&cidTexte=JORFTEXT000031732865>`__
-
-
-
-
-
-
-
-
-
-
-
+* `常见问题 <https://www.economie.gouv.fr/files/files/directions_services/dgfip/controle_fiscal/actualites_reponses/logiciels_de_caisse.pdf>`__
+* `官方声明 <http://bofip.impots.gouv.fr/bofip/10691-PGP.html?identifiant=BOI-TVA-DECLA-30-10-30-20160803>`__
+* `2016 财政法第 88 条 <https://www.legifrance.gouv.fr/affichTexteArticle.do?idArticle=JORFARTI000031732968&categorieLien=id&cidTexte=JORFTEXT000031732865>`__
