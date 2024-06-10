@@ -1,46 +1,35 @@
-
 =====================
-Upgrade your database
+升级您的数据库
 =====================
 
 .. _odoosh-advanced-upgrade_your_database:
 
-1. Download and Upload your database
+1. 下载并上传您的数据库
 ------------------------------------
 
-Download a dump of your database (from the :ref:`Builds view <odoosh-gettingstarted-builds-download-dump>`), choose the
-exact copy and without filestore options. Upload the .sql.gz dump on https://upgrade.odoo.com/upload and
-select the Testing Purpose. If you have custom code, you can choose to have it upgraded by us, or do it yourself. Once
-it's processed, you'll get a dump of the database in return.
+从数据库中下载一个转储文件（参考 :ref:`Builds 视图 <odoosh-gettingstarted-builds-download-dump>`），选择精确的副本并且不包含文件存储选项。在 https://upgrade.odoo.com/upload 上传 .sql.gz 转储文件，并选择测试用途。如果您有自定义代码，可以选择让我们为您升级，或者自行升级。处理完成后，您将收到一个升级后的数据库转储文件。
 
 .. Warning::
 
-    Do *not* upload *backups* of your production database (found in the Backups tab of the production branch) as these are incompatible with the Upgrade platform - they contain your complete sources, etc. that are not needed for the upgrade. Make sure to download a **Dump** instead - either through the Backups tab using the *Download Dump* button or through the Builds page by using the *Download Dump* entry of the contextual menu of your latest production build.
+    请**不要**上传生产数据库的**备份**（在生产分支的备份标签中找到），因为这些与升级平台不兼容——它们包含您的完整源码等，这些在升级过程中不需要。请确保下载一个**转储文件**——可以通过备份标签中的*下载转储*按钮或通过构建页面的上下文菜单中的*下载转储*选项下载最新的生产构建。
 
-2. Test your upgraded database
+2. 测试您的升级数据库
 ------------------------------
 
-Create a staging branch that will run the upgraded database. Either make sure your production branch's code is
-compatible between the two Odoo versions and fork your production branch, or make a new staging branch containing
-the upgraded code.
+创建一个运行升级数据库的临时分支。确保您的生产分支代码在两个 Odoo 版本之间兼容，并分叉您的生产分支，或者创建一个包含升级代码的新临时分支。
 
-Once the staging build is done (it doesn't matter if it failed due to the version incompatibility), import your
-upgraded dump in the backups tab of the branch. The platform will automatically detect the version of the dump and
-change the version of Odoo's source code to the corresponding version for the build.
+一旦临时构建完成（即使由于版本不兼容导致失败也没关系），在分支的备份标签中导入升级后的转储文件。平台会自动检测转储文件的版本并将 Odoo 源代码版本更改为相应的构建版本。
 
-Test the upgraded database and make sure everything runs as it's supposed to.
+测试升级后的数据库，确保一切运行正常。
 
-3. Replace your existing production database
+3. 替换现有的生产数据库
 --------------------------------------------
 
-Once you've tested everything and you're satisfied, start the process over to get an up-to-date upgraded dump:
+一旦您测试完一切并且满意，请重新开始该过程以获取最新的升级转储文件：
 
-* Make a new dump of your production database (as described in step 1)
-* Upload it on upgrade.odoo.com and select the Production purpose
-* Receive the newly upgraded dump and import it in your production branch. The build might get marked as failed because
-  the platform will run it with the upgraded databases' Odoo version together with the old custom code.
-* Merge or commit the upgraded custom code in the production branch
+* 制作一个新的生产数据库转储文件（如步骤 1 所述）
+* 将其上传到 upgrade.odoo.com 并选择生产用途
+* 接收新的升级转储文件并将其导入您的生产分支。构建可能会被标记为失败，因为平台会在旧自定义代码的情况下使用升级数据库的 Odoo 版本运行它。
+* 在生产分支中合并或提交升级后的自定义代码
 
-If anything goes wrong, remember you can restore a backup. The platform will always make one before you make any
-Odoo.sh operation on the production database. If the restored backup comes from a previous version, the platform will
-detect it and change the project's Odoo version back if it needs to.
+如果出现任何问题，请记住您可以恢复备份。在对生产数据库进行任何 Odoo.sh 操作之前，平台总是会先制作一个备份。如果恢复的备份来自以前的版本，平台将检测到并在需要时将项目的 Odoo 版本更改回去。
