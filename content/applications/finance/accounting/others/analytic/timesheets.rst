@@ -1,23 +1,15 @@
 ======================================================
-How to track costs of human resources with timesheets?
+如何通过工时表追踪人力资源成本？
 ======================================================
 
-Human resource of course has a cost. It is interesting to see how much a
-particular contract costs the company in term of human power in relation
-to the invoiced amounts.
+人力资源当然有成本。了解某个特定合同在人工方面对公司成本的影响，并将其与开票金额进行比较，是非常有趣的。
 
-We will take the following example: Our two employees **Harry Potter** and
-**Cedric Digory** both work on a **Consultancy pack** for our customer
-**Smith&Co**. Harry is paid 18€ p.h. and Cedric's salary is 12€ p.h. We
-would like to track their timesheet costs within the accounting app, and
-compare them with the revenue of the consultancy service.
+我们将以下面的例子为例：我们的两位员工 **Harry Potter** 和 **Cedric Digory** 都在为客户 **Smith&Co** 工作，进行**咨询服务包**项目。Harry 的工资是 18€ 每小时，Cedric 的工资是 12€ 每小时。我们希望在会计应用中跟踪他们的工时成本，并将其与咨询服务的收入进行比较。
 
-Configuration
+配置
 =============
 
-First, install the three applications necessary to use this
-functionality, namely **Accounting**, **Sales** and **Timesheet**. Enter the apps
-module name and install them.
+首先，安装使用该功能所需的三个应用，即 **Accounting**，**Sales** 和 **Timesheet**。输入应用模块名称并安装它们。
 
 .. image:: media/timesheets14.png  
    :align: center
@@ -28,146 +20,109 @@ module name and install them.
 .. image:: media/timesheets11.png
    :align: center
 
-Next you will need to enable analytical accounting. To do so enter the
-**Accounting app**. Select :menuselection:`Configuration --> Settings` and tick the
-**Analytic accounting** option (see picture below)
+接下来，您需要启用分析会计功能。进入 **Accounting** 应用，选择 :menuselection:`Configuration --> Settings` 并勾选 **Analytic accounting** 选项（见下图）。
 
 .. image:: media/timesheets06.png
    :align: center
 
-Apply your changes.
+应用您的更改。
 
-Create an employee
+创建员工
 ------------------
 
-In order to check the revenue of an employee you need to have one. To
-create an employee enter the **Employee** app. Select **Employees** and
-create a new employee, fill in the name and the basic information.
+为了检查员工的收入，您需要创建一个员工。进入 **Employee** 应用，选择 **Employees** 并创建一个新员工，填写姓名和基本信息。
 
-On the employee sheet enter the **HR settings** tab. Here you are able to
-specify the **Timesheet Cost** of your employee. In this case Harry has a
-cost of 18 euros / hours. We will thus fill in 18 in this field.
+在员工信息页面进入 **HR settings** 标签。在这里，您可以指定员工的 **Timesheet Cost**。在这个例子中，Harry 的成本是 18 欧元/小时。因此我们在此字段中填写 18。
 
 .. image:: media/timesheets07.png
    :align: center
 
 .. note:: 
-    If you want the employee to be able to enter timesheets he
-    needs to be related to a User.
+    如果您希望员工能够输入工时表，他需要关联到一个用户。
 
-Repeat the operation to create the Cedric Digory employee. Don't forget
-to specify its related user and **Timesheet Costs**.
+重复操作创建 Cedric Digory 员工。不要忘记指定其相关用户和 **Timesheet Costs**。
 
-Issue a Sales Order 
+创建销售订单 
 --------------------
 
-We created two employees called Harry Potter and Cedric Diggory in the
-**Employee** app. Both of them will work on a consultancy contract for our
-customer Smith&Co where they will point their hours on a timesheet.
+我们在 **Employee** 应用中创建了两位员工，分别是 Harry Potter 和 Cedric Diggory。他们将在为客户 Smith&Co 提供的咨询合同中记录工时。
 
-We thus need to create a **sales order** with a **service** product invoiced
-**based on time and material** and tracked by timesheets with **hours** as unit
-of measures.
+因此，我们需要创建一个 **sales order**，其中包含一个 **service** 产品，按照 **time and material** 基础进行开票，并通过工时表以 **hours** 为单位进行跟踪。
 
 .. image:: media/timesheets03.png
    :align: center
 
-For more information on how to create a sales order based on time and
-material please see: *How to invoice based on time and material* (Work in Progress).
+有关如何基于时间和材料创建销售订单的更多信息，请参见：*How to invoice based on time and material*（正在进行中）。
 
 .. todo::
-    Add a link, and the document is under 
+    添加链接，该文档在 
     Sales --> Invoicing Methods --> Services --> How to invoices blabla
 
-We save a Sales Order with the service product **External Consulting**. An
-analytical account will automatically be generated once the **Sales Order**
-is confirmed. Our employees will have to point to that account (in this
-case **SO002-Smith&Co**) in order to be able to invoice their hours (see
-picture below).
+我们保存包含服务产品 **External Consulting** 的销售订单。一旦确认 **Sales Order**，系统将自动生成一个分析账户。我们的员工必须指向该账户（在此情况下为 **SO002-Smith&Co**）才能记录他们的工时（见下图）。
 
 .. image:: media/timesheets10.png
    :align: center
 
-Fill in timesheet
+填写工时表
 -----------------
 
-As an employee linked to a user, Harry can enter the **Timesheet** app and
-specify his timesheets for the contract. Logged on Harry's account we enter the
-**Timesheet** app and enter a detailed line pointing to the **Analytical
-Account** discussed above.
+作为关联到用户的员工，Harry 可以进入 **Timesheet** 应用并为合同填写工时表。登录 Harry 的账户，我们进入 **Timesheet** 应用并填写指向前面讨论的 **Analytical Account** 的详细记录。
 
-Harry worked three hours on a SWOT analysis for Smith&Co.
+Harry 为 Smith&Co 的 SWOT 分析工作了三小时。
 
 .. image:: media/timesheets01.png
    :align: center
 
-In the meantime, Cedric discussed businesses needs with the customer for
-1 hour and specified it as well in his personal timesheet, pointing as
-well on the **Analytic Account**.
+同时，Cedric 与客户讨论业务需求花费了 1 小时，并在其个人工时表中记录了这些内容，同样指向 **Analytic Account**。
 
-In the **Sales Order** we notice that the delivered amounts of hours is
-automatically computed (see picture below).
+在 **Sales Order** 中，我们注意到已交付的工时数量自动计算出来了（见下图）。
 
 .. image:: media/timesheets02.png
    :align: center
 
-Analytic accounting
+分析会计
 -------------------
 
-Thanks to analytic accounts we are able to have an overview of HR cost
-and revenues. All the revenues and cost of this transactions have been
-registered in the **SO002-Smith&Co** account.
+通过分析账户，我们能够概览人力资源成本和收入。这些交易的所有收入和成本都记录在 **SO002-Smith&Co** 账户中。
 
-We can use two methods to analyze this situation.
+我们可以使用两种方法来分析这种情况。
 
-Without filters
+不使用过滤器
 ~~~~~~~~~~~~~~~
 
-If we pointed all our costs and revenues of the project on the correct
-analytical account we can easily retrieve the cost and revenues related
-to this analytical account. Enter the *Accounting* app, select 
-:menuselection:`Adviser --> Analytic Accounts --> Open Charts`.
+如果我们将项目的所有成本和收入都指向正确的分析账户，我们可以轻松检索与该分析账户相关的成本和收入。进入 *Accounting* 应用，选择 :menuselection:`Adviser --> Analytic Accounts --> Open Charts`。
 
-Note : you can specify a period for **Analysis**. If you want to open the
-current situation you should keep the fields empty. We can already note
-the credit and debit balance of the account.
+注意：您可以为 **Analysis** 指定一个时期。如果您希望查看当前情况，则应保持这些字段为空。我们已经可以看到账户的借方和贷方余额。
 
 .. image:: media/timesheets12.png
    :align: center
 
-If we click on the account a special button is provided to have the
-details of cost and revenues (see picture below).
+如果我们点击账户，系统提供一个特殊按钮来查看成本和收入的详细信息（见下图）。
 
 .. image:: media/timesheets13.png
    :align: center
 
-Click the button **Cost/Revenue** to have an overview of cost and revenues with the
-corresponding description.
+点击 **Cost/Revenue** 按钮以查看带有相应描述的成本和收入概览。
 
-With filters
+使用过滤器
 ~~~~~~~~~~~~
 
-We can thus filter this information from the **Analytic Entries**.
+我们可以从 **Analytic Entries** 中过滤这些信息。
 
-Enter the **Accounting** app, and click on :menuselection:`Adviser --> Analytic Entries`.
-In this menu we have several options to analyse the human resource cost.
+进入 **Accounting** 应用，然后点击 :menuselection:`Adviser --> Analytic Entries`。
+在此菜单中，我们有几种选项可以分析人力资源成本。
 
-1. We filter on the **Analytic account** so we can see the cost and revenues
-   of the project. Add a custom **Filter** where the **Analytic Account**
-   contains the **Sales Order** number.
+1. 我们可以根据 **Analytic account** 过滤，以查看项目的成本和收入。添加一个自定义 **Filter**，其中 **Analytic Account** 包含 **Sales Order** 号码。
 
    .. image:: media/timesheets04.png
       :align: center
 
-   In the results we see timesheets activities and invoiced lines with
-   the corresponding costs and revenues.
+   在结果中，我们可以看到工时表活动和已开票的记录，带有相应的成本和收入。
 
    .. image:: media/timesheets09.png
      :align: center
 
-2. We can group the different analytical accounts together and check
-   their respective revenues. Simply group by **Analytic account** and
-   select the **Graph view** to have a clear overview.
+2. 我们可以将不同的分析账户组合在一起，检查它们各自的收入。只需按 **Analytic account** 分组，并选择 **Graph view** 以获得清晰概览。
 
    .. image:: media/timesheets08.png
       :align: center
