@@ -1,233 +1,150 @@
-
-
 .. _db_online:
 
 ==========================
-Online Database management
+在线数据库管理
 ==========================
 
-To manage your databases, access the `database management page
-<https://www.odoo.com/my/databases>`__ (you will have to sign in). Then click
-on the `Manage Your Databases <https://www.odoo.com/my/databases/manage>`__
-button.
+要管理您的数据库，请访问 `数据库管理页面 <https://www.odoo.com/my/databases>`__ （您需要登录）。然后点击 `管理您的数据库 <https://www.odoo.com/my/databases/manage>`__ 按钮。
 
 .. image:: media/databases.png
     :align: center
 
-Make sure you are connected as the administrator of the database you
-want to manage - many operations depends on identifying you remotely to that
-database.
+确保您以管理员身份连接到您要管理的数据库 - 许多操作依赖于远程识别您对该数据库的权限。
 
-Several actions are available:
+可执行的操作有：
 
 .. image:: media/db_buttons.png
     :align: center
 
-* :ref:`Upgrade <upgrade_button>`
-    Upgrade your database to the latest Odoo version to enjoy cutting-edge
-    features
-* :ref:`Duplicate <duplicate_online>`
-    Make an exact copy of your database, if you want
-    to try out new apps or new flows without compromising
-    your daily operations
-* :ref:`Rename <rename_online_database>`
-    Rename your database (and its URL)
-* **Backup**
-    Download an instant backup of your database; note that we
-    back up databases daily according to our Odoo Cloud SLA
-* :ref:`Domains <custom_domain>`
-    Configure custom domains to access your
-    database via another URL
-* :ref:`Delete <delete_online_database>`
-    Delete a database instantly
-* Contact Support
-    Access our `support page <https://www.odoo.com/help>`__
-    with the correct database already selected
+* :ref:`升级 <upgrade_button>`
+    将您的数据库升级到最新的 Odoo 版本以享受最新功能
+* :ref:`复制 <duplicate_online>`
+    制作数据库的精确副本，以便在不影响日常操作的情况下尝试新应用或新流程
+* :ref:`重命名 <rename_online_database>`
+    重命名您的数据库（及其 URL）
+* **备份**
+    下载数据库的即时备份；请注意，我们根据 Odoo 云 SLA 每日备份数据库
+* :ref:`域名 <custom_domain>`
+    配置自定义域名以通过另一个 URL 访问您的数据库
+* :ref:`删除 <delete_online_database>`
+    立即删除数据库
+* 联系支持
+    访问我们的 `支持页面 <https://www.odoo.com/help>`__，其中已选择正确的数据库
 
 .. _upgrade_button:
 
-Upgrade
+升级
 =======
 
-.. warning:: Upgrading your database to a newer version of Odoo is a complex operation
-    that require time and caution. It is extremely important that you
-    fully test the process before upgrading your production database.
+.. warning:: 将您的数据库升级到较新版本的 Odoo 是一个复杂的操作，需要时间和谨慎。务必在升级生产数据库之前完全测试该过程。
 
-Odoo releases new versions regularly (at least once a year), and upgrading your
-database to enjoy new Odoo features is part of the Odoo Online experience.
+Odoo 定期发布新版本（至少每年一次），升级您的数据库以享受新的 Odoo 功能是 Odoo 在线体验的一部分。
 
-The upgrade process can take some time, especially if you use multiple apps or
-apps that manage sensitive data (e.g. Accounting, Inventory, etc.). In general,
-the 'smaller' the database, the quickest the upgrade. A single-user
-database that uses only CRM will be processed faster than a multi-company,
-multi-user database that uses Accounting, Sales, Purchase and Manufacturing.
+升级过程可能需要一些时间，特别是如果您使用多个应用或管理敏感数据的应用（例如会计、库存等）。一般来说，数据库越“小”，升级越快。仅使用 CRM 的单用户数据库将比使用会计、销售、采购和制造的多公司、多用户数据库处理得更快。
 
-Unfortunately, it is impossible to give time estimates for every upgrade request,
-since Odoo.com will test manually every database upgrade at least once and will
-need to correct/adapt changes made to the standard Odoo Apps (e.g. through Studio
-or through a Success Pack) on a case-by-case basis. This can make the process
-slower, since requests are treated in the order they arrive. This is especially
-true in the months following the release of a new major version, which can lengthen
-the upgrade delay significantly.
+不幸的是，无法为每个升级请求提供时间估计，因为 Odoo.com 将至少手动测试每个数据库升级一次，并需要根据具体情况纠正/适应对标准 Odoo 应用（例如通过 Studio 或通过 Success Pack）所做的更改。这可能会使过程变慢，因为请求按到达顺序处理。这在新主要版本发布后的几个月内尤其如此，这可能会显著延长升级延迟。
 
-The upgrade process is quite simple from your point of view:
+从您的角度来看，升级过程非常简单：
 
-1. You request a test upgrade
-2. Once all tests have been validated **by you**, you upgrade your actual database
+1. 您请求测试升级
+2. 一旦所有测试 **由您** 验证，您便可以升级您的实际数据库
 
-The process to request a test or a production (*actual*) upgrade is the same.
+请求测试或生产（实际）升级的过程是相同的。
 
-First, make sure to be connected to the database you want to upgrade and access the
-`database management page <https://www.odoo.com/my/databases>`__.
+首先，确保连接到您要升级的数据库，并访问 `数据库管理页面 <https://www.odoo.com/my/databases>`__。
 
-.. note:: You have to have an active session with access to the Settings app
-    in the database you want to upgrade for the button to be visible.
+.. note:: 您必须在要升级的数据库中拥有访问设置应用的活动会话，升级按钮才会可见。
 
-On the line of the database you want to upgrade, click
-on the "Cog" menu. If an newer version of Odoo is available, you will see an 'Upgrade'
-button.
+在您要升级的数据库行上，点击 "Cog" 菜单。如果有较新版本的 Odoo 可用，您将看到一个“升级”按钮。
 
 .. image:: media/upgrade1.png
     :align: center
 
-You have the possibility to choose the target version of the upgrade. By default,
-we select the highest available version available for your database; if you were
-already in the process of testing an upgrade, we will automatically select the
-version you were already testing (even if we released a more recent version during
-your tests).
+您可以选择升级的目标版本。默认情况下，我们会为您的数据库选择最高可用版本；如果您已经在测试升级过程中，我们将自动选择您正在测试的版本（即使在测试期间我们发布了更新版本）。
 
 .. image:: media/upgrade_test.png
     :align: center
 
-By clicking on the "Test upgrade" button, an upgrade request will be generated.
-Only one request can be made at time for each database; if a request has already
-been made, you will see an 'Upgrade Queued' note instead and asking another
-request will not be possible.
+点击“测试升级”按钮将生成升级请求。每个数据库一次只能请求一个请求；如果已提交请求，您将看到“升级排队”通知，并且无法提交另一个请求。
 
-A test upgrade will create a copy of your database, upgrade it and make it
-available to you automatically once successful. If this is the first test you
-request for this particular database, a manual testing phase will be done by
-Odoo.com - this could take time (up to several weeks). Subsequent requests
-will not go through that manual testing step and will usually be made
-available in a few hours. Once the test database is available, you should
-receive an e-mail with the URL of the test database.
+测试升级将创建数据库的副本，升级它，并在成功后自动使其可用。如果这是您首次请求此特定数据库的测试，将由 Odoo.com 进行手动测试阶段 - 这可能需要一些时间（最长可达几周）。后续请求将不会经过手动测试步骤，通常在几小时内可用。一旦测试数据库可用，您将收到包含测试数据库 URL 的电子邮件。
 
-**Testing your database is the most important step of the upgrade process!**
-Even though we test all upgrades manually, we do not know your work processes.
-A change in standard workflows of Odoo in new versions might require you to
-change internal processes, or some of the customizations you made through Odoo
-Studio might now work properly. *It is up to you to make sure that everything
-works as it should!* You can report issues with your test database through our
-`Support page <https://www.odoo.com/help>`__.
+**测试您的数据库是升级过程最重要的步骤！** 尽管我们手动测试所有升级，但我们不了解您的工作流程。新版本中的标准 Odoo 工作流程变化可能需要您更改内部流程，或您通过 Odoo Studio 所做的一些自定义可能无法正常工作。 *确保一切正常是您的责任！* 您可以通过我们的 `支持页面 <https://www.odoo.com/help>`__ 报告测试数据库的问题。
 
-Make sure to do one last test of your upgrade right before the final upgrade
-(e.g. the day before) to ensure everything will run smoothly. Downgrading is
-not possible and post-poning an upgrade is always easier than being prevented
-to work by an upgrade issue after the fact!
+确保在最终升级前（例如前一天）进行最后一次升级测试，以确保一切顺利运行。降级是不可能的，推迟升级总是比升级后遇到问题导致无法工作更容易！
 
-Once you are ready and you have validated all your tests, you can click
-again on the Upgrade button and confirm by clicking on Upgrade (the button
-with the little rocket!) to switch your production database to the new version.
-Your database will then be taken offline within the next 10 minutes and will be
-upgraded automatically; you receive a confirmation
-e-mail once the process is completed.
+一旦您准备好并验证了所有测试，可以再次点击升级按钮并确认点击升级（带有小火箭的按钮！）以将您的生产数据库切换到新版本。您的数据库将在接下来的 10 分钟内下线并自动升级；升级完成后您会收到确认电子邮件。
 
 .. image:: media/upgrade_prod.png
     :align: center
 
-.. warning :: Your database will be taken offline during the upgrade
-    (usually between 30min up to several hours for big databases),
-    so make sure to plan your migration during non-business hours.
+.. warning :: 在升级过程中，您的数据库将会下线（通常从 30 分钟到几个小时不等，具体取决于数据库大小），因此请确保在非工作时间安排迁移。
 
 .. _duplicate_online:
 
-Duplicating a database
+复制数据库
 ======================
 
-.. note:: Database duplication, renaming, custom DNS, etc. is not available
-    for trial databases on our Online platform. Paid Databases and "One App
-    Free" database can duplicate without problem.
+.. note:: 在线平台的试用数据库不提供数据库复制、重命名、自定义 DNS 等功能。付费数据库和“一个免费应用”数据库可以无问题地复制。
 
-
-In the line of the database you want to duplicate, you will have a few
-buttons. To duplicate your database, just click **Duplicate**. You will
-have to give a name to your duplicate, then click **Duplicate Database**.
+在您要复制的数据库行中，您会看到一些按钮。要复制数据库，只需点击 **复制**。您需要为副本命名，然后点击 **复制数据库**。
 
 .. image:: media/db_duplicate.png
     :align: center
 
-.. danger:: If you do not check the "For testing purposes" checkbox when
-  duplicating a database, all external communication will remain active:
+.. danger:: 如果在复制数据库时未勾选“用于测试目的”复选框，所有外部通信将保持活动状态：
 
-  * Emails are sent
+  * 发送电子邮件
 
-  * Payments are processed (in the e-commerce or Subscriptions apps, for
-    example)
+  * 处理付款（例如，在电子商务或订阅应用中）
 
-  * Delivery orders (shipping providers) are sent
+  * 发送交货订单（配送提供商）
 
-  * Etc.
+  * 等等
 
-  Make sure to check the checkbox "For testing purposes" if you want these
-  behaviours to be disabled.
+  如果您希望禁用这些行为，请确保勾选“用于测试目的”复选框。
 
-After a few seconds, you will be logged in your duplicated database.
-Notice that the url uses the name you chose for your duplicated
-database.
+几秒钟后，您将登录到您的复制数据库中。注意，URL 使用您为复制数据库选择的名称。
 
-.. note :: Duplicate databases expire automatically after 15 days.
+.. note :: 复制的数据库将在 15 天后自动过期。
 
     .. image:: media/dup_expires.png
         :align: center
 
 .. _rename_online_database:
 
-Rename a Database
+重命名数据库
 ===================
 
-To rename your database, make sure you are connected to the database you want
-to rename, access the `database management page <https://www.odoo.com/my/databases>`__
-and click **Rename**. You will have to give a new name to your database,
-then click **Rename Database**.
+要重命名数据库，请确保您连接到要重命名的数据库，访问 `数据库管理页面 <https://www.odoo.com/my/databases>`__ 并点击 **重命名**。您需要为数据库提供一个新名称，然后点击 **重命名数据库**。
 
 .. image:: media/rename.png
     :align: center
 
 .. _delete_online_database:
 
-Deleting a Database
+删除数据库
 ===================
 
-You can only delete databases of which you are the administrator.
+您只能删除您是管理员的数据库。
 
-.. danger:: When you delete your database all the data will be permanently lost.
-    The deletion is instant and for all the Users. We advise you to do an
-    instant backup of your database before deleting it, since the last automated
-    daily backup may be several hours old at that point.
+.. danger:: 当您删除数据库时，所有数据将永久丢失。删除是即时的，适用于所有用户。我们建议您在删除数据库之前进行即时备份，因为此时最新的自动每日备份可能已有数小时之久。
 
-
-From the `database management page <https://www.odoo.com/my/databases>`__,
-on the line of the database you want to delete, click on the "Delete" button.
+从 `数据库管理页面 <https://www.odoo.com/my/databases>`__，在您要删除的数据库行上，点击“删除”按钮。
 
 .. image:: media/delete_button.png
     :align: center
 
-
-Read carefully the warning message that will appear and proceed only if you
-fully understand the implications of deleting a database:
+仔细阅读出现的警告信息，仅在完全理解删除数据库的影响后继续操作：
 
 .. image:: media/delete_warning.png
     :align: center
 
-After a few seconds, the database will be deleted and the page will
-reload automatically.
+几秒钟后，数据库将被删除，页面将自动重新加载。
 
 .. note::
-    * If you need to re-use this database name, it will be immediately available.
+    * 如果您需要重新使用此数据库名称，它将立即可用。
 
-    * It is not possible to delete a database if it is expired or linked
-      to a Subscription. In these cases contact
-      `Odoo Support <https://www.odoo.com/help>`__
+    * 如果数据库已过期或链接到订阅，则无法删除。在这些情况下，请联系 `Odoo 支持 <https://www.odoo.com/help>`__
 
-    * If you want to delete your Account, please contact
-      `Odoo Support <https://www.odoo.com/help>`__
+    * 如果您想删除您的账户，请联系 `Odoo 支持 <https://www.odoo.com/help>`__
