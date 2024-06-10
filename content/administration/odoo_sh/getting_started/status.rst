@@ -1,12 +1,11 @@
-
 ==================================
-Status
+状态
 ==================================
 
-Overview
+概述
 ========
 
-The status page shows statistics regarding the servers your project uses. It includes the servers availability.
+状态页面显示了关于项目使用的服务器的统计信息，包括服务器的可用性。
 
 .. image:: ./media/interface-status.png
    :align: center
