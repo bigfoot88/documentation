@@ -1,224 +1,160 @@
 ==========================
-Analytic account use cases
+分析账户使用案例
 ==========================
 
-The analytic accounting can be used for several purposes:
+分析会计可以用于多种目的：
 
--  analyse costs of a company
+- 分析公司的成本
 
--  reinvoice time to a customer
+- 向客户重新开具时间发票
 
--  analyse performance of a service or a project
+- 分析服务或项目的绩效
 
-To manage analytic accounting, you have to activate it in
-:menuselection:`Configuration --> Settings`:
+要管理分析会计，您需要在 :menuselection:`Configuration --> Settings` 激活它：
 
 .. image:: media/usage01.png
    :align: center
 
-To illustrate analytic accounts clearly, you will follow three use
-cases, each in one of three different types of company:
+为了清楚地说明分析账户，您将遵循三个使用案例，每个案例都适用于三种不同类型的公司：
 
-1. Industrial company: Costs Analyse
+1. 工业公司：成本分析
 
-2. Law Firm: reinvoice spent hours
+2. 律师事务所：重新开具费用发票
 
-3. IT/Services Company: performance analysis
+3. IT/服务公司：绩效分析
 
-Case 1: Industrial company: Costs Analyse
+案例 1：工业公司：成本分析
 -----------------------------------------
 
-In industry, you will often find analytic charts of accounts structured
-into departments and products the company itself is built on.
+在工业领域，您通常会发现分析科目表结构分为公司内的各部门和产品。
 
-The objective is to examine the costs, sales and margins by
-department/resources and by product. The first level of the structure
-comprises the different departments, and the lower levels represent the
-product ranges the company makes and sells.
+目标是通过部门/资源和产品来检查成本、销售和利润率。结构的第一级包括不同的部门，较低级别代表公司制造和销售的产品系列。
 
-**Analytic Chart of Accounts for an Industrial Manufacturing Company**:
+**工业制造公司的分析科目表**：
 
-1. Marketing Department
+1. 市场部
 
-2. Commercial Department
+2. 商务部
 
-3. Administration Department
+3. 行政部
 
-4. Production Range 1
+4. 产品系列 1
 
-5. Production Range 2
+5. 产品系列 2
 
-In daily use, it is useful to mark the analytic account on each purchase
-invoice. When the invoice is approved, it will
-automatically generate the entries for both the general and the
-corresponding analytic accounts. For each entry on the general
-accounts, there is at least one analytic entry that allocates costs to
-the department which incurred them.
+在日常使用中，在每张采购发票上标注分析账户是有用的。当发票被批准时，它将自动生成一般账户和相应分析账户的分录。对于每个一般账户的分录，至少有一个分析分录将成本分配给发生成本的部门。
 
-Here is a possible breakdown of some general accounting entries for the
-example above, allocated to various analytic accounts:
+以下是上述示例中一些分配给各种分析账户的一般会计分录的可能细分：
 
 +---------------------------------------+-----------+---------+----------+----+-------------------------+----------+
-| **General accounts**                  |           |         |          |    | **Analytic accounts**   |          |
+| **一般账户**                          |           |         |          |    | **分析账户**           |          |
 +=======================================+===========+=========+==========+====+=========================+==========+
-| **Title**                             |**Account**|**Debit**|**Credit**|    | **Account**             |**Value** |
+| **标题**                             |**账户**   |**借方** |**贷方**  |    | **账户**               |**数额**  |
 +---------------------------------------+-----------+---------+----------+----+-------------------------+----------+
-| Purchase of Raw Material              | 2122      | 1500    |          |    | Production Range 1      | -1 500   |
+| 原材料采购                           | 2122      | 1500    |          |    | 产品系列 1             | -1 500   |
 +---------------------------------------+-----------+---------+----------+----+-------------------------+----------+
-| Subcontractors                        | 2122      | 450     |          |    | Production Range 2      | -450     |
+| 分包商                               | 2122      | 450     |          |    | 产品系列 2             | -450     |
 +---------------------------------------+-----------+---------+----------+----+-------------------------+----------+
-| Credit Note for defective materials   | 2122      |         | 200      |    | Production Range 1      | 200      |
+| 次品材料的贷记凭证                   | 2122      |         | 200      |    | 产品系列 1             | 200      |
 +---------------------------------------+-----------+---------+----------+----+-------------------------+----------+
-| Transport charges                     | 2122      | 450     |          |    | Production Range 1      | -450     |
+| 运输费用                             | 2122      | 450     |          |    | 产品系列 1             | -450     |
 +---------------------------------------+-----------+---------+----------+----+-------------------------+----------+
-| Staff costs                           | 2121      | 10000   |          |    | Marketing               | -2 000   |
+| 员工成本                             | 2121      | 10000   |          |    | 市场部                 | -2 000   |
 +---------------------------------------+-----------+---------+----------+----+-------------------------+----------+
-|                                       |           |         |          |    | Commercial              | -3 000   |
+|                                       |           |         |          |    | 商务部                 | -3 000   |
 +---------------------------------------+-----------+---------+----------+----+-------------------------+----------+
-|                                       |           |         |          |    | Administrative          | -1 000   |
+|                                       |           |         |          |    | 行政部                 | -1 000   |
 +---------------------------------------+-----------+---------+----------+----+-------------------------+----------+
-|                                       |           |         |          |    | Production Range 1      | -2 000   |
+|                                       |           |         |          |    | 产品系列 1             | -2 000   |
 +---------------------------------------+-----------+---------+----------+----+-------------------------+----------+
-|                                       |           |         |          |    | Production Range 2      | -2 000   |
+|                                       |           |         |          |    | 产品系列 2             | -2 000   |
 +---------------------------------------+-----------+---------+----------+----+-------------------------+----------+
-| PR                                    | 2122      | 450     |          |    | Marketing               | -400     |
+| PR                                    | 2122      | 450     |          |    | 市场部                 | -400     |
 +---------------------------------------+-----------+---------+----------+----+-------------------------+----------+
 
-The analytic representation by department enables you to investigate the
-costs allocated to each department in the company. The analytic chart of
-accounts shows the distribution of the company's costs using the example above:
+通过部门的分析表示可以调查公司各部门分配的成本。使用上述示例的分析科目表显示了公司成本的分布：
 
 .. image:: media/usage02.png
    :align: center
 
-In this example of a hierarchical structure in Odoo, you can analyse not
-only the costs of each product range, but also the costs of the whole
-production. A report that relates both general accounts and analytic
-accounts enables you to get a breakdown of costs within a given
-department.
+在 Odoo 中的这种层次结构示例中，您不仅可以分析每个产品系列的成本，还可以分析整个生产的成本。一个同时关联一般账户和分析账户的报告可以让您获得给定部门内成本的细分。
 
 .. image:: media/usage03.png
    :align: center
 
-The examples above are based on a breakdown of the costs of the company.
-Analytic allocations can be just as effective for sales. That gives you
-the profitability (sales - costs) of different departments.
+上述示例基于公司的成本细分。分析分配对于销售也同样有效。这样可以得到不同部门的盈利能力（销售 - 成本）。
 
-This analytic representation by department is generally used by trading
-companies and industries.
+这种按部门的分析表示通常用于贸易公司和工业公司。
 
-A variantion of this, is not to break it down by sales and marketing
-departments, but to assign each cost to its corresponding product range.
-This will give you an analysis of the profitability of each product
-range.
+一种变体是不按销售和市场部门细分，而是将每项成本分配给其对应的产品系列。这将使您能够分析每个产品系列的盈利能力。
 
-Choosing one over the other depends on how you look at your marketing
-effort. Is it a global cost allocated in some general way, or is each
-product range responsible for its own marketing costs?
+选择哪种方法取决于您如何看待您的市场营销工作。它是以某种总体方式分配的全局成本，还是每个产品系列都负责自己的市场营销成本？
 
-Case 2: Law Firm: costs of human resources?
+案例 2：律师事务所：人力资源成本？
 -------------------------------------------
 
-Law firms generally adopt management by case, where each case represents
-a current client file. All of the expenses and products are then
-attached to a given file/analytic account.
+律师事务所通常采用按案件管理的方式，每个案件代表当前的客户档案。然后所有的费用和产品都附加到给定的档案/分析账户。
 
-A principal preoccupation of law firms is the invoicing of hours worked,
-and the profitability by case and by employee.
+律师事务所的主要关注点是工时的计费，以及按案件和员工的盈利能力。
 
-Mechanisms used for encoding the hours worked will be covered in detail
-in timesheet documentation. Like most system processes, hours worked are
-integrated into the analytic accounting. In the employee form, specify
-the cost of the employee. The hourly charge is a function of the
-employee's cost.
+编码工时使用的机制将在工时记录文档中详细介绍。与大多数系统流程一样，工时会整合到分析会计中。在员工表单中，指定员工的成本。小时费用是员工成本的函数。
 
-So a law firm will opt for an analytic representation which reflects the
-management of the time that employees work on the different customer
-cases.
+因此，律师事务所将选择一种反映员工在不同客户案件上工作时间管理的分析表示。
 
-Billing for the different cases is a bit unusual. The cases do not match
-any entry in the general account nor do they come from purchase or sales
-invoices. They are represented by the various analytic operations and do
-not have exact counterparts in the general accounts. They are calculated
-on the basis of the hourly cost per employee.
+不同案件的计费有些特殊。案件不匹配一般账户中的任何条目，也不来自采购或销售发票。它们通过各种分析操作来表示，在一般账户中没有确切的对应项。它们是根据每位员工的小时成本计算的。
 
-At the end of the month when you pay salaries and benefits, you
-integrate them into the general accounts but not in the analytic
-accounts, because they have already been accounted for in billing each
-account. A report that relates data from the analytic and general
-accounts then lets you compare the totals, so you can readjust your
-estimates of hourly cost per employee depending on the time actually
-worked.
+在月底支付工资和福利时，您将它们整合到一般账户中，但不在分析账户中，因为它们已经在每个账户的计费中记录。一个关联分析和一般账户数据的报告可以让您比较总额，从而根据实际工作时间重新调整每位员工的小时成本估算。
 
-The following table shows an example of different analytic entries that
-you can find for your analytic account:
+下表显示了分析账户中可能出现的不同分析分录示例：
 
 +--------------------------------+------------------+--------------+----+----------------------------+-------------+--------------+
-| **Title**                      | **Account**      | **Amount**   |    | **General Account**        | **Debit**   | **Credit**   |
+| **标题**                       | **账户**        | **金额**     |    | **一般账户**               | **借方**   | **贷方**     |
 +================================+==================+==============+====+============================+=============+==============+
-| Study the file (1 h)           | Case 1.1         | -15          |    |                            |             |              |
+| 档案研究（1小时）             | 案件 1.1         | -15          |    |                            |             |              |
 +--------------------------------+------------------+--------------+----+----------------------------+-------------+--------------+
-| Search for information (3 h)   | Case 1.1         | -45          |    |                            |             |              |
+| 信息搜索（3小时）             | 案件 1.1         | -45          |    |                            |             |              |
 +--------------------------------+------------------+--------------+----+----------------------------+-------------+--------------+
-| Consultation (4 h)             | Case 2.1         | -60          |    |                            |             |              |
+| 咨询（4小时）                 | 案件 2.1         | -60          |    |                            |             |              |
 +--------------------------------+------------------+--------------+----+----------------------------+-------------+--------------+
-| Service charges                | Case 1.1         | 280          |    | 705 – Billing services     |             | 280          |
+| 服务费                        | 案件 1.1         | 280          |    | 705 – 计费服务             |             | 280          |
 +--------------------------------+------------------+--------------+----+----------------------------+-------------+--------------+
-| Stationery purchase            | Administrative   | -42          |    | 601 – Furniture purchase   | 42          |              |
+| 文具采购                      | 行政             | -42          |    | 601 – 办公家具采购         | 42          |              |
 +--------------------------------+------------------+--------------+----+----------------------------+-------------+--------------+
-| Fuel Cost -Client trip         | Case 1.1         | -35          |    | 613 – Transports           | 35          |              |
+| 燃料费 - 客户行程             | 案件 1.1         | -35          |    | 613 – 运输                 | 35          |              |
 +--------------------------------+------------------+--------------+----+----------------------------+-------------+--------------+
-| Staff salaries                 |                  |              |    | 6201 – Salaries            |             | 3 000        |
+| 员工工资                      |                  |              |    | 6201 – 工资                |             | 3 000        |
 +--------------------------------+------------------+--------------+----+----------------------------+-------------+--------------+
 
-Such a structure allows you to make a detailed study of the
-profitability of various transactions.
+这种结构使您能够详细研究各种交易的盈利能力。
 
-For more details about profitablity, please read the following document:
-:doc:`timesheets`
+有关盈利能力的更多详细信息，请阅读以下文档： :doc:`timesheets`
 
-But analytical accounting is not limited to a simple analysis of the
-profitability of different customer. The same data can be used for
-automatic recharging of the services to the customer at the end of the
-month. To invoice customers, just link the analytic account to a sale
-order and sell products that manage timesheet or expenses .
+但分析会计不仅限于简单的不同客户的盈利能力分析。相同的数据可以用于月底自动向客户重新收费。要向客户开具发票，只需将分析账户链接到销售订单，并销售管理工时或费用的产品。
 
-Case 3: IT Services Company: performance analysis
+案例 3：IT 服务公司：绩效分析
 -------------------------------------------------
 
-Most IT service companies face the following problems:
+大多数 IT 服务公司面临以下问题：
 
--  project planning,
+- 项目规划
 
--  invoicing, profitability and financial follow-up of projects,
+- 开具发票、项目的盈利能力和财务跟踪
 
--  managing support contracts.
+- 管理支持合同
 
-To deal with these problems, you would use an analytic chart of accounts
-structured by project and by sale order.
+要解决这些问题，您将使用按项目和销售订单结构化的分析科目表。
 
-The management of services, expenditures and sales is similar to that
-presented above for lawyers. Invoicing and the study of profitability
-are also similar.
+服务、支出和销售的管理与上述律师事务所的情况类似。开具发票和
 
-But now look at support contracts. These contracts are usually limited
-to a prepaid number of hours. Each service posted in the analytic
-accounts shows the remaining hours of support. To manage support
-contracts, you would create a product configured to invoice on order and
-link the sale order to an analytic account
+盈利能力研究也类似。
 
-In Odoo, each analytic line lists the number of units sold or used, as
-well as what you would usually find there – the amount in currency units
-(USD or GBP, or whatever other choice you make). So you can sum the
-quantities sold and used on each sale order to determine whether any
-hours of the support contract remain.
+但现在看一下支持合同。这些合同通常限于预付的工时数。分析账户中记录的每项服务显示剩余的支持工时。要管理支持合同，您需要创建一个配置为按订单开具发票的产品，并将销售订单链接到分析账户。
 
-Conclusion
+在 Odoo 中，每个分析行列出所售或使用的单位数量，以及通常在那里找到的金额（货币单位，如 USD 或 GBP，或您选择的其他货币）。因此，您可以汇总每个销售订单上的售出和使用数量，以确定是否有剩余的支持合同工时。
+
+结论
 ----------
 
-Analytic accounting helps you to analyse costs and revenues whatever the
-use case. You can sell or purchase services, track time or analyse the
-production performance.
+分析会计帮助您分析成本和收入，无论使用案例如何。您可以销售或采购服务、跟踪时间或分析生产绩效。
 
-Analytic accounting is flexible and easy to use through all Odoo
-applications (sales, purchase, timesheet, production, invoice, …).
+通过所有 Odoo 应用程序（销售、采购、工时、生产、发票等），分析会计灵活且易于使用。
