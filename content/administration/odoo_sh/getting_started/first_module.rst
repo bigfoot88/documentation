@@ -1,39 +1,38 @@
-
 ==================================
-Your first module
+你的第一个模块
 ==================================
 
-Overview
+概述
 ========
 
-This chapter helps you to create your first Odoo module and deploy it in your Odoo.sh project.
+本章将指导你创建第一个 Odoo 模块并将其部署到你的 Odoo.sh 项目中。
 
-This tutorial requires :ref:`you created a project on Odoo.sh <odoosh-gettingstarted-create>`, and you know your Github repository's URL.
+本教程需要你已经：:ref:`在 Odoo.sh 上创建了一个项目 <odoosh-gettingstarted-create>`，并且你知道你的 Github 仓库的 URL。
 
-Basic use of Git and Github is explained.
+基础的 Git 和 Github 使用方法将在下文中解释。
 
-The below assumptions are made:
+假设如下：
 
-* *~/src* is the directory where are located the Git repositories related to your Odoo projects,
-* *odoo* is the Github user,
-* *odoo-addons* is the Github repository,
-* *feature-1* is the name of a development branch,
-* *master* is the name of the production branch,
-* *my_module* is the name of the module.
+* *~/src* 是存放与 Odoo 项目相关的 Git 仓库的目录，
+* *odoo* 是 Github 用户，
+* *odoo-addons* 是 Github 仓库，
+* *feature-1* 是开发分支的名称，
+* *master* 是生产分支的名称，
+* *my_module* 是模块的名称。
 
-Replace these by the values of your choice.
+请将这些替换为你选择的值。
 
-Create the development branch
+创建开发分支
 =============================
 
-From Odoo.sh
+从 Odoo.sh
 -------------
 
-In the branches view:
+在分支视图中：
 
-* hit the :code:`+` button next to the development stage,
-* choose the branch *master* in the *Fork* selection,
-* type *feature-1* in the *To* input.
+* 点击开发阶段旁边的 :code:`+` 按钮，
+* 在 *Fork* 选择中选择分支 *master*，
+* 在 *To* 输入框中输入 *feature-1*。
 
   |pic1|  |pic2|
 
@@ -44,8 +43,7 @@ In the branches view:
    :width: 45%
 
 
-Once the build created, you can access the editor and browse to the folder *~/src/user* to access
-to the code of your development branch.
+构建创建后，你可以访问编辑器并浏览到 *~/src/user* 文件夹，访问你开发分支的代码。
 
 .. image:: ./media/firstmodule-development-editor.png
   :align: center
@@ -53,11 +51,11 @@ to the code of your development branch.
 .. image:: ./media/firstmodule-development-editor-interface.png
   :align: center
 
-From your computer
+从你的电脑
 ------------------
 
 
-Clone your Github repository on your computer:
+在你的电脑上克隆 Github 仓库：
 
 .. code-block:: bash
 
@@ -66,39 +64,36 @@ Clone your Github repository on your computer:
   $ git clone https://github.com/odoo/odoo-addons.git
   $ cd ~/src/odoo-addons
 
-Create a new branch:
+创建一个新分支：
 
 .. code-block:: bash
 
   $ git checkout -b feature-1 master
 
 
-Create the module structure
+创建模块结构
 ===========================
 
-Scaffolding the module
+脚手架模块
 ----------------------
 
-While not necessary, scaffolding avoids the tedium of setting the basic Odoo module structure.
-You can scaffold a new module using the executable *odoo-bin*.
+虽然不是必须的，但脚手架可以避免设置基本 Odoo 模块结构的繁琐操作。你可以使用 *odoo-bin* 可执行文件生成新的模块脚手架。
 
-From the Odoo.sh editor, in a terminal:
+在 Odoo.sh 编辑器的终端中：
 
 .. code-block:: bash
 
   $ odoo-bin scaffold my_module ~/src/user/
 
-Or, from your computer, if you have an :ref:`installation of Odoo <setup/install/source>`:
+或者，如果你在电脑上已经 :ref:`安装了 Odoo <setup/install/source>`，可以：
 
 .. code-block:: bash
 
   $ ./odoo-bin scaffold my_module ~/src/odoo-addons/
 
-If you do not want to bother installing Odoo on your computer,
-you can also :download:`download this module structure template <media/my_module.zip>` in which you replace every occurrences of
-*my_module* to the name of your choice.
+如果你不想在电脑上安装 Odoo，你也可以 :download:`下载这个模块结构模板 <media/my_module.zip>`，并在其中将所有 *my_module* 替换为你选择的名称。
 
-The below structure will be generated:
+将生成以下结构：
 
 ::
 
@@ -121,355 +116,344 @@ The below structure will be generated:
 
 .. Warning::
 
-  Do not use special characters other than the underscore ( _ ) for your module name, not even an hyphen ( - ).
-  This name is used for the Python classes of your module,
-  and having classes name with special characters other than the underscore is not valid in Python.
+  不要在模块名称中使用下划线 ( _ ) 以外的特殊字符，甚至连连字符 ( - ) 也不要使用。
+  这个名称将用于模块的 Python 类，而在 Python 中使用下划线以外的特殊字符是不合法的。
 
-Uncomment the content of the files:
+取消注释文件的内容：
 
-* *models/models.py*,
-  an example of model with its fields,
-* *views/views.xml*,
-  a tree and a form view, with the menus opening them,
-* *demo/demo.xml*,
-  demo records for the above example model,
-* *controllers/controllers.py*,
-  an example of controller implementing some routes,
-* *views/templates.xml*,
-  two example qweb views used by the above controller routes,
-* *__manifest__.py*,
-  the manifest of your module, including for instance its title, description and data files to load.
-  You just need to uncomment the access control list data file:
+* *models/models.py*，
+  一个包含字段的模型示例，
+* *views/views.xml*，
+  包含菜单的树形和表单视图，
+* *demo/demo.xml*，
+  上述示例模型的示例记录，
+* *controllers/controllers.py*，
+  实现一些路由的控制器示例，
+* *views/templates.xml*，
+  上述控制器路由使用的两个示例 qweb 视图，
+* *__manifest__.py*，
+  模块的清单，包括例如其标题、描述和数据文件加载。你只需取消注释访问控制列表数据文件：
 
   .. code-block:: xml
 
     # 'security/ir.model.access.csv',
 
-Manually
+手动创建
 --------
 
-If you want to create your module structure manually,
-you can follow :doc:`Build an Odoo module </developer/howtos/backend>` to understand
-the structure of a module and the content of each file.
+如果你想手动创建模块结构，可以参考 :doc:`构建一个 Odoo 模块 </developer/howtos/backend>` 了解模块的结构和每个文件的内容。
 
-Push the development branch
+推送开发分支
 ===========================
 
-Stage the changes to be committed
+将更改暂存以便提交
 
 .. code-block:: bash
 
   $ git add my_module
 
-Commit your changes
+提交更改
 
 .. code-block:: bash
 
   $ git commit -m "My first module"
 
-Push your changes to your remote repository
+将更改推送到远程仓库
 
-From an Odoo.sh editor terminal:
+在 Odoo.sh 编辑器终端中：
 
 .. code-block:: bash
 
   $ git push https HEAD:feature-1
 
-The above command is explained in the section
-:ref:`Commit & Push your changes
-<odoosh-gettingstarted-online-editor-push>` of the
-:ref:`Online Editor <odoosh-gettingstarted-online-editor>`
-chapter.
-It includes the explanation regarding the fact you will be prompted to type your username and password,
-and what to do if you use the two-factor authentication.
+上面的命令在 :ref:`提交并推送更改
+<odoosh-gettingstarted-online-editor-push>` 部分解释。
+它包括关于提示你输入用户名和密码的解释，
+以及如果你使用两步验证该怎么办。
 
-Or, from your computer terminal:
+或者，在你的电脑终端中：
 
 .. code-block:: bash
 
   $ git push -u origin feature-1
 
-You need to specify *-u origin feature-1* for the first push only.
-From that point, to push your future changes from your computer, you can simply use
+首次推送需要指定 *-u origin feature-1*。
+从此之后，要从电脑推送未来的更改，你只需使用
 
 .. code-block:: bash
 
   $ git push
 
-Test your module
+测试你的模块
 ================
 
-Your branch should appear in your development branches in your project.
+你的分支应出现在项目中的开发分支中。
 
 .. image:: ./media/firstmodule-test-branch.png
   :align: center
 
-In the branches view of your project,
-you can click on your branch name in the left navigation panel to access its history.
+在项目的分支视图中，
+你可以在左侧导航面板中点击分支名称来访问其历史记录。
 
 .. image:: ./media/firstmodule-test-branch-history.png
   :align: center
 
-You can see here the changes you just pushed, including the comment you set.
-Once the database ready, you can access it by clicking the *Connect* button.
+你可以在这里看到你刚刚推送的更改，包括你设置的评论。
+一旦数据库准备好，你可以通过点击 *Connect* 按钮访问它。
 
 .. image:: ./media/firstmodule-test-database.png
   :align: center
 
-If your Odoo.sh project is configured to install your module automatically,
-you will directly see it amongst the database apps. Otherwise, it will be available in the apps to install.
+如果你的 Odoo.sh 项目配置为自动安装你的模块，
+你会直接在数据库应用中看到它。否则，它将在可安装的应用中可见。
 
-You can then play around with your module, create new records and test your features and buttons.
+然后，你可以试用你的模块，创建新记录并测试功能和按钮。
 
 
-Test with the production data
+用生产数据测试
 =============================
 
-You need to have a production database for this step. You can create it if you do not have it yet.
+此步骤需要一个生产数据库。如果你还没有，可以创建一个。
 
-Once you tested your module in a development build with the demo data and believe it is ready,
-you can test it with the production data using a staging branch.
+一旦你在带有演示数据的开发构建中测试了你的模块并认为它已经准备好，
+你可以使用分支进行阶段测试来用生产数据进行测试。
 
-You can either:
+你可以：
 
-* Make your development branch a staging branch, by drag and dropping it onto the *staging* section title.
+* 将你的开发分支变为阶段分支，通过拖放到 *staging* 区域标题上。
 
   .. image:: ./media/firstmodule-test-devtostaging.png
     :align: center
 
-* Merge it in an existing staging branch, by drag and dropping it onto the given staging branch.
+* 将其合并到现有的阶段分支，通过拖放到给定的阶段分支上。
 
   .. image:: ./media/firstmodule-test-devinstaging.png
     :align: center
 
-You can also use the :code:`git merge` command to merge your branches.
+你也可以使用 :code:`git merge` 命令合并分支。
 
-This will create a new staging build, which will duplicate the production database and make it run using a server
-updated with your latest changes of your branch.
+这将创建一个新的阶段构建，复制生产数据库并使其运行更新后的服务器，
+带有你分支的最新更改。
 
 .. image:: ./media/firstmodule-test-mergedinstaging.png
   :align: center
 
-Once the database ready, you can access it using the *Connect* button.
+一旦数据库准备好，你可以通过 *Connect* 按钮访问它。
 
 .. _odoosh-gettingstarted-firstmodule-productiondata-install:
 
-Install your module
+安装你的模块
 -------------------
 
-Your module will not be installed automatically, you have to install it from the apps menu.
-Indeed, the purpose of the staging build is to test the behavior of your changes as it would be on your production,
-and on your production you would not like your module to be installed automatically, but on demand.
+你的模块不会自动安装，你需要从应用菜单安装它。
+事实上，阶段构建的目的是测试你的更改在生产中的行为，
+而在生产中你不希望模块自动安装，而是按需安装。
 
-Your module may not appear directly in your apps to install either, you need to update your apps list first:
+你的模块也可能不会直接出现在可安装的应用中，你需要先更新应用列表：
 
-* activate the developer mode from the Settings,
+* 从设置中激活开发者模式，
 
   .. image:: ./media/firstmodule-test-developermode.png
     :align: center
 
-* in the apps menu, click the *Update Apps List* button,
-* in the dialog that appears, click the *Update* button.
+* 在应用菜单中，点击 *Update Apps List* 按钮，
+* 在出现的对话框中，点击 *Update* 按钮。
 
   .. image:: ./media/firstmodule-test-updateappslist.png
     :align: center
 
-Your module will then appear in the list of available apps.
+然后，你的模块将出现在可用应用列表中。
 
 .. image:: ./media/firstmodule-test-mymoduleinapps.png
   :align: center
 
-Deploy in production
+部署到生产环境
 ====================
 
-Once you tested your module in a staging branch with your production data,
-and believe it is ready for production, you can merge your branch in the production branch.
+一旦你在带有生产数据的阶段分支中测试了你的模块并认为它已经准备好生产，
+你可以将你的分支合并到生产分支中。
 
-Drag and drop your staging branch on the production branch.
+将你的阶段分支拖放到生产分支上。
 
 .. image:: ./media/firstmodule-test-mergeinproduction.png
   :align: center
 
-You can also use the :code:`git merge` command to merge your branches.
+你也可以使用 :code:`git merge` 命令合并分支。
 
-This will merge the latest changes of your staging branch in the production branch,
-and update your production server with these latest changes.
+这将合并阶段分支的最新更改到生产分支中，
+并用这些最新更改更新生产服务器。
 
 .. image:: ./media/firstmodule-test-mergedinproduction.png
   :align: center
 
-Once the database ready, you can access it using the *Connect* button.
+一旦数据库准备好，你可以通过 *Connect*
 
-Install your module
+ 按钮访问它。
+
+安装你的模块
 -------------------
 
-Your module will not be installed automatically,
-you have to install it manually as explained in the
-:ref:`above section about installing your module in staging databases
-<odoosh-gettingstarted-firstmodule-productiondata-install>`.
+你的模块不会自动安装，
+你需要按照 :ref:`上面关于在阶段数据库中安装模块的部分
+<odoosh-gettingstarted-firstmodule-productiondata-install>` 解释手动安装它。
 
-Add a change
+添加更改
 ============
 
-This section explains how to add a change in your module by adding a new field in a model and deploy it.
+本节解释如何通过在模型中添加新字段来为你的模块添加更改并部署它。
 
-From the Odoo.sh editor,
- * browse to your module folder *~/src/user/my_module*,
- * then, open the file *models/models.py*.
+在 Odoo.sh 编辑器中，
+ * 浏览到你的模块文件夹 *~/src/user/my_module*，
+ * 然后，打开文件 *models/models.py*。
 
-Or, from your computer,
- * use the file browser of your choice to browse to your module folder *~/src/odoo-addons/my_module*,
- * then, open the file *models/models.py* using the editor of your choice,
-   such as *Atom*, *Sublime Text*, *PyCharm*, *vim*, ...
+或者，在你的电脑上，
+ * 使用你选择的文件浏览器浏览到你的模块文件夹 *~/src/odoo-addons/my_module*，
+ * 然后，使用你选择的编辑器（如 *Atom*、*Sublime Text*、*PyCharm*、*vim* 等）打开文件 *models/models.py*。
 
-Then, after the description field
+然后，在 description 字段之后
 
 .. code-block:: python
 
   description = fields.Text()
 
-Add a datetime field
+添加一个 datetime 字段
 
 .. code-block:: python
 
   start_datetime = fields.Datetime('Start time', default=lambda self: fields.Datetime.now())
 
-Then, open the file *views/views.xml*.
+然后，打开文件 *views/views.xml*。
 
-After
+在
 
 .. code-block:: xml
 
     <field name="value2"/>
 
-Add
+之后添加
 
 .. code-block:: xml
 
     <field name="start_datetime"/>
 
-These changes alter the database structure by adding a column in a table,
-and modify a view stored in database.
+这些更改通过在表中添加列来改变数据库结构，并修改存储在数据库中的视图。
 
-In order to be applied in existing databases, such as your production database,
-these changes requires the module to be updated.
+为了在现有数据库（如生产数据库）中应用这些更改，
+需要更新模块。
 
-If you would like the update to be performed automatically by the Odoo.sh platform when you push your changes,
-increase your module version in its manifest.
+如果你希望在推送更改时由 Odoo.sh 平台自动执行更新，
+请在模块清单中增加模块版本。
 
-Open the module manifest *__manifest__.py*.
+打开模块清单 *__manifest__.py*。
 
-Replace
+替换
 
 .. code-block:: python
 
   'version': '0.1',
 
-with
+为
 
 .. code-block:: python
 
   'version': '0.2',
 
-The platform will detect the change of version and trigger the update of the module upon the new revision deployment.
+平台将检测版本更改并在新版本部署时触发模块更新。
 
-Browse to your Git folder.
+浏览到你的 Git 文件夹。
 
-Then, from an Odoo.sh terminal:
+然后，从 Odoo.sh 终端中：
 
 .. code-block:: bash
 
   $ cd ~/src/user/
 
-Or, from your computer terminal:
+或者，从你的电脑终端中：
 
 .. code-block:: bash
 
   $ cd ~/src/odoo-addons/
 
-Then, stage your changes to be committed
+然后，将更改暂存以便提交
 
 .. code-block:: bash
 
   $ git add my_module
 
-Commit your changes
+提交更改
 
 .. code-block:: bash
 
   $ git commit -m "[ADD] my_module: add the start_datetime field to the model my_module.my_module"
 
-Push your changes:
+推送更改：
 
-From an Odoo.sh terminal:
+在 Odoo.sh 终端中：
 
 .. code-block:: bash
 
   $ git push https HEAD:feature-1
 
-Or, from your computer terminal:
+或者，在你的电脑终端中：
 
 .. code-block:: bash
 
   $ git push
 
-The platform will then create a new build for the branch *feature-1*.
+平台将为 *feature-1* 分支创建一个新构建。
 
 .. image:: ./media/firstmodule-test-addachange-build.png
   :align: center
 
-Once you tested your changes, you can merge your changes in the production branch, for instance by drag-and-dropping the
-branch on the production branch in the Odoo.sh interface. As you increased the module version in the manifest,
-the platform will update the module automatically and your new field will be directly available.
-Otherwise you can manually update the module within the apps list.
+一旦你测试了更改，你可以将更改合并到生产分支中，例如通过在 Odoo.sh 界面中将分支拖放到生产分支上。由于你在清单中增加了模块版本，
+平台将自动更新模块，并且新字段将直接可用。
+否则，你可以在应用列表中手动更新模块。
 
-Use an external Python library
+使用外部 Python 库
 ==============================
 
-If you would like to use an external Python library which is not installed by default,
-you can define a *requirements.txt* file listing the external libraries your modules depends on.
+如果你想使用未默认安装的外部 Python 库，
+你可以定义一个 *requirements.txt* 文件，列出模块依赖的外部库。
 
-The platform will use this file to automatically install the Python libraries your project needs.
+平台将使用此文件自动安装项目所需的 Python 库。
 
-The feature is explained in this section by using the `Unidecode library <https://pypi.python.org/pypi/Unidecode>`_ in
-your module.
+此功能通过在模块中使用 `Unidecode library <https://pypi.python.org/pypi/Unidecode>`_ 进行解释。
 
-Create a file *requirements.txt* in the root folder of your repository
+在你的仓库根目录创建一个 *requirements.txt* 文件
 
-From the Odoo.sh editor, create and open the file ~/src/user/requirements.txt.
+从 Odoo.sh 编辑器中，创建并打开文件 ~/src/user/requirements.txt。
 
-Or, from your computer, create and open the file ~/src/odoo-addons/requirements.txt.
+或者，从你的电脑中，创建并打开文件 ~/src/odoo-addons/requirements.txt。
 
-Add
+添加
 
 .. code-block:: text
 
   unidecode
 
-Then use the library in your module, for instance to remove accents from characters in the name field of your
-model.
+然后在你的模块中使用库，例如在模型的 name 字段中去除字符重音符号。
 
-Open the file *models/models.py*.
+打开文件 *models/models.py*。
 
-Before
+在
 
 .. code-block:: python
 
   from odoo import models, fields, api
 
-Add
+之前添加
 
 .. code-block:: python
 
   from unidecode import unidecode
 
-After
+在
 
 .. code-block:: python
 
   start_datetime = fields.Datetime('Start time', default=lambda self: fields.Datetime.now())
 
-Add
+之后添加
 
 .. code-block:: python
 
@@ -485,23 +469,23 @@ Add
           values['name'] = unidecode(values['name'])
       return super(my_module, self).write(values)
 
-Adding a Python dependency requires a module version increase for the platform to install it.
+添加 Python 依赖需要增加模块版本，以便平台安装它。
 
-Edit the module manifest *__manifest__.py*
+编辑模块清单 *__manifest__.py*
 
-Replace
+替换
 
 .. code-block:: python
 
   'version': '0.2',
 
-with
+为
 
 .. code-block:: python
 
   'version': '0.3',
 
-Stage and commit your changes:
+暂存并提交更改：
 
 .. code-block:: bash
 
@@ -509,15 +493,15 @@ Stage and commit your changes:
   $ git add my_module
   $ git commit -m "[IMP] my_module: automatically remove special chars in my_module.my_module name field"
 
-Then, push your changes:
+然后，推送更改：
 
-In an Odoo.sh terminal:
+在 Odoo.sh 终端中：
 
 .. code-block:: bash
 
   $ git push https HEAD:feature-1
 
-In your computer terminal:
+在你的电脑终端中：
 
 .. code-block:: bash
 
