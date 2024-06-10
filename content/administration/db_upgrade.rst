@@ -1,415 +1,356 @@
-
 .. |assistance-contact| replace::
-   If you need Odoo assistance on this matter, please contact your Odoo Account Manager or contact
-   our `Sales department`_.
+   如果您在此问题上需要 Odoo 的帮助，请联系您的 Odoo 客户经理或联系
+   我们的 `销售部门`_。
 .. _Sales department: mailto:sales@odoo.com
 
 .. _db-upgrade:
 
 =======
-Upgrade
+升级
 =======
 
 .. _db-upgrade/overview:
 
-Overview
+概述
 ========
 
 .. _db-upgrade/process:
 
-The upgrade process
+升级流程
 -------------------
 
-This documentation is for our *On-Premise* (self-hosted) and *Odoo.sh* customers. If you are hosted
-Online, please check our :ref:`instruction page for our Online (SaaS) customers <upgrade_button>`.
+本文档适用于我们的 *本地部署* (自托管) 和 *Odoo.sh* 客户。如果您使用的是在线托管服务，请查看我们的 :ref:`在线 (SaaS) 客户说明页面 <upgrade_button>`。
 
 .. _db-upgrade/definition:
 
-Definition
+定义
 ~~~~~~~~~~
 
-An upgrade is switching to a newer version of Odoo (e.g., Odoo 13.0 to Odoo 14.0)
+升级是指切换到更新版本的 Odoo (例如，从 Odoo 13.0 升级到 Odoo 14.0)。
 
-An upgrade does not cover:
+升级不包括以下内容：
 
-* changing :ref:`Editions <db-upgrade/faq/editions-change>` (i.e., Community to Enterprise edition)
-* switching :ref:`hosting type <db-upgrade/faq/hosting-types-switch>` (i.e., On-Premise to Online or
-  Odoo.sh)
-* migration from another ERP to Odoo
+* 更改 :ref:`版本 <db-upgrade/faq/editions-change>` (即从社区版到企业版)
+* 切换 :ref:`托管类型 <db-upgrade/faq/hosting-types-switch>` (即从本地部署到在线或 Odoo.sh)
+* 从其他 ERP 迁移到 Odoo
 
 .. note:: |assistance-contact|
 
 .. _db-upgrade/process-workflow:
 
-Process workflow
+流程概述
 ~~~~~~~~~~~~~~~~
 
-The upgrade process in a nutshell:
+升级流程简要概述如下：
 
-#. You create a test upgrade request.
-#. | The request is processed by Odoo:
-   | This happens via an automated process that runs the database through an upgrade script and
-     takes between 20 and 120 minutes. Only if an issue(s) arises will we have to intervene
-     manually and adjust the script specifically to your database until the upgrade succeeds.
-#. Odoo delivers a test database.
-#. You test your database for possible discrepancies (see :ref:`db-upgrade/test-guidance`)
-#. If there are any discrepancies, you report them to the Upgrade support team via the
-   :ref:`Help portal <db-upgrade/test-assistance>`.
-#. We will fix the issues and send you a new test database.
-#. Once you completed the testing and are happy with the result, you decide on a date and time when
-   you stop users from accessing Odoo, freeze all data entries and create an upgrade request for the
-   production upgrade.
-#. Odoo delivers the production database through the automated process.
-#. You restore it in your Production environment a few short hours later and continue working on the
-   newly upgraded database.
+#. 创建测试升级请求。
+#. | 请求由 Odoo 处理：
+   | 这通过自动化过程进行，将数据库通过升级脚本处理，时间在 20 到 120 分钟之间。只有在出现问题时，我们才需要手动干预并针对您的数据库调整脚本，直到升级成功。
+#. Odoo 提供测试数据库。
+#. 您测试数据库以查找可能的差异 (请参阅 :ref:`db-upgrade/test-guidance`)。
+#. 如果有任何差异，请通过 :ref:`帮助门户 <db-upgrade/test-assistance>` 向升级支持团队报告。
+#. 我们会修复问题并发送新的测试数据库给您。
+#. 一旦您完成测试并对结果满意，您决定何时停止用户访问 Odoo，冻结所有数据输入并创建生产升级请求。
+#. Odoo 通过自动化过程交付生产数据库。
+#. 几小时后，您将其恢复到您的生产环境中，并继续在新升级的数据库上工作。
 
 .. _db-upgrade/service-level:
 
-Service Level Agreement
+服务水平协议
 -----------------------
 
-What is covered by the Enterprise Licence?
+企业许可覆盖哪些内容？
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Databases hosted on Odoo’s Cloud platforms (Saas and Odoo.sh) or On-Premise (Self-Hosting) enjoy the
-following service at all times.
+在 Odoo 的云平台 (Saas 和 Odoo.sh) 或本地部署 (自托管) 的数据库始终享有以下服务。
 
-The upgrade of:
+升级内容包括：
 
-* standard applications
-* Studio customization (as long as the Studio app is still active)
-* customizations done by our consulting and developer services *if* they are covered by a
-  ‘Maintenance of Customisations’ subscription
+* 标准应用
+* Studio 自定义 (只要 Studio 应用仍然活跃)
+* 我们的咨询和开发服务所做的定制 *如果* 它们被“定制维护”订阅覆盖
 
-The Upgrade Service is limited to the technical conversion and adaptation of your database (standard
-modules and data) to make it compatible with the targeted version.
+升级服务仅限于您的数据库 (标准模块和数据) 的技术转换和适配，使其与目标版本兼容。
 
-What upgrading does NOT cover
+升级不包括的内容
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* The cleaning of pre-existing data & configuration while upgrading
-* Any new developments and/or upgrade of your own :ref:`custom modules
-  <db-upgrade/faq/custom-modules>`
-* `Training <https://www.odoo.com/learn>`_ on the new version
+* 升级过程中清理现有数据和配置
+* 任何新的开发和/或升级您自己的 :ref:`自定义模块 <db-upgrade/faq/custom-modules>`
+* `新版本的培训 <https://www.odoo.com/learn>`_
 
-You can get more information about your Enterprise Licence on our :ref:`Odoo Enterprise Subscription
-Agreement <upgrade>` page.
+您可以在我们的 :ref:`Odoo 企业订阅协议 <upgrade>` 页面上获取更多关于您的企业许可的信息。
 
 .. note:: |assistance-contact|
 
 .. _db-upgrade/get-started:
 
-Get started
+开始
 ===========
 
-The upgrade process varies depending on where your database is hosted.
+升级过程因数据库托管位置而异。
 
 .. _db-upgrade/online:
 
-Online (SaaS)
+在线 (SaaS)
 -------------
 
-If you are hosted Online, please check our :ref:`instruction page for our Online (SaaS) customers
-<upgrade_button>`.
+如果您使用的是在线托管服务，请查看我们的 :ref:`在线 (SaaS) 客户说明页面 <upgrade_button>`。
 
 .. _db-upgrade/odoo-sh:
 
 Odoo.sh
 -------
 
-If you are Odoo.sh hosted, check our :doc:`specific instructions to be able to upgrade
-<odoo_sh/advanced/upgrade_your_database>`.
+如果您在 Odoo.sh 上托管，请查看我们的 :doc:`升级数据库的具体说明 <odoo_sh/advanced/upgrade_your_database>`。
 
 .. _db-upgrade/on-premise:
 
-On-Premise
+本地部署
 ----------
 
-There are two possibilities:
+有两种可能性：
 
-#. Via the interface of our `website form <https://upgrade.odoo.com>`_
-#. | For technically-advanced users and partners, via the following command line (to be used on the
-     machine where your database is hosted):
+#. 通过我们 `网站表单 <https://upgrade.odoo.com>`_ 界面
+#. | 对于技术先进的用户和合作伙伴，通过以下命令行 (在托管数据库的机器上使用)：
    | ``python <(curl -s beta.upgrade.odoo.com/upgrade) test -d <your db name> -t 14.0``
 
-What does it do?
+这有什么作用？
 ~~~~~~~~~~~~~~~~
 
-The above command will dump your database to a file, then send it to the upgrade platform for
-upgrade, displaying you the live logs, then restore the upgraded database back on your server as a
-duplicate test database.
+上述命令会将您的数据库转储到一个文件，然后将其发送到升级平台进行升级，显示实时日志，然后将升级后的数据库恢复到您的服务器上，作为一个重复的测试数据库。
 
 .. _db-upgrade/steps:
 
-Steps
+步骤
 =====
 
 .. _db-upgrade/steps-test:
 
-The testing phase
+测试阶段
 -----------------
 
 .. _db-upgrade/test-process:
 
-Test process
+测试过程
 ~~~~~~~~~~~~
 
-Also referred to as the pre-production phase, the test phase allows you to review an upgraded
-version of your database without affecting your production database in any way.
+测试阶段也称为预生产阶段，允许您在不影响生产数据库的情况下，审查升级后的数据库版本。
 
-We suggest that you run the test upgrade process at least once, but you can do it as often as you
-want (one at a time).
+我们建议您至少运行一次测试升级过程，但您可以根据需要多次运行 (一次一次地进行)。
 
-Once you receive your upgraded test database, you should check that all data, processes and
-functionality are still correct and working as expected.
+一旦您收到升级后的测试数据库，您应该检查所有数据、流程和功能是否仍然正确并按预期工作。
 
-If you do find discrepancies, you'll be able to:
+如果发现差异，您可以：
 
-* | :ref:`Report your issues <db-upgrade/test-assistance>`
-  | and/or
-* Ask for a new :ref:`test request <db-upgrade/test-db-request>` after the reported issues have
-  been fixed in the upgrade script.
+* | :ref:`报告您的问题 <db-upgrade/test-assistance>`
+  | 和/或
+* 在升级脚本中的问题修复后，申请新的 :ref:`测试请求 <db-upgrade/test-db-request>`。
 
-When you do not find any discrepancies, you'll be able to:
+当您未发现任何差异时，您可以：
 
-* Move on to the upgrade of your :ref:`production database <db-upgrade/production-live>`.
+* 继续升级您的 :ref:`生产数据库 <db-upgrade/production-live>`。
 
 .. _db-upgrade/test-db-request:
 
-Request a test database
+请求测试数据库
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-When filling the `website form <https://upgrade.odoo.com>`_, select *Testing* purpose.
+填写 `网站表单 <https://upgrade.odoo.com>`_ 时，选择 *测试* 目的。
 
 .. image:: media/db-upgrade-test-purpose.png
    :align: center
-   :alt: Selection of the "Testing" purpose in the upgrade form on Odoo
+   :alt: 在 Odoo 升级表单中选择“测试”目的
 
 .. _db-upgrade/test-guidance:
 
-Test guidance
+测试指南
 ~~~~~~~~~~~~~
 
-Every business and organization has its own operational needs and will have to test its specific
-Odoo instance respectively. However, we recommend you look at `the test scenario
-<https://drive.google.com/open?id=1Lm4JqbsHBirB1wMi14UChoz_YHLjx5ec>`_ we created, a high-level idea
-of what you should test and look out for.
+每个企业和组织都有自己的运营需求，需要分别测试其特定的 Odoo 实例。然而，我们建议您查看我们创建的 `测试场景 <https://drive.google.com/open?id=1Lm4JqbsHBirB1wMi14UChoz_YHLjx5ec>`_，了解您应该测试和注意的高层次内容。
 
-.. todo:: change link "test scenario" once the related doc is published
+.. todo:: 文档发布后更改“测试场景”的链接
 
 .. _db-upgrade/test-assistance:
 
-Assistance
+协助
 ~~~~~~~~~~
 
-If you encounter issues or problems in the **test database**, please contact the Odoo Upgrade
-Support:
+如果您在 **测试数据库** 中遇到问题，请联系 Odoo 升级支持：
 
-#. Connect to our `Odoo Support page <https://www.odoo.com/help>`_.
-#. Under the *Ticket Description* section, select *An issue related to my upgrade* ticket type.
+#. 访问我们的 `Odoo 支持页面 <https://www.odoo.com/help>`_。
+#. 在 *工单描述* 部分，选择 *与我的升级相关的问题* 工单类型。
 
    .. image:: media/db-upgrade-test-assistance.png
       :align: center
-      :alt: Selection of "An issue related to my upgrade" as Ticket Type in the support form on Odoo
+      :alt: 在 Odoo 支持表单中选择“与我的升级相关的问题”作为工单类型
 
    .. warning::
-      If you choose another *Ticket Description* type, the request will be redirected to another
-      team than the upgrade one and will slow down the processing and response time.
+      如果您选择了其他 *工单描述* 类型，请求将被重定向到其他团队，从而减慢处理和响应时间。
 
-#. Please provide as much detail as you can. Where applicable, illustrate the current and previous
-   flows with videos and/or screenshots. This will avoid clarifying questions and speed up the
-   resolution process significantly.
+#. 请尽可能提供详细信息。在适用的情况下，使用视频和/或截图说明当前和以前的流程。这将避免澄清问题并显著加快解决过程。
 
    .. image:: media/db-upgrade-test-assistance-details.png
       :align: center
-      :alt: "Detailed Description" field in the support form on Odoo
+      :alt: Odoo 支持表单中的“详细描述”字段
 
 .. note::
-   * The purpose of the test phase is not to correct existing data or configurations in your
-     database.
+   * 测试阶段的目的不是纠正数据库中的现有数据或配置。
    * |assistance-contact|
 
 .. _db-upgrade/steps-production:
 
-The production launch
+生产启动
 ---------------------
 
 .. _db-upgrade/production-live:
 
-Production goes live
+生产上线
 ~~~~~~~~~~~~~~~~~~~~
 
-The production upgrade request is when you decide to upgrade your current database with all your
-production data (invoices, VAT returns, inventories, current orders) to a new version of your choice.
+生产升级请求是指您决定将当前数据库（包括所有生产数据，如发票、增值税申报、库存、当前订单）升级到您选择的新版本。
 
-After your :ref:`tests <db-upgrade/steps-test>` are completed to your satisfaction, submit the
-request to upgrade your production database via our `website form <https://upgrade.odoo.com>`_.
-Select *Production* purpose.
+在您对测试结果满意后，通过我们的 `网站表单 <https://upgrade.odoo.com>`_ 提交升级生产数据库的请求。选择 *生产* 目的。
 
 .. image:: media/db-upgrade-production-purpose.png
    :align: center
-   :alt: Selection of the "Production" purpose in the upgrade form on Odoo
+   :alt: 在 Odoo 升级表单中选择“生产”目的
 
 .. danger::
-   Going into production without first testing may lead to:
+   未经测试就进入生产可能导致：
 
-   - business interruptions (e.g. no longer having the possibility to validate an action)
-   - poor customer experiences (e.g. an eCommerce website that does not work correctly)
+   - 业务中断 (例如，不再有可能验证某个操作)
+   - 糟糕的客户体验 (例如，电子商务网站无法正常工作)
 
 .. _db-upgrade/production-assistance:
 
-Assistance
+协助
 ~~~~~~~~~~
 
-If you encounter issues or problems in the **production database**, please contact the **Odoo
-Support**:
+如果您在 **生产数据库** 中遇到问题，请联系 **Odoo 支持**：
 
-#. Connect to our `Odoo Support page <https://www.odoo.com/help>`_.
-#. Under the *Ticket Description* section, select the appropriate type related to your issue but
-   **do not select** the option *An issue related to my upgrade*.
+#. 访问我们的 `Odoo 支持页面 <https://www.odoo.com/help>`_。
+#. 在 *工单描述* 部分，选择与您的问题相关的适当类型，但 **不要选择** 选项 *与我的升级相关的问题*。
 
    .. note::
-      After upgrading to production, the support will be provided by the Support team instead of the
-      Upgrade team.
+      升级到生产后，将由支持团队而不是升级团队提供支持。
 
-#. Please provide as much detail as you can. Where applicable, illustrate the current and previous
-   flows with videos and/or screenshots. This will avoid clarifying questions and speed up the
-   resolution process significantly.
+#. 请尽可能提供详细信息。在适用的情况下，使用视频和/或截图说明当前和以前的流程。这将避免澄清问题并显著加快解决过程。
 
    .. image:: media/db-upgrade-production-assistance-details.png
       :align: center
-      :alt: "Detailed Description" field in the support form on Odoo
+      :alt: Odoo 支持表单中的“详细描述”字段
 
    .. warning::
-      If you choose *An issue related to my upgrade* as ticket type, the request will be redirected
-      to another team than the support one and will slow down the processing and response time.
+      如果您
+
+选择 *与我的升级相关的问题* 作为工单类型，请求将被重定向到其他团队，从而减慢处理和响应时间。
 
 .. _db-upgrade/faq:
 
-FAQ
+常见问题
 ===
 
 .. _db-upgrade/faq/why:
 
-Why upgrade?
+为什么升级？
 ------------
 
-* You benefit from the latest features of the :ref:`new major version
-  <db-upgrade/faq/release-notes>` released by Odoo.
-* If you are in an :ref:`unsupported version <db-upgrade/supported-versions>`, you get a new version
-  with support.
+* 您可以享受 :ref:`新主要版本 <db-upgrade/faq/release-notes>` 中的最新功能。
+* 如果您使用的是 :ref:`不受支持的版本 <db-upgrade/supported-versions>`，您将获得具有支持的新版本。
 
 .. _db-upgrade/faq/when:
 
-When to upgrade?
+何时升级？
 ----------------
 
-Whenever you want. You can make your upgrade request as soon as a new version is released on our
-`website form <https://upgrade.odoo.com>`_.
+任何时候都可以。我们一旦在我们的 `网站表单 <https://upgrade.odoo.com>`_ 上发布新版本，您就可以提出升级请求。
 
 .. _db-upgrade/faq/availability:
 
-Availability of the new version
+新版本的可用性
 -------------------------------
 
-Please kindly note that as soon as we announce the release of a new major version (usually at the
-end of year), the Upgrade Service team needs to adapt the upgrade scripts to it, which is why the
-new version is not immediately available for existing databases.
+请注意，一旦我们宣布发布新主要版本 (通常在年底)，升级服务团队需要调整升级脚本，因此新版本不会立即对现有数据库开放。
 
 .. _db-upgrade/faq/finalization:
 
-Finalization of the upgrade (:abbr:`ETA (Estimated Time of Arrival)`)
+升级的最终完成 (预计到达时间)
 ---------------------------------------------------------------------
 
-Unfortunately, it is impossible to give time estimates for every upgrade request. Odoo offers so
-many possibilities (e.g. branding, workflows, customization, etc) that it can get tricky to upgrade,
-and translate to the new structure. If you use multiple apps managing sensitive data (e.g.,
-Accounting, Inventory, etc.), some cases may still require a human intervention, making the process
-slower.
+不幸的是，无法为每个升级请求提供时间估计。Odoo 提供了如此多的可能性 (例如品牌、工作流程、自定义等)，使得升级和转换为新结构变得复杂。如果您使用多个管理敏感数据的应用程序 (例如，会计、库存等)，某些情况下可能仍需要人工干预，从而使过程变慢。
 
-This is especially true during the first months following the release of a new major version, which
-can significantly lengthen the upgrade delay.
+在新主要版本发布的最初几个月内尤其如此，这可能显著延长升级延迟时间。
 
-In general, the ‘smaller’ the database, the quickest the upgrade. A single-user database that uses
-only CRM will be processed faster than a multi-company, multi-user database that uses Accounting,
-Sales, Purchase, and Manufacturing.
+通常，数据库越小，升级速度越快。一个仅使用 CRM 的单用户数据库处理速度会比使用会计、销售、采购和制造的多公司、多用户数据库快得多。
 
-So, in a nutshell, what can impact your upgrade lead time?
+那么，总的来说，哪些因素会影响您的升级时间？
 
-* Source & targeted versions
-* Installed apps
-* Volume of data
-* Amount of customization (models, fields, methods, workflows, reports, website, etc.)
-* Installation of new apps or configuration changes after the start of the test phase
+* 源版本和目标版本
+* 已安装的应用
+* 数据量
+* 自定义程度 (模型、字段、方法、工作流程、报告、网站等)
+* 测试阶段开始后的新应用安装或配置更改
 
-Usually, the delays experienced during the first request (waiting time between the time you
-submitted your first request for a test upgrade) can generally give you an idea of the time to wait
-for the production request.
+通常，第一次请求过程中遇到的延迟 (您提交首次测试升级请求后的等待时间) 可以大致反映生产请求的等待时间。
 
 .. _db-upgrade/faq/custom-modules:
 
-Upgrade of the custom modules
+自定义模块的升级
 -----------------------------
 
-As stated in our :doc:`../legal/terms/enterprise`, section :ref:`charges_standard`, this optional
-service is subject to additional fees.
+如我们在 :doc:`../legal/terms/enterprise` 中所述，:ref:`标准费用 <charges_standard>` 部分，此可选服务需支付额外费用。
 
-If you have a custom code, you can choose to have it upgraded by our services, by one of our
-`partners <https://www.odoo.com/partners>`_ or you can do it yourself.
+如果您有自定义代码，您可以选择由我们的服务、我们的 `合作伙伴 <https://www.odoo.com/partners>`_ 升级，或自行升级。
 
 .. note:: |assistance-contact|
 
 .. _db-upgrade/faq/editions-change:
 
-Editions change (from Community to Enterprise)
+版本变更 (从社区版到企业版)
 ----------------------------------------------
 
-An upgrade does not cover a change of `Editions <https://www.odoo.com/page/editions>`_
+升级不包括更改 `版本 <https://www.odoo.com/page/editions>`_
 
 .. note:: |assistance-contact|
 
 .. _db-upgrade/faq/hosting-types-switch:
 
-Switching the hosting types (Self-hosted vs Online vs Odoo.sh)
+切换托管类型 (自托管与在线与 Odoo.sh)
 --------------------------------------------------------------
 
-An upgrade does not cover a change of `Hosting types <https://www.odoo.com/page/hosting-types>`_.
+升级不包括更改 `托管类型 <https://www.odoo.com/page/hosting-types>`_。
 
-Open the following link to get :doc:`more information about how to change your hosting type
-<db_management/hosting_changes>`.
+请打开以下链接，获取 :doc:`有关如何更改托管类型的更多信息 <db_management/hosting_changes>`。
 
 .. note:: |assistance-contact|
 
 .. _db-upgrade/faq/release-notes:
 
-Release Notes by version
+按版本的发行说明
 ------------------------
 
-Open our `Release Note <https://www.odoo.com/page/release-notes>`_ page to get a summary of the new
-features and improvements made in each version.
+打开我们的 `发行说明 <https://www.odoo.com/page/release-notes>`_ 页面，获取每个版本新增功能和改进的摘要。
 
 .. _db-upgrade/assistance:
 
-Assistance
+协助
 ==========
 
 .. _db-upgrade/contact:
 
-Contact our Upgrade service support
+联系我们的升级服务支持
 -----------------------------------
 
-Should you have any more questions about the upgrade, do not hesitate to send a message to `Odoo
-Upgrade Team <mailto:upgrade@odoo.com>`_. We will be very pleased to answer it as soon as possible.
+如果您有任何关于升级的更多问题，请随时发送消息至 `Odoo 升级团队 <mailto:upgrade@odoo.com>`_。我们将非常乐意尽快回答您的问题。
 
 .. _db-upgrade/supported-versions:
 
-Supported versions
+支持的版本
 ------------------
 
-Please note that Odoo provides support and bug fixing only for the three last major versions of Odoo.
+请注意，Odoo 仅为最后三个主要版本提供支持和错误修复。
 
-This is a factor to take into consideration before upgrading. If you are on an older version, we
-suggest you to prefer the most recent version to benefit from a longer support (before having to
-upgrade again).
+这是升级前需要考虑的一个因素。如果您使用的是较旧的版本，我们建议您选择最新版本，以便享受更长时间的支持 (在再次升级之前)。
 
-You can get more information about our :doc:`supported versions <../services/support/supported_versions>`.
+您可以在我们的 :doc:`支持的版本 <../services/support/supported_versions>` 页面上获取更多信息。
