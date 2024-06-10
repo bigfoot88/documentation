@@ -1,63 +1,42 @@
+==================
+部署 Odoo
+==================
 
-==============
-Deploying Odoo
-==============
+本文档描述了在生产环境或面向互联网的服务器上设置 Odoo 的基本步骤。它遵循 :ref:`installation <setup/install>`，通常不适用于不暴露在互联网上的开发系统。
 
-This document describes basic steps to set up Odoo in production or on an
-internet-facing server. It follows :ref:`installation <setup/install>`, and is
-not generally necessary for a development systems that is not exposed on the
-internet.
-
-.. warning:: If you are setting up a public server, be sure to check our :ref:`security` recommandations!
+.. warning:: 如果您正在设置一个公共服务器，请务必查看我们的 :ref:`security` 建议！
 
 
 .. _db_filter:
 
-dbfilter
-========
+数据库过滤器
+==============
 
-Odoo is a multi-tenant system: a single Odoo system may run and serve a number
-of database instances. It is also highly customizable, with customizations
-(starting from the modules being loaded) depending on the "current database".
+Odoo 是一个多租户系统：一个 Odoo 系统可以运行和服务多个数据库实例。它也高度可定制，定制化（从加载的模块开始）取决于“当前数据库”。
 
-This is not an issue when working with the backend (web client) as a logged-in
-company user: the database can be selected when logging in, and customizations
-loaded afterwards.
+在作为登录公司用户使用后台（Web 客户端）时，这不是问题：可以在登录时选择数据库，然后加载定制化。
 
-However it is an issue for non-logged users (portal, website) which aren't
-bound to a database: Odoo needs to know which database should be used to load
-the website page or perform the operation. If multi-tenancy is not used that is not an
-issue, there's only one database to use, but if there are multiple databases
-accessible Odoo needs a rule to know which one it should use.
+然而，对于非登录用户（门户网站，网站）来说，这是一个问题，因为他们不绑定到数据库：Odoo 需要知道应该使用哪个数据库来加载网页或执行操作。如果不使用多租户，这不是问题，因为只有一个数据库可用，但如果有多个数据库可访问，Odoo 需要一条规则来知道它应该使用哪个。
 
-That is one of the purposes of :option:`--db-filter <odoo-bin --db-filter>`:
-it specifies how the database should be selected based on the hostname (domain)
-that is being requested. The value is a `regular expression`_, possibly
-including the dynamically injected hostname (``%h``) or the first subdomain
-(``%d``) through which the system is being accessed.
+这就是 :option:`--db-filter <odoo-bin --db-filter>` 的目的之一：它指定了如何根据被请求的主机名（域）选择数据库。该值是一个 `正则表达式`_，可能包括动态注入的主机名（``%h``）或系统访问的第一个子域名（``%d``）。
 
-For servers hosting multiple databases in production, especially if ``website``
-is used, dbfilter **must** be set, otherwise a number of features will not work
-correctly.
+对于在生产环境中托管多个数据库的服务器，尤其是使用``website``时，必须设置 dbfilter，否则许多功能将无法正常工作。
 
-Configuration samples
----------------------
+配置示例
+--------
 
-* Show only databases with names beginning with 'mycompany'
+* 仅显示名称以“mycompany”开头的数据库
 
-in ``/etc/odoo.conf`` set:
+在 ``/etc/odoo.conf`` 中设置：
 
 .. code-block:: ini
 
   [options]
   dbfilter = ^mycompany.*$
 
-* Show only databases matching the first subdomain after ``www``: for example
-  the database "mycompany" will be shown if the incoming request
-  was sent to ``www.mycompany.com`` or ``mycompany.co.uk``, but not
-  for ``www2.mycompany.com`` or ``helpdesk.mycompany.com``.
+* 仅显示与``www``后的第一个子域名匹配的数据库：例如，如果传入请求是发送到``www.mycompany.com``或``mycompany.co.uk``，则显示数据库“mycompany”，但不显示``www2.mycompany.com``或``helpdesk.mycompany.com``。
 
-in ``/etc/odoo.conf`` set:
+在 ``/etc/odoo.conf`` 中设置：
 
 .. code-block:: ini
 
@@ -65,49 +44,34 @@ in ``/etc/odoo.conf`` set:
   dbfilter = ^%d$
 
 .. note::
-  Setting a proper :option:`--db-filter <odoo-bin --db-filter>` is an important part
-  of securing your deployment.
-  Once it is correctly working and only matching a single database per hostname, it
-  is strongly recommended to block access to the database manager screens,
-  and to use the ``--no-database-list`` startup parameter to prevent listing
-  your databases, and to block access to the database management screens.
-  See also security_.
-
+  设置适当的 :option:`--db-filter <odoo-bin --db-filter>` 是确保部署安全的重要部分。
+  一旦它正常工作并且每个主机名仅匹配一个数据库，强烈建议阻止访问数据库管理屏幕，并使用``--no-database-list``启动参数来防止列出您的数据库，并阻止访问数据库管理屏幕。参见 security_。
 
 PostgreSQL
 ==========
 
-By default, PostgreSQL only allows connection over UNIX sockets and loopback
-connections (from "localhost", the same machine the PostgreSQL server is
-installed on).
+默认情况下，PostgreSQL 仅允许通过 UNIX 套接字和环回连接（来自“localhost”，即安装 PostgreSQL 服务器的同一台机器）进行连接。
 
-UNIX socket is fine if you want Odoo and PostgreSQL to execute on the same
-machine, and is the default when no host is provided, but if you want Odoo and
-PostgreSQL to execute on different machines [#different-machines]_ it will
-need to `listen to network interfaces`_ [#remote-socket]_, either:
+如果您希望 Odoo 和 PostgreSQL 在同一台机器上执行，UNIX 套接字是可以的，并且在未提供主机时是默认设置，但如果您希望 Odoo 和 PostgreSQL 在不同的机器上执行 [#different-machines]_，它将需要 `监听网络接口`_ [#remote-socket]_，要么：
 
-* Only accept loopback connections and `use an SSH tunnel`_ between the
-  machine on which Odoo runs and the one on which PostgreSQL runs, then
-  configure Odoo to connect to its end of the tunnel
-* Accept connections to the machine on which Odoo is installed, possibly
-  over ssl (see `PostgreSQL connection settings`_ for details), then configure
-  Odoo to connect over the network
+* 仅接受环回连接并 `使用 SSH 隧道`_ 在运行 Odoo 的机器和运行 PostgreSQL 的机器之间，然后配置 Odoo 连接到隧道的终端
+* 接受对安装了 Odoo 的机器的连接，可能通过 ssl（有关详细信息，请参阅 `PostgreSQL 连接设置`_），然后配置 Odoo 通过网络连接
 
-Configuration sample
---------------------
+配置示例
+--------
 
-* Allow tcp connection on localhost
-* Allow tcp connection from 192.168.1.x network
+* 允许在本地主机上进行 tcp 连接
+* 允许从 192.168.1.x 网络进行 tcp 连接
 
-in ``/etc/postgresql/9.5/main/pg_hba.conf`` set:
+在 ``/etc/postgresql/9.5/main/pg_hba.conf`` 中设置：
 
 .. code-block:: text
 
-  # IPv4 local connections:
+  # IPv4 本地连接：
   host    all             all             127.0.0.1/32            md5
   host    all             all             192.168.1.0/24          md5
 
-in ``/etc/postgresql/9.5/main/postgresql.conf`` set:
+在 ``/etc/postgresql/9.5/main/postgresql.conf`` 中设置：
 
 .. code-block:: text
 
@@ -117,42 +81,29 @@ in ``/etc/postgresql/9.5/main/postgresql.conf`` set:
 
 .. _setup/deploy/odoo:
 
-Configuring Odoo
-----------------
+配置 Odoo
+--------
 
-Out of the box, Odoo connects to a local postgres over UNIX socket via port
-5432. This can be overridden using :ref:`the database options
-<reference/cmdline/server/database>` when your Postgres deployment is not
-local and/or does not use the installation defaults.
+开箱即用，Odoo 通过端口 5432 连接到本地 postgres。这可以在 Postgres 部署不是本地且/或不使用安装默认值时使用 :ref:`数据库选项 <reference/cmdline/server/database>` 覆盖。
 
-The :ref:`packaged installers <setup/install/packaged>` will automatically
-create a new user (``odoo``) and set it as the database user.
+:ref:`打包的安装程序 <setup/install/packaged>` 将自动创建一个新用户（``odoo``）并将其设置为数据库用户。
 
-* The database management screens are protected by the ``admin_passwd``
-  setting. This setting can only be set using configuration files, and is
-  simply checked before performing database alterations. It should be set to
-  a randomly generated value to ensure third parties can not use this
-  interface.
-* All database operations use the :ref:`database options
-  <reference/cmdline/server/database>`, including the database management
-  screen. For the database management screen to work requires that the PostgreSQL user
-  have ``createdb`` right.
-* Users can always drop databases they own. For the database management screen
-  to be completely non-functional, the PostgreSQL user needs to be created with
-  ``no-createdb`` and the database must be owned by a different PostgreSQL user.
+* 数据库管理屏幕受``admin_passwd``设置保护。此设置只能使用配置文件设置，并且仅在执行数据库更改之前检查。应将其设置为随机生成的值，以确保第三方无法使用此界面。
+* 所有数据库操作都使用 :ref:`数据库选项 <reference/cmdline/server/database>`，包括数据库管理屏幕。要使数据库管理屏幕工作，PostgreSQL 用户需要具有``createdb``权限。
+* 用户可以随时删除他们拥有的数据库。要使数据库管理屏幕完全不可用，需要创建一个没有``createdb``权限的 PostgreSQL 用户，并且数据库必须由另一个 PostgreSQL 用户拥有。
 
-  .. warning:: the PostgreSQL user *must not* be a superuser
+  .. warning:: PostgreSQL 用户 *不能* 是超级用户
 
-Configuration sample
+配置示例
 ~~~~~~~~~~~~~~~~~~~~
 
-* connect to a PostgreSQL server on 192.168.1.2
-* port 5432
-* using an 'odoo' user account,
-* with 'pwd' as a password
-* filtering only db with a name beginning with 'mycompany'
+* 连接到 192.168.1.2 上的 PostgreSQL 服务器
+* 端口 5432
+* 使用 'odoo' 用户账户，
+* 密码为 'pwd'
+* 仅过滤名称以“mycompany”开头的数据库
 
-in ``/etc/odoo.conf`` set:
+在 ``/etc/odoo.conf`` 中设置：
 
 .. code-block:: ini
 
@@ -166,84 +117,68 @@ in ``/etc/odoo.conf`` set:
 
 .. _postgresql_ssl_connect:
 
-SSL Between Odoo and PostgreSQL
--------------------------------
+Odoo 和 PostgreSQL 之间的 SSL
+-----------------------------
 
-Since Odoo 11.0, you can enforce ssl connection between Odoo and PostgreSQL.
-in Odoo the db_sslmode control the ssl security of the connection
-with value chosen out of 'disable', 'allow', 'prefer', 'require', 'verify-ca'
-or 'verify-full'
+从 Odoo 11.0 开始，您可以在 Odoo 和 PostgreSQL 之间强制执行 ssl 连接。
+在 Odoo 中，db_sslmode 控制连接的 ssl 安全性，值可以选择 'disable'，'allow'，'prefer'，'require'，'verify-ca' 或 'verify-full'
 
-`PostgreSQL Doc <https://www.postgresql.org/docs/current/static/libpq-ssl.html>`_
+`PostgreSQL 文档 <https://www.postgresql.org/docs/current/static/libpq-ssl.html>`_
 
 .. _builtin_server:
 
-Builtin server
-==============
+内置服务器
+============
 
-Odoo includes built-in HTTP servers, using either multithreading or
-multiprocessing.
+Odoo 包括内置的 HTTP 服务器，可以使用多线程或多进程。
 
-For production use, it is recommended to use the multiprocessing server as it
-increases stability, makes somewhat better use of computing resources and can
-be better monitored and resource-restricted.
+对于生产环境，建议使用多进程服务器，因为它提高了稳定性，更好地利用计算资源，并且可以更好地监控和限制资源。
 
-* Multiprocessing is enabled by configuring :option:`a non-zero number of
-  worker processes <odoo-bin --workers>`, the number of workers should be based
-  on the number of cores in the machine (possibly with some room for cron
-  workers depending on how much cron work is predicted)
-* Worker limits can be configured based on the hardware configuration to avoid
-  resources exhaustion
+* 可以通过配置 :option:`非零数量的 worker 进程 <odoo-bin --workers>` 启用多进程，worker 的数量应基于机器中的核心数量（可能留出一些空间用于 cron 工作，具体取决于预测的 cron 工作量）
+* 可以根据硬件配置配置 worker 限制，以避免资源耗尽
 
-.. warning:: multiprocessing mode currently isn't available on Windows
+.. warning:: 多进程模式目前在 Windows 上不可用
 
 
-Worker number calculation
--------------------------
+Worker 数量计算
+----------------
 
-* Rule of thumb : (#CPU * 2) + 1
-* Cron workers need CPU
-* 1 worker ~= 6 concurrent users
+* 经验法则 : (#CPU * 2) + 1
+* Cron worker 需要 CPU
+* 1 worker ~= 6 个并发用户
 
-memory size calculation
------------------------
+内存大小计算
+----------------
 
-* We consider 20% of the requests are heavy requests, while 80% are simpler ones
-* A heavy worker, when all computed field are well designed, SQL requests are well designed, ... is estimated to consume around 1Go of RAM
-* A lighter worker, in the same scenario, is estimated to consume around 150MB of RAM
+* 我们考虑 20% 的请求是重请求，而 80% 是较轻的请求
+* 当所有计算字段设计良好，SQL 请求设计良好时，重 worker 预计消耗约 1GB 内存
+* 在相同场景下，轻 worker 预计消耗约 150MB 内存
 
-Needed RAM = #worker * ( (light_worker_ratio * light_worker_ram_estimation) + (heavy_worker_ratio * heavy_worker_ram_estimation) )
+所需内存 = #worker * ( (light_worker_ratio * light_worker_ram_estimation) + (heavy_worker_ratio * heavy_worker_ram_estimation) )
 
-LiveChat
+实时聊天
 --------
 
-In multiprocessing, a dedicated LiveChat worker is automatically started and
-listening on :option:`the longpolling port <odoo-bin --longpolling-port>` but
-the client will not connect to it.
+在多进程中，将自动启动一个专用的实时聊天 worker，并监听 :option:`长轮询端口 <odoo-bin --longpolling-port>`，但客户端不会连接到它。
 
-Instead you must have a proxy redirecting requests whose URL starts with
-``/longpolling/`` to the longpolling port. Other request should be proxied to
-the :option:`normal HTTP port <odoo-bin --http-port>`
+相反，您必须有一个代理将 URL 以``/longpolling/``开头的请求重定向到长轮询端口。其他请求应代理到 :option:`正常的 HTTP 端口 <odoo-bin --http-port>`
 
-To achieve such a thing, you'll need to deploy a reverse proxy in front of Odoo,
-like nginx or apache. When doing so, you'll need to forward some more http Headers
-to Odoo, and activate the proxy_mode in Odoo configuration to have Odoo read those
-headers.
+要实现这一点，您需要在 Odoo 前部署一个反向代理，如 nginx 或 apache。这样做时，您需要将更多的 http 头转发给 Odoo，并在 Odoo 配置中启用代理模式，以便 Odoo 读取这些头。
 
-
-
-Configuration sample
+配置示例
 --------------------
 
-* Server with 4 CPU, 8 Thread
-* 60 concurrent users
+* 具有 4 个 CPU，8 个线程的服务器
+* 60 个并发用户
 
-* 60 users / 6 = 10 <- theorical number of worker needed
-* (4 * 2) + 1 = 9 <- theorical maximal number of worker
-* We'll use 8 workers + 1 for cron. We'll also use a monitoring system to measure cpu load, and check if it's between 7 and 7.5 .
-* RAM = 9 * ((0.8*150) + (0.2*1024)) ~= 3Go RAM for Odoo
+* 60 用户 / 6 = 10 <- 所需 worker 理论数量
+* (4 * 2) + 1 = 9 <- 最大 worker 理论数量
+* 我们将使用 8 个 worker + 1 个用于 cron。我们还将使用一个监控系统来测量 CPU 
 
-in ``/etc/odoo.conf``:
+负载，并检查是否在 7 和 7.5 之间。
+* 内存 = 9 * ((0.8*150) + (0.2*1024)) ~= 3GB 内存用于 Odoo
+
+在 ``/etc/odoo.conf`` 中：
 
 .. code-block:: ini
 
@@ -261,40 +196,34 @@ in ``/etc/odoo.conf``:
 HTTPS
 =====
 
-Whether it's accessed via website/web client or web service, Odoo transmits
-authentication information in cleartext. This means a secure deployment of
-Odoo must use HTTPS\ [#switching]_. SSL termination can be implemented via
-just about any SSL termination proxy, but requires the following setup:
+无论是通过网站/网络客户端还是 Web 服务访问，Odoo 都会以明文传输认证信息。这意味着 Odoo 的安全部署必须使用 HTTPS\ [#switching]_。SSL 终止可以通过几乎任何 SSL 终止代理实现，但需要以下设置：
 
-* Enable Odoo's :option:`proxy mode <odoo-bin --proxy-mode>`. This should only be enabled when Odoo is behind a reverse proxy
-* Set up the SSL termination proxy (`Nginx termination example`_)
-* Set up the proxying itself (`Nginx proxying example`_)
-* Your SSL termination proxy should also automatically redirect non-secure
-  connections to the secure port
+* 启用 Odoo 的 :option:`代理模式 <odoo-bin --proxy-mode>`。这应仅在 Odoo 位于反向代理之后时启用
+* 设置 SSL 终止代理 (`Nginx 终止示例`_)
+* 设置代理 (`Nginx 代理示例`_)
+* 您的 SSL 终止代理还应自动将非安全连接重定向到安全端口
 
 .. warning::
 
-  In case you are using the Point of Sale module in combination with a `POSBox`_,
-  you must disable the HTTPS configuration for the route ``/pos/web`` to avoid
-  mixed-content errors.
+  如果您将 POS 模块与 `POSBox`_ 一起使用，您必须禁用 HTTPS 配置以避免``/pos/web``路径上的混合内容错误。
 
-Configuration sample
+配置示例
 --------------------
 
-* Redirect http requests to https
-* Proxy requests to odoo
+* 将 http 请求重定向到 https
+* 代理请求到 odoo
 
-in ``/etc/odoo.conf`` set:
+在 ``/etc/odoo.conf`` 中设置：
 
 .. code-block:: ini
 
   proxy_mode = True
 
-in ``/etc/nginx/sites-enabled/odoo.conf`` set:
+在 ``/etc/nginx/sites-enabled/odoo.conf`` 中设置：
 
 .. code-block:: nginx
 
-  #odoo server
+  #odoo 服务器
   upstream odoo {
    server 127.0.0.1:8069;
   }
@@ -316,13 +245,13 @@ in ``/etc/nginx/sites-enabled/odoo.conf`` set:
    proxy_connect_timeout 720s;
    proxy_send_timeout 720s;
 
-   # Add Headers for odoo proxy mode
+   # 为 odoo 代理模式添加头
    proxy_set_header X-Forwarded-Host $host;
    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
    proxy_set_header X-Forwarded-Proto $scheme;
    proxy_set_header X-Real-IP $remote_addr;
 
-   # SSL parameters
+   # SSL 参数
    ssl on;
    ssl_certificate /etc/ssl/nginx/server.crt;
    ssl_certificate_key /etc/ssl/nginx/server.key;
@@ -331,311 +260,213 @@ in ``/etc/nginx/sites-enabled/odoo.conf`` set:
    ssl_ciphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA';
    ssl_prefer_server_ciphers on;
 
-   # log
+   # 日志
    access_log /var/log/nginx/odoo.access.log;
    error_log /var/log/nginx/odoo.error.log;
 
-   # Redirect longpoll requests to odoo longpolling port
+   # 将长轮询请求重定向到 odoo 长轮询端口
    location /longpolling {
    proxy_pass http://odoochat;
    }
 
-   # Redirect requests to odoo backend server
+   # 将请求重定向到 odoo 后端服务器
    location / {
      proxy_redirect off;
      proxy_pass http://odoo;
    }
 
-   # common gzip
+   # 通用 gzip
    gzip_types text/css text/scss text/plain text/xml application/xml application/json application/javascript;
    gzip on;
   }
 
-Odoo as a WSGI Application
-==========================
+Odoo 作为 WSGI 应用
+==================
 
-It is also possible to mount Odoo as a standard WSGI_ application. Odoo
-provides the base for a WSGI launcher script as ``odoo-wsgi.example.py``. That
-script should be customized (possibly after copying it from the setup directory) to correctly set the
-configuration directly in :mod:`odoo.tools.config` rather than through the
-command-line or a configuration file.
+Odoo 也可以作为标准 WSGI_ 应用挂载。Odoo 提供了一个名为``odoo-wsgi.example.py``的 WSGI 启动脚本的基础。该脚本应定制（可能在从设置目录复制后）以直接在 :mod:`odoo.tools.config` 中正确设置配置，而不是通过命令行或配置文件。
 
-However the WSGI server will only expose the main HTTP endpoint for the web
-client, website and webservice API. Because Odoo does not control the creation
-of workers anymore it can not setup cron or livechat workers
+然而，WSGI 服务器只会暴露用于 Web 客户端、网站和 Web 服务 API 的主要 HTTP 端点。因为 Odoo 不再控制 worker 的创建，所以不能设置 cron 或 livechat worker。
 
 Cron Workers
 ------------
 
-To run cron jobs for an Odoo deployment as a WSGI application requires
+要运行作为 WSGI 应用的 Odoo 部署的 cron 作业，需要
 
-* A classical Odoo (run via ``odoo-bin``)
-* Connected to the database in which cron jobs have to be run (via
-  :option:`odoo-bin -d`)
-* Which should not be exposed to the network. To ensure cron runners are not
-  network-accessible, it is possible to disable the built-in HTTP server
-  entirely with :option:`odoo-bin --no-http` or setting ``http_enable = False``
-  in the configuration file
+* 一个经典的 Odoo（通过``odoo-bin``运行）
+* 连接到必须运行 cron 作业的数据库（通过 :option:`odoo-bin -d`）
+* 不应暴露于网络。为了确保 cron 运行器不可网络访问，可以完全禁用内置的 HTTP 服务器，使用 :option:`odoo-bin --no-http` 或在配置文件中设置``http_enable = False``。
 
-LiveChat
+实时聊天
 --------
 
-The second problematic subsystem for WSGI deployments is the LiveChat: where
-most HTTP connections are relatively short and quickly free up their worker
-process for the next request, LiveChat require a long-lived connection for
-each client in order to implement near-real-time notifications.
+对于 WSGI 部署，第二个有问题的子系统是实时聊天：大多数 HTTP 连接相对较短，并且很快释放其 worker 进程以供下一个请求使用，而实时聊天需要每个客户端的长连接以实现近实时通知。
 
-This is in conflict with the process-based worker model, as it will tie
-up worker processes and prevent new users from accessing the system. However,
-those long-lived connections do very little and mostly stay parked waiting for
-notifications.
+这与基于进程的 worker 模型冲突，因为它将占用 worker 进程，并防止新用户访问系统。然而，这些长连接做的事情很少，主要是等待通知。
 
-The solutions to support livechat/motifications in a WSGI application are:
+支持 WSGI 应用中实时聊天/通知的解决方案是：
 
-* Deploy a threaded version of Odoo (instead of a process-based preforking
-  one) and redirect only requests to URLs starting with ``/longpolling/`` to
-  that Odoo, this is the simplest and the longpolling URL can double up as
-  the cron instance.
-* Deploy an evented Odoo via ``odoo-gevent`` and proxy requests starting
-  with ``/longpolling/`` to
-  :option:`the longpolling port <odoo-bin --longpolling-port>`.
+* 部署一个线程版的 Odoo（而不是基于进程的预分叉版），并将仅以``/longpolling/``开头的请求重定向到该 Odoo，这是最简单的方法，长轮询 URL 可以作为 cron 实例。
+* 通过``odoo-gevent``部署一个事件驱动的 Odoo，并将以``/longpolling/``开头的请求代理到 :option:`长轮询端口 <odoo-bin --longpolling-port>`。
 
-Serving Static Files
-====================
+服务静态文件
+============
 
-For development convenience, Odoo directly serves all static files in its
-modules. This may not be ideal when it comes to performances, and static
-files should generally be served by a static HTTP server.
+为了开发的便利性，Odoo 直接在其模块中服务所有静态文件。这在性能方面可能不是最理想的，静态文件通常应该由静态 HTTP 服务器服务。
 
-Odoo static files live in each module's ``static/`` folder, so static files
-can be served by intercepting all requests to :samp:`/{MODULE}/static/{FILE}`,
-and looking up the right module (and file) in the various addons paths.
+Odoo 静态文件位于每个模块的``static/``文件夹中，因此可以通过拦截所有请求 :samp:`/{MODULE}/static/{FILE}`，并在各个插件路径中查找正确的模块（和文件）来服务静态文件。
 
-.. todo:: test whether it would be interesting to serve filestored attachments
-          via this, and how (e.g. possibility of mapping ir.attachment id to
-          filestore hash in the database?)
+.. todo:: 测试是否有必要通过这种方式服务文件存储的附件，以及如何（例如是否可以将 ir.attachment id 映射到数据库中的文件存储哈希？）
 
 .. _security:
 
-Security
-========
+安全性
+======
 
-For starters, keep in mind that securing an information system is a continuous process,
-not a one-shot operation. At any moment, you will only be as secure as the weakest link
-in your environment.
+首先，请记住，保护信息系统是一个持续的过程，而不是一次性操作。在任何时候，您的安全性都只和环境中最薄弱的环节一样强。
 
-So please do not take this section as the ultimate list of measures that will prevent
-all security problems. It's only intended as a summary of the first important things
-you should be sure to include in your security action plan. The rest will come
-from best security practices for your operating system and distribution,
-best practices in terms of users, passwords, and access control management, etc.
+所以请不要将本节视为防止所有安全问题的最终措施清单。它仅旨在总结您应确保包含在安全行动计划中的一些重要事项。其余部分将来自您的操作系统和发行版的最佳安全实践、用户、密码和访问控制管理方面的最佳实践等。
 
-When deploying an internet-facing server, please be sure to consider the following
-security-related topics:
+在部署面向互联网的服务器时，请务必考虑以下与安全相关的主题：
 
-- Always set a strong super-admin admin password, and restrict access to the database
-  management pages as soon as the system is set up. See :ref:`db_manager_security`.
+- 始终设置一个强大的超级管理员密码，并在系统设置好后限制对数据库管理页面的访问。参见 :ref:`db_manager_security`。
 
-- Choose unique logins and strong passwords for all administrator accounts on all databases.
-  Do not use 'admin' as the login. Do not use those logins for day-to-day operations,
-  only for controlling/managing the installation.
-  *Never* use any default passwords like admin/admin, even for test/staging databases.
+- 为所有数据库上的所有管理员帐户选择唯一的登录名和强密码。不要使用“admin”作为登录名。不要将这些登录名用于日常操作，仅用于控制/管理安装。
+  *永远不要* 使用任何默认密码，如 admin/admin，即使是测试/开发数据库。
 
-- Do **not** install demo data on internet-facing servers. Databases with demo data contain
-  default logins and passwords that can be used to get into your systems and cause significant
-  trouble, even on staging/dev systems.
+- **不要** 在面向互联网的服务器上
 
-- Use appropriate database filters ( :option:`--db-filter <odoo-bin --db-filter>`)
-  to restrict the visibility of your databases according to the hostname.
-  See :ref:`db_filter`.
-  You may also use :option:`-d <odoo-bin -d>` to provide your own (comma-separated)
-  list of available databases to filter from, instead of letting the system fetch
-  them all from the database backend.
+安装演示数据。包含演示数据的数据库包含可用于进入您的系统并造成重大问题的默认登录名和密码，即使在测试/开发系统上也是如此。
 
-- Once your ``db_name`` and ``db_filter`` are configured and only match a single database
-  per hostname, you should set ``list_db`` configuration option to ``False``, to prevent
-  listing databases entirely, and to block access to the database management screens
-  (this is also exposed as the :option:`--no-database-list <odoo-bin --no-database-list>`
-  command-line option)
+- 使用适当的数据库过滤器（ :option:`--db-filter <odoo-bin --db-filter>`）根据主机名限制数据库的可见性。参见 :ref:`db_filter`。
+  您也可以使用 :option:`-d <odoo-bin -d>` 提供自己的（逗号分隔的）可用数据库列表，而不是让系统从数据库后端获取所有数据库。
 
-- Make sure the PostgreSQL user (:option:`--db_user <odoo-bin --db_user>`) is *not* a super-user,
-  and that your databases are owned by a different user. For example they could be owned by
-  the ``postgres`` super-user if you are using a dedicated non-privileged ``db_user``.
-  See also :ref:`setup/deploy/odoo`.
+- 一旦配置好``db_name``和``db_filter``并且每个主机名仅匹配一个数据库，您应该将``list_db``配置选项设置为``False``，以完全防止列出数据库，并阻止访问数据库管理屏幕（这也作为 :option:`--no-database-list <odoo-bin --no-database-list>` 命令行选项暴露）
 
-- Keep installations updated by regularly installing the latest builds,
-  either via GitHub or by downloading the latest version from
-  https://www.odoo.com/page/download or http://nightly.odoo.com
+- 确保 PostgreSQL 用户（:option:`--db_user <odoo-bin --db_user>`) *不是* 超级用户，并且您的数据库由不同的用户拥有。例如，如果您使用专用的非特权``db_user``，它们可以由``postgres``超级用户拥有。参见 :ref:`setup/deploy/odoo`。
 
-- Configure your server in multi-process mode with proper limits matching your typical
-  usage (memory/CPU/timeouts). See also :ref:`builtin_server`.
+- 通过定期安装最新版本来保持安装更新，可以通过 GitHub 或从 https://www.odoo.com/page/download 或 http://nightly.odoo.com 下载最新版本
 
-- Run Odoo behind a web server providing HTTPS termination with a valid SSL certificate,
-  in order to prevent eavesdropping on cleartext communications. SSL certificates are
-  cheap, and many free options exist.
-  Configure the web proxy to limit the size of requests, set appropriate timeouts,
-  and then enable the :option:`proxy mode <odoo-bin --proxy-mode>` option.
-  See also :ref:`https_proxy`.
+- 使用适当的限制将您的服务器配置为多进程模式，以匹配您的典型使用情况（内存/CPU/超时）。参见 :ref:`builtin_server`。
 
-- If you need to allow remote SSH access to your servers, make sure to set a strong password
-  for **all** accounts, not just `root`. It is strongly recommended to entirely disable
-  password-based authentication, and only allow public key authentication. Also consider
-  restricting access via a VPN, allowing only trusted IPs in the firewall, and/or
-  running a brute-force detection system such as `fail2ban` or equivalent.
+- 在提供有效 SSL 证书的 Web 服务器后面运行 Odoo，以防止窃听明文通信。SSL 证书很便宜，许多免费选项也存在。
+  配置 Web 代理以限制请求的大小，设置适当的超时，然后启用 :option:`代理模式 <odoo-bin --proxy-mode>` 选项。参见 :ref:`https_proxy`。
 
-- Consider installing appropriate rate-limiting on your proxy or firewall, to prevent
-  brute-force attacks and denial of service attacks. See also :ref:`login_brute_force`
-  for specific measures.
+- 如果您需要允许远程 SSH 访问服务器，请确保为**所有**帐户设置强密码，而不仅仅是 `root`。强烈建议完全禁用基于密码的身份验证，仅允许公钥身份验证。还可以考虑通过 VPN 限制访问，仅允许防火墙中的受信任 IP，并/或运行如 `fail2ban` 或等效的暴力破解检测系统。
 
-  Many network providers provide automatic mitigation for Distributed Denial of
-  Service attacks (DDOS), but this is often an optional service, so you should consult
-  with them.
+- 考虑在您的代理或防火墙上安装适当的速率限制，以防止暴力破解攻击和拒绝服务攻击。参见 :ref:`login_brute_force` 以获取具体措施。
 
-- Whenever possible, host your public-facing demo/test/staging instances on different
-  machines than the production ones. And apply the same security precautions as for
-  production.
+  许多网络提供商提供分布式拒绝服务攻击（DDOS）的自动缓解措施，但这通常是可选服务，因此您应该咨询他们。
 
-- If you are hosting multiple customers, isolate customer data and files from each other
-  using containers or appropriate "jail" techniques.
+- 只要可能，将面向公众的演示/测试/开发实例托管在与生产实例不同的机器上。并采取与生产相同的安全预防措施。
 
-- Setup daily backups of your databases and filestore data, and copy them to a remote
-  archiving server that is not accessible from the server itself.
+- 如果您托管多个客户，请使用容器或适当的“监狱”技术将客户数据和文件彼此隔离。
 
+- 设置数据库和文件存储数据的每日备份，并将其复制到无法从服务器本身访问的远程存档服务器。
 
 .. _login_brute_force:
 
-Blocking Brute Force Attacks
-----------------------------
-For internet-facing deployments, brute force attacks on user passwords are very common, and this
-threat should not be neglected for Odoo servers. Odoo emits a log entry whenever a login attempt
-is performed, and reports the result: success or failure, along with the target login and source IP.
+阻止暴力破解攻击
+-------------------
+对于面向互联网的部署，用户密码的暴力破解攻击非常常见，对于 Odoo 服务器，这种威胁不容忽视。Odoo 每次进行登录尝试时都会发出一个日志条目，并报告结果：成功或失败，以及目标登录名和来源 IP。
 
-The log entries will have the following form.
+日志条目将具有以下形式。
 
-Failed login::
+登录失败::
 
       2018-07-05 14:56:31,506 24849 INFO db_name odoo.addons.base.res.res_users: Login failed for db:db_name login:admin from 127.0.0.1
 
-Successful login::
+登录成功::
 
       2018-07-05 14:56:31,506 24849 INFO db_name odoo.addons.base.res.res_users: Login successful for db:db_name login:admin from 127.0.0.1
 
+这些日志可以很容易地被入侵防御系统如 `fail2ban` 分析。
 
-These logs can be easily analyzed by an intrusion prevention system such as `fail2ban`.
-
-For example, the following fail2ban filter definition should match a
-failed login::
+例如，以下 fail2ban 过滤器定义应该匹配一个
+登录失败::
 
     [Definition]
     failregex = ^ \d+ INFO \S+ \S+ Login failed for db:\S+ login:\S+ from <HOST>
     ignoreregex =
 
-This could be used with a jail definition to block the attacking IP on HTTP(S).
+这可以与监狱定义一起使用，以阻止 HTTP(S) 上的攻击 IP。
 
-Here is what it could look like for blocking the IP for 15 minutes when
-10 failed login attempts are detected from the same IP within 1 minute::
+以下是检测到同一 IP 在 1 分钟内有 10 次登录失败时阻止 IP 15 分钟的示例::
 
     [odoo-login]
     enabled = true
     port = http,https
-    bantime = 900  ; 15 min ban
-    maxretry = 10  ; if 10 attempts
-    findtime = 60  ; within 1 min  /!\ Should be adjusted with the TZ offset
-    logpath = /var/log/odoo.log  ;  set the actual odoo log path here
-
-
+    bantime = 900  ; 15 分钟禁令
+    maxretry = 10  ; 如果 10 次尝试
+    findtime = 60  ; 在 1 分钟内 /!\ 应该根据时区偏移进行调整
+    logpath = /var/log/odoo.log  ; 设置实际的 odoo 日志路径
 
 
 .. _db_manager_security:
 
-Database Manager Security
--------------------------
+数据库管理器安全性
+---------------------
 
-:ref:`setup/deploy/odoo` mentioned ``admin_passwd`` in passing.
+:ref:`setup/deploy/odoo` 提到了``admin_passwd``。
 
-This setting is used on all database management screens (to create, delete,
-dump or restore databases).
+此设置用于所有数据库管理屏幕（创建、删除、转储或还原数据库）。
 
-If the management screens must not be accessible at all, you should set ``list_db``
-configuration option to ``False``, to block access to all the database selection and
-management screens.
+如果管理屏幕根本不应该访问，您应该将``list_db``配置选项设置为``False``，以阻止所有数据库选择和管理屏幕的访问。
 
 .. warning::
 
-  It is strongly recommended to disable the Database Manager for any internet-facing
-  system! It is meant as a development/demo tool, to make it easy to quickly create
-  and manage databases. It is not designed for use in production, and may even expose
-  dangerous features to attackers. It is also not designed to handle large databases,
-  and may trigger memory limits.
+  强烈建议禁用任何面向互联网的系统的数据库管理器！它旨在作为一个开发/演示工具，以便快速轻松地创建和管理数据库。它不是为生产使用设计的，可能甚至向攻击者暴露危险功能。它也不是为处理大型数据库而设计的，可能会触发内存限制。
 
-  On production systems, database management operations should always be performed by
-  the system administrator, including provisioning of new databases and automated backups.
+  在生产系统中，数据库管理操作应始终由系统管理员执行，包括新数据库的配置和自动备份。
 
-Be sure to setup an appropriate ``db_name`` parameter
-(and optionally, ``db_filter`` too) so that the system can determine the target database
-for each request, otherwise users will be blocked as they won't be allowed to choose the
-database themselves.
+确保设置适当的``db_name``参数（和可选的``db_filter``）以便系统可以为每个请求确定目标数据库，否则用户将被阻止，因为他们将不被允许选择数据库。
 
-If the management screens must only be accessible from a selected set of machines,
-use the proxy server's features to block access to all routes starting with ``/web/database``
-except (maybe) ``/web/database/selector`` which displays the database-selection screen.
+如果管理屏幕只能从选定的一组机器访问，请使用代理服务器的功能阻止对所有以``/web/database``开头的路由的访问，除了（也许）``/web/database/selector``显示数据库选择屏幕。
 
-If the database-management screen should be left accessible, the
-``admin_passwd`` setting must be changed from its ``admin`` default: this
-password is checked before allowing database-alteration operations.
+如果数据库管理屏幕应保持可访问状态，则
+``admin_passwd``设置必须从其``admin``默认值更改：在允许数据库更改操作之前会检查此密码。
 
-It should be stored securely, and should be generated randomly e.g.
+它应该被安全存储，并且应该随机生成，例如。
 
 .. code-block:: console
 
     $ python3 -c 'import base64, os; print(base64.b64encode(os.urandom(24)))'
 
-which will generate a 32 characters pseudorandom printable string.
+这将生成一个 32 个字符的伪随机可打印字符串。
 
-Supported Browsers
-==================
+支持的浏览器
+==============
 
-Odoo supports all the major desktop and mobile browsers available on the market,
-as long as they are supported by their publishers.
+Odoo 支持市场上所有主要的桌面和移动浏览器，只要它们受到其发布者的支持。
 
-Here are the supported browsers:
+支持的浏览器有：
 
 - Google Chrome
 - Mozilla Firefox
 - Microsoft Edge
 - Apple Safari
 
-.. warning:: Please make sure your browser is up-to-date and still supported by
-    its publisher before filing a bug report.
+.. warning:: 在提交错误报告之前，请确保您的浏览器是最新的，并且仍然受到其发布者的支持。
 
 
 
 .. [#different-machines]
-    to have multiple Odoo installations use the same PostgreSQL database,
-    or to provide more computing resources to both software.
+    让多个 Odoo 安装使用同一个 PostgreSQL 数据库，或者为两种软件提供更多计算资源。
 .. [#remote-socket]
-    technically a tool like socat_ can be used to proxy UNIX sockets across
-    networks, but that is mostly for software which can only be used over
-    UNIX sockets
+    从技术上讲，像 socat_ 这样的工具可以用来代理 UNIX 套接字跨网络，但这主要是针对只能通过 UNIX 套接字使用的软件。
 .. [#switching]
-    or be accessible only over an internal packet-switched network, but that
-    requires secured switches, protections against `ARP spoofing`_ and
-    precludes usage of WiFi. Even over secure packet-switched networks,
-    deployment over HTTPS is recommended, and possible costs are lowered as
-    "self-signed" certificates are easier to deploy on a controlled
-    environment than over the internet.
+    或者仅通过内部分组交换网络访问，但这需要安全的交换机，防止 `ARP 欺骗`_，并且排除使用 WiFi。即使在安全的分组交换网络上，也推荐通过 HTTPS 部署，并且由于“自签名”证书在受控环境中比在互联网上更容易部署，因此可能会降低成本。
 
 .. _regular expression: https://docs.python.org/3/library/re.html
-.. _ARP spoofing: https://en.wikipedia.org/wiki/ARP_spoofing
-.. _Nginx termination example:
+.. _ARP 欺骗: https://en.wikipedia.org/wiki/ARP_spoofing
+.. _Nginx 终止示例:
     https://nginx.com/resources/admin-guide/nginx-ssl-termination/
-.. _Nginx proxying example:
+.. _Nginx 代理示例:
     https://nginx.com/resources/admin-guide/reverse-proxy/
 .. _socat: http://www.dest-unreach.org/socat/
-.. _PostgreSQL connection settings:
-.. _listen to network interfaces:
+.. _PostgreSQL 连接设置:
+.. _监听网络接口:
     https://www.postgresql.org/docs/9.6/static/runtime-config-connection.html
-.. _use an SSH tunnel:
+.. _使用 SSH 隧道:
     https://www.postgresql.org/docs/9.6/static/ssh-tunnels.html
 .. _WSGI: https://wsgi.readthedocs.org/
 .. _POSBox: https://www.odoo.com/page/point-of-sale-hardware#part_2
