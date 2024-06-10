@@ -1,34 +1,29 @@
 =======
-Germany
+德国
 =======
 
-German Chart of Accounts
+德国会计科目表
 ========================
 
-The chart of accounts SKR03 and SKR04 are both supported in Odoo. You can choose the
-one you want by going in :menuselection:`Accounting --> Configuration` then choose the
-package you want in the Fiscal Localization section.
+Odoo 支持 SKR03 和 SKR04 两种会计科目表。你可以在 :menuselection:`会计 --> 配置` 中选择你想要的会计科目表包，然后在财政本地化部分选择相应的包。
 
-Be careful, you can only change the accounting package as long as you have not created any accounting entry. 
+请注意，只要你还没有创建任何会计分录，你就可以更改会计科目包。
 
 .. tip::
 
-    When you create a new SaaS database, the SKR03 is installed by default. 
+    当你创建一个新的 SaaS 数据库时，默认安装的是 SKR03。
 
-German Accounting Reports
+德国会计报告
 =========================
 
-Here is the list of German-specific reports available on Odoo Enterprise:
+以下是 Odoo Enterprise 提供的德国特定报告列表：
 
-- Balance Sheet 
-- Profit & Loss
-- Tax Report (Umsatzsteuervoranmeldung)
-- Partner VAT Intra
+- 资产负债表
+- 损益表
+- 税务报告（ Umsatzsteuervoranmeldung）
+- 合作伙伴增值税内部报告
 
-Export from Odoo to Datev
+从 Odoo 导出到 Datev
 =========================
 
-It is possible to export your accounting entries from Odoo to Datev. To be able to use this
-feature, the german accounting localization needs to be installed on your Odoo Enterprise database.
-Then you can go in :menuselection:`Accounting --> Reporting --> General Ledger` then click on the
-**Export Datev (csv)** button. 
+你可以将 Odoo 中的会计分录导出到 Datev。要使用此功能，必须在你的 Odoo Enterprise 数据库中安装德国会计本地化。然后你可以进入 :menuselection:`会计 --> 报告 --> 总分类帐`，然后点击 **导出 Datev（csv）** 按钮。
