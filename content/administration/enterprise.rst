@@ -1,106 +1,95 @@
-
 .. _setup/enterprise:
 
 ============================
-From Community to Enterprise
+从社区版到企业版
 ============================
 
-Depending on your current installation, there are multiple ways to upgrade
-your community version.
-In any case the basic guidelines are:
+根据您当前的安装情况，有多种方法可以升级您的社区版。
+无论哪种情况，基本指南如下：
 
-* Backup your community database
+* 备份您的社区数据库
 
   .. image:: enterprise/db_manager.png
     :class: img-fluid
 
-* Shutdown your server
+* 关闭您的服务器
 
-* Install the web_enterprise module
+* 安装 web_enterprise 模块
 
-* Restart your server
+* 重启服务器
 
-* Enter your Odoo Enterprise Subscription code
+* 输入您的 Odoo Enterprise 订阅代码
 
 .. image:: enterprise/enterprise_code.png
   :class: img-fluid
 
-On Linux, using an installer
+在 Linux 上使用安装程序
 ============================
 
-* Backup your community database
+* 备份您的社区数据库
 
-* Stop the odoo service
+* 停止 odoo 服务
 
   .. code-block:: console
 
     $ sudo service odoo stop
 
-* Install the enterprise .deb (it should install over the community package)
+* 安装企业版 .deb（它应该覆盖社区版包）
 
   .. code-block:: console
 
     $ sudo dpkg -i <path_to_enterprise_deb>
   
-* Update your database to the enterprise packages using
+* 使用以下命令更新您的数据库到企业版包
 
   .. code-block:: console
 
     $ python3 /usr/bin/odoo-bin -d <database_name> -i web_enterprise --stop-after-init
 
-* You should be able to connect to your Odoo Enterprise instance using your usual mean of identification.
-  You can then link your database with your Odoo Enterprise Subscription by entering the code you received
-  by e-mail in the form input
+* 您应该能够使用您常用的身份验证方式连接到您的 Odoo 企业版实例。
+  然后，您可以通过在表单输入中输入通过电子邮件收到的代码，将数据库与您的 Odoo Enterprise 订阅链接。
 
-
-On Linux, using the source code
+在 Linux 上使用源代码
 ===============================
 
-There are many ways to launch your server when using sources, and you probably
-have your own favourite. You may need to adapt sections to your usual workflow.
+使用源代码启动服务器的方法有很多，您可能有自己的偏好。您可能需要根据自己的工作流程适当调整部分内容。
 
-* Shutdown your server
-* Backup your community database
-* Update the ``--addons-path`` parameter of your launch command (see :ref:`setup/install/source`)
-* Install the web_enterprise module by using
+* 关闭服务器
+* 备份您的社区数据库
+* 更新启动命令的 ``--addons-path`` 参数（参见 :ref:`setup/install/source`）
+* 使用以下命令安装 web_enterprise 模块
 
   .. code-block:: console
 
     $ -d <database_name> -i web_enterprise --stop-after-init
 
-  Depending on the size of your database, this may take some time.
+  根据数据库的大小，这可能需要一些时间。
 
-* Restart your server with the updated addons path of point 3.
-  You should be able to connect to your instance. You can then link your database with your
-  Odoo Enterprise Subscription by entering the code you received by e-mail in the form input
+* 使用第 3 步更新的 addons 路径重启服务器。
+  您应该能够连接到您的实例。然后，您可以通过在表单输入中输入通过电子邮件收到的代码，将数据库与您的 Odoo Enterprise 订阅链接。
 
-On Windows
+在 Windows 上
 ==========
 
-* Backup your community database
+* 备份您的社区数据库
 
-* Uninstall Odoo Community (using the Uninstall executable in the installation folder) -
-  PostgreSQL will remain installed
+* 卸载 Odoo Community（使用安装文件夹中的卸载可执行文件）- PostgreSQL 将保持安装状态
 
   .. image:: enterprise/windows_uninstall.png
     :class: img-fluid
 
-* Launch the Odoo Enterprise Installer and follow the steps normally. When choosing
-  the installation path, you can set the folder of the Community installation
-  (this folder still contains the PostgreSQL installation).
-  Uncheck ``Start Odoo`` at the end of the installation
+* 启动 Odoo Enterprise 安装程序并按正常步骤操作。选择安装路径时，您可以设置社区版安装的文件夹
+  （此文件夹仍包含 PostgreSQL 安装）。
+  在安装结束时取消选中 ``Start Odoo``
 
   .. image:: enterprise/windows_setup.png
-   :class: img-fluid
+    :class: img-fluid
 
-* Using a command window, update your Odoo Database using this command (from the Odoo
-  installation path, in the server subfolder)
+* 使用命令窗口，使用以下命令更新您的 Odoo 数据库（从 Odoo 安装路径的 server 子文件夹）
 
   .. code-block:: console
 
     $ odoo.exe -d <database_name> -i web_enterprise --stop-after-init
 
-* No need to manually launch the server, the service is running.
-  You should be able to connect to your Odoo Enterprise instance using your usual
-  mean of identification. You can then link your database with your Odoo Enterprise
-  Subscription by entering the code you received by e-mail in the form input
+* 无需手动启动服务器，服务正在运行。
+  您应该能够使用您常用的身份验证方式连接到您的 Odoo 企业版实例。然后，您可以通过在表单输入中输入通过电子邮件收到的代码，将数据库与您的 Odoo Enterprise 订阅链接。
