@@ -1,217 +1,161 @@
 ========
-Colombia
+哥伦比亚
 ========
 
-Introduction
-~~~~~~~~~~~~
+简介
+~~~~
 
-Electronic invoicing for Colombia is available from Odoo 12 and
-requires the next modules:
+从 Odoo 12 开始，哥伦比亚的电子发票可用，需要以下模块：
 
-#. **l11n_co**: All the basic data to manage the accounting module,
-   contains the default setup for: chart of accounts, taxes,
-   retentions, identification document types
-#. **l10n_co_edi**: This module includes all the extra fields that are
-   required for the Integration with Carvajal T&S and generate the
-   electronic invoice, based on the DIAN legal requirements.
+#. **l11n_co**：管理会计模块的所有基本数据，包含以下默认设置：会计科目表、税种、扣缴税种、身份证件类型。
+#. **l10n_co_edi**：该模块包括与 Carvajal T&S 集成所需的所有额外字段，并根据 DIAN 的法律要求生成电子发票。
 
-Workflow
+工作流程
 ~~~~~~~~
 
 .. image:: media/colombia01.png
    :align: center
 
-Configuration
-~~~~~~~~~~~~~
+配置
+~~~~
 
-1. Install the Colombian localization modules
----------------------------------------------
+1. 安装哥伦比亚本地化模块
+--------------------------
 
-For this, go in Apps and search for Colombia. Then click Install for
-the first two modules.
+在应用程序中搜索哥伦比亚，然后点击安装前两个模块。
 
 .. image:: media/colombia02.png
    :align: center
 
-2. Configure credentials for Carvajal T&S web service
------------------------------------------------------
+2. 配置 Carvajal T&S 网络服务的凭证
+------------------------------------
 
-Once that the modules are installed, in order to be able to connect
-with Carvajal T&S Web Service, it's necessary to configure the user
-and credentials, this information will be provided by Carvajal T&S.
+模块安装完成后，需要配置用户和凭证信息才能连接到 Carvajal T&S 网络服务，这些信息由 Carvajal T&S 提供。
 
-Go to :menuselection:`Accounting --> Configuration --> Settings` and
-look for the *Colombian Electronic Invoice* section.
+前往 :menuselection:`会计 --> 配置 --> 设置`，寻找 *哥伦比亚电子发票* 部分。
 
 .. image:: media/colombia03.png
    :align: center
 
-Using the Testing mode it is possible to connect with a Carvajal T&S
-testing environment. This allows users to test the complete workflow
-and integration with the CEN Financiero portal, which is accessible
-here: https://cenflab.cen.biz/site/
+使用测试模式可以连接到 Carvajal T&S 测试环境。这样用户可以测试整个工作流程和与 CEN Financiero 门户的集成，该门户可在此处访问：https://cenflab.cen.biz/site/
 
-Once that Odoo and Carvajal T&S is fully configured and ready for
-production the testing environment can be disabled.
+当 Odoo 和 Carvajal T&S 完全配置并准备好投产时，可以禁用测试环境。
 
-3. Configure your report data
------------------------------
+3. 配置报告数据
+----------------
 
-As part of the configurable information that is sent in the XML, you
-can define the data for the fiscal section and the bank information in
-the PDF.
+作为 XML 中发送的可配置信息的一部分，您可以在 PDF 中定义财务部分和银行信息的数据。
 
-Go to :menuselection:`Accounting --> Configuration --> Settings` and
-look for the *Colombian Electronic Invoice* section.
+前往 :menuselection:`会计 --> 配置 --> 设置`，寻找 *哥伦比亚电子发票* 部分。
 
 .. image:: media/colombia04.png
    :align: center
 
-4. Configure data required in the XML
--------------------------------------
+4. 配置 XML 中所需的数据
+-----------------------
 
-4.1 Partner
+4.1 合作伙伴
 +++++++++++
 
-4.1.1 Identification
-^^^^^^^^^^^^^^^^^^^^
+4.1.1 身份识别
+^^^^^^^^^^^^^^
 
-As part of the Colombian Localization, the document types defined by
-the DIAN are now available on the Partner form. Colombian partners
-have to have their identification number and document type set:
+作为哥伦比亚本地化的一部分，DIAN 定义的文件类型现已在合作伙伴表单中可用。哥伦比亚合作伙伴必须设置其身份证号码和文件类型：
 
 .. image:: media/colombia05.png
    :align: center
 
-.. tip:: When the document type is RUT the identification number needs
-   to be configured in Odoo including the verification digit, Odoo
-   will split this number when the data to the third party vendor is
-   sent.
+.. tip:: 当文件类型为 RUT 时，身份证号码需要在 Odoo 中配置，包括校验位，Odoo 会在将数据发送给第三方供应商时分割该号码。
 
-4.1.2 Fiscal structure (RUT)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+4.1.2 财务结构（RUT）
+^^^^^^^^^^^^^^^^^^^^^^
 
-The partner's responsibility codes (section 53 in the RUT document)
-are included as part of the electronic invoice module given that is
-part of the information required by the DIAN .
+合作伙伴的责任代码（RUT 文件中的第 53 节）包含在电子发票模块中，因为这是 DIAN 要求的信息的一部分。
 
-These fields can be found in :menuselection:`Partner --> Sales &
-Purchase Tab --> Fiscal Information`
+这些字段可以在 :menuselection:`合作伙伴 --> 销售与采购标签 --> 财务信息` 中找到。
 
 .. image:: media/colombia06.png
    :align: center
 
-Additionally two booleans fields were added in order to specify the
-fiscal regimen of the partner.
+此外，还增加了两个布尔字段，以指定合作伙伴的财务制度。
 
-4.2 Taxes
-+++++++++
+4.2 税
++++++
 
-If your sales transactions include products with taxes, it's important
-to consider that an extra field *Value Type* needs to be configured
-per tax. This option is located in the Advanced Options tab.
+如果您的销售交易包含税收产品，需要考虑额外字段 *值类型* 需要为每个税种配置。此选项位于高级选项标签中。
 
 .. image:: media/colombia07.png
    :align: center
 
-Retention tax types (ICA, IVA, Fuente) are also included in the
-options to configure your taxes. This configuration is used in order
-to correctly display taxes in the invoice PDF.
+保留税种（ICA、IVA、Fuente）也包含在配置税收的选项中。此配置用于在发票 PDF 中正确显示税种。
 
 .. image:: media/colombia08.png
    :align: center
 
-4.3 Journals
-++++++++++++
+4.3 日志
+++++++++
 
-Once the DIAN has assigned the official sequence and prefix for the
-electronic invoice resolution, the Sales journals related to your
-invoice documents need to be updated in Odoo.  The sequence can be
-accessed using developer mode: :menuselection:`Accounting --> Settings
---> Configuration Setting --> Journals`.
+DIAN 分配电子发票决议的官方序列和前缀后，需要在 Odoo 中更新与发票文档相关的销售日志。可以使用开发者模式访问该序列： :menuselection:`会计 --> 设置 --> 配置设置 --> 日志`。
 
 .. image:: media/colombia09.png
    :align: center
 
-Once that the sequence is opened, the Prefix and Next Number fields
-should be configured and synchronized with the CEN Financiero.
+打开序列后，应配置和同步前缀和下一个编号字段与 CEN Financiero。
 
 .. image:: media/colombia10.png
    :align: center
 
-4.4 Users
-+++++++++
+4.4 用户
+++++++++
 
-The default template that is used by Odoo on the invoice PDF includes
-the job position of the salesperson, so these fields should be
-configured:
+Odoo 在发票 PDF 中使用的默认模板包括销售人员的职位，因此应配置这些字段：
 
 .. image:: media/colombia11.png
    :align: center
 
-Usage and testing
-~~~~~~~~~~~~~~~~~
+使用与测试
+~~~~~~~~~~~
 
-1. Invoice
-----------
+1. 发票
+-------
 
-When all your master data and credentials has been configured, it's
-possible to start testing the electronic invoice workflow.
+当所有主数据和凭证配置完成后，可以开始测试电子发票工作流程。
 
-1.1 Invoice creation
-++++++++++++++++++++
+1.1 发票创建
++++++++++++++
 
-The functional workflow that takes place before an invoice validation
-doesn't change. The main changes that are introduced with the
-electronic invoice are the next fields:
+在发票验证之前进行的功能工作流程不会改变。电子发票引入的主要变化如下字段：
 
 .. image:: media/colombia12.png
    :align: center
 
-There are three types of documents:
+有三种类型的文件：
 
-- **Factura Electronica**: This is the regular type of document and
-  its applicable for Invoices, Credit Notes and Debit Notes.
-- **Factura de Importación**: This should be selected for importation
-  transactions.
-- **Factura de contingencia**: This is an exceptional type that is
-  used as a manual backup in case that the company is not able to use
-  the ERP and it's necessary to generate the invoice manually, when
-  this invoice is added to the ERP, this invoice type should be
-  selected.
+- **Factura Electronica**：这是常规类型的文件，适用于发票、贷记单和借记单。
+- **Factura de Importación**：应选择此选项用于进口交易。
+- **Factura de contingencia**：这是一个例外类型，用作手动备份，以防公司无法使用 ERP 且需要手动生成发票，当该发票添加到 ERP 时，应选择此发票类型。
 
-1.2 Invoice validation
-++++++++++++++++++++++
+1.2 发票验证
++++++++++++++
 
-After the invoice is validated an XML file is created and sent
-automatically to Carvajal, this file is displayed in the chatter.
+发票验证后，自动创建并发送 XML 文件到 Carvajal，该文件显示在聊天中。
 
 .. image:: media/colombia13.png
    :align: center
 
-An extra field is now displayed in "Other Info" tab with the name of
-the XML file. Additionally there is a second extra field that is
-displayed with the Electronic Invoice status, with the initial value
-"In progress":
+"其他信息" 标签中现在显示一个额外字段，显示 XML 文件的名称。此外，还显示了一个电子发票状态的第二个额外字段，初始值为 "进行中"：
 
 .. image:: media/colombia14.png
    :align: center
 
-1.3 Reception of legal XML and PDF
-++++++++++++++++++++++++++++++++++
+1.3 接收法律 XML 和 PDF
+++++++++++++++++++++++
 
-The electronic invoice vendor receives the XML file and proceeds to
-validate the structure and the information in it, if everything is
-correct the invoice status changes to "Validated" after using the
-"Check Carvajal Status" button in the Action dropdown. They then
-proceed to generate a Legal XML which includes a digital signature and
-a unique code (CUFE), a PDF invoice that includes a QR code and the
-CUFE is also generated.
+电子发票供应商收到 XML 文件后会进行结构和信息的验证，如果一切正确，发票状态会在使用 "检查 Carvajal 状态" 按钮后更改为 "验证"。然后他们会生成包含数字签名和唯一代码 (CUFE) 的法律 XML 文件，还会生成包含 QR 码和 CUFE 的 PDF 发票。
 
-After this:
+之后：
 
-- A ZIP containing the legal XML and the PDF is downloaded and
-  displayed in the invoice chatter:
+- 包含法律 XML 和 PDF 的 ZIP 文件会被下载并显示在发票聊天中：
 
 .. image:: media/colombia15.png
    :align: center
@@ -219,21 +163,17 @@ After this:
 .. image:: media/colombia16.png
    :align: center
 
-- The Electronic Invoice status changes to "Accepted"
+- 电子发票状态变为 "已接受"。
 
-1.4 Common errors
-+++++++++++++++++
+1.4 常见错误
++++++++++++++
 
-During the XML validation the most common errors are usually related
-to missing master data. In such cases, error messages are shown in the
-chatter after updating the electronic invoice status.
+在 XML 验证期间，最常见的错误通常与缺少主数据有关。在这种情况下，错误信息会在更新电子发票状态后显示在聊天中。
 
 .. image:: media/colombia17.png
    :align: center
 
-After the master data is corrected, it's possible to reprocess the XML
-with the new data and send the updated version, using the following
-button:
+在更正主数据后，可以使用以下按钮重新处理 XML 并发送更新版本：
 
 .. image:: media/colombia18.png
    :align: center
@@ -241,8 +181,7 @@ button:
 .. image:: media/colombia19.png
    :align: center
 
-2. Additional use cases
------------------------
+2. 其他使用案例
+-----------------
 
-The process for credit and debit notes is exactly the same as the
-invoice, the functional workflow remains the same as well.
+贷记单和借记单的流程与发票完全相同，功能工作流程也保持不变。
