@@ -1,67 +1,48 @@
 ==========================
-Import OFX statement files
+导入 OFX 对账单文件
 ==========================
 
-Open Financial Exchange (OFX) is a unified specification for the
-electronic exchange of financial data between financial institutions,
-businesses and consumers via the Internet.
+开放财务交换（OFX）是一种统一规范，用于在金融机构、企业和消费者之间通过互联网电子交换财务数据。
 
-With Odoo, you can download an OFX file from your bank or accounting
-software and import it directly in your Odoo instance. This will create
-all bank statements.
+通过 Odoo，您可以从银行或会计软件中下载 OFX 文件，并直接导入您的 Odoo 实例。这将创建所有的银行对账单。
 
 .. tip::
 
-	Test now the feature `with this sample OFX file <https://drive.google.com/file/d/0B5BDHVRYo-q5Mmg4T3oxTWszeEk/view>`__
+    现在就用 `这个示例 OFX 文件 <https://drive.google.com/file/d/0B5BDHVRYo-q5Mmg4T3oxTWszeEk/view>`__ 来测试该功能。
 
-Configuration
+配置
 =============
 
-In order to import OFX statements, you need to activate the feature in
-Odoo. In the Accounting application, go to the menu :menuselection:`Configuration -->
-Settings`. From the accounting settings, check the bank statements option
-**Import in .OFX Format** and apply.
+为了导入 OFX 对账单，您需要在 Odoo 中激活此功能。在会计应用中，进入菜单 :menuselection:`Configuration --> Settings`。在会计设置中，勾选 **Import in .OFX Format** 银行对账单选项并应用。
 
 .. image:: media/ofx01.png
    :align: center
 
-Once you have installed this feature, you can setup your bank account to
-allow importing bank statement files. To do this, go to the accounting
-Dashboard, and click on the **More** button of the bank account.
-Then, click on **Import Statement** to load your first OFX file.
+安装此功能后，您可以设置您的银行账户以允许导入银行对账单文件。为此，请转到会计仪表板，点击银行账户的 **More** 按钮。然后，点击 **Import Statement** 以加载您的第一个 OFX 文件。
 
 .. image:: media/ofx02.png
    :align: center
 
-Load your OFX file in the following screen and click **Import** to
-create all your bank statements.
+在以下屏幕中加载您的 OFX 文件并点击 **Import** 以创建所有的银行对账单。
 
 .. image:: media/ofx03.png
    :align: center
 
-If the file is successfully loaded, you will get redirected to the bank
-reconciliation screen with all the transactions to reconcile.
+如果文件成功加载，您将被重定向到银行对账屏幕，所有需要对账的交易都会显示在此。
 
-Importing OFX files
+导入 OFX 文件
 ===================
 
-After having imported your first file, the Odoo accounting dashboard
-will automatically propose you to import more files for your bank. For
-the next import, you don't need to go to the **More** menu anymore,
-you can directly click on the link **Import Statement**.
+在导入第一个文件后，Odoo 会计仪表板会自动建议您为银行导入更多文件。对于下次导入，您不再需要进入 **More** 菜单，可以直接点击 **Import Statement** 链接。
 
 .. image:: media/ofx04.png
    :align: center
 
-Every time you get a statement related to a new customer / supplier,
-Odoo will ask you to select the right contact to reconcile the
-transaction. Odoo learns from that operation and will automatically
-complete the next payments you get or do to these contacts. This will
-speed up a lot the reconciliation process.
+每次您获得与新客户或供应商相关的对账单时，Odoo 会要求您选择正确的联系人以对账该交易。Odoo 会从这个操作中学习，并在您下次收到或进行这些联系人的付款时自动完成。这将大大加快对账过程。
 
 .. seealso::
 
-	* :doc:`qif`
-	* :doc:`coda`
-	* :doc:`synchronize`
-	* :doc:`manual`
+    * :doc:`qif`
+    * :doc:`coda`
+    * :doc:`synchronize`
+    * :doc:`manual`
