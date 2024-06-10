@@ -1,30 +1,28 @@
-
 .. _odoosh-gettingstarted-online-editor:
 
 ==================================
-Online Editor
+在线编辑器
 ==================================
 
-Overview
+概述
 ========
 
-The online editor allows you to edit the source code of your builds from a web browser.
-It also gives you the possibility to open terminals, Python consoles, Odoo Shell consoles and
-`Notebooks <https://jupyterlab.readthedocs.io/en/stable/user/notebook.html>`_.
+在线编辑器允许你通过网页浏览器编辑构建的源代码。它还提供了打开终端、Python 控制台、Odoo Shell 控制台和
+`Notebooks <https://jupyterlab.readthedocs.io/en/stable/user/notebook.html>`_ 的功能。
 
 .. image:: ./media/interface-editor.png
    :align: center
 
-You can access the editor of a build through
-:ref:`the branches tabs <odoosh-gettingstarted-branches-tabs>`,
-:ref:`the builds dropdown menu <odoosh-gettingstarted-builds-dropdown-menu>`
-or by adding */odoo-sh/editor* to your build domain name
-(e.g. *https://odoo-addons-master-1.dev.odoo.com/odoo-sh/editor*).
+你可以通过以下方式访问构建的编辑器：
+:ref:`分支选项卡 <odoosh-gettingstarted-branches-tabs>`,
+:ref:`构建下拉菜单 <odoosh-gettingstarted-builds-dropdown-menu>`
+或在构建域名后添加 */odoo-sh/editor*
+（例如 *https://odoo-addons-master-1.dev.odoo.com/odoo-sh/editor*）。
 
-Edit the source code
+编辑源代码
 ====================
 
-The working directory is composed of the following folders:
+工作目录包含以下文件夹：
 
 ::
 
@@ -32,149 +30,135 @@ The working directory is composed of the following folders:
   ├── home
   │    └── odoo
   │         ├── src
-  │         │    ├── odoo                Odoo Community source code
-  │         │    │    └── odoo-bin       Odoo server executable
-  │         │    ├── enterprise          Odoo Enterprise source code
-  │         │    ├── themes              Odoo Themes source code
-  │         │    └── user                Your repository branch source code
-  │         ├── repositories             The Git repositories used by your project
+  │         │    ├── odoo                Odoo 社区版源代码
+  │         │    │    └── odoo-bin       Odoo 服务器可执行文件
+  │         │    ├── enterprise          Odoo 企业版源代码
+  │         │    ├── themes              Odoo 主题源代码
+  │         │    └── user                你的仓库分支源代码
+  │         ├── repositories             项目使用的 Git 仓库
   │         ├── data
-  │         │    ├── filestore           database attachments, as well as the files of binary fields
-  │         │    └── sessions            visitors and users sessions
+  │         │    ├── filestore           数据库附件及二进制字段文件
+  │         │    └── sessions            访客和用户会话
   │         └── logs
-  │              ├── install.log         Database installation logs
-  │              ├── odoo.log            Running server logs
-  │              ├── update.log          Database updates logs
-  │              └── pip.log             Python packages installation logs
+  │              ├── install.log         数据库安装日志
+  │              ├── odoo.log            运行服务器日志
+  │              ├── update.log          数据库更新日志
+  │              └── pip.log             Python 包安装日志
 
-You can edit the source code (files under */src*) in development and staging builds.
+你可以在开发和预发布构建中编辑源代码（位于 */src* 下的文件）。
 
 .. note::
-  Your changes won't be propagated to a new build, you must commit them in your
-  source code if you want to make them persist.
+  你的更改不会传播到新的构建中，如果你想使更改持久化，必须将其提交到源代码中。
 
+对于生产构建，源代码是只读的，因为在生产服务器上应用本地更改不是一个好做法。
 
-For production builds, the source code is read-only, because applying local changes on a production
-server is not a good practice.
-
-* The source code of your Github repository is located under */src/user*,
-* The source code of Odoo is located under
+* 你的 Github 仓库的源代码位于 */src/user* 下，
+* Odoo 的源代码位于
 
   * */src/odoo* (`odoo/odoo <https://github.com/odoo/odoo>`_),
   * */src/enterprise* (`odoo/enterprise <https://github.com/odoo/enterprise>`_),
-  * */src/themes* (`odoo/design-themes <https://github.com/odoo/design-themes>`_).
+  * */src/themes* (`odoo/design-themes <https://github.com/odoo/design-themes>`_)。
 
-To open a file in the editor, just double-click on it in the file browser panel on the left.
+要在编辑器中打开文件，只需在左侧文件浏览器面板中双击它。
 
 .. image:: ./media/interface-editor-open-file.png
    :align: center
 
-You can then begin to make your changes. You can save your changes with the menu
-:menuselection:`File --> Save .. File` or by hitting the :kbd:`Ctrl+S` shortcut.
+然后你可以开始进行更改。你可以通过菜单 :menuselection:`File --> Save .. File` 保存更改，或使用 :kbd:`Ctrl+S` 快捷键。
 
 .. image:: ./media/interface-editor-save-file.png
    :align: center
 
-If you save a Python file which is under your Odoo server addons path,
-Odoo will detect it and reload automatically so your changes are reflected immediately,
-without having to restart the server manually.
+如果你保存的 Python 文件位于 Odoo 服务器插件路径下，
+Odoo 会检测到它并自动重新加载，使更改立即生效，而无需手动重启服务器。
 
 .. image:: ./media/interface-editor-automaticreload.gif
    :align: center
 
-However, if the change is a data stored in database, such as the label of a field, or a view,
-you have to update the according module to apply the change.
-You can update the module of the currently opened file by using the menu
-:menuselection:`Odoo --> Update current module`. Note that the file considered as currently opened
-is the file focused in the text editor, not the file highlighted in the file browser.
+但是，如果更改的是存储在数据库中的数据（例如字段标签或视图），你必须更新相应的模块以应用更改。
+你可以使用菜单 :menuselection:`Odoo --> Update current module` 更新当前打开的文件模块。请注意，当前打开的文件是文本编辑器中聚焦的文件，而不是文件浏览器中突出显示的文件。
 
 .. image:: ./media/interface-editor-update-current-module.png
    :align: center
 
-You can also open a terminal and execute the command:
+你也可以打开终端并执行以下命令：
 
 .. code-block:: bash
 
-  $ odoo-bin -u <comma-separated module names> --stop-after-init
+  $ odoo-bin -u <逗号分隔的模块名称> --stop-after-init
 
 .. _odoosh-gettingstarted-online-editor-push:
 
-Commit & Push your changes
+提交并推送更改
 ==========================
 
-You have the possibility to commit and push your changes to your Github repository.
+你可以将更改提交并推送到你的 Github 仓库。
 
-* Open a terminal (:menuselection:`File --> New --> Terminal`),
-* Change the directory to *~/src/user* using :code:`cd ~/src/user`,
-* Stage your changes using :code:`git add`,
-* Commit your changes using :code:`git commit`,
-* Push your changes using :code:`git push https HEAD:<branch>`.
+* 打开终端 (:menuselection:`File --> New --> Terminal`),
+* 使用 :code:`cd ~/src/user` 切换到 *~/src/user* 目录，
+* 使用 :code:`git add` 暂存更改，
+* 使用 :code:`git commit` 提交更改，
+* 使用 :code:`git push https HEAD:<branch>` 推送更改。
 
-In this last command,
+在上述命令中，
 
-* *https* is the name of your *HTTPS* Github remote repository
-  (e.g. https://github.com/username/repository.git),
-* HEAD is the reference to the latest revision you committed,
-* <branch> must be replaced by the name of the branch to which you want to push the changes,
-  most-likely the current branch if you work in a development build.
+* *https* 是你的 *HTTPS* Github 远程仓库的名称
+  （例如 https://github.com/username/repository.git），
+* HEAD 是你提交的最新修订的引用，
+* <branch> 必须替换为你想推送更改的分支名称，
+  如果你在开发构建中工作，通常是当前分支。
 
 .. image:: ./media/interface-editor-commit-push.png
    :align: center
 
 .. Note::
-  The SSH Github remote is not used because your SSH private key
-  is not hosted in your build containers (for obvious security concerns)
-  nor forwarded through an SSH Agent (as you access this editor through a web browser)
-  and you therefore cannot authenticate yourself to Github using SSH.
-  You have to use the HTTPS remote of your Github repository to push your changes,
-  which is added automatically named as *https* in your Git remotes.
-  You will be prompted to enter your Github username and password.
-  If you activated the two-factor authentication on Github,
-  you can create a
-  `personal access token <https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/>`_
-  and use it as password. Granting the ``repo`` permission suffices.
-
+  SSH Github 远程仓库没有使用，因为你的 SSH 私钥没有托管在构建容器中（出于显而易见的安全考虑），
+  也没有通过 SSH 代理转发（因为你是通过网页浏览器访问这个编辑器），
+  因此你无法使用 SSH 验证 Github 身份。
+  你必须使用 Github 仓库的 HTTPS 远程仓库推送更改，它会自动添加并命名为 *https* 到你的 Git 远程仓库中。
+  系统会提示你输入 Github 用户名和密码。
+  如果你在 Github 上启用了两步验证，
+  你可以创建一个
+  `个人访问令牌 <https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/>`_
+  并将其用作密码。授予 ``repo`` 权限即可。
 
 .. Note::
-  The Git source folder *~/src/user* is not checked out on a branch but rather on a detached revision:
-  This is because builds work on specific revisions rather than branches.
-  In other words, this means you can have multiple builds on the same branch, but on different revisions.
+  Git 源文件夹 *~/src/user* 没有检出在分支上，而是检出在分离的修订版上：
+  这是因为构建工作在特定修订版而不是分支上。
+  换句话说，这意味着你可以在同一个分支上有多个构建，但在不同的修订版上。
 
-Once your changes are pushed,
-according to your :ref:`branch push behavior <odoosh-gettingstarted-branches-tabs-settings>`,
-a new build may be created. You can continue to work in the editor you pushed from,
-as it will have the same revision as the new build that was created, but always make sure to be
-in an editor of a build using the latest revision of your branch.
+一旦你的更改被推送，
+根据你的 :ref:`分支推送行为 <odoosh-gettingstarted-branches-tabs-settings>`，
+可能会创建一个新的构建。你可以继续在你推送的编辑器中工作，
+因为它会具有与创建的新构建相同的修订版，但始终确保在使用分支的最新修订版的构建的编辑器中工作。
 
-Consoles
+控制台
 ========
 
-You can open Python consoles, which are
-`IPython interactive shells <https://ipython.readthedocs.io/en/stable/interactive/tutorial.html>`_.
-One of the most interesting addition to use a Python console
-rather than a IPython shell within a terminal is the
-`rich display <https://ipython.readthedocs.io/en/stable/config/integrating.html#rich-display>`_
-capabilities.
-Thanks to this, you will be able to display objects in HTML.
+你可以打开 Python 控制台，它们是
+`IPython 交互式 shell <https://ipython.readthedocs.io/en/stable/interactive/tutorial.html>`_。
+使用 Python 控制台而不是终端中的 IPython shell 的一个最有趣的附加功能是
+`富显示 <https://ipython.readthedocs.io/en/stable/config/integrating.html#rich-display>`_
+功能。
+借助这一点，你可以以 HTML 方式显示对象。
 
-You can for instance display cells of a CSV file using
-`pandas <https://pandas.pydata.org/pandas-docs/stable/tutorials.html>`_.
+例如，你可以使用
+`pandas <https://pandas.pydata.org/pandas-docs/stable/tutorials.html>`_
+显示 CSV 文件的单元格。
 
 .. image:: ./media/interface-editor-console-python-read-csv.png
    :align: center
 
-You can also open an Odoo Shell console to play around
-with the Odoo registry and model methods of your database. You can also directly read or write
-on your records.
+你还可以打开 Odoo Shell 控制台来操作
+你的数据库的 Odoo 注册表和模型方法。你还可以直接读取或写入你的记录。
 
 .. Warning::
-  In an Odoo Console, transactions are automatically committed.
-  This means, for instance, that changes in records are applied effectively in the database.
-  If you change the name of a user, the name of the user is changed in your database
-  as well.
-  You therefore should use Odoo consoles carefully on production databases.
+  在 Odoo 控制台中，事务是自动提交的。
+  例如，这意味着记录中的更改会有效地应用到数据库中。
+  如果你更改了用户的名称，该用户的名称也会在数据库中更改。
+  因此，你在生产数据库上使用 Odoo 控制台时应小心。
 
-You can use *env* to invoke models of your database registry, e.g. :code:`env['res.users']`.
+你可以使用 *env* 调用数据库注册表的模型，例如 :code:`env['res.users']`。
 
 .. code-block:: python
 
@@ -184,17 +168,16 @@ You can use *env* to invoke models of your database registry, e.g. :code:`env['r
   'name': 'Administrator',
   'email': 'admin@example.com'}]
 
-The class :code:`Pretty` gives you the possibility
-to easily display lists and dicts in a pretty way, using the
-`rich display <https://ipython.readthedocs.io/en/stable/config/integrating.html#rich-display>`_
-mentioned above.
+类 :code:`Pretty` 提供了
+轻松以漂亮方式显示列表和字典的可能性，使用上述提到的
+`富显示 <https://ipython.readthedocs.io/en/stable/config/integrating.html#rich-display>`_。
 
 .. image:: ./media/interface-editor-console-odoo-pretty.png
    :align: center
 
-You can also use
+你还可以使用
 `pandas <https://pandas.pydata.org/pandas-docs/stable/tutorials.html>`_
-to display graphs.
+显示图表。
 
 .. image:: ./media/interface-editor-console-odoo-graph.png
   :align: center
