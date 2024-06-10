@@ -1,112 +1,80 @@
 =======================================
-How to synchronize Odoo with your bank?
+如何将 Odoo 与您的银行同步？
 =======================================
 
-Odoo is able to synchronize directly with your bank in order to get all
-bank statements imported automatically in Odoo every 4 hours. Before
-moving forward in this tutorial, you should check if your bank is
-supported. You can find it out from the `Odoo Accounting Features <https://www.odoo.com/page/accounting-features>`__
+Odoo 能够直接与您的银行同步，每 4 小时自动将所有银行对账单导入 Odoo。在继续本教程之前，您应先检查您的银行是否受支持。您可以通过 `Odoo Accounting Features <https://www.odoo.com/page/accounting-features>`__ 页面了解。
 
 .. image:: media/synchronize01.png
    :align: center
 
-Search for your bank name in the above page. If your bank appears in the
-proposition, it means it is supported by Odoo. The countries which are
-fully supported (meaning more than 95% of the banks) include: United
-States, Canada, New Zealand, Austria. More than 30 countries are
-partially supported, including: Colombia, India, France, Spain, etc.
+在上述页面中搜索您的银行名称。如果您的银行出现在提议中，表示 Odoo 支持该银行。完全支持的国家（即支持超过 95% 的银行）包括：美国、加拿大、新西兰、奥地利。超过 30 个国家得到部分支持，包括：哥伦比亚、印度、法国、西班牙等。
 
-In order to connect with the banks, Odoo uses two web-services:
+为了与银行连接，Odoo 使用了两个网络服务：
 
--  Plaid: for the main banks in the U.S.
+-  Plaid：用于美国的主要银行
 
--  Yodlee: for all other banks
+-  Yodlee：用于其他所有银行
 
-Configuration
+配置
 =============
 
-Odoo Online Users
+Odoo 在线用户
 -----------------
 
-If you we support banks of your country, the bank integration feature
-should already been installed. If it's not installed, you can manually
-install the module **account_yodlee**.
+如果我们支持您所在国家的银行，银行集成功能应该已经安装。如果未安装，您可以手动安装模块 **account_yodlee**。
 
-Odoo Enterprise Users
+Odoo 企业用户
 ---------------------
 
-If you plan to use a bank interface with your Odoo Enterprise
-subscription, you don't have to do anything special, just make sure that your database is registered with your Odoo Enterprise contract.
+如果您计划使用 Odoo 企业版订阅中的银行接口，您无需做任何特殊操作，只需确保您的数据库已注册在您的 Odoo 企业合同中。
 
 .. note::
-   you might want to check that you don't have a firewall/proxy blocking the following addresses
+   您可能需要检查是否有防火墙/代理阻止以下地址：
    
    * https://onlinesync.odoo.com/
    * https://api.plaid.com/
 
-
-Sync your bank feeds
+同步您的银行信息
 ====================
 
-Once the Plaid or Yodlee interface is installed, you can connect Odoo to
-your bank. To do that, click on **More** on the bank of your
-choice from the accounting dashboard. In the menu, click on Settings to
-configure this bank account.
+安装 Plaid 或 Yodlee 接口后，您可以将 Odoo 连接到您的银行。为此，请在会计仪表板中选择您选择的银行，点击 **更多**。在菜单中，点击设置以配置该银行账户。
 
 .. image:: media/synchronize02.png
    :align: center
 
-In the bank form, from the Bank Account tab, set the bank feeds option
-to **Bank Synchronization**.
+在银行表单中，从银行账户选项卡，设置银行同步选项为 **银行同步**。
 
 .. image:: media/synchronize03.png
    :align: center
 
-Once it's done, go back to your accounting dashboard. You should see a
-**Online Synchronization** button on your bank card. Click on this button
-and fill in your bank credentials.
+完成后，返回您的会计仪表板。您应在银行卡上看到一个 **在线同步** 按钮。点击此按钮并填写您的银行凭证。
 
-Once you filled in your credentials, your bank feeds will be
-synchronized every 4 hours.
+填写凭证后，您的银行信息将每 4 小时同步一次。
 
-FAQ 
+常见问题
 ===
 
-The synchronization is not working in real time, is it normal?
+同步不是实时的，这正常吗？
 --------------------------------------------------------------
 
-Yodlee tries to get the data from a bank account once a day. However, this doesn't
-always happen at the same time. And sometimes the process can fail. In that case,
-Yodlee retries one hour or two later. This is why in Odoo there is a cron that is
-running every 4 hours to fetch the information from Yodlee. 
+Yodlee 尝试每天从银行账户获取数据。然而，这并不总是发生在同一时间。有时该过程会失败。在这种情况下，Yodlee 会在一到两个小时后重试。这就是为什么 Odoo 中每 4 小时运行一次计划任务来从 Yodlee 获取信息的原因。
 
-You can however force this synchronization by clicking on the button "Synchronize now"
-from the accounting dashboard. 
+您可以通过会计仪表板上的“立即同步”按钮强制进行同步。
 
-Moreover, a transaction can be visible in your bank account but not being fetched
-by Yodlee. Indeed, the transaction in your bank account can have the status "pending"
-and not the status "posted". In that case, Yodlee won't import it, you will have to
-wait till the status changes. 
+此外，某些交易可能在您的银行账户中可见但未被 Yodlee 获取。实际上，您的银行账户中的交易可能处于“待处理”状态而非“已发布”状态。在这种情况下，Yodlee 不会导入它，您需要等待状态变化。
 
-What is important to remember is that Yodlee is not a service fetching transactions
-in real time. This is a service to facilitate the import of the bank statements to the database. 
+重要的是要记住，Yodlee 不是一个实时获取交易的服务。这是一项方便将银行对账单导入数据库的服务。
 
-Is the Yodlee feature included in my contract? 
+Yodlee 功能包含在我的合同中吗？
 ----------------------------------------------
 
-- Enterprise Version: Yes, if you have a valid enterprise contract linked to your database.
-- Community Version: No, this feature is not included in the Community Version.
-- Online Version: Yes, even if you benefit from the One App Free contract. 
+- 企业版：是的，如果您有一个有效的企业合同并链接到您的数据库。
+- 社区版：不，此功能不包含在社区版中。
+- 在线版：是的，即使您享受一款应用免费的合同。
 
-Some banks have a status "Beta", what does it mean? 
+某些银行的状态为“测试版”，这意味着什么？
 ---------------------------------------------------
 
-This means that Yodlee is only currently working on developing the synchronization
-with this bank. The synchronization could already work or it may need a bit more time
-to have a 100% working synchronization. Unfortunately, there is not much to do about it
-except for being patient. 
+这意味着 Yodlee 目前正在开发与该银行的同步功能。同步可能已经可以工作，也可能需要更多时间才能达到 100% 的工作状态。不幸的是，除了耐心等待之外，没有太多可以做的。
 
-All my past transactions are not in Odoo, why?
-----------------------------------------------
-
-Yodlee only allows to fetch transactions up to 3 months in the past.
+为什么我的所有过去交易都不在 Odoo 中？
