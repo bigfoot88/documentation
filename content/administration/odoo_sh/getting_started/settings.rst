@@ -1,197 +1,183 @@
-
 ==================================
-Settings
+设置
 ==================================
 
-Overview
+概述
 ========
 
-The settings allow you to manage the configuration of your project.
+这些设置允许您管理项目的配置。
 
 .. image:: ./media/interface-settings.png
    :align: center
 
-Project name
+项目名称
 ============
 
-The name of your project.
+您的项目名称。
 
 .. image:: ./media/interface-settings-projectname.png
    :align: center
 
-This defines the address that will be used to access your production database.
+这定义了用于访问生产数据库的地址。
 
-Addresses of your staging and development builds are derived from this name and assigned automatically.
-However, when you change your project name, only future builds will use the new name.
+暂存和开发版本的地址是从这个名称派生并自动分配的。然而，当您更改项目名称时，只有未来的构建才会使用新名称。
 
 .. _odoosh-gettingstarted-settings-collaborators:
 
-Collaborators
+协作者
 =============
 
-Manage the Github users who can access your project.
+管理可以访问您项目的 Github 用户。
 
 .. image:: ./media/interface-settings-collaborators.png
    :align: center
 
-There are two levels of users:
+用户有两个级别：
 
-* Admin: has access to all features of Odoo.sh.
-* User: does not have access to the project settings nor to the production and staging databases.
+* 管理员：可以访问 Odoo.sh 的所有功能。
+* 用户：不能访问项目设置，也不能访问生产和暂存数据库。
 
-The user group is meant for developers who can make modifications in your code but are not allowed to access the
-production data.
-Users of this group cannot connect to the production and staging databases using the *1-click connect* feature,
-but they can of course use their regular account on these databases if they have one, using their regular credentials.
+用户组适用于可以修改代码但不允许访问生产数据的开发人员。
+此组用户不能使用 *一键连接* 功能连接到生产和暂存数据库，但他们当然可以使用他们的常规帐户和凭证来访问这些数据库。
 
-In addition, they cannot use the webshell nor have access to the server logs.
+此外，他们不能使用 webshell，也不能访问服务器日志。
 
 +---------------------+-----------------+-----------+-----------+
-|                     |                 | User      | Admin     |
+|                     |                 | 用户      | 管理员     |
 +=====================+=================+===========+===========+
-|Development          | History         |     X     |     X     |
+|开发                 | 历史            |     X     |     X     |
 +---------------------+-----------------+-----------+-----------+
-|                     | 1-click connect |     X     |     X     |
+|                     | 一键连接         |     X     |     X     |
 +---------------------+-----------------+-----------+-----------+
-|                     | Logs            |     X     |     X     |
+|                     | 日志            |     X     |     X     |
 +---------------------+-----------------+-----------+-----------+
 |                     | Shell/SSH       |     X     |     X     |
 +---------------------+-----------------+-----------+-----------+
-|                     | Mails           |     X     |     X     |
+|                     | 邮件            |     X     |     X     |
 +---------------------+-----------------+-----------+-----------+
-|                     | Settings        |     X     |     X     |
+|                     | 设置            |     X     |     X     |
 +---------------------+-----------------+-----------+-----------+
-|Production & Staging | History         |     X     |     X     |
+|生产 & 暂存           | 历史            |     X     |     X     |
 +---------------------+-----------------+-----------+-----------+
-|                     | 1-click connect |           |     X     |
+|                     | 一键连接         |           |     X     |
 +---------------------+-----------------+-----------+-----------+
-|                     | Logs            |           |     X     |
+|                     | 日志            |           |     X     |
 +---------------------+-----------------+-----------+-----------+
 |                     | Shell/SSH       |           |     X     |
 +---------------------+-----------------+-----------+-----------+
-|                     | Mails           |           |     X     |
+|                     | 邮件            |           |     X     |
 +---------------------+-----------------+-----------+-----------+
-|                     | Monitoring      |           |     X     |
+|                     | 监控            |           |     X     |
 +---------------------+-----------------+-----------+-----------+
-|                     | Backups         |           |     X     |
+|                     | 备份            |           |     X     |
 +---------------------+-----------------+-----------+-----------+
-|                     | Settings        |     X     |     X     |
+|                     | 设置            |     X     |     X     |
 +---------------------+-----------------+-----------+-----------+
-|Status               |                 |     X     |     X     |
+|状态                 |                 |     X     |     X     |
 +---------------------+-----------------+-----------+-----------+
-|Settings             |                 |           |     X     |
+|设置                 |                 |           |     X     |
 +---------------------+-----------------+-----------+-----------+
 
-Public Access
+公共访问
 =============
 
-Allow public access to your development builds.
+允许公共访问您的开发版本。
 
 .. image:: ./media/interface-settings-public.png
    :align: center
 
-If activated, this option exposes the Builds page publicly, allowing visitors to connect to your development builds.
+如果激活，此选项将公开构建页面，允许访客连接到您的开发版本。
 
-In addition, visitors have access to the logs, shell and mails of your development builds.
+此外，访客可以访问开发版本的日志、shell 和邮件。
 
-Production and staging builds are excluded, visitors can only see their status.
+生产和暂存版本除外，访客只能看到它们的状态。
 
 .. _odoosh-gettingstarted-settings-modules-installation:
 
 
-Custom domains
+自定义域
 ==============
 
-To configure additional domains please refer to the corresponding branch's :ref:`settings tab <odoosh-gettingstarted-branches-tabs-settings>`.
+要配置其他域，请参考相应分支的 :ref:`设置标签 <odoosh-gettingstarted-branches-tabs-settings>`。
 
 .. _odoosh-gettingstarted-settings-submodules:
 
-Submodules
+子模块
 ==========
 
-Configure the deploy keys for the private repositories you use
-as submodules in your branches to allow Odoo.sh to download them.
+配置您在分支中使用的私有库的部署密钥，以便 Odoo.sh 下载它们。
 
 .. Warning::
-  These settings are required for **private repositories** only.
-  If you are looking on how to set up your submodules,
-  instructions are available in the chapter :ref:`Submodules <odoosh-advanced-submodules>` of this documentation.
+  这些设置仅适用于 **私有库**。
+  如果您想了解如何设置子模块，请参阅本文档的 :ref:`子模块 <odoosh-advanced-submodules>` 章节中的说明。
 
 .. image:: ./media/interface-settings-submodules.png
    :align: center
 
-When a repository is private, it is not possible to publicly download its branches and revisions.
-For that reason, you need to configure a deploy key for Odoo.sh,
-so the remote Git server allows our platform to download the revisions
-of this private repository.
+当仓库是私有的时，无法公开下载其分支和修订版。
+因此，您需要为 Odoo.sh 配置一个部署密钥，以便远程 Git 服务器允许我们的平台下载该私有库的修订版。
 
-To configure the deploy key for a private repository, proceed as follows:
+要为私有库配置部署密钥，请按以下步骤操作：
 
-* in the input, paste the SSH URL of your private sub-repository and click on *Add*,
+* 在输入框中粘贴您的私有子库的 SSH URL 并点击 *添加*，
 
-  * e.g. *git@github.com:USERNAME/REPOSITORY.git*
-  * it can be another Git server than Github, such as Bitbucket, Gitlab or even your own self-hosted server
+  * 例如 *git@github.com:USERNAME/REPOSITORY.git*
+  * 它可以是另一个 Git 服务器，如 Bitbucket、Gitlab 或您自己的自托管服务器
 
-* copy the public key,
+* 复制公钥，
 
-  * it should look like *ssh-rsa some...random...characters...here...==*
+  * 它应类似于 *ssh-rsa some...random...characters...here...==*
 
-* in the settings of the private sub-repository, add the public key amongst the deploy keys.
+* 在私有子库的设置中，将公钥添加到部署密钥中。
 
   * Github.com: :menuselection:`Settings --> Deploy keys --> Add deploy key`
   * Bitbucket.com: :menuselection:`Settings --> Access keys --> Add key`
   * Gitlab.com: :menuselection:`Settings --> Repository --> Deploy Keys`
-  * Self-hosted: append the key to the git user’s authorized_keys file in its .ssh directory
+  * 自托管: 将密钥附加到 git 用户 .ssh 目录中的 authorized_keys 文件中
 
-Storage Size
+存储大小
 ============
 
-This section shows the storage size used by your project.
+此部分显示您的项目使用的存储大小。
 
 .. image:: ./media/interface-settings-storage.png
    :align: center
 
-Storage size is computed as follows:
+存储大小的计算方式如下：
 
-* the size of the PostgreSQL database
+* PostgreSQL 数据库的大小
 
-* the size of the disk files available in your container: database filestore, sessions storage directory...
+* 容器中可用磁盘文件的大小：数据库文件存储、会话存储目录等
 
 .. Warning::
-  In case you want to analyze disk usage, you can run the tool `ncdu <https://dev.yorhel.nl/ncdu/man>`_ in your Web Shell.
+  如果您想分析磁盘使用情况，可以在 Web Shell 中运行工具 `ncdu <https://dev.yorhel.nl/ncdu/man>`_。
 
-Should your production database size grow to exceed what's provisioned in your subscription, it
-will automatically be synchronized with it.
+如果您的生产数据库大小超过了订阅中规定的大小，
+它将自动与订阅同步。
 
-Database Workers
+数据库工作者
 ================
 
-Additional database workers can be configured here. More workers help increase the load your
-production database is able to handle. If you add more, it will automatically be synchronized
-with your subscription.
+可以在此配置其他数据库工作者。更多的工作者可以增加您的生产数据库能够处理的负载。如果您添加更多，它将自动与您的订阅同步。
 
 .. image:: ./media/interface-settings-workers.png
    :align: center
 
 .. Warning::
-  Adding more workers will not magically solve all performance issues. It only allows the server
-  to handle more connections at the same time. If some operations are unusually slow, it's most
-  likely a problem with the code, if it's not due to your own customizations you can open a ticket
-  `here <https://www.odoo.com/help>`_.
+  添加更多工作者并不能神奇地解决所有性能问题。它只是允许服务器同时处理更多连接。如果某些操作异常缓慢，问题很可能出在代码上，如果不是由于您自己的自定义，您可以在 `这里 <https://www.odoo.com/help>`_ 提交工单。
 
-Staging Branches
+暂存分支
 ================
 
-Additional staging branches allow you to develop and test more features at the same time. If you
-add more, it will automatically be synchronized with your subscription.
+额外的暂存分支允许您同时开发和测试更多功能。如果您添加更多，它将自动与您的订阅同步。
 
 .. image:: ./media/interface-settings-staging-branches.png
    :align: center
 
-Activation
+激活
 ==========
 
-Shows the status of the project's activation. You can change the project's activation code if needed.
+显示项目激活的状态。如有需要，您可以更改项目的激活码。
 
 .. image:: ./media/interface-settings-activation.png
    :align: center
