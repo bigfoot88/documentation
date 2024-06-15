@@ -1,52 +1,35 @@
-Set up cash roundings
+设置现金舍入
 =====================
 
-In some currencies, the smallest coins do not exist. For example, in
-Switzerland, there is no coin for 0.01 CHF. For this reason, if invoices
-are paid in cash, you have to round their total amount to the smallest
-coin that exist in the currency. For the CHF, the smallest coin is 0.05
-CHF.
+在某些货币中，最小的硬币是不存在的。例如，在瑞士，没有 0.01 CHF 的硬币。因此，如果以现金支付发票，总金额必须舍入到货币中存在的最小硬币。对于 CHF，最小的硬币是 0.05 CHF。
 
-There are two strategies for the rounding:
+有两种舍入策略：
 
-1. Add a line on the invoice for the rounding
+1. 在发票上添加一行舍入金额
+2. 将舍入金额加入税额中
 
-2. Add the rounding in the tax amount
+这两种策略都可以在 Odoo 中应用。
 
-Both strategies are applicable in Odoo.
-
-Configuration 
+配置
 --------------
 
-First, you have to activate the feature. For this, go in
-:menuselection:`Accounting --> Configuration --> Settings`
-and activate the Cash Rounding.
+首先，你需要激活该功能。为此，请进入 :menuselection:`会计 --> 配置 --> 设置` 并激活现金舍入功能。
 
 .. image:: media/cash_rounding01.png
     :align: center
 
-There is a new menu to manage cash roundings in
-:menuselection:`Accounting --> Configuration --> Management --> Cash roundings`.
+在 :menuselection:`会计 --> 配置 --> 管理 --> 现金舍入` 中将出现一个新的菜单以管理现金舍入。
 
-Now, you can create cash roundings. You can choose between two rounding
-strategies:
+现在，你可以创建现金舍入。你可以选择两种舍入策略：
 
-1. **Add a rounding line**: if a rounding is necessary, Odoo will add a
-   line on your customer invoice to take this rounding into
-   account. You also have to define the account in which the
-   rounding will go.
+1. **添加舍入行**：如果需要舍入，Odoo 会在客户发票上添加一行以考虑该舍入金额。你还需要定义舍入金额将进入的账户。
 
-2. **Modify tax amount:** Odoo will add the rounding to the amount of
-   the highest tax.
+2. **修改税额**：Odoo 会将舍入金额加入到最高的税额中。
 
 .. image:: media/cash_rounding02.png
     :align: center
 
-Apply roundings
+应用舍入
 ---------------
 
-Once your roundings are created, you can apply them on customer
-invoices. On the customer invoices, there is a new field called **Cash
-Rounding Method** where you can simply choose one of the rounding methods
-created previously. If needed, a rounding will be applied to the
-invoice.
+一旦创建了舍入规则，你可以在客户发票上应用它们。在客户发票上，有一个新的字段称为 **现金舍入方法**，你可以简单选择先前创建的舍入方法之一。如果需要，发票将应用舍入。
