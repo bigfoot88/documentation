@@ -1,116 +1,89 @@
 ========================================
-Deferred revenues: how to automate them?
+如何自动化递延收入？
 ========================================
 
-Deferred/unearned revenue is an advance payment recorded on the
-recipient's balance sheet as a liability account until either the
-services have been rendered or the products have been delivered.
-Deferred revenue is a liability account because it refers to revenue
-that has not yet been earned, but represents products or services that
-are owed to the customer. As the products or services are delivered over
-time, the revenue is recognized and posted on the income statement.
+递延/未赚取收入是记录在收款方资产负债表上的预付款项，作为负债账户，直到服务已经提供或产品已经交付为止。递延收入是一个负债账户，因为它指的是尚未赚取的收入，但代表应向客户提供的产品或服务。随着产品或服务的逐步交付，收入将被确认并计入损益表。
 
-For example: let's say you sell a 2 year support contract for $24,000
-that begins next month for a period of 24 months. Once you validate the
-customer invoice, the $24.000 should be posted into a deferred revenues
-account. This is because the $24,000 you received has not yet been
-earned.
+例如：假设你出售了一份价值 $24,000 的两年支持合同，该合同从下个月开始，为期 24 个月。一旦你确认了客户发票，这 $24,000 应该被计入递延收入账户。这是因为你收到的 $24,000 尚未赚取。
 
-Over the next 24 months, you will be reducing the deferred revenues
-account by $1,000 ($24,000/24) on a monthly basis and recognizing that
-amount as revenue.
+在接下来的 24 个月中，你将每月减少 $1,000（$24,000/24）的递延收入账户，并将该金额确认为收入。
 
-Configuration
+配置
 =============
 
-Module installation
+模块安装
 -------------------
 
-In order to automate deferred revenues, go to the settings menu under the application
-:menuselection:`Accounting --> Configuration` and activate the
-**Assets management & revenue recognition** option. This will install the
-**Revenue Recognition Management** module.
+为了自动化递延收入，请在应用程序的设置菜单中前往 :menuselection:`会计 --> 配置` 并激活 **资产管理和收入确认** 选项。这将安装 **收入确认管理** 模块。
 
 .. note::
 
-	In some version of Odoo 9, besides checking this option, you need to install
-	the "Revenue Recognition Management" module. If you are using Odoo 9, you
-	might check if the module is correctly installed.
+    在某些版本的 Odoo 9 中，除了勾选此选项外，你还需要安装“收入确认管理”模块。如果你使用的是 Odoo 9，请检查模块是否正确安装。
 
-Define deferred revenue types
+定义递延收入类型
 -----------------------------
 
-Once the module is installed, you need to create deferred revenue types.
-From the Accounting application, go to the menu :menuselection:`Configuration --> Deferred
-Revenues Types`.
+模块安装完成后，需要创建递延收入类型。进入会计应用程序，导航到菜单 :menuselection:`配置 --> 递延收入类型`。
 
 .. figure:: ./media/deffered01.png
   :figclass: figure
   :align: center
 
-  Example: 12 months maintenance contract
+  示例：12个月维护合同
 
-Some example of deferred revenues types:
+以下是一些递延收入类型的示例：
 
--  1 year service contract
--  3 years service contracts
+-  1 年服务合同
+-  3 年服务合同
 
-Set deferred revenues on products
+在产品上设置递延收入
 ---------------------------------
 
-Once deferred revenues types are defined, you can set them on the
-related products. On the product form, in the Accounting tab, you can
-set a deferred revenue type.
+定义了递延收入类型后，你可以在相关产品上设置它们。在产品表单的会计标签中，你可以设置递延收入类型。
 
-Here are some examples of products and their related deferred revenue
-types:
+以下是一些产品及其相关的递延收入类型示例：
 
 +---------------------------------+-----------------------------+
-| Product                         | Deferred Revenue Type       |
+| 产品                            | 递延收入类型                |
 +=================================+=============================+
-| Support Contract: 3 years       | 3 years service contracts   |
+| 支持合同：3年                   | 3年服务合同                 |
 +---------------------------------+-----------------------------+
-| Netflix subscription: 3 years   | 3 years service contracts   |
+| Netflix 订阅：3年               | 3年服务合同                 |
 +---------------------------------+-----------------------------+
-| Flowers every month             | 1 year product contract     |
+| 每月送花                        | 1年产品合同                 |
 +---------------------------------+-----------------------------+
 
-Sell and invoice products
+销售和开具产品发票
 =========================
 
-Once the products are configured, you can create a customer invoice
-using this product. Once the customer invoice is validated, Odoo will
-automatically create a deferred revenue for you, and the related journal
-entry.
+产品配置完成后，你可以使用该产品创建客户发票。一旦客户发票得到确认，Odoo 将自动为你创建一个递延收入和相关的日记账分录。
 
 +----------------------------+----------+----------+
-| **Account**                | **Dr**   | **Cr**   |
+| **账户**                   | **借方** | **贷方** |
 +============================+==========+==========+
-| Accounts receivable        | 24000    |          |
+| 应收账款                    | 24000    |          |
 +----------------------------+----------+----------+
-| Deferred revenue account   |          | 24000    |
+| 递延收入账户                |          | 24000    |
 +----------------------------+----------+----------+
 
-Then, every month, Odoo will post a journal entry for the revenue
-recognition.
+然后，每个月，Odoo 将为收入确认发布一条日记账分录。
 
 +----------------------------+----------+----------+
-| **Account**                | **Dr**   | **Cr**   |
+| **账户**                   | **借方** | **贷方** |
 +============================+==========+==========+
-| Deferred revenue account   | 1000     |          |
+| 递延收入账户                | 1000     |          |
 +----------------------------+----------+----------+
-| Service revenue account    |          | 1000     |
+| 服务收入账户                |          | 1000     |
 +----------------------------+----------+----------+
 
-Reporting
+报告
 =========
 
-To analyze all your current contracts having a deferred revenue, you can
-use the menu Reporting > Deferred Revenue Analysis.
+要分析所有当前具有递延收入的合同，可以使用菜单 报告 > 递延收入分析。
 
 .. image:: ./media/deffered02.png
   :align: center
 
 .. seealso::
 
-	* :doc:`overview`
+    * :doc:`概述`
