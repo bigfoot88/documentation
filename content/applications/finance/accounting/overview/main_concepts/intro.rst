@@ -1,5 +1,5 @@
 ===============================
-Introduction to Odoo Accounting
+Odoo会计介绍
 ===============================
 
 .. youtube:: 6XgKPjgyoec
@@ -7,35 +7,29 @@ Introduction to Odoo Accounting
     :width: 700
     :height: 394
 
-Transcript
+记录稿
 ==========
 
-Odoo is beautiful accounting software designed for the needs of the 21st century. 
+Odoo 是为21世纪需求设计的精美会计软件。
 
-Odoo connects directly to your bank or paypal account. Transactions are synchronized
-every hour and reconciliation is blazing fast. It's like magic.
+Odoo 可以直接连接到您的银行或 PayPal 账户。交易每小时同步一次，对账速度极快。就像魔法一样。
 
-Instantly create invoices and send them with just a click. No need to print them. 
+立即创建发票，只需点击一下即可发送。无需打印它们。
 
-Odoo can send them for you by email or regular mail.
+Odoo 可以通过电子邮件或普通邮件为您发送发票。
 
-Your customers pay online, meaning you get your money right away.
+您的客户可以在线支付，这意味着您可以立即收到款项。
 
-Odoo accounting is connected with all Odoo our apps such as sale, purchase,
-inventory and subscriptions. 
+Odoo 会计与我们所有的 Odoo 应用程序（如销售、采购、库存和订阅）相连。
 
-This way, recording vendor bills is also super quick. Set a vendor, select the purchase
-order and Odoo fills in everything for you automatically.
+这样，记录供应商账单也变得非常快捷。设置供应商，选择采购订单，Odoo 会自动为您填写所有信息。
 
-Then, just use the SEPA protocol or print checks to pay vendors
-in batches.
+然后，只需使用 SEPA 协议或打印支票来批量支付供应商。
 
-It's that easy with Odoo.
+使用 Odoo 就是这么简单。
 
-Wait, there is more. You will love the Odoo reports. From legal statements to 
-executive summaries, they are fast and dynamic. Use Odoo's business intelligence feature to navigate
-through all your companies data.
+等等，还有更多。您一定会喜欢 Odoo 的报表。从法律声明到执行摘要，它们都快速且动态。使用 Odoo 的商业智能功能浏览所有公司的数据。
 
-Of course, Odoo is mobile too. You can use it to check your accounts on the go.
+当然，Odoo 也支持移动设备。您可以随时随地查看您的账户。
 
-Try Odoo now, and join 2 million happy users.
+立即试用 Odoo，加入 200 万满意用户的行列。
