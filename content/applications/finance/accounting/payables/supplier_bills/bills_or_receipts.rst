@@ -1,68 +1,42 @@
 ======================================================
-When should I use supplier bills or purchase receipts?
+何时使用供应商账单或采购收据？
 ======================================================
 
-Purchase receipts are different than vendor bills. Vendor bills are
-requests for payment. If I issue a Purchase Order my vendor will in most
-business cases send me a Vendor Bill. Depending on his invoice policy I
-then have a defined amount of time to pay the Bill. A Purchase receipts
-are confirmations of received payments. They are my day-to-day ticket
-receipts.
+采购收据和供应商账单是不同的。供应商账单是付款请求。如果我发出采购订单，在大多数商业案例中，供应商会给我发送供应商账单。根据他的发票政策，我在规定的时间内支付账单。采购收据是确认收到付款的凭证，是我日常使用的票据收据。
 
-From an accounting point of view this makes a difference as a Vendor
-Bill will first credit a debt account before reconciling with the bank
-account. On the other hand we usually immediately pay the purchase
-receipts, which means no debt account is necessary.
+从会计角度来看，这有很大区别，因为供应商账单会先记入债务账户，然后再与银行账户对账。而采购收据通常是立即支付的，因此不需要债务账户。
 
-Moreover purchase receipts can have a different tax amount per product
-line, as vendors bills apply one tax amount over the entire bill.
+此外，采购收据的每个产品行可以有不同的税额，而供应商账单则在整个账单上应用一个税额。
 
-If my company's bank account is used to pay for goods where only a
-purchase receipt are issued I should use the purchase receipts function
-in Odoo to handle them in accounting.
+如果我的公司银行账户用于支付只签发采购收据的商品，我应该使用 Odoo 中的采购收据功能来处理这些账目。
 
-Let's take the following example: we need to buy tea for our
-customers from a local tea store that doesn't issue bills. We go every
-week buy 50 euros worth of tea and a teapot worth 20 euros. We pay with
-the company's bank account.
+让我们看一个例子：我们需要从当地茶店为客户购买茶叶，而这家茶店不出具账单。我们每周花费50欧元购买茶叶，另外还购买一个价值20欧元的茶壶。我们用公司的银行账户支付。
 
-Configuration
+配置
 =============
 
-To handle purchase receipts in Odoo one module and one app has to be
-installed. Go into the app module and install the accounting app.
+要在 Odoo 中处理采购收据，需要安装一个模块和一个应用。进入应用模块并安装会计应用。
 
 .. image:: ./media/bill01.png
   :align: center
 
-Then, go in the search bar, delete the default module search, and search
-for "purchase". Install the **Sale & Purchase Vouchers** module.
+然后，在搜索栏中删除默认模块搜索，并搜索“purchase”。安装 **Sale & Purchase Vouchers** 模块。
 
 .. image:: ./media/bill02.png
   :align: center
 
-Register a receipt 
+登记收据
 ===================
 
-By installing the **Sale & Purchase Vouchers** I've made the new
-**Purchase Receipts** drop down menu visible in the accounting app.
+通过安装 **Sale & Purchase Vouchers**，会在会计应用中显示新的 **Purchase Receipts** 下拉菜单。
 
-To import our 50 euros worth of tea purchase receipt, enter the
-accounting app, select :menuselection:`Purchases --> Purchase Receipts`.
+要导入我们50欧元的茶叶采购收据，进入会计应用，选择 :menuselection:`Purchases --> Purchase Receipts`。
 
-Create a new Purchase Receipt and fill in all the necessary information.
-Note that you have the choice in the Payment field between **Pay Later**
-or **Pay Now**. It's a significant difference as Pay Later will generate
-a debt accounting entry whereas Pay Now will immediately credit the Bank
-account.
+创建一个新的采购收据并填写所有必要的信息。请注意，在付款字段中可以选择 **Pay Later** 或 **Pay Now**。这是一个重要的区别，因为 Pay Later 会生成一个债务会计条目，而 Pay Now 则会立即记入银行账户。
 
-In most cases you immediately pay, we will thus select the Pay Directly
-option. Add the products, the related account and the appropriate taxe.
-For the example we suppose the tea is a 12% taxe and the Tea Pott 21%.
+在大多数情况下，你会立即支付，因此我们选择 Pay Directly 选项。添加产品、相关账户和适当的税费。假设茶叶的税率为12%，茶壶为21%。
 
 .. image:: ./media/bill03.png
   :align: center
 
-Validate the Purchase Receipt to post it. Don't forget you need to
-:doc:`reconcile payments <../../bank/reconciliation/use_cases>` in order to
-completely close the transaction in your accounting.
+验证采购收据以进行过账。不要忘记需要 :doc:`reconcile payments <../../bank/reconciliation/use_cases>` 来完全关闭会计中的交易。
