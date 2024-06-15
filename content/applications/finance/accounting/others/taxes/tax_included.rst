@@ -1,41 +1,33 @@
 ==============================
-How to set tax-included prices
+如何设置含税价格
 ==============================
 
-In most countries, B2C prices are tax-included. To do that in Odoo, check
-*Included in Price* for each of your sales taxes in
-:menuselection:`Accounting --> Configuration --> Accounting --> Taxes`.
+在大多数国家，B2C 价格是含税的。要在 Odoo 中设置含税价格，请在 :menuselection:`会计 --> 配置 --> 会计 --> 税` 中为每个销售税勾选 *价格包含税*。
 
 .. image:: media/tax_included.png
    :align: center
 
-This way the price set on the product form includes the tax. As an example,
-let's say you have a product with a sales tax of 10%. The sales price on
-the product form is $100.
+这样，在产品表单上设置的价格就包含了税。例如，假设您的产品有 10% 的销售税。产品表单上的销售价格为 $100。
 
-- If the tax is not included in the price, you will get:
+- 如果价格不包含税，您将得到：
 
-  - Price without tax: $100
+  - 不含税价格：$100
 
-  - Taxes: $10
+  - 税额：$10
 
-  - Total to pay: $110
+  - 总支付金额：$110
 
-- If the tax is included in the price
+- 如果价格包含税
 
-  - Price without tax: 90.91
+  - 不含税价格：$90.91
 
-  - Taxes: $9.09
+  - 税额：$9.09
 
-  - Total to pay: $100
+  - 总支付金额：$100
 
-You can rely on following documentation if you need both tax-included (B2C) and
-tax-excluded prices (B2B): :doc:`B2B_B2C`.
+如果您需要同时显示含税 (B2C) 和不含税 (B2B) 的价格，可以参考以下文档： :doc:`B2B_B2C`。
 
-Show tax-included prices in eCommerce catalog
+在电子商务目录中显示含税价格
 =============================================
 
-By default prices displayed in your eCommerce catalog are tax-excluded. To display
-it in tax-included, check *Show line subtotals with taxes included (B2C)* in
-:menuselection:`Sales --> Configuration --> Settings` (Tax Display).
-
+默认情况下，电子商务目录中显示的价格是不含税的。要显示含税价格，请在 :menuselection:`销售 --> 配置 --> 设置` (税显示) 中勾选 *显示含税的行小计 (B2C)*。
