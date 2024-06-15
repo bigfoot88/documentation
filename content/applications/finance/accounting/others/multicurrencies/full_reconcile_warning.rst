@@ -1,7 +1,2 @@
 .. warning::
-    In order for an exchange difference entry to be created automatically, the
-    corresponding invoices and payments need to be fully reconciled. This means
-    the invoices are fully paid and the payments are fully spent on invoices.
-    If you partially pay 3 invoices from 2 payments, and the last invoice still
-    has an amount due, there will be no exchange difference entry for any of
-    them until that final amount is paid.
+    为了自动创建汇兑差异条目，必须完全对账相应的发票和付款。这意味着发票已全部支付，且付款已全部用于支付发票。如果用两笔付款部分支付三张发票，并且最后一张发票仍有未支付金额，则在最后金额支付之前，任何发票都不会有汇兑差异条目。
