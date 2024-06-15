@@ -2,200 +2,204 @@
 :custom-css: accounting.css
 :custom-js: accounts.js,chart-of-accounts.js,entries.js,misc.js,reconciliation.js
 
-==============================================
-Accounting Memento For Entrepreneurs (US GAAP)
-==============================================
+# 会计备忘录（适用于企业家，美国 GAAP）
 
 .. h:div:: intro-list
 
    .. rst-class:: intro-p-l
 
-   The **Profit and Loss** (P&L) report shows the performance of the company
-   over a specific period (usually the current year).
+   **损益表**（P&L）展示了公司在特定期间（通常为当年）的业绩表现。
 
    * .. rst-class:: intro-gross-profit
 
-     The **Gross Profit** equals the revenues from sales minus the cost of
-     goods sold.
+     **毛利润**等于销售收入减去销售成本。
 
    * .. rst-class:: intro-opex
 
-     **Operating Expenses** (OPEX) include administration, sales and R&D
-     salaries as well as rent and utilities, miscellaneous costs, insurances,
-     … anything beyond the costs of products sold.
+     **营业费用**（OPEX）包括管理、销售和研发的工资，以及租金和水电费、杂项费用、保险费等，超出产品销售成本的任何费用。
 
    .. rst-class:: intro-balance
 
-   The **Balance Sheet** is a snapshot of the company's finances at a specific
-   date (as opposed to the Profit and Loss which is an analysis over a period)
+   **资产负债表**是公司在特定日期的财务状况快照（与损益表不同，后者是对一段时间内的分析）。
 
    * .. rst-class:: intro-assets
 
-     **Assets** represent the company's wealth, things it owns. Fixed assets
-     includes building and offices, current assets include bank accounts and
-     cash. A client owing money is an asset. An employee is not an asset.
+     **资产**代表公司的财富，即其拥有的东西。固定资产包括建筑和办公场所，流动资产包括银行账户和现金。客户欠款是资产，员工不是资产。
 
    * .. rst-class:: intro-liabilities
 
-     **Liabilities** are obligations from past events that the company will
-     have to pay in the future (utility bills, debts, unpaid suppliers).
+     **负债**是公司过去事件产生的义务，公司将在未来支付（如水电费、债务、未付供应商款项）。
 
    * .. rst-class:: intro-equity
 
-     **Equity** is the amount of the funds contributed by the owners (founders
-     or shareholders) plus previously retained earnings (or losses).
+     **股东权益**是所有者（创始人或股东）贡献的资金加上以前的留存收益（或亏损）的金额。
 
      .. rst-class:: intro-retained
 
-     Each year, net profits (or losses) are reported to retained earnings.
+     每年，净利润（或亏损）都会报告到留存收益中。
 
 .. h:div:: doc-aside accounts-table
 
    .. placeholder
 
-What is owned (an asset) has been financed through debts to reimburse
-(liabilities) or equity (profits, capital).
+拥有的东西（资产）通过需要偿还的债务（负债）或股东权益（利润、资本）来融资。
 
-A difference is made between buying an assets (e.g. a building) and expenses
-(e.g. fuel). Assets have an intrinsic value over time, versus expenses having
-value in them being consumed for the company to "work".
-
+购买资产（如建筑）与费用（如燃料）之间有区别。资产随时间具有内在价值，而费用的价值在于被公司“使用”。
 
 .. rst-class:: doc-aside
 
-.. highlights:: Assets = Liabilities + Equity
+.. highlights:: 资产 = 负债 + 股东权益
 
-Chart of Accounts
-=================
+# 科目表
 
-The **chart of accounts** lists all the accounts, whether they are balance
-sheet accounts or P&L accounts. Every financial transaction (e.g. a payment, an
-invoice) impacts accounts by moving value from one account (credit) to an other
-account (debit).
+**科目表**列出了所有科目，无论是资产负债表科目还是损益表科目。每笔财务交易（如付款、发票）通过从一个账户（贷方）转移到另一个账户（借方）来影响账户。
 
 .. h:div:: doc-aside
 
-   .. highlights:: Balance = Debit - Credit
+   .. highlights:: 余额 = 借方 - 贷方
 
    .. h:div:: chart-of-accounts
 
       .. placeholder
 
+# 日记账分录
 
-Journal Entries
-===============
+公司的每一份财务文件（如发票、银行对账单、工资单、资本增加合同）都记录为日记账分录，影响多个账户。
 
-Every financial document of the company (e.g. an invoice, a bank statement, a
-pay slip, a capital increase contract) is recorded as a journal entry,
-impacting several accounts.
-
-For a journal entry to be *balanced*, the sum of all its debits must be equal
-to the sum of all its credits.
+为了使日记账分录**平衡**，所有借项的总和必须等于所有贷项的总和。
 
 .. h:div:: doc-aside journal-entries
 
-   examples of accounting entries for various transactions. Example:
+   各种交易的会计分录示例。例子：
 
-   Example 1: Customer Invoice:
+   示例1：客户发票：
 
-   Explanation:
+   说明：
 
-     - You generate a revenue of $1,000
-     - You have a tax to pay of $90
-     - The customer owes $1,090
+     - 您产生了$1,000的收入
+     - 您需支付$90的税款
+     - 客户欠$1,090
 
-   Configuration:
+   配置：
 
-     - Income: defined on the product, or the product category
-     - Account Receivable: defined on the customer
-     - Tax: defined on the tax set on the invoice line
+     - 收入：定义在产品或产品类别上
+     - 应收账款：定义在客户上
+     - 税：定义在发票行上的税率
 
-     The fiscal position used on the invoice may have a rule that
-     replaces the Income Account or the tax defined on the product by another
-     one.
+     发票上使用的财务位置可能有一条规则，将产品定义的收入账户或税替换为另一账户。
 
-   Example 2: Customer Payment:
+   示例2：客户付款：
 
-   Explanation:
+   说明：
 
-     - Your customer owes $1,090 less
-     - Your receive $1,090 on your bank account
+     - 您的客户欠款减少了$1,090
+     - 您在银行账户中收到$1,090
 
-   Configuration:
+   配置：
 
-     - Bank Account: defined on the related bank journal
-     - Account Receivable: defined on the customer
+     - 银行账户：定义在相关的银行日记账上
+     - 应收账款：定义在客户上
 
 .. _accounting/reconciliation:
 
-Reconciliation
-==============
+# 对账
 
-Reconciliation is the process of linking journal items of a specific account,
-matching credits and debits.
+对账是将特定账户的日记账项目链接起来，匹配借项和贷项的过程。
 
-Its primary purpose is to link payments to their related invoices in order to
-mark invoices that are paid and clear the customer statement. This is done by
-doing a reconciliation on the *Accounts Receivable* account.
+其主要目的是将付款与相关发票链接，以标记已支付的发票并清除客户对账单。这是通过对**应收账款**账户进行对账来完成的。
 
-An invoice is marked as paid when its Accounts Receivable journal items are
-reconciled with the related payment journal items.
+当：
 
-Reconciliation is performed automatically by the system when:
+* 付款直接在发票上注册时
+* 在银行匹配过程中检测到付款与发票之间的链接时
 
-* the payment is registered directly on the invoice
-* the links between the payments and the invoices are detected at the bank
-  matching process
-
+系统会自动进行对账。
 
 .. h:div:: doc-aside reconciliation-example
 
-   .. rubric:: Customer Statement Example
+   .. rubric:: 客户对账单示例
 
    .. rst-class:: table-sm d-c-table
 
    +-------------------------+-------------------------+-----------------------+
-   |Accounts Receivable      |Debit                    |Credit                 |
+   | 应收账款                | 借项                    | 贷项                  |
    +=========================+=========================+=======================+
-   |Invoice 1                |100                      |                       |
+   | 发票1                   | 100                     |                       |
    +-------------------------+-------------------------+-----------------------+
-   |Payment 1.1              |                         |70                     |
+   | 付款1.1                 |                         | 70                    |
    +-------------------------+-------------------------+-----------------------+
-   |Invoice 2                |65                       |                       |
+   | 发票2                   | 65                      |                       |
    +-------------------------+-------------------------+-----------------------+
-   |Payment 1.2              |                         |30                     |
+   | 付款1.2                 |                         | 30                    |
    +-------------------------+-------------------------+-----------------------+
-   |Payment 2                |                         |65                     |
+   | 付款2                   |                         | 65                    |
    +-------------------------+-------------------------+-----------------------+
-   |Invoice 3                |50                       |                       |
+   | 发票3                   | 50                      |                       |
    +-------------------------+-------------------------+-----------------------+
    |                         |                         |                       |
    +-------------------------+-------------------------+-----------------------+
-   |Total To Pay             |50                       |                       |
+   | 应支付总额              | 50                      |                       |
    +-------------------------+-------------------------+-----------------------+
 
+# 银行对账
 
-Bank Reconciliation
-===================
+银行对账是将银行提供的银行对账单中的交易记录与内部记录的交易（向供应商付款或来自客户的付款）进行匹配。对于银行对账单中的每一行，可以：
 
-Bank reconciliation is the matching of bank statement lines (provided by your
-bank) with transactions recorded internally (payments to suppliers or from
-customers). For each line in a bank statement, it can be:
+匹配之前记录的付款：
+  收到客户的支票时记录付款，然后在检查银行对账单时进行匹配
+记录为新付款：
+  在处理银行对账单时创建付款的日记账分录并与相关发票进行对账
+记录为其他交易：
+  银行转账、直接收费等。
 
-matched with a previously recorded payment:
-  a payment is registered when a check is received from a customer, then
-  matched when checking the bank statement
-recorded as a new payment:
-  the payment's journal entry is created and :ref:`reconciled
-  <accounting/reconciliation>` with the related invoice when processing the
-  bank statement
-recorded as another transaction:
-  bank transfer, direct charge, etc.
+Odoo 应该自动对大多数交易进行对账，只有少数交易需要手动审查。银行对账过程完成后，Odoo 中的银行账户余额应与银行对账单的余额匹配。
 
-Odoo should automatically reconcile most transactions, only a few of them
-should need manual review. When the bank reconciliation process is finished,
-the balance on the bank account in Odoo should match the bank statement's
-balance.
+.. rst-class:: checks-handling
+
+# 支票处理
+
+有两种方法管理支票和内部电汇：
+
+* 两个日记账分录和一个对账
+* 一个日记账分录和一个银行对账
+
+.. h:div:: doc-aside
+
+   第一个日记账分录是通过在发票上注册付款创建的。第二个是在注册银行对账单时创建的。
+
+   .. rst-class:: table-sm d-c-table
+
+   +-------------------------+--------------+------------+---------------+
+   | 账户                    | 借项         | 贷项       | 对账          |
+   +=========================+==============+============+===============+
+   | 应收账款                |              | 100        | 发票ABC       |
+   +-------------------------+--------------+------------+---------------+
+   | 未存入资金              | 100          |            | 支票0123      |
+   +-------------------------+--------------+------------+---------------+
+
+   .. rst-class:: table-sm d-c-table
+
+   +-------------------------+--------------+------------+---------------+
+   | 账户                    | 借项         | 贷项       | 对账          |
+   +=========================+==============+============+===============+
+   | 未存入资金              |              | 100        | 支票0123      |
+   +-------------------------+--------------+------------+---------------+
+   | 银行                    | 100          |            |               |
+   +-------------------------+--------------+------------+---------------+
+
+.. h:div:: doc-aside
+
+   通过在发票上注册付款创建日记账分录。在对银行对账单进行对账时，对账单行链接到现有日记账分录。
+
+   .. rst-class:: table-sm d-c-table
+
+   +-------------------------+--------------+------------+---------------+---------------+
+   | 账户                    | 借项         | 贷项       | 对账          | 银行对账单    |
+   +=========================+==============+============+===============+===============+
+   | 应收账款                |              | 100        | 发票ABC       |               |
+   +-------------------------+--------------+------------+---------------+---------------+
+   | 银行                    | 100          |            |               | 对账单XYZ     |
+   +-------------------------+--------------+------------+---------------+---------------+
 
 .. rst-class:: checks-handling
 
