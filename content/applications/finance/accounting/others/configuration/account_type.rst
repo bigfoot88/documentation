@@ -1,80 +1,69 @@
 ==================================================
-What is an account type and how do I configure it?
+账户类型及其配置方法
 ==================================================
 
-What is an account type ? 
-==========================
+什么是账户类型？
+=================
 
-An account type is a name or code given to an account that indicates the
-account's purpose.
+账户类型是指给账户分配的名称或代码，用于指示该账户的用途。
 
-In Odoo, Account Types are used for information purpose, to generate
-country-specific legal reports, set the rules to close a fiscal year and
-generate opening entries.
+在 Odoo 中，账户类型用于信息目的，生成特定国家的法律报告，设置结算年度规则，并生成期初分录。
 
-Basically Account types categorize general account with some specific
-category according to its behaviour or purpose.
+基本上，账户类型根据其行为或用途对总账户进行特定类别的分类。
 
-Which are the account types in Odoo ?
-=====================================
+Odoo 中有哪些账户类型？
+=========================
 
-Odoo covers all accounting types. Therefore, you cannot create new
-account types. Just pick the one related to your account.
+Odoo 包含所有的账户类型，因此您无法创建新的账户类型。只需选择与您的账户相关的类型即可。
 
 +-----------------------------+
-| **List of account types**   |
+| **账户类型列表**            |
 +=============================+
-| Receivable                  |
+| 应收账款                    |
 +-----------------------------+
-| Payable                     |
+| 应付账款                    |
 +-----------------------------+
-| Bank and Cash               |
+| 银行和现金                  |
 +-----------------------------+
-| Current Assets              |
+| 流动资产                    |
 +-----------------------------+
-| Non-current Assets          |
+| 非流动资产                  |
 +-----------------------------+
-| Prepayments                 |
+| 预付款                      |
 +-----------------------------+
-| Fixed Assets                |
+| 固定资产                    |
 +-----------------------------+
-| Current Liabilities         |
+| 流动负债                    |
 +-----------------------------+
-| Non-current Liabilities     |
+| 非流动负债                  |
 +-----------------------------+
-| Equity                      |
+| 权益                        |
 +-----------------------------+
-| Current Year Earnings       |
+| 当年收益                    |
 +-----------------------------+
-| Other Income                |
+| 其他收入                    |
 +-----------------------------+
-| Income                      |
+| 收入                        |
 +-----------------------------+
-| Depreciation                |
+| 折旧                        |
 +-----------------------------+
-| Expenses                    |
+| 费用                        |
 +-----------------------------+
-| Direct Costs                |
+| 直接成本                    |
 +-----------------------------+
 
-How do I configure my accounts?
-===============================
+如何配置我的账户？
+==================
 
-Account types are automatically created when installing a chart of
-account. By default, Odoo provides a lot of chart of accounts, just
-install the one related to your country.
+安装会计科目表时会自动创建账户类型。默认情况下，Odoo 提供大量的会计科目表，只需安装与您国家相关的科目表即可。
 
-It will install generic accounts. But if it does not cover all your
-cases, you can create your own accounts too.
+它将安装通用账户，但如果未涵盖所有情况，您也可以创建自己的账户。
 
 .. note::
 
-	If you are a Saas User, your country chart of account is
-	automatically installed.
+    如果您是 SaaS 用户，您的国家会计科目表将自动安装。
 
-To create a new accounts, go to the Accounting application. Open the
-menu :menuselection:`Adviser --> Chart of Accounts`, the click on the
-**Create** button.
+要创建新账户，请进入会计应用程序。打开菜单 :menuselection:`顾问 --> 会计科目表`，然后点击 **创建** 按钮。
 
 .. image:: ./media/type01.png
    :align: center
