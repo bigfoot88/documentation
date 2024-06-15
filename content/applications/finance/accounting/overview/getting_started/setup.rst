@@ -1,34 +1,29 @@
 =============================
-How to setup Odoo Accounting?
+如何设置 Odoo 会计？
 =============================
 
-The Odoo Accounting application has an implementation guide that you
-should follow to configure it. It's a step-by-step wizard with links to
-the different screens you will need.
+Odoo 会计应用程序有一个实施指南，您应该按照指南进行配置。它是一个逐步向导，包含指向您将需要的不同屏幕的链接。
 
-Once you have installed the Accounting application, you should click on the top-right progressbar to
-get access to the implementation guide.
+安装会计应用程序后，您应点击右上角的进度条，以访问实施指南。
 
 .. image:: ./media/setup01.png
    :align: center
 
-The implementation guide will help you through the following steps:
+实施指南将帮助您完成以下步骤：
 
-1.  Completing your company settings
-2.  Entering in your bank accounts
-3.  Selecting your chart of accounts
-4.  Confirming your usual tax rates
-5.  Setting up any foreign currencies
-6.  Importing your customers
-7.  Importing your suppliers
-8.  Importing your products
-9.  Importing your outstanding transactions
-10. Importing your starting balances
-11. Define the users for accounting
+1.  完善公司设置
+2.  输入银行账户
+3.  选择会计科目表
+4.  确认常用税率
+5.  设置任何外币
+6.  导入客户
+7.  导入供应商
+8.  导入产品
+9.  导入未完成的交易
+10. 导入初始余额
+11. 定义会计用户
 
 .. image:: ./media/setup02.png
    :align: center
 
-Once a step is done, you can click on the "Mark as Done" button, in the
-bottom of the screen. That way, you can track the progress of your
-overall configuration of Odoo.
+每完成一步，您可以点击屏幕底部的“标记为完成”按钮。这样，您可以跟踪 Odoo 配置的整体进度。
