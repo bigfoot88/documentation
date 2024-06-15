@@ -1,72 +1,50 @@
 ====================================
-How to forecast future bills to pay?
+如何预测未来需要支付的账单？
 ====================================
 
-When you get hundreds of vendor bills per month with each of them having
-different payment terms, it could be complex to follow what you have to
-pay and when. Paying your vendors too early can decrease your cash
-availabilities and paying too late can lead to extra charges.
+当你每月收到数百张供应商账单，每张账单都有不同的付款条款时，跟踪需要支付的金额和时间可能会变得非常复杂。过早支付供应商会减少你的现金可用性，而支付过晚则可能会导致额外费用。
 
-Fortunately, Odoo provides you the right tools to manage payment orders
-to vendors efficiently.
+幸运的是，Odoo 提供了有效管理供应商付款订单的工具。
 
-Configuration: payment terms
-============================
+配置：付款条款
+================
 
-In order to track the vendor conditions, we use payment terms in Odoo.
-Payment terms allow to keep track of the conditions to compute the due
-date on an invoice. As an example, a payment term can be:
+为了跟踪供应商的条件，我们在 Odoo 中使用付款条款。付款条款允许跟踪计算发票到期日的条件。例如，一个付款条款可以是：
 
--  50% within 30 days
+-  50% 在 30 天内
 
--  50% within 45 days
+-  50% 在 45 天内
 
-To create your most common payment terms, use the menu: :menuselection:`Configuration -->
-Management --> Payment Terms` in the **Accounting** application. The following
-example show a payment term of 30% directly and the balance after 30
-days.
+要创建常用的付款条款，可以在 **会计** 应用中使用菜单：:menuselection:`Configuration --> Management --> Payment Terms`。以下示例展示了直接支付 30% 的付款条款，余额在 30 天后支付。
 
 .. image:: ./media/forecast01.png
   :align: center
 
-Once payment terms are defined, you can assign them to your vendor by
-default. Set the Vendor Payment Term field on the Accounting tab of a
-vendor form. That way, every time you will purchase to this vendor, Odoo
-will propose you automatically the right payment term.
+定义付款条款后，可以将其默认分配给供应商。在供应商表单的会计标签中设置 "Vendor Payment Term" 字段。这样，每次向该供应商购买时，Odoo 会自动为你提供正确的付款条款。
 
 .. image:: ./media/forecast02.png
   :align: center
 
 .. note::
 
-    If you do not set a specific payment term on a vendor, you will still be
-    able to set a specific payment term on the vendor bill.
+    如果你没有为供应商设置特定的付款条款，你仍然可以在供应商账单上设置特定的付款条款。
 
-Forecast bills to pay with the Aged Payables report
-===================================================
+使用账龄应付账款报告预测应付账单
+=====================================
 
-In order to track amounts to be paid to the vendors, use the Aged
-Payable report. You can get it from the Reports menu of the Accounting
-application. This report gives you a summary per vendor of the amounts
-to pay, compared to their due date (the due date being computed on each
-bill using the payment term).
+为了跟踪应支付给供应商的金额，可以使用账龄应付账款报告。可以从会计应用的报告菜单中获取该报告。此报告按供应商提供了应支付金额的摘要，与其到期日进行比较（到期日是根据每张账单的付款条款计算的）。
 
 .. image:: ./media/forecast03.png
   :align: center
 
-This reports tells you how much you will have to pay within the next
-months.
+此报告告诉你在接下来的几个月里需要支付的金额。
 
-Select bills to pay
-===================
+选择需要支付的账单
+====================
 
-Using the menu :menuselection:`Purchases --> Vendor Bills`, you can get a list of vendor
-bills. Using the advanced filters, you can list all the bills that you
-should pay or the bills that are overdue (you are late on the payment).
+使用菜单 :menuselection:`Purchases --> Vendor Bills`，你可以获得供应商账单列表。使用高级筛选器，可以列出所有应支付的账单或逾期账单（你在付款上已延迟）。
 
 .. image:: ./media/forecast04.png
   :align: center
 
-From this screen, you can also switch to the pivot table or the graph
-view to get statistics on the amount due over the next month, using the
-group by "Due Date" feature.
+在此屏幕中，还可以切换到数据透视表或图表视图，使用 "Due Date" 分组功能获取下个月到期金额的统计数据。
