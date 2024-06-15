@@ -1,87 +1,67 @@
 =======================================================
-How to define an installment plan on customer invoices?
+如何在客户发票上定义分期付款计划？
 =======================================================
-In order to manage installment plans related to an invoice, you should
-use payment terms in Odoo. They apply on both customer invoices and
-supplier bills.
+为了管理与发票相关的分期付款计划，您应该在 Odoo 中使用付款条件。它们适用于客户发票和供应商账单。
 
-Example, for a specific invoice:
+例如，对于某张特定的发票：
 
--  Pay 50% within 10 days
--  Pay the remaining balance within 30 days
+-  10天内支付50%
+-  30天内支付剩余余额
 
 .. note::
 
-	payment terms are not to be confused with a payment in several parts. If,
-	for a specific order, you invoice the customer in two parts, that's not a
-	payment term but an invoice policy.
+	付款条件不要与分期付款混淆。如果对于某个特定订单，您分两次向客户开具发票，这不是付款条件，而是发票政策。
 
-Configuration
+配置
 =============
 
-Configure your usual installment plans from the application :menuselection:`Accounting -->
-Configuration > Payment Terms`.
+在应用程序中配置常用的分期付款计划：:menuselection:`会计 --> 配置 > 付款条件`。
 
-A payment term may have one line (eg: 21 days) or several lines (10%
-within 3 days and the balance within 21 days). If you create a payment
-term with several lines, make sure the latest one is the balance. (avoid
-doing 50% in 10 days and 50% in 21 days because, with the rounding, it
-may not compute exactly 100%)
+一个付款条件可以有一行（例如：21天）或多行（3天内支付10%，21天内支付余额）。如果您创建了包含多行的付款条件，请确保最后一行是余额（避免设置为10天内支付50%和21天内支付50%，因为四舍五入可能不会精确到100%）。
 
 .. image:: ./media/installment01.png
   :align: center
 
 .. tip::
 
-	The description of the payment term will appear on the invoice or the sale order.
+	付款条件的描述将出现在发票或销售订单上。
 
-Payment terms for customers
+客户的付款条件
 ===========================
 
-You can set payment terms on:
+您可以在以下地方设置付款条件：
 
-- **a customer**: the payment term automatically applies on new sales
-  orders or invoices for this customer. Set payment terms on
-  customers if you grant this payment term for all future orders
-  for this customer.
+- **客户**：付款条件会自动应用于该客户的新销售订单或发票上。如果您为该客户的所有未来订单提供此付款条件，请在客户处设置付款条件。
 
-- **a quotation**: the payment term will apply on all invoices created
-  from this quotation or sale order, but not on other quotations
+- **报价单**：付款条件将适用于从此报价单或销售订单创建的所有发票，但不适用于其他报价单。
 
-- **an invoice**: the payment term will apply on this invoice only
+- **发票**：付款条件仅适用于此发票。
 
-If an invoice contains a payment term, the journal entry related to the
-invoice is different. Without payment term, an invoice of $100 will
-produce the following journal entry (for the clarity of the example, we
-did not set any tax on the invoice):
+如果发票包含付款条件，发票相关的会计分录会有所不同。没有付款条件时，100美元的发票将生成以下会计分录（为了示例清晰，发票上没有设置任何税）：
 
 +----------------------+------------+---------+----------+
-| Account              | Due date   | Debit   | Credit   |
+| 科目                 | 到期日期   | 借方    | 贷方     |
 +======================+============+=========+==========+
-| Account Receivable   |            | 100     |          |
+| 应收账款             |            | 100     |          |
 +----------------------+------------+---------+----------+
-| Income               |            |         | 100      |
+| 收入                 |            |         | 100      |
 +----------------------+------------+---------+----------+
 
-If you do an invoice the 1st of January with a payment term of 10%
-within 3 days and the balance within 30 days, you get the following
-journal entry:
+如果您在1月1日开具了一张付款条件为3天内支付10%和30天内支付余额的发票，您将得到以下会计分录：
 
 +----------------------+------------+---------+----------+
-| Account              | Due date   | Debit   | Credit   |
+| 科目                 | 到期日期   | 借方    | 贷方     |
 +======================+============+=========+==========+
-| Account Receivable   | Jan 03     | 10      |          |
+| 应收账款             | 1月3日     | 10      |          |
 +----------------------+------------+---------+----------+
-| Account Receivable   | Jan 30     | 90      |          |
+| 应收账款             | 1月30日    | 90      |          |
 +----------------------+------------+---------+----------+
-| Income               |            |         | 100      |
+| 收入                 |            |         | 100      |
 +----------------------+------------+---------+----------+
 
-On the customer statement, you will see two lines with different due
-dates. To get the customer statement, use the menu Sales > Customers
-Statement.
+在客户对账单上，您会看到两行不同到期日的条目。要获取客户对账单，请使用菜单：销售 > 客户对账单。
 
 .. seealso::
 
-	* :doc:`overview`
-	* :doc:`payment_terms`
+	* :doc:`概述`
+	* :doc:`付款条件`
