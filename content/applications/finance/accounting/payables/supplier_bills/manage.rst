@@ -1,229 +1,143 @@
 ===========================
-How to manage vendor Bills?
+如何管理供应商账单？
 ===========================
 
-The **Purchase** application allows you to manage your purchase orders,
-incoming products, and vendor bills all seamlessly in one place.
+**采购**应用允许您在一个地方无缝管理您的采购订单、入库产品和供应商账单。
 
-If you want to set up a vendor bill control process, the first thing you
-need to do is to have purchase data in Odoo. Knowing what has been
-purchased and received is the first step towards understanding your
-purchase management processes.
+如果您想要建立一个供应商账单控制流程，首先需要在 Odoo 中有采购数据。了解已采购和接收的商品是理解采购管理流程的第一步。
 
-Here is the standard work flow in Odoo:
+以下是 Odoo 的标准工作流程：
 
-1. You begin with a **Request for Quotation (RFQ)** to send out to your
-   vendor(s).
+1. 首先，向供应商发送**报价请求（RFQ）**。
 
-2. Once the vendor has accepted the RFQ, confirm the RFQ into a
-   **Purchase Order (PO)**.
+2. 一旦供应商接受了 RFQ，将其确认转换为**采购订单（PO）**。
 
-3. Confirming the PO generates an **Incoming Shipment** if you purchased
-   any stockable products.
+3. 确认采购订单会生成一个**入库运输单**，如果您购买的是库存产品。
 
-4. Upon receiving a **Vendor Bill** from your Vendor, validate the bill
-   with products received in the previous step to ensure accuracy.
+4. 收到供应商的**账单**后，核对账单与前一步收到的产品以确保准确性。
 
-This process may be done by three different people within the company,
-or only one.
+这个过程可以由公司内的三个人完成，也可以由一个人完成。
 
-Configuration
+配置
 =============
 
-Installing the Purchase and Inventory applications
+安装采购和库存应用
 --------------------------------------------------
 
-From the **Apps** application, search for the **Purchase** module and
-install it. Due to certain dependencies, installing Purchase will
-automatically install the **Inventory** and **Accounting** applications.
+在**应用**应用中，搜索**采购**模块并安装。由于某些依赖关系，安装采购模块会自动安装**库存**和**会计**应用。
 
-Creating products
+创建产品
 -----------------
 
-Creating products in Odoo is essential for quick and efficient
-purchasing within Odoo. Simply navigate to the Products submenu under
-Purchase and click create.
+在 Odoo 中创建产品对于快速高效地进行采购至关重要。只需导航到采购菜单下的产品子菜单并点击创建。
 
 .. image:: ./media/manage01.png
   :align: center
 
-When creating the product, pay attention to the **Product Type** field,
-since it is important:
+创建产品时，请注意**产品类型**字段，这一点很重要：
 
-- Products that are set as **Stockable or Consumable** will allow you
-  to keep track of their inventory levels. These options imply
-  stock management and will allow for receiving these kinds of
-  products.
+- 设置为**库存品或消耗品**的产品将允许您跟踪其库存水平。这些选项意味着库存管理，并允许接收这类产品。
 
-- Conversely, products that are set as a **Service or Digital Product**
-  will not imply stock management, simply due to the fact that
-  there is no inventory to manage. You will not be able to receive
-  products under either of these designations.
+- 相反，设置为**服务或数字产品**的产品则不涉及库存管理，因为没有库存需要管理。您将无法接收这类产品。
 
 .. tip::
 
-	It is recommended that you create a **Miscellaneous** product for all purchases
-	that occur infrequently and do not require inventory valuation or management.
-	If you create such a product, it is recommended to set the product type to **Service**.
+	建议为所有不频繁发生且不需要库存估价或管理的采购创建一个**杂项**产品。如果创建这样的产品，建议将产品类型设置为**服务**。
 
-Managing your Vendor Bills
+管理供应商账单
 ==========================
 
-Purchasing products or services
+采购产品或服务
 -------------------------------
 
-From the purchase application, you can create a purchase order with as
-many products as you need. If the vendor sends you a confirmation or
-quotation for an order, you may record the order reference number in the
-**Vendor Reference** field. This will enable you to easily match the PO
-with the the vendor bill later (as the vendor bill will probably include
-the Vendor Reference)
+在采购应用中，您可以创建包含多种产品的采购订单。如果供应商向您发送了订单确认或报价，可以在**供应商参考**字段中记录订单参考号。这样可以方便地将采购订单与供应商账单匹配（因为供应商账单可能会包含供应商参考号）。
 
 .. image:: ./media/manage02.png
   :align: center
 
-Validate the purchase order and receive the products from the Inventory
-application.
+验证采购订单并从库存应用中接收产品。
 
-Receiving Products
+接收产品
 ------------------
 
-If you purchased any stockable products that you manage the inventory
-of, you will need to receive the products from the Inventory application
-after you confirm a purchase order. From the **Inventory dashboard**, you
-should see a button linking you directly to the transfer of products.
-This button is outlined in red below:
+如果您购买了需要管理库存的库存品，在确认采购订单后，需要从库存应用中接收产品。在**库存仪表板**上，您应该会看到一个按钮，直接链接到产品转移页面。该按钮如下图中红色框所示：
 
 .. image:: ./media/manage03.png
   :align: center
 
-Navigating this route will take you to a list of all orders waiting to
-be received.
+导航到此路径将带您进入等待接收的所有订单列表。
 
 .. image:: ./media/manage04.png
   :align: center
 
-If you have a lot of awaiting orders, apply a filter using the search
-bar in the upper right. With this search bar, you may filter based on
-the vendor (partner), the product, or the source document (also known as
-the reference of your purchase order). You can also
-group the orders by different criteria under **Group By**. Selecting an
-item from this list will open the following screen where you then will
-receive the products.
+如果有很多待接收的订单，可以在右上角的搜索栏中应用筛选。通过此搜索栏，您可以根据供应商（合作伙伴）、产品或源单据（也称为采购订单参考号）进行筛选。您还可以在**分组依据**下按不同标准对订单进行分组。选择列表中的项目将打开以下屏幕，您可以在其中接收产品。
 
 .. image:: ./media/manage05.png
   :align: center
 
-Purchasing service products does not trigger a delivery order.
+采购服务产品不会触发交货单。
 
-Managing Vendor Bills
+管理供应商账单
 ---------------------
 
-When you receive a vendor bill for a previous purchase, be sure to
-record it in the Purchases application under the **Control Menu**. You
-need to create a new vendor bill even if you already registered a
-purchase order.
+收到以前采购的供应商账单时，请务必在**控制菜单**下的采购应用中记录该账单。即使已经注册了采购订单，也需要创建新的供应商账单。
 
 .. image:: ./media/manage06.png
   :align: center
 
-The first thing you will need to do upon creating a vendor bill is to
-select the appropriate vendor, since doing so will also pull up any associated
-accounting or pricelist information. From there, you can choose to
-specify one or multiple Purchase Orders to populate the Vendor Bill
-with. When you select a Purchase Order from the list, Odoo will pull any
-uninvoiced products associated to that Purchase Order and automatically
-populate that information below. If you are having a hard time finding
-the appropriate vendor bill, you may search through the list by
-inputting the vendor reference number or your internal purchase order
-number.
+创建供应商账单的第一步是选择适当的供应商，因为这样会自动提取相关的会计或价格表信息。然后，您可以选择一个或多个采购订单来填充供应商账单。选择列表中的采购订单后，Odoo 会自动提取与该采购订单相关的未开票产品，并自动填充下方的信息。如果您难以找到合适的供应商账单，可以通过输入供应商参考号或内部采购订单号在列表中搜索。
 
 .. image:: ./media/manage07.png
   :align: center
 
-While the invoice is in a draft state, you can make any modifications you
-need (i.e. remove or add product lines, modify quantities, and change
-prices).
+在发票处于草稿状态时，您可以进行任何需要的修改（例如，移除或添加产品行、修改数量、改变价格）。
 
 .. note::
 
-	Your vendor may send you several bills for the same Purchase Order if:
-	
-	1. Your vendor is in back-order and is sending you invoices as they ship the products.
-	2. Your vendor is sending you a partial bill or asking for a deposit.
+	您的供应商可能会为同一个采购订单发送多张账单，如果：
 
-Every time you record a new vendor bill, Odoo will automatically
-populate the product quantities based on what has been received from the
-vendor. If this value is showing a zero, this means that you have not
-yet received this product and simply serves as a reminder that the
-product is not in hand and you may need to inquire further into this. At
-any point in time, before you validate the Vendor Bill, you may override
-this zero quantity.
+	1. 供应商有未交货订单，并在发货时发送发票。
+	2. 供应商发送部分账单或要求预付款。
 
-Vendor Bill Matching
+每次记录新的供应商账单时，Odoo 会根据从供应商收到的产品自动填充产品数量。如果此数量显示为零，则表示您尚未收到此产品，这仅作为提醒，提醒您该产品尚未到手，您可能需要进一步查询。在验证供应商账单之前，您可以随时覆盖此零数量。
+
+供应商账单匹配
 ====================
 
-What to do if your vendor bill does not match what you received
+如果供应商账单与收到的产品不匹配怎么办
 ---------------------------------------------------------------
 
-If the bill you receive from the vendor has quantities that do not match
-the quantities automatically populated by Odoo, this could be due to
-several reasons:
+如果您从供应商处收到的账单数量与 Odoo 自动填充的数量不匹配，可能有以下几种原因：
 
-- The vendor is incorrectly charging you for products and/or services
-  that you have not ordered.
+- 供应商错误地向您收费未订购的产品和/或服务。
+- 供应商向您收费的产品可能尚未收到，因为开票控制可能基于已订购或已收到的数量。
+- 供应商未向您开具之前购买产品的账单。
 
-- The vendor is billing you for products that you might not have
-  received yet, as the invoicing control may be based on ordered or
-  received quantities.
+在这些情况下，建议您核实账单和供应商的任何相关采购订单，确保其准确，并了解您已订购和已收到的商品。
 
-- The vendor did not bill you for previously purchased products.
+如果您无法找到与供应商账单相关的采购订单，可能有以下几个原因：
 
-In these instances it is recommended that you verify that the bill, and
-any associated purchase order to the vendor, are accurate and that you
-understand what you have ordered and what you have already received.
+- 供应商已经为此采购订单开具了发票，因此不会在选择中出现。
+- 公司内有人忘记为此供应商记录采购订单。
+- 供应商向您收费的产品未订购。
 
-If you are unable to find a purchase order related to a vendor bill,
-this could be due to one of a few reasons:
-
-- The vendor has already invoiced you for this purchase order;
-  therefore it is not going to appear anywhere in the selection.
-
-- Someone in the company forgot to record a purchase order for this
-  vendor.
-
-- The vendor is charging you for something you did not order.
-
-
-
-How product quantities are managed
+产品数量管理方式
 ----------------------------------
 
-By default, services are managed based on ordered quantities, while
-stockables and consumables are managed based on received quantities.
+默认情况下，服务基于订购数量管理，而库存品和消耗品基于收到的数量管理。
 
-If you need to manage products based on ordered quantities over received
-quantities, you will need to belong to the group **Purchase Manager**.
-Ask your system administrator to enable these access on :menuselection:`Settings
---> Users --> Users --> Access Rights`. Once you belong to the correct group,
-select the product(s) you wish to modify, and you should see a new field appear,
-labeled **Control Purchase Bills**.
+如果需要根据订购数量而非收到数量管理产品，您需要属于**采购经理**组。请系统管理员在:menuselection:`设置 --> 用户 --> 用户 --> 访问权限`中启用这些访问权限。一旦您属于正确的组，选择要修改的产品，您应该会看到一个新字段，标记为**控制采购账单**。
 
 .. image:: ./media/manage08.png
   :align: center
 
-You can then change the default management method for the selected
-product to be based on either:
+然后，您可以将所选产品的默认管理方法更改为基于：
 
-- Ordered quantities
+- 订购数量
 
-- or Received quantities
+- 或收到数量
 
-Batch Billing
+批量开票
 -------------
 
-When creating a vendor bill and selecting the appropriate purchase
-order, you may continue to select additional purchase orders. Odoo
-will add the additional line items from the purchase orders you select. If you
-have not deleted the previous line items from the first purchase order,
-the bill will be linked to all the appropriate purchase orders.
+创建供应商账单并选择合适的采购订单时，可以继续选择其他采购订单。Odoo 会添加您选择的采购订单中的其他条目。如果未删除第一个采购订单的之前条目，账单将链接到所有适当的采购订单。
