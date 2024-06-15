@@ -1,63 +1,40 @@
 ====================
-Offer cash discounts
+提供现金折扣
 ====================
 
-Cash discounts are incentives you can offer to customers to motivate
-them to pay within a specific time frame. For instance, you offer a 2%
-discount if the customer pays you within the first 5 days of the
-invoice, when it is due in 30 days. This approach can greatly improve
-your average collection period.
+现金折扣是一种激励措施，可以促使客户在特定时间内付款。例如，如果客户在发票到期30天内的前5天付款，可以提供2%的折扣。这种方式可以大大改善你的平均收款周期。
 
-Set up a cash discount
+设置现金折扣
 ======================
 
-To set up a cash discount, go to :menuselection:`Accounting -->
-Configuration --> Management --> Payment Terms` and click on
-*Create*. Add a *Percent* type of term with a corresponding value
-(e.g. 98% of the total price for a 2% discount) and the number of days
-during which the offer is valid. You can also change the default balance
-term if needed.
+要设置现金折扣，请前往 :menuselection:`会计 --> 配置 --> 管理 --> 付款条款` 并点击*创建*。添加一个*百分比*类型的条款及其对应的数值（例如，总价的98%表示2%的折扣）和优惠有效的天数。如果需要，还可以更改默认的余额条款。
 
 .. image:: media/cash_discounts01.png
   :align: center
 
-Start offering the cash discount
+开始提供现金折扣
 ================================
 
-Now, you can create a customer invoice and select the cash discount
-payment term you added. Once the invoice is validated, Odoo will
-automatically split the account receivables part of the journal entry
-into two installments having different due dates. Since the discounted
-price is already calculated, your payment controls will be simplified.
+现在，你可以创建客户发票并选择刚添加的现金折扣付款条款。一旦发票被验证，Odoo将自动将应收账款部分的分录分成两期，具有不同的到期日。由于折扣价格已经计算完毕，你的付款控制将更加简化。
 
 .. image:: media/cash_discounts02.png
   :align: center
 
-Grant the cash discount
+授予现金折扣
 =======================
 
-The customer fulfilled the payment terms and therefore benefits from the
-cash discount. When you process the bank statement, match the payment
-with the related journal entry. Then, select the remaining cash discount
-and click on *Create Write-off* to reconcile it.
+客户满足了付款条款，因此可以享受现金折扣。当你处理银行对账单时，将付款与相关的分录进行匹配。然后，选择剩余的现金折扣并点击*创建核销*以对其进行调节。
 
 .. image:: media/cash_discounts03.png
   :align: center
 
 .. tip::
-  You can also create a dedicated reconciliation model to make
-  the process easier. In this case, you should add a tax to the model
-  based on the taxes applied to your invoices. This means that if you
-  handle multiple tax rates, you need to create several reconciliation
-  models. Note that depending on your localisation, you might already have
-  a Cash Discount model available by default.
+  你也可以创建一个专用的对账模型来简化这一过程。在这种情况下，你应根据发票上应用的税收为模型添加一个税收。这意味着如果你处理多种税率，则需要创建多个对账模型。请注意，根据你的本地化设置，可能已经默认提供了一个现金折扣模型。
 
-Register the full payment
+登记全额付款
 =========================
 
-In this case, the customer has not fulfilled the payment term and cannot
-benefit from the cash discount. When you process the bank statement,
-match the payment with the two related journal entries.
+在这种情况下，客户没有满足付款条款，无法享受现金折扣。当你处理银行对账单时，将付款与两个相关的分录进行匹配。
 
 .. image:: media/cash_discounts04.png
   :align: center
