@@ -1,109 +1,89 @@
 =================================
-Record exchange rates at payments
+记录支付时的汇率
 =================================
 
-Overview
+概述
 ========
 
-Any company doing international trade faces the case where the payments
-are in a different currency.
+任何从事国际贸易的公司都会遇到支付时使用不同货币的情况。
 
-After receiving their payments, you have the option to convert the
-amount into your company currency. Multi currency payment implies rates
-fluctuations. The rate differences are automatically recorded by Odoo.
+在收到付款后，可以选择将款项转换为公司的基础货币。多货币支付意味着汇率波动。Odoo 会自动记录汇率差异。
 
-Configuration
+配置
 =============
 
-Enable multi-currencies
+启用多货币
 -----------------------
 
-In the accounting module, Go to :menuselection:`Configuration --> Settings` 
-and flag **Allow multi currencies**, then click on **apply**.
+在会计模块中，进入 :menuselection:`Configuration --> Settings`，勾选 **Allow multi currencies**，然后点击 **apply**。
 
 .. image:: media/exchange_rate03.png
    :align: center
 
-Configure the currency rates in :menuselection:`Configuration --> Currencies`.
-Write down the rate and make sure the currency is active.
+在 :menuselection:`Configuration --> Currencies` 中配置汇率。填写汇率并确保货币是激活状态。
 
 .. image:: media/exchange_rate02.png
    :align: center
 
-In this document, the base currency is **Euro** and we will record payments
-in **Dollars**.
+在本文档中，基础货币是 **欧元**，我们将记录 **美元** 的付款。
 
 .. image:: media/exchange_rate08.png
    :align: center
 
 .. tip:: 
-    You can automatically fetch the currency rates from the **European
-    Central Bank** or from **Yahoo**. Please read the document : 
-    :doc:`how_it_works`.
+    你可以从 **欧洲中央银行** 或 **Yahoo** 自动获取汇率。请阅读文档 : :doc:`how_it_works`.
 
-Configure your journal
+配置日记账
 ----------------------
 
-In order to register payments in other currencies, you have to **remove
-the currency constraint** on the journal. Go to the accounting
-application, Click on **More** on the journal and **Settings**.
+为了在其他货币中登记付款，你需要**移除日记账上的货币限制**。进入会计应用，点击日记账上的 **More** 和 **Settings**。
 
 .. image:: media/exchange_rate06.png
    :align: center
 
-Check if the **Currency** field is empty or in the foreign currency in which
-you will register the payments. If a currency is filled in, it means
-that you can register payments only in this currency.
+检查 **Currency** 字段是否为空或是你将要登记付款的外币。如果填写了货币，意味着你只能在此货币中登记付款。
 
 .. image:: media/exchange_rate10.png
    :align: center
 
-Record a payment in a different currency
+记录不同货币的付款
 ========================================
 
-In the **Accounting** application, go to :menuselection:`Sales --> Payments`. 
-Register the payment and indicate that it was done in the foreign currency. Then
-click on **confirm**.
+在 **会计** 应用中，进入 :menuselection:`Sales --> Payments`。登记付款并指明是用外币支付的，然后点击 **confirm**。
 
 .. image:: media/exchange_rate05.png
    :align: center
 
-The journal entry has been posted but not allocated.
+日记账分录已经发布但未分配。
 
-Go back to your invoice (:menuselection:`Sales --> Customer Invoices`) and click on
-**Add** to allocate the payment.
+返回到你的发票 (:menuselection:`Sales --> Customer Invoices`)，点击 **Add** 以分配付款。
 
 .. image:: media/exchange_rate04.png
    :align: center
 
-Record a bank statement in a different currency
+记录不同货币的银行对账单
 ===============================================
 
-Create or import the bank statement of your payment. The **Amount** is in
-the company currency. There are two complementary fields, the **Amount currency**, 
-which is the amount that was actually paid and the **Currency** in which it was paid.
+创建或导入付款的银行对账单。**Amount** 是公司货币的金额。有两个补充字段，**Amount currency** 是实际支付的金额，**Currency** 是支付使用的货币。
 
 .. image:: media/exchange_rate07.png
    :align: center
 
-When reconciling it, Odoo will directly match the payment with the right
-**Invoice**. You will get the invoice price in the invoice currency and the
-amount in your company currency.
+在对账时，Odoo 会直接匹配付款和正确的 **Invoice**。你会看到发票货币中的发票价格和公司货币中的金额。
 
 .. image:: media/exchange_rate09.png
    :align: center
 
-Check the exchange rate differences
+检查汇率差异
 ===================================
 
-Go to :menuselection:`Adviser --> Journal Entries` and look for the **Exchange difference**
-journal entries. All the exchange rates differences are recorded in it.
+进入 :menuselection:`Adviser --> Journal Entries` 并查找 **Exchange difference** 日记账分录。所有的汇率差异都记录在其中。
 
 .. image:: media/exchange_rate01.png
    :align: center
 
 .. tip::
-    The Exchange difference journal can be changed in your accounting settings.
+    可以在会计设置中更改汇率差异日记账。
 
 .. include:: full_reconcile_warning.rst
 
