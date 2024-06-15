@@ -1,95 +1,75 @@
 ==============================
-How to manage cash basis taxes
+如何管理现金制税款
 ==============================
 
-The cash basis taxes are due when the payment has been done and not at
-the validation of the invoice (as it is the case with standard taxes).
-Reporting your income and expenses to the administration based on the
-cash basis method is legal in some countries and under some conditions.
+现金制税款在付款时缴纳，而不是在发票验证时缴纳（这是标准税款的做法）。根据现金制方法向行政部门报告收入和支出在某些国家和特定条件下是合法的。
 
-Example : You sell a product in the 1st quarter of your fiscal year and
-receive the payment the 2nd quarter of your fiscal year. Based on the
-cash basis method, the tax you have to pay to the administration is due
-for the 2nd quarter.
+例如：您在财政年度的第一个季度销售了一种产品，并在第二个季度收到付款。根据现金制方法，您需要向行政部门缴纳的税款是在第二季度。
 
-How to configure cash basis taxes ? 
+如何配置现金制税款？
 ------------------------------------
 
-You first have to activate the setting in
-:menuselection:`Accounting --> Configuration --> Settings --> Allow Tax Cash Basis`.
-You will be asked to define the Tax Cash Basis Journal.
+首先，您需要在 :menuselection:`会计 --> 配置 --> 设置 --> 允许税款现金制` 中激活此设置。系统将要求您定义税款现金制日记账。
 
 .. image:: media/cash_basis_taxes01.png
     :width: 5.04688in
     :height: 0.79688in
     :align: center
 
-Once this is done, you can configure your taxes in
-:menuselection:`Accounting --> Configuration --> Taxes`.
-At first set the proper transitional accounts to post taxes
-until you register the payment.
+激活设置后，您可以在 :menuselection:`会计 --> 配置 --> 税款` 中配置您的税款。首先设置适当的过渡账户，以便在您注册付款之前过账税款。
 
 .. image:: media/cash_basis_taxes02.png
     :align: center
 
-In the *Advanced Options* tab you will turn *Tax Due* to
-*Based on Payment*. You will then have to
-define the *Tax Received* account in which to post the tax amount
-when the payment is received and the *Base Tax Received Account*
-to post the base tax amount for an accurate tax report.
+在 *高级选项* 选项卡中，将 *税款到期* 设置为 *基于付款*。然后，您需要定义 *税款已收账户* 以在收到付款时过账税款金额，并定义 *基础税款已收账户* 以过账基础税款金额，以便生成准确的税款报告。
 
 .. image:: media/cash_basis_taxes03.png
     :align: center
 
-What is the impact of cash basis taxes in my accounting ? 
+现金制税款对我的会计有何影响？
 ----------------------------------------------------------
 
-Let’s take an example. You make a sale of $100 with a 15% cash basis
-tax. When you validate the customer invoice, the following entry is
-created in your accounting:
+让我们举个例子。您以 100 美元的价格销售了一件商品，适用 15% 的现金制税款。当您验证客户发票时，您的会计中会生成以下分录：
 
 +-----------------------------+---------------------------+
-| Customer Invoices Journal   |                           |
+| 客户发票日记账               |                           |
 +=============================+===========================+
-| **Debit**                   | **Credit**                |
+| **借方**                    | **贷方**                 |
 +-----------------------------+---------------------------+
-| Receivables $115            |                           |
+| 应收账款 115 美元            |                           |
 +-----------------------------+---------------------------+
-|                             | Temporary Tax Account $15 |
+|                             | 临时税款账户 15 美元      |
 +-----------------------------+---------------------------+
-|                             | Income Account $100       |
+|                             | 收入账户 100 美元         |
 +-----------------------------+---------------------------+
 
-A few days later, you receive the payment:
+几天后，您收到付款：
 
 +----------------+--------------------+
-| Bank Journal   |                    |
+| 银行日记账     |                    |
 +================+====================+
-| **Debit**      | **Credit**         |
+| **借方**       | **贷方**          |
 +----------------+--------------------+
-| Bank $115      |                    |
+| 银行 115 美元  |                    |
 +----------------+--------------------+
-|                | Receivables $115   |
+|                | 应收账款 115 美元  |
 +----------------+--------------------+
 
-When you reconcile the invoice and the payment, this entry is generated:
+当您对账发票和付款时，会生成以下分录：
 
 +--------------------------+----------------------------+
-| Tax Cash Basis Journal                                |
+| 税款现金制日记账                                         |
 +==========================+============================+
-| **Debit**                | **Credit**                 |
+| **借方**                 | **贷方**                  |
 +--------------------------+----------------------------+
-| Temporary Tax Account $15|                            |
+| 临时税款账户 15 美元     |                            |
 +--------------------------+----------------------------+
-|                          | Tax Received Account $15   |
+|                          | 税款已收账户 15 美元       |
 +--------------------------+----------------------------+
-| Income Account $100      |                            |
+| 收入账户 100 美元        |                            |
 +--------------------------+----------------------------+
-|                          | Income Account $100        |
+|                          | 收入账户 100 美元           |
 +--------------------------+----------------------------+
 
 .. tip::
-    The last two journal items are neutral but they are needed to insure 
-    correct tax reports in Odoo with accurate base tax amounts.
-    We advise to use a default revenue account.
-    The balance of this account will then always be at zero.
+    最后两项日记账项目是中性的，但它们对于在 Odoo 中确保正确的税款报告和准确的基础税款金额是必需的。我们建议使用默认的收入账户。此账户的余额将始终为零。
