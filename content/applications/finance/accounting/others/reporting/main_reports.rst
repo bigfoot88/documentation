@@ -1,155 +1,116 @@
 ====================================
-What are the main reports available?
+有哪些主要的报告？
 ====================================
 
-Besides the reports created specifically in each localisation module, a
-few very useful **generic** and **dynamic reports** are available for all
-countries :
+除了在各个本地化模块中专门创建的报告外，还有一些非常有用的**通用**和**动态报告**适用于所有国家：
 
--  **Balance Sheet**
--  **Profit and Loss**
--  **Chart of Account**
--  **Executive Summary**
--  **General Ledger**
--  **Aged Payable**
--  **Aged Receivable**
--  **Cash Flow Statement**
--  **Tax Report**
--  **Bank Reconciliation**
+-  **资产负债表**
+-  **损益表**
+-  **科目表**
+-  **执行摘要**
+-  **总账**
+-  **应付账龄分析**
+-  **应收账龄分析**
+-  **现金流量表**
+-  **税务报告**
+-  **银行对账单**
 
-You can annotate every reports to print them and report to your adviser.
-Export to xls to manage extra analysis. Drill down in the reports to see
-more details (payments, invoices, journal items, etc.).
+你可以注释每个报告来打印它们并报告给你的顾问。导出到 xls 以进行额外分析。深入查看报告以了解更多详细信息（付款、发票、会计分录等）。
 
-You can also compare values with another period. Choose how many periods
-you want to compare the chosen time period with. You can choose up to 12
-periods back from the date of the report if you don't want to use the
-default **Previous 1 Period** option.
+你还可以将数值与另一个时期进行比较。选择要与所选时间段比较的时期数。你可以选择报告日期前最多 12 个时期，而不是使用默认的**前一个时期**选项。
 
-Balance Sheet
+资产负债表
 -------------
 
-The **Balance Sheet** shows a snapshot of the assets, liabilities and equity
-of your organisation as at a particular date.
+**资产负债表**显示在特定日期你组织的资产、负债和权益的快照。
 
 .. image:: media/main_reports09.png  
    :align: center
 
-Profit and Loss
+损益表
 ---------------
 
-The **Profit and Loss** report (or **Income Statement**) shows your
-organisation's net income, by deducting expenses from revenue for the
-report period.
+**损益表**（或**收入表**）通过扣除报告期间的费用，从而显示你组织的净收入。
 
 .. image:: media/main_reports10.png  
    :align: center
 
-Chart of account
+科目表
 ----------------
 
-A listing of all your accounts grouped by class.
+列出了按类别分组的所有账户。
 
 .. image:: media/main_reports08.png  
    :align: center
 
-Executive Summary
+执行摘要
 -----------------
 
-The **Executive Summary** allows for a quick look at all the important
-figures you need to run your company.
+**执行摘要**允许快速查看运行公司所需的所有重要数据。
 
-In very basic terms, this is what each of the items in this section is
-reporting :
+简单来说，本节中每个项目报告的是：
 
-- **Performance:**
-    - **Gross profit margin:**
-        The contribution each individual sale made
-        by your business less any direct costs needed to make those sales
-        (things like labour, materials, etc).
-    - **Net profit margin:** 
-        The contribution each individual sale made by
-        your business less any direct costs needed to make those sales,
-        as well as any fixed overheads your company has (things like
-        rent, electricity, taxes you need to pay as a result of those
-        sales).
-    - **Return on investment (p.a.):** 
-        The ratio of net profit made, to the
-        amount of assets the company used to make those profits.
-- **Position:**
-    - **Average debtor days:** 
-        The average number of days it takes your
-        customers to pay you (fully), across all your customer invoices.
-    - **Average creditor days:**
-        The average number of days it takes you to
-        pay your suppliers (fully) across all your bills.
-    - **Short term cash forecast:** 
-        How much cash is expected in or out of
-        your organisation in the next month i.e. balance of your **Sales
-        account** for the month less the balance of your **Purchases account**
-        for the month.
-    - **Current assets to liabilities:** 
-        Also referred to as **current ratio**, this is the ratio 
-        of current assets (assets that could be
-        turned into cash within a year) to the current liabilities
-        (liabilities which will be due in the next year). This is
-        typically used as as a measure of a company's ability to service
-        its debt.
+- **业绩：**
+    - **毛利率：**
+        每笔销售在扣除产生这些销售所需的直接成本（如劳动力、材料等）后为你的业务带来的贡献。
+    - **净利率：**
+        每笔销售在扣除产生这些销售所需的直接成本以及公司所有固定开销（如租金、电费、因这些销售需要支付的税款）后的贡献。
+    - **投资回报率（年）：**
+        净利润与公司用来创造这些利润的资产金额的比率。
+- **财务状况：**
+    - **平均应收账款天数：**
+        客户支付你所有发票所需的平均天数。
+    - **平均应付账款天数：**
+        你支付供应商所有账单所需的平均天数。
+    - **短期现金预测：**
+        预计下个月你组织的现金流入或流出，即**销售账户**的月余额减去**采购账户**的月余额。
+    - **流动比率：**
+        也称为**当前比率**，这是流动资产（可以在一年内变现的资产）与流动负债（将在下一年到期的负债）的比率。通常用作公司偿还债务能力的衡量标准。
 
 .. image:: media/main_reports01.png  
    :align: center
 
-General Ledger
+总账
 --------------
 
-The **General Ledger Report** shows all transactions from all accounts for a
-chosen date range. The initial summary report shows the totals for each
-account and from there you can view a detailed transaction report or any
-exceptions. This report is useful for checking every transaction that
-occurred during a certain period of time.
+**总账报告**显示选定日期范围内所有账户的所有交易。初步汇总报告显示每个账户的总额，你可以从中查看详细交易报告或任何例外情况。此报告对于检查某个时期内发生的每笔交易非常有用。
 
 .. image:: media/main_reports05.png  
    :align: center
 
-Aged Payable
+应付账龄分析
 ------------
 
-Run the **Aged Payable Details** report to display information on individual
-bills, credit notes and overpayments owed by you, and how long these
-have gone unpaid.
+运行**应付账龄详细信息**报告以显示你所欠的单个账单、贷项通知单和超额付款，以及这些账单未支付的时间。
 
 .. image:: media/main_reports02.png  
    :align: center
 
-Aged Receivable
+应收账龄分析
 ---------------
 
-The **Aged Receivables** report shows the sales invoices that were awaiting
-payment during a selected month and several months prior.
+**应收账龄分析**报告显示选定月份及之前几个月等待支付的销售发票。
 
 .. image:: media/main_reports07.png  
    :align: center
 
-Cash Flow Statement
+现金流量表
 -------------------
 
-The **Cash Flow Statement** shows how changes in balance sheet accounts and
-income affect cash and cash equivalents, and breaks the analysis down to
-operating, investing and financing activities.
+**现金流量表**显示资产负债表账户和收入的变动如何影响现金和现金等价物，并将分析分解为经营、投资和融资活动。
 
 .. image:: media/main_reports03.png  
    :align: center
 
-Tax Report
+税务报告
 ----------
 
-This report allows you to see the **net** and **tax amounts** for all the taxes
-grouped by type (sale/purchase).
+此报告允许你查看按类型（销售/采购）分组的所有税种的**净额**和**税额**。
 
 .. image:: media/main_reports04.png  
    :align: center
 
-Bank Reconciliation
+银行对账单
 -------------------
 
 .. image:: media/main_reports06.png  
