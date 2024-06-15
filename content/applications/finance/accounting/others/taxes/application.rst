@@ -1,83 +1,65 @@
 ==========================================================
-How to adapt taxes to my customer status or localization
+如何根据客户身份或所在地调整税收
 ==========================================================
 
-Most often sales tax rates depend on your customer status or localization.
-To map taxes, Odoo brings the so-called *Fiscal Positions*. 
+大多数情况下，销售税率取决于客户的身份或所在地。为了映射税收，Odoo 引入了所谓的 *税务位置*。
 
-Create tax mapping
+创建税收映射
 ==================
 
-A fiscal position is just a set of rules that maps default taxes (as defined
-on product form) into other taxes. In the screenshot below, foreign customers
-get a 0% tax instead of the default 15%, for both sales and purchases.
+税务位置是一组规则，用于将默认税（在产品表单中定义）映射为其他税。在下图中，国外客户的税率从默认的 15% 变为 0%，无论是销售还是采购。
 
 .. image:: media/application02.png
    :align: center
 
-The main fiscal positions are automatically created according to your
-localization. But you may have to create fiscal positions for specific use cases.
-To define fiscal positions, go to
-:menuselection:`Invoicing/Accounting --> Configuration --> Fiscal Positions`.
+主要的税务位置会根据您的所在地自动创建。但在一些特定情况下，您可能需要创建特定用途的税务位置。要定义税务位置，请前往 :menuselection:`Invoicing/Accounting --> Configuration --> Fiscal Positions`。
 
 .. note::
-    If you use Odoo Accounting, you can also map the Income/Expense accounts according to the fiscal
-    position. For example, in some countries, revenues from sales are not posted in
-    the same account than revenues from sales in foreign countries.
+    如果您使用 Odoo Accounting，您还可以根据税务位置映射收入/支出账户。例如，在某些国家，来自销售的收入不会与来自国外销售的收入记入相同的账户。
 
-Adapt taxes to your customer status
+根据客户身份调整税收
 ===================================
 
-If a customer falls into a specific taxation rule, you need to apply a tax-mapping.
-To do so, create a fiscal position and assign it to your customers.
+如果某客户符合特定的税收规则，您需要应用税收映射。为此，创建一个税务位置并将其分配给您的客户。
 
 .. image:: media/application01.png
    :align: center
 
-Odoo will use this specific fiscal position for any order/invoice recorded for the customer.
+Odoo 将使用这个特定的税务位置来处理客户的所有订单/发票。
 
 .. note:: 
-    If you set the fiscal position in the sales order or invoice manually, it will only
-    apply to this document and not to future orders/invoices of the same customer.
+    如果您在销售订单或发票中手动设置税务位置，它只会应用于该文件，而不会应用于同一客户的未来订单/发票。
 
-Adapt taxes to your customer address (destination-based)
+根据客户地址（基于目的地）调整税收
 ========================================================
 
-Depending on your localization, sales taxes may be origin-based or destination-based.
-Most states or countries require you to collect taxes at the rate of the destination
-(i.e. your buyer’s address) while some others require to collect them at the rate effective
-at the point of origin (i.e. your office or warehouse).
+根据您的所在地，销售税可能是基于原产地的，也可能是基于目的地的。大多数州或国家要求您按照目的地（即买家的地址）的税率收取税款，而其他一些则要求按照原产地（即您的办公室或仓库）的税率收取税款。
 
-If you are under the destination-based rule, create one fiscal position per tax-mapping to apply.
+如果您适用基于目的地的规则，请为每个税收映射创建一个税务位置。
 
-* Check the box *Detect Automatically*.
-* Select a country group, country, state or city to trigger the tax-mapping.
+* 勾选 *自动检测* 选项。
+* 选择一个国家组、国家、州或城市以触发税收映射。
 
 .. image:: media/application04.png
    :align: center
 
-This way if no fiscal position is set on the customer, Odoo will choose the fiscal position matching the
-shipping address on creating an order.
+这样，如果客户未设置税务位置，Odoo 会在创建订单时根据送货地址选择匹配的税务位置。
 
 .. note::
-    For eCommerce orders, the tax of the visitor's cart will automatically
-    update and apply the new tax after the visitor has logged in or filled
-    in his shipping address.
+    对于电子商务订单，访客的购物车税收会在访客登录或填写送货地址后自动更新并应用新税收。
 
-Specific use cases
+特定用例
 ==================
 
-If, for some fiscal positions, you want to remove a tax, instead of
-replacing by another, just keep the *Tax to Apply* field empty.
+如果在某些税务位置，您想删除某个税而不是替换为另一个税，只需将 *要应用的税* 字段留空。
 
 .. image:: media/application03.png
    :align: center
 
-If, for some fiscal positions, you want to replace a tax by two other
-taxes, just create two lines having the same *Tax on Product*.
+如果在某些税务位置，您想用两个其他税替换一个税，只需创建两行具有相同 *产品税* 的记录。
 
 .. note::
-  The fiscal positions are not applied on assets and deferred revenues.
+  税务位置不适用于资产和递延收入。
 
 .. seealso::
 
