@@ -1,136 +1,101 @@
 =================================
-Overview of the invoicing process
+概览：发票流程
 =================================
 
-Depending on your business and the application you use, there are
-different ways to automate the customer invoice creation in Odoo.
-Usually, draft invoices are created by the system (with information
-coming from other documents like sales order or contracts) and
-accountant just have to validate draft invoices and send the invoices in
-batch (by regular mail or email).
+根据您的业务类型和所使用的应用程序，有多种方法可以在 Odoo 中自动创建客户发票。通常，系统会根据其他文档（如销售订单或合同）生成草稿发票，会计人员只需验证草稿发票并批量发送发票（通过普通邮件或电子邮件）。
 
-Depending on your business, you may opt for one of the following way to
-create draft invoices:
+根据您的业务，您可以选择以下一种方式来创建草稿发票：
 
-Sales
+销售
 =====
 
-Sales Order ‣ Invoice
+销售订单 ‣ 发票
 ---------------------
 
-In most companies, salespeople create quotations that become sales order
-once they are validated. Then, draft invoices are created based on the
-sales order. You have different options like:
+在大多数公司中，销售人员创建的报价单在验证后变为销售订单。然后，系统根据销售订单生成草稿发票。您有多种选择，例如：
 
--  Invoice manually: use a button on the sale order to trigger the draft
-   invoice
+-  手动开具发票：使用销售订单上的按钮触发草稿发票
 
--  Invoice before delivery: invoice the full order before triggering the
-   delivery order
+-  发货前开具发票：在触发发货订单前对整个订单进行开票
 
--  Invoice based on delivery order: see next section
+-  基于发货订单开具发票：详见下一节
 
-Invoice before delivery is usually used by the eCommerce application
-when the customer pays at the order and we deliver afterwards.
-(pre-paid)
+发货前开具发票通常用于电商应用，当客户在订单中付款且之后我们再进行发货（预付款）。
 
-For most other use cases, it's recommended to invoice manually. It
-allows the salesperson to trigger the invoice on demand with options:
-invoice the whole order, invoice a percentage (advance), invoice some
-lines, invoice a fixed advance.
+对于大多数其他用例，建议手动开具发票。它允许销售人员按需触发发票，选项包括：对整个订单开票、按百分比开票（预付款）、对某些行开票、固定预付款开票。
 
-This process is good for both services and physical products.
+这个过程适用于服务和实物产品。
 
-.. todo:: Read more: *Invoice based on sales orders.*
+.. todo:: 阅读更多内容：*基于销售订单开具发票*。
 
-Sales Order ‣ Delivery Order ‣ Invoice
+销售订单 ‣ 发货订单 ‣ 发票
 --------------------------------------
 
-Retailers and eCommerce usually invoice based on delivery orders,
-instead of sales order. This approach is suitable for businesses where
-the quantities you deliver may differs from the ordered quantities:
-foods (invoice based on actual Kg).
+零售商和电商通常基于发货订单而非销售订单开具发票。这种方法适用于实际交付量可能与订单量不同的业务：例如食品（基于实际千克数开票）。
 
-This way, if you deliver a partial order, you only invoice for what you
-really delivered. If you do back orders (deliver partially and the rest
-later), the customer will receive two invoices, one for each delivery
-order.
+这样，如果您部分交付订单，则仅对实际交付的部分开票。如果进行后续订单（部分交付，剩余部分稍后交付），客户将收到两张发票，每个发货订单对应一张发票。
 
-.. todo:: Read more: *Invoice based on delivery orders.*
+.. todo:: 阅读更多内容：*基于发货订单开具发票*。
 
-eCommerce Order ‣ Invoice
+电商订单 ‣ 发票
 -------------------------
 
-An eCommerce order will also trigger the creation of the order when it
-is fully paid. If you allow paying orders by check or wire transfer,
-Odoo only creates an order and the invoice will be triggered once the
-payment is received.
+当电商订单全额支付时也会触发订单创建。如果您允许通过支票或电汇支付订单，Odoo 只会在收到付款后创建订单并触发发票。
 
-Contracts
+合同
 =========
 
-Regular Contracts ‣ Invoices
+常规合同 ‣ 发票
 ----------------------------
 
-If you use contracts, you can trigger invoice based on time and material
-spent, expenses or fixed lines of services/products. Every month, the
-salesperson will trigger invoice based on activities on the contract.
+如果您使用合同，可以根据时间和材料消耗、费用或固定的服务/产品项来触发发票。每个月，销售人员会根据合同上的活动触发发票。
 
-Activities can be:
+活动可以包括：
 
--  fixed products/services, coming from a sale order linked to this contract
+-  固定的产品/服务，来源于与此合同关联的销售订单
 
--  materials purchased (that you will re-invoiced)
+-  购买的材料（您将重新开票）
 
--  time and material based on timesheets or purchases (subcontracting)
+-  基于时间和材料的工作，来源于工时报表或采购单（分包）
 
--  expenses like travel and accommodation that you re-invoice to the customer
+-  例如旅行和住宿的费用，您将重新开票给客户
 
-You can invoice at the end of the contract or trigger intermediate
-invoices. This approach is used by services companies that invoice
-mostly based on time and material. For services companies that invoice
-on fix price, they use a regular sales order.
+您可以在合同结束时开票或触发中间发票。这种方法适用于主要基于时间和材料开票的服务公司。对于按固定价格开票的服务公司，则使用常规销售订单。
 
-.. todo:: Read more:
-	-  *How to invoice based on time and material?*
-	-  *How to manage contracts and invoicing plans?*
+.. todo:: 阅读更多内容：
+	-  *如何基于时间和材料开票？*
+	-  *如何管理合同和开票计划？*
 
-Recurring Contracts ‣ Invoices
+周期性合同 ‣ 发票
 ------------------------------
 
-For subscriptions, an invoice is triggered periodically, automatically.
-The frequency of the invoicing and the services/products invoiced are
-defined on the contract.
+对于订阅，每隔一段时间自动触发发票。发票的频率和开票的服务/产品在合同中定义。
 
-.. todo:: Read more: *Subscription based invoicing.*
+.. todo:: 阅读更多内容：*基于订阅的开票*。
 
-Others
+其他
 ======
 
-Creating an invoice manually
+手动创建发票
 ----------------------------
 
-Users can also create invoices manually without using contracts or a
-sales order. It's a recommended approach if you do not need to manage
-the sales process (quotations), or the delivery of the products or
-services.
+用户也可以在不使用合同或销售订单的情况下手动创建发票。如果您不需要管理销售流程（报价单），或产品或服务的交付，这是推荐的方法。
 
-Even if you generate the invoice from a sales order, you may need to
-create invoices manually in exceptional use cases:
+即使您从销售订单生成发票，在特殊情况下也可能需要手动创建发票：
 
--  if you need to create a refund
+-  如果您需要创建退款
 
--  If you need to give a discount
+-  如果您需要提供折扣
 
--  if you need to change an invoice created from a sales order
+-  如果您需要更改从销售订单创建的发票
 
--  if you need to invoice something not related to your core business
+-  如果您需要对与核心业务无关的内容开票
 
-Specific modules
-----------------
+特定模块
+----------------------------
 
-Some specific modules are also able to generate draft invoices:
+某些特定模块也能够生成草稿发票：
 
--  **membership**: invoice your members every year
+-  **会员**：每年为您的会员开票
 
--  **repairs**: invoice your after-sale services
+-  **维修**：为您的售后服务开票
