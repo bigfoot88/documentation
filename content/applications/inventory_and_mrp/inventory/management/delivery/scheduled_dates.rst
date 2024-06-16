@@ -1,154 +1,107 @@
 ============================================
-How is the scheduled delivery date computed?
+如何计算预定交货日期？
 ============================================
 
-Scheduled dates are computed in order to be able to plan deliveries,
-receptions and so on. Depending on the habits of your company Odoo
-automatically generates scheduled dates via the scheduler. The Odoo
-scheduler computes everything per line, whether it's a manufacturing
-order, a delivery order, a sale order, etc. The dates that are computed
-are dependent on the different leads times configured in Odoo.
+预定日期的计算是为了能够计划交货、接收等。根据公司的习惯，Odoo通过调度器自动生成预定日期。Odoo调度器按行计算所有内容，无论是制造订单、交货订单、销售订单等。计算的日期依赖于Odoo中配置的不同提前期。
 
-Configuring lead times
+配置提前期
 ======================
 
-Configuring **lead times** is a first essential move in order to compute
-scheduled dates. Lead times are the delays (in term of delivery,
-manufacturing, ...) promised to your different partners and/or clients.
+配置**提前期**是计算预定日期的第一步。提前期是承诺给不同合作伙伴和/或客户的延迟（交货、制造等）。
 
-Configuration of the different lead times are made as follows:
+不同提前期的配置如下：
 
-At a product level
+产品层面
 ------------------
 
--  **Supplier lead time**:
+- **供应商提前期**：
 
-Is the time needed for the supplier to deliver your purchased product.
-To configure the supplier lead time select a product, and go in the
-**Inventory** tab. You will have to add a vendor to your product in order
-to select a supplier lead time.
+这是供应商交付采购产品所需的时间。要配置供应商提前期，请选择一个产品，并进入**库存**标签。您需要为产品添加一个供应商，以选择供应商提前期。
 
 .. image:: media/scheduled_dates05.png
    :align: center
 
 .. tip:: 
-    Do not forget that it is possible to add different vendors and thus
-    different delivery lead times depending on the vendor.
+    请记住，可以添加不同的供应商，因此可以根据供应商设置不同的交货提前期。
 
-Once a vendor is selected, just open its form and fill its **Delivery lead
-time**. In this case security days have no influence, the scheduled
-delivery days will be equal to: **Date** of the purchase order + **Delivery
-Lead Time**.
+选择供应商后，只需打开其表单并填写其**交货提前期**。在这种情况下，安全天数没有影响，预定交货日期将等于：采购订单的**日期** + **交货提前期**。
 
 .. image:: media/scheduled_dates02.png
    :align: center
 
--  **Customer lead time**:
+- **客户提前期**：
 
-Customer lead time is the time needed to get your product from your
-store / warehouse to your customer. It can be configured for any
-product. Simply select a product, go into the sales tab and indicate
-your **Customer lead time**.
+客户提前期是将产品从仓库送到客户所需的时间。可以为任何产品配置。只需选择一个产品，进入销售标签并指示您的**客户提前期**。
 
 .. image:: media/scheduled_dates01.png
    :align: center
 
--  **Manufacturing lead time**:
+- **制造提前期**：
 
-At the same page it is possible to configure the **Manufacturing Lead
-Time** as well. Manufacturing lead time is the time needed to
-manufacture the product.
+在同一页面上还可以配置**制造提前期**。制造提前期是制造产品所需的时间。
 
 .. tip::
-    Don't forget to tick the manufacturing box in inventory if you
-    want to create manufacturing routes.
+    如果要创建制造路线，请不要忘记勾选库存中的制造框。
 
-At the company level
+公司层面
 --------------------
 
-At company level, it is possible to configure **security days** in order
-to cope with eventual delays and to be sure to meet your engagements.
-The idea is to subtract **backup** days from the **computed scheduled date**
-in case of delays.
+在公司层面，可以配置**安全天数**以应对可能的延误，并确保履行承诺。这个想法是在计算的预定日期基础上减去**备份**天数，以防出现延误。
 
--  **Sales Safety days**:
+- **销售安全天数**：
 
-Sales safety days are **back-up** days to ensure you will be able to
-deliver your clients engagements in times. They are margins of errors
-for delivery lead times. Security days are the same logic as the early
-wristwatch, in order to arrive on time. The idea is to subtract the
-numbers of security days from the calculation and thus to compute a
-scheduled date earlier than the one you promised to your client. In that
-way you are sure to be able to keep your commitment.
+销售安全天数是**备份**天数，以确保您能够按时交付客户的承诺。它们是交货提前期的误差边距。安全天数的逻辑与提前设置手表一样，以确保准时到达。这个想法是在计算中减去安全天数，从而计算出早于承诺给客户的预定日期。这样可以确保您能够履行承诺。
 
-To set up your security dates, go to :menuselection:`Settings --> General settings` and
-click on **Configure your company data**.
+要设置安全日期，请转到 :menuselection:`设置 --> 常规设置` 并点击**配置公司数据**。
 
 .. image:: media/scheduled_dates04.png
    :align: center
 
-Once the menu is open, go in the configuration tab and indicate the
-number of safety days.
+打开菜单后，进入配置标签并指示安全天数。
 
--  **Purchase Safety days**:
+- **采购安全天数**：
 
-Purchase days follow to the same logic than sales security days.
+采购天数遵循与销售安全天数相同的逻辑。
 
-They are margins of error for vendor lead times. When the system
-generates purchase orders for procuring products, they will be scheduled
-that many days earlier to cope with unexpected vendor delays. Purchase
-lead time can be found in the same menu as the sales safety days
+它们是供应商提前期的误差边距。当系统生成采购订单以采购产品时，它们将比预期提前安排这些天数，以应对意外的供应商延误。采购提前期可以在与销售安全天数相同的菜单中找到。
 
 .. image:: media/scheduled_dates03.png
    :align: center
 
 .. tip::
-    Note that you can also configure a default 
-    Manufacturing lead time from here.
+    请注意，您还可以在此处配置默认的制造提前期。
 
-At route level
+路线层面
 --------------
 
-The internal transfers that a product might do due to the movement of
-stocks can also influence the computed date.
+由于库存移动导致的产品内部转移也会影响计算的日期。
 
-The delays due to internal transfers can be specified in the **inventory**
-app when creating a new push rule in a route.
+内部转移的延误可以在创建路线中的新推送规则时在**库存**应用中指定。
 
-Go to the push rules section on a route form to set a delay.
+转到路线表单中的推送规则部分以设置延误。
 
 .. image:: media/scheduled_dates06.png
    :align: center
 
-At sale order level:
+销售订单层面：
 --------------------
 
--  **Requested date**:
+- **请求日期**：
 
-Odoo offers the possibility to select a requested date by the client by
-indicating the date in the other information tab of the sales order.
-If this date is earlier than the theoreticaly computed date odoo will
-automatically display a warning.
+Odoo提供了选择客户请求日期的可能性，通过在销售订单的其他信息标签中指示日期。如果该日期早于理论计算日期，Odoo将自动显示警告。
 
 .. image:: media/scheduled_dates07.png
    :align: center
 
-Example
+示例
 =======
 
-As an example, you may sell a car today (January 1st), that is purchased
-on order, and you promise to deliver your customer within 20 days
-(January 20). In such a scenario, the scheduler may trigger the
-following events, based on your configuration:
+例如，您今天（1月1日）销售了一辆汽车，该汽车是按订单采购的，并承诺在20天内（1月20日）交付给客户。在这种情况下，调度器可能会根据您的配置触发以下事件：
 
--  January 19: actual scheduled delivery (1 day of Sales Safety days)
+- 1月19日：实际预定交货日期（1天的销售安全天数）
 
--  January 18: receive the product from your supplier (1 day of Purchase
-   days)
+- 1月18日：收到供应商的产品（1天的采购安全天数）
 
--  January 10: deadline to order at your supplier (9 days of supplier
-   delivery lead time)
+- 1月10日：向供应商下单的截止日期（9天的供应商交货提前期）
 
--  January 8: trigger a purchase request to your purchase team, since
-   the team need on average 2 days to find the right supplier and
-   order.
+- 1月8日：触发采购团队的采购请求，因为团队平均需要2天时间来找到合适的供应商并下单。
