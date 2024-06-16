@@ -1,133 +1,97 @@
 ==========================================================
-How to process delivery orders in two steps (pick + ship)?
+如何通过两步（拣货 + 发货）处理发货订单？
 ==========================================================
 
-Overview
+概述
 ========
 
-When an order goes to the shipping department for final delivery, Odoo
-is set up by default to utilize a **one-step** operation: once all goods are
-available, they are able to be shipped in a single delivery order.
-However, your company's business process may have one or more steps that
-happen before shipping. In the **two steps** process, the items in a delivery
-order are **picked** in the warehouse and brought to an **output location** for
-**shipping**. The goods are then shipped.
+当订单进入发货部门进行最终交付时，Odoo默认设置为使用**一步操作**：一旦所有商品都可用，它们可以在一个发货订单中发货。然而，贵公司的业务流程可能在发货前有一个或多个步骤。在**两步**流程中，发货订单中的物品在仓库中被**拣选**并送至**出库位置**进行**发货**。然后，商品被发出。
 
-In order to accomplish a **Pick + Ship** delivery in Odoo, there are a few 
-necessary configuration steps. These steps create an additional
-location, which by default is called **Output**. So, if your warehouse's
-code is ``WH``, this configuration will create a location called
-``WH/Output``. Goods will move from ``WH/Stock`` to ``WH/Output`` in the first
-step (picking). Then, they move from ``WH/Output`` to ``WH/Customers`` (in the
-case of sales orders) in the second step (shipping).
+为了在Odoo中完成**拣货 + 发货**的交付，需要进行一些必要的配置步骤。这些步骤会创建一个额外的位置，默认情况下称为**Output**。因此，如果您的仓库代码是``WH``，此配置将创建一个称为``WH/Output``的位置。商品将在第一步（拣货）中从``WH/Stock``移动到``WH/Output``。然后，在第二步（发货）中，它们从``WH/Output``移动到``WH/Customers``（在销售订单的情况下）。
 
 .. note::
-    Check out :doc:`inventory_flow` to determine if this inventory flow is the
-    correct method for your needs.
+    查看 :doc:`inventory_flow` 以确定这种库存流程是否适合您的需求。
 
-Configuration
+配置
 =============
 
-Allow management of routes
+允许管理路线
 --------------------------
 
-Odoo configures movement of delivery orders via the **routes**. Routes
-provide a mechanism to chain different actions together. In this case,
-we will chain the picking step to the shipping step.
+Odoo通过**路线**配置发货订单的移动。路线提供了一种将不同操作链接在一起的机制。在这种情况下，我们将拣货步骤与发货步骤链接起来。
 
-To allow management of routes, go to :menuselection:`Configuration --> Settings`.
+要允许管理路线，请转到 :menuselection:`Configuration --> Settings`。
 
-Ensure that the radio button **Advanced routing of products using
-rules** is checked.
+确保选中**使用规则的产品高级路由**单选按钮。
 
 .. image:: media/two_steps05.png
    :align: center
 
-Click on **Apply** at the top of the page to save changes (if you needed to
-check the radio button above).
+点击页面顶部的**应用**以保存更改（如果您需要选中上面的单选按钮）。
 
 .. note::
-    If you checked option **Advanced routing of products using rules**
-    you may need to activate **Manage several locations per warehouse** if it
-    wasn't activated beforehand.
+    如果您选中了**使用规则的产品高级路由**选项，您可能需要激活**每个仓库管理多个位置**，如果它之前未激活。
 
-Configure warehouse for Pick + Ship
+配置仓库进行拣货 + 发货
 ------------------------------------
 
-To configure a **Pick + Ship** move, go to 
-:menuselection:`Configuration --> Warehouses` and edit
-the warehouse that will be used.
+要配置**拣货 + 发货**操作，请转到 :menuselection:`Configuration --> Warehouses` 并编辑将要使用的仓库。
 
-For outgoing shippings, set the option to **Bring goods to output
-location before shipping (Pick + Ship)**
+对于出库发货，将选项设置为**在发货前将商品带到出库位置（拣货 + 发货）**
 
 .. image:: media/two_steps03.png
    :align: center
 
-Create a Sales Order
+创建销售订单
 ====================
 
-Install the **Sale** if it is not the case, and 
-create a sales order with some products to deliver.
+安装**销售**模块（如果尚未安装），并创建一个需要交付的产品销售订单。
 
-Notice that we now see ``2`` transfers associated with this sales order
-in the **Delivery** stat button above the sales order.
+注意，现在我们在销售订单上方的**发货**状态按钮中看到与该销售订单关联的``2``个转运。
 
 .. image:: media/two_steps01.png
    :align: center
 
-If you click on the **2 Transfers** stat button, you should now see two
-different pickings, one with a reference **PICK** to designate the
-picking process and another with a reference **OUT** to designate the
-shipping process.
+如果您点击**2 个转运**状态按钮，您现在应该会看到两个不同的拣货，一个参考为**PICK**，表示拣货过程，另一个参考为**OUT**，表示发货过程。
 
 .. image:: media/two_steps04.png
    :align: center
 
-Process a Delivery
+处理发货
 ==================
 
-How to Process the Picking Step?
+如何处理拣货步骤？
 --------------------------------
 
-Ensure that you have enough product in stock, and go to 
-**Inventory** and click on the **Waiting** link under the **Pick** kanban card.
+确保您有足够的库存产品，然后转到**库存**并点击**拣货**看板卡片下的**等待**链接。
 
 .. image:: media/two_steps06.png
    :align: center
 
-Click on the picking that you want to process.
+点击您要处理的拣货。
 
-Click on **Reserve** to reserve the products if they are available.
+如果产品可用，请点击**预定**以预留产品。
 
-Click on **Validate** to complete the move from **WH/Stock** to **WH/Output**.
+点击**验证**以完成从``WH/Stock``到``WH/Output``的移动。
 
-This has completed the picking step and the **WH/PICK** move should now show
-**Done** in the status column at the top of the page. The product has
-been moved from **WH/Stock** to **WH/Output** location, which makes the product
-**available for the next step** (Shipping).
+这完成了拣货步骤，**WH/PICK**移动现在应该在页面顶部的状态列中显示为**完成**。产品已经从``WH/Stock``移动到``WH/Output``位置，这使得产品**可用于下一步**（发货）。
 
-How to Process the Shipping Step?
+如何处理发货步骤？
 ---------------------------------
 
-Go to **Inventory** and click on the **# TO DO** link under the
-**Delivery Orders** kanban card.
+转到**库存**并点击**发货订单**看板卡片下的**# 待办**链接。
 
 .. image:: media/two_steps02.png
    :align: center
 
-Click on the picking that you want to process.
+点击您要处理的拣货。
 
-Click on **Validate** to complete the move from **WH/Output** to the
-customer (Click **Apply** to assign the quantities based on the
-quantities listed in the **To Do** column)
+点击**验证**以完成从``WH/Output``到客户的移动（点击**应用**以根据**待办**列中的数量分配数量）
 
-This has completed the shipping step and the **WH/OUT** move should now show
-**Done** in the status column at the top of the page. The product has
-been shipped to the customer.
+这完成了发货步骤，**WH/OUT**移动现在应该在页面顶部的状态列中显示为**完成**。产品已发货到客户。
 
 .. todo::
-    link to these sections when they will be available
-    -  Process Overview: From sales orders to delivery orders
+    当这些部分可用时链接到这些部分
+    -  流程概述：从销售订单到发货订单
 
-    -  Process Overview: From purchase orders to receptions
+    -  流程概述：从采购订单到接收
