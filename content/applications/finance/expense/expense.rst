@@ -1,225 +1,162 @@
-
 ========
-Expenses
+费用报销
 ========
 
-How to set expense types
-========================
-The first step to track expenses is to configure the expense types (managed as products in Odoo)
-that your company allows, from the *Configuration* menu. 
-When a specific expense is reimbursed at a fixed price, set a cost on the product.
-Otherwise keep the cost at 0.0 and employees will report the real cost per expense.
+如何设置费用类型
+================
+
+跟踪费用的第一步是从 *Configuration* 菜单配置公司允许的费用类型（在 Odoo 中管理为产品）。当某一具体费用按固定价格报销时，在产品上设置成本。否则，将成本保持为 0.0，员工将报告每笔费用的实际成本。
 
 .. image:: ./media/expense_product.png
    :align: center
 
-Here are some examples to configure:
+以下是一些配置示例：
 
-* Restaurant:
+* 餐厅：
 
-  * Cost: 0.00 (the cost of the ticket will be recorded on every expense)
-* Travel with Personal Car:
+  * 成本: 0.00 (每次费用将记录票据的成本)
+* 私家车旅行：
 
-  * Cost: 0.30 (the price per mile reimbursed by the company is fixed)
-* Hotel:
+  * 成本: 0.30 (公司固定报销的每英里价格)
+* 酒店：
 
-  * Cost: 0.00 (the cost of the ticket will be recorded on every expense)
+  * 成本: 0.00 (每次费用将记录票据的成本)
 
-* Others:
+* 其他：
 
-  * Cost: 0.0
+  * 成本: 0.0
 
-Don't forget to set an expense tax on each expense type 
-(and an account if you use Odoo Accounting). 
-It's usually a good practice to use a tax that is configured 
-with *Tax Included in Price* (see: :doc:`../accounting/others/taxes/tax_included`).
-That way, employees report expenses with 
-prices including taxes, which is usually the expected behaviour.
+不要忘记在每种费用类型上设置费用税（如果您使用 Odoo 会计，还要设置一个账户）。通常，使用配置为 *Tax Included in Price* 的税种是一个好习惯（参见: :doc:`../accounting/others/taxes/tax_included`）。这样，员工报告的费用将包括税款，这是通常的期望行为。
 
 .. tip:: 
-    The *Sales* app allows you to specify unit of measures for your 
-    expense types (units, miles, nights, etc.). 
-    Go to :menuselection:`Sales --> Configuration --> Settings` and check
-    *Some products may be sold/purchased in different units of measure (advanced)*.
+    *Sales* 应用允许您为费用类型指定计量单位（单位、英里、夜晚等）。前往 :menuselection:`Sales --> Configuration --> Settings` 并勾选 *Some products may be sold/purchased in different units of measure (advanced)*。
 
+如何记录费用
+============
 
-How to record expenses
-======================
-
-Manually
+手动记录
 --------
 
-As an employee (Employee in user access rights), you can record 
-expenses from :menuselection:`My Expenses --> Expenses to Submit`.
+作为员工（拥有员工用户访问权限），您可以从 :menuselection:`My Expenses --> Expenses to Submit` 记录费用。
 
 .. image:: ./media/expense_submit_01.png
    :align: center
 
-1. Select the related product and enter either the total amount 
-   you paid (with Quantity = 1) or the unit price if Quantity is 
-   countable (e.g. number of hotel nights).
-2. Enter the expense date.
-3. Choose if you paid the bill on your own (and expect to be reimbursed) 
-   or if the company paid directly (e.g. if you used a company's credit card).
-4. Set the bill reference, add some notes if requested and attach a 
-   photo/scan of the receipt from the discussion thread. 
-   That will help the manager and the accountant validate it.
+1. 选择相关产品并输入您支付的总金额（数量 = 1）或如果数量可计数（例如酒店晚数），则输入单价。
+2. 输入费用日期。
+3. 选择您是否自行支付账单（并期望报销）或公司直接支付（例如，使用公司的信用卡）。
+4. 设置账单参考，添加一些备注（如有要求）并在讨论线程中附上一张收据的照片/扫描件。这将有助于经理和会计师验证它。
 
 .. image:: ./media/expense_submit_02.png
    :align: center
 
-In one click from emails
-------------------------
-Let your employees record their expenses from a simple email. 
-Make a snapshot of the receipt and send it by email, or simply forward a bill!
+通过电子邮件一键记录
+--------------------
+让您的员工通过简单的电子邮件记录他们的费用。拍摄收据快照并通过电子邮件发送，或简单地转发账单！
 
-The only thing to do is setting up an email alias in 
-:menuselection:`Expenses --> Configuration --> Settings` (e.g. *expenses* @mycompany.odoo.com). 
-For security purposes, only authenticated employee emails 
-(cfr. *Work Email* in employee detail form) are accepted.
+唯一需要做的是在 :menuselection:`Expenses --> Configuration --> Settings` 设置一个电子邮件别名（例如 *expenses* @mycompany.odoo.com）。出于安全目的，仅接受经过身份验证的员工电子邮件（参见员工详细表单中的 *Work Email*）。
 
 .. tip::
-    The expense product is set automatically if the mail subject contains 
-    the product's internal reference between brackets (e.g. [Food]). 
-    Type the expense amount in the mail subject to set it on the expense too.
+    如果邮件主题包含产品的内部参考（例如 [Food]），则费用产品会自动设置。将费用金额输入邮件主题也可将其设置在费用上。
 
-How to submit expenses to managers
-==================================
+如何提交费用给经理
+====================
 
-When you are ready to submit your expenses to your manager 
-(e.g. at the end of a business trip, or once a month), 
-go to the menu :menuselection:`My Expenses --> Expenses to Submit`. Select all expenses 
-from the list view and click on :menuselection:`Action > Submit to Manager`. 
-Save the newly created expense report (i.e. set of expenses), 
-and wait for your manager to approve it.
+当您准备好将费用提交给经理时（例如在商务旅行结束时，或每月一次），前往 :menuselection:`My Expenses --> Expenses to Submit` 菜单。从列表视图中选择所有费用，然后点击 :menuselection:`Action > Submit to Manager`。保存新创建的费用报告（即费用集），并等待经理批准。
 
 .. image:: ./media/expense_submit_03.png
    :align: center
 
-You can also submit expenses one by one from the *Submit to Manager* 
-button on the form view of an expense.
+您也可以从费用表单视图中的 *Submit to Manager* 按钮逐个提交费用。
 
-All your submitted expense reports can be found in 
-:menuselection:`Expenses --> My Expenses --> Expense Reports`.
+您提交的所有费用报告可以在 :menuselection:`Expenses --> My Expenses --> Expense Reports` 中找到。
 
+如何批准费用
+============
 
-How to approve expenses
-=======================
-
-HR and team managers get an overview of all expense reports to 
-validate from the top menu :menuselection:`To Approve --> Expense Reports to Approve`. 
-Such users must have at least *Officers* access rights for *Expenses*.
+HR 和团队经理可以从顶部菜单 :menuselection:`To Approve --> Expense Reports to Approve` 查看所有待验证的费用报告。这些用户必须至少拥有 *Expenses* 的 *Officers* 访问权限。
 
 .. image:: ./media/expense_approval_01.png
    :align: center
 
-They can review expense reports, approve or reject them, as well as providing 
-feedback thanks to the integrated communication tool.
+他们可以审查费用报告，批准或拒绝它们，并通过集成的通信工具提供反馈。
 
 .. image:: ./media/expense_approval_02.png
    :align: center
 
-As a team manager you can easily find the expense reports of your team members. 
-You need to be set as manager in the detail form of those employees.
+作为团队经理，您可以轻松找到团队成员的费用报告。您需要在这些员工的详细表单中设置为经理。
 
 .. image:: ./media/expense_approval_03.png
    :align: center
 
+如何在会计中记录费用
+======================
 
-How to post expenses in accounting
-==================================
+经理批准费用报告后，会计部门前往 :menuselection:`Expenses --> Accountant --> Expense Reports To Post` 检查账户、产品和税金。他们可以点击 *Post Journal Entries* 将相关的日记帐分录记录到您的账簿中。为此，用户必须拥有以下访问权限：
 
-Once expense reports approved by managers, the accounting department 
-goes to :menuselection:`Expenses --> Accountant --> Expense Reports To Post` to check 
-accounts, products and taxes. They can click *Post Journal Entries* 
-to post related journal entries into your books. 
-To do so, the user must have following access rights:
-
-* Accounting: Accountant or Adviser
-* Expenses: Manager
+* 会计: Accountant 或 Adviser
+* 费用: Manager
 
 .. note::
-    To post an expense, a *Home Address* must be set on the employee. 
-    If you get a related blocking message when posting, click the employee, 
-    go to *Personal Information* tab and select/create the contact of your employee 
-    in the address book. 
-    A contact has been automatically created if this person is using Odoo.
+    要记录费用，必须在员工的 *Home Address* 上设置地址。如果在记录时收到相关的阻止消息，请点击员工，进入 *Personal Information* 选项卡并在地址簿中选择/创建该员工的联系人。如果此人正在使用 Odoo，则会自动创建一个联系人。
 
-How to reimburse employees
-==========================
+如何报销员工
+==============
 
-You can now see all the expense reports to reimburse in 
-:menuselection:`Expenses --> Accountant --> Expense Reports To Pay`. 
-To record the payment or pay by check, click *Register a Payment*.
+您现在可以在 :menuselection:`Expenses --> Accountant --> Expense Reports To Pay` 中看到所有待报销的费用报告。要记录付款或通过支票支付，请点击 *Register a Payment*。
 
-See how you can easily manage the payment process in Odoo:
+参见如何在 Odoo 中轻松管理付款流程：
 
 * :doc:`../accounting/payables/pay/check`
 * :doc:`../accounting/payables/pay/sepa`
 
+如何向客户重新开票费用
+==========================
 
-How to re-invoice expenses to your customers
-============================================
+如果您跟踪客户项目上的费用，您可以自动将其回收费给客户。
 
-If you track expenses on customer projects, you can charge them back to
-your customers automatically.
+设置
+----
 
-Setup
------
+- 在费用设置中启用 **Customer Billing**
 
--  Enable **Customer Billing** in the Expenses settings
+- 前往产品配置菜单并在所有费用类型上设置开票方式：
 
--  Go to the product configuration menu and set the invoicing method on
-   all your Expense types:
+   -  订单数量: 将根据订购数量开票费用
 
-   -  Ordered quantities : it will invoice expenses based on the ordered
-      quantity
+   -  交付数量: 将根据费用数量开票
 
-   -  Delivered quantities :it will invoice expenses based on the
-      expenses quantity
+   -  成本价: 将按实际成本开票费用。
 
-   -  At cost: will invoice expenses at their real cost.
-
-   -  At sales price: will invoice based on a fixed sales price set on
-      the sale order.
+   -  销售价格: 将根据销售订单中设置的固定销售价格开票。
 
 .. image:: media/expense_invoicing_01.png
   :align: center
 
-Create an order
----------------
+创建订单
+--------
 
--  As a salesman, create and confirm a Sales Order for the services
-   delivered to your customer. If you don't put any expense in the
-   order, it will be added automatically once posted by the
-   accountant.
+- 作为销售人员，为提供给客户的服务创建并确认销售订单。如果订单中没有任何费用，一旦会计发布，它将自动添加。
 
--  Link the expense to the Sale Order.
+- 将费用链接到销售订单。
 
 .. image:: media/expense_invoicing_02.png
   :align: center
 
-Submit, validate and post expenses
-----------------------------------
+提交、验证和记录费用
+----------------------
 
--  As a manager, make sure the analytic account is set on every expense
-   line on approving expenses reports. Click the line to add one if
-   missing. Employees are already able to set one when submitting.
+- 作为经理，在批准费用报告时确保每行费用都设置了分析账户。如果缺少，请点击该行添加。员工在提交时已经可以设置。
 
 .. image:: media/expense_invoicing_03.png
   :align: center
 
--  As an accountant, post journal entries.
+- 作为会计，记录日记帐分录。
 
-Invoice expenses
-----------------
+开票费用
+--------
 
-Now you can invoice the order. It shows up in 
-:menuselection:`Sales --> Invoicing --> Sales`
-to Invoice. The expenses have been added automatically in the order
-lines. Such items show up in blue (i.e. to invoice).
+现在您可以开票订单。它显示在 :menuselection:`Sales --> Invoicing --> Sales to Invoice` 中。费用已自动添加到订单行中。此类项目显示为蓝色（即待开票）。
 
 .. image:: media/expense_invoicing_04.png
   :align: center
-
-e (i.e. to invoice). 
