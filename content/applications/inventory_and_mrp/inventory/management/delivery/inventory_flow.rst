@@ -1,52 +1,37 @@
 =================================================================
-How to choose the right inventory flow to handle delivery orders?
+如何选择合适的库存流程处理配送订单？
 =================================================================
 
-Depending on factors such as the type of items you sell, the size of
-your warehouse, the number of orders you register everyday... the way you
-handle deliveries to your customers can vary a lot.
+根据您销售的商品类型、仓库规模、每日订单数量等因素，处理客户配送的方式可能会有很大差异。
 
-Odoo allows you to handle shipping from your warehouse in 3 different
-ways:
+Odoo 允许您通过三种不同的方式从仓库进行配送：
 
--  **One step (shipping)**: Ship directly from stock
+-  **一步（直接发货）**：直接从库存中发货
 
--  **Two steps (pick + ship)**: Bring goods to output location before
-   shipping
+-  **两步（拣货 + 发货）**：将货物先移动到出库区，然后再发货
 
--  **Three steps (pick + pack + ship)**: Make packages into a dedicated
-   location, then bring them to the output location for shipping
+-  **三步（拣货 + 包装 + 发货）**：将货物在专用区域进行包装，然后再将它们移动到出库区进行发货
 
-For companies having a rather small warehouse and that do not require
-high stock of items or don't sell perishable items, a one step shipping
-is the simplest solution, as it does not require a lot of configuration
-and allows to handle orders very quickly.
+对于仓库规模较小、不需要大量库存或不销售易腐商品的公司来说，一步发货是最简单的解决方案，因为它不需要大量配置，并且可以非常快速地处理订单。
 
-Using inventory methods such as FIFO, LIFO and FEFO require to have at
-least two steps to handle a shipment. The picking method will be
-determined by the removal strategy, and the items removed will then be
-shipped to the customer. This method is also interesting if you hold
-larger stocks and especially when the items you stock are big in size.
+使用如 FIFO、LIFO 和 FEFO 等库存方法，需要至少两步流程来处理发货。拣货方法将由移除策略决定，然后将移除的商品发货给客户。如果您的库存量较大，尤其是当库存商品体积较大时，这种方法也很有用。
 
-The three steps system becomes useful in more specific situations, the
-main one being for handling very large stocks. The items are transferred
-to a packing area, where they will be assembled by area of destination,
-and then set to outbound trucks for final delivery to the customers.
+三步流程在一些更具体的情况下非常有用，主要是用于处理非常大的库存。货物将被转移到包装区域，按照目的地区域进行组装，然后装上外运卡车，最终配送给客户。
 
-Configuration
+配置
 =============
 
-One step flow
+一步流程
 -------------
 
-Please read documentation on :doc:`one_step`
+请阅读文档 :doc:`一步流程`
 
-Two steps flow
+两步流程
 --------------
 
-Please read documentation on :doc:`two_steps`
+请阅读文档 :doc:`两步流程`
 
-Three steps flow
+三步流程
 ----------------
 
-Please read documentation on :doc:`three_steps`
+请阅读文档 :doc:`三步流程`
