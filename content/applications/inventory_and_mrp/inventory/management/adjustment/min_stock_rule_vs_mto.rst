@@ -1,72 +1,52 @@
 ===========================================================
-How to choose between minimum stock rule and make to order?
+如何在最低库存规则和按订单生产之间做出选择？
 ===========================================================
 
-**Minimum Stock rules** and **Make to Order** have similar consequences but
-different rules. They should be used depending on your manufacturing and
-delivery strategies.
+**最低库存规则**和**按订单生产**有着相似的结果，但规则不同。应根据您的制造和交付策略选择使用哪种规则。
 
-Terminology
+术语
 ===========
 
-Minimum stock rule 
+最低库存规则 
 -------------------
 
-**Minimum Stock** rules are used to ensure that you always have the minimum
-amount of a product in stock in order to manufacture your products
-and/or answer to your customer needs. When the stock level of a product
-reaches its minimum the system will automatically generate a procurement
-with the quantity needed to reach the maximum stock level.
+**最低库存**规则用于确保您始终有最低数量的产品库存，以便生产您的产品和/或满足客户需求。当产品的库存水平达到最低值时，系统会自动生成一个采购单，数量足以达到最大库存水平。
 
-Make to Order
+按订单生产
 -------------
 
-The **Make to Order** function will trigger a **Purchase Order** of the amount
-of the **Sales Order** related to the product. The system will **not** check
-the current stock valuation. This means that a draft purchase order will
-be generated regardless of the quantity on hand of the product.
+**按订单生产**功能会触发一个与产品相关的**采购订单**，数量与**销售订单**相同。系统**不会**检查当前的库存估值。这意味着无论产品的现有库存数量是多少，系统都会生成一个草稿采购订单。
 
-Configuration
+配置
 =============
 
-Minimum stock rules
+最低库存规则
 -------------------
 
-The Minimum Stock Rules configuration is available through the menu 
-:menuselection:`Inventory --> Inventory Control --> Reordering Rule`
-in the drop down menu. There, click on **Create** to set minimum and
-maximum stock values for a given product.
+最低库存规则的配置可以通过菜单 :menuselection:`库存 --> 库存控制 --> 补货规则` 找到。在下拉菜单中，点击**创建**为某个产品设置最低和最大库存值。
 
 .. image:: media/min_stock_rule_vs_mto01.png
    :align: center
 
-Then, click on your product to access the related product form and, on
-the **Inventory submenu**, do not forget to select a supplier.
+然后，点击您的产品进入相关产品表单，在**库存子菜单**中，不要忘记选择一个供应商。
 
 .. image:: media/min_stock_rule_vs_mto02.png
    :align: center
 
 .. tip::
-    Don't forget to select the right product type in the product form. 
-    A consumable can not be stocked and will thus not be accounted for in the stock valuation.
+    别忘了在产品表单中选择正确的产品类型。消耗品不能被储存，因此不会在库存估值中计算。
 
-Make to Order 
+按订单生产 
 --------------
 
-The Make to Order configuration is available on your product form
-through your :menuselection:`Inventory module --> Inventory control --> Products`
-(or any other module where products are available).
+按订单生产的配置可以在您的产品表单中通过 :menuselection:`库存模块 --> 库存控制 --> 产品` （或任何其他有产品的模块）找到。
 
-On the product form, under **Inventory**, click on **Make To Order**.
+在产品表单中，点击**按订单生产**。
 
 .. image:: media/min_stock_rule_vs_mto03.png
    :align: center
 
-Choice between the two options
+两种选项之间的选择
 ------------------------------
 
-The choice between the two options is thus dependent of your inventory
-strategy. If you prefer to have a buffer and always have at least a
-minimum amount, the minimum stock rule should be used. If you want to
-reorder your stocks only if your sale is confirmed it is better to use
-the Make to Order.
+两种选项的选择取决于您的库存策略。如果您希望有一个缓冲并且始终至少有一个最低数量的库存，应使用最低库存规则。如果您只想在销售确认后才重新订购库存，则最好使用按订单生产。
