@@ -1,72 +1,53 @@
 ================================================
-How to choose the right flow to handle receipts?
+如何选择合适的收货流程？
 ================================================
 
-Overview
+概述
 ========
 
-Depending on factors such as the type of items you receive, the size of
-your warehouse, the number of receipt you register everyday... the way you
-handle receipts to your customers can vary a lot.
+根据您收到的商品类型、仓库规模、每天登记的收货数量等因素，处理收货的方式会有所不同。
 
-Odoo allows you to handle receipts from your warehouse in 3 different
-ways:
+Odoo 允许您以三种不同的方式处理仓库中的收货：
 
--  **One step**: Receive goods directly in stock.
+-  **一步法**：直接将货物接收到库存中。
 
--  **Two steps**: Unload in input location then go to stock.
+-  **两步法**：先卸货到输入地点，然后再转移到库存中。
 
--  **Three steps**: Unload in input location, go through a quality control
-   before being admitted in stock.
+-  **三步法**：先卸货到输入地点，再进行质量控制，合格后才入库。
 
-Odoo uses **routes** to define exactly how you will handle the different
-receipt steps. The configuration is done at the level of the warehouse.
-In standard, the reception is a one step process, but changing the
-configuration can allow to have 2 or even 3 steps.
+Odoo 使用 **路线** 来定义您将如何处理不同的收货步骤。配置是在仓库层面进行的。标准情况下，接收是一步流程，但更改配置可以允许使用两步或三步流程。
 
-The principles are the following:
+原则如下：
 
-1. **One step**: You receive the goods directly in your stock.
+1. **一步法**：您直接将货物接收到库存中。
 
-2. **Two steps**: You receive the goods in an input area then transfer them
-   from input area to your stock. As long as the goods are not
-   transferred in your stock, they will not be available for further
-   processing.
+2. **两步法**：您先将货物接收到输入区域，然后从输入区域转移到库存中。在货物未转移到库存之前，它们将无法进行进一步处理。
 
-3. **Three steps**: In many companies, it is necessary to assess the
-   received good. The goal is to check that the products
-   correspond to the quality requirements agreed with the
-   suppliers. Adding a quality control step in the goods receipt
-   process can become essential.
+3. **三步法**：在许多公司中，有必要对收到的货物进行评估。目的是检查产品是否符合与供应商商定的质量要求。在收货过程中增加质量控制步骤可能是必不可少的。
    
-   You receive the goods in an input area, then transfer them into
-   quality area for quality control. When your quality check
-   process finishes then you can move the goods from QC to stock.
-   Of course, you may change the quantity and only transfer to
-   Stock the quantity that is valid and decide that you will
-   return the quantity that is not good.
+   您先将货物接收到输入区域，然后转移到质量区域进行质量控制。质量检查完成后，您可以将合格的货物从质检区转移到库存。当然，您可以调整数量，只将合格的数量转移到库存，并决定退回不合格的数量。
 
-Configuration
+配置
 =============
 
-One step flow
+一步流程
 -------------
 
-This is the default configuration in Odoo.
+这是 Odoo 的默认配置。
 
-Two steps flow
+两步流程
 --------------
 
-Please read documentation on :doc:`two_steps`
+请阅读文档 :doc:`two_steps`
 
-Three steps flow
+三步流程
 ----------------
 
-Please read documentation on :doc:`three_steps`
+请阅读文档 :doc:`three_steps`
 
 .. seealso::
     * :doc:`../delivery/inventory_flow`
 
 .. todo::
-    Add section when available
-    -  How to analyse the performance of my vendors?
+    当可用时，添加以下部分
+    -  如何分析供应商的绩效？
