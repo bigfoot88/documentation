@@ -1,163 +1,126 @@
 ===================================================================
-How to process delivery orders in three steps (pick + pack + ship)?
+如何在三步中处理发货订单（拣货 + 打包 + 发货）
 ===================================================================
 
-Overview
+概述
 ========
 
-When an order goes to the shipping department for final delivery, Odoo
-is set up by default on a **one-step** operation: once all goods are
-available, they can be shipped in bulk in a single delivery order.
-However, that process may not reflect the reality and your company may
-require more steps before shipping.
+当订单进入运输部门进行最终配送时，Odoo 默认设置为**一步**操作：一旦所有货物准备就绪，可以在一个配送订单中批量发货。然而，这个流程可能并不符合实际情况，您的公司可能需要在发货前进行更多步骤。
 
-With the **three steps** process (**Pick + Pack + Ship**), the items are
-transferred to a packing area, where they will be assembled by area of
-destination, and then set to outbound trucks for final delivery to the
-customers.
+通过**三步**流程（**拣货 + 打包 + 发货**），物品会被转移到一个打包区域，在那里按目的地区域进行组装，然后发送到外部卡车，最终配送给客户。
 
-A few configuration steps are necessary in order to accomplish **Pick +
-Pack + Ship** in Odoo. These steps create some additional locations, which
-by default are called **Output** and **Packing Zone**. So, if your warehouse's
-code is ``WH``, this configuration will create a location called ``WH/Output``
-and another one called ``WH/Packing Zone``.
+为了在 Odoo 中完成**拣货 + 打包 + 发货**流程，需要进行一些配置步骤。这些步骤会创建一些额外的地点，默认情况下称为**输出**和**打包区**。因此，如果您的仓库代码是 ``WH``，这项配置将创建一个名为 ``WH/Output`` 的地点和另一个名为 ``WH/Packing Zone`` 的地点。
 
-Goods will move from **WH/Stock** to **WH/Packing Zone** in the first step.
-Then move from **WH/Packing Zone** to **WH/Output**. Then finally it will be
-delivered from **WH/Output** to its **final destination**.
+货物将从 **WH/Stock** 移动到 **WH/Packing Zone**（第一步）。然后从 **WH/Packing Zone** 移动到 **WH/Output**。最后将从 **WH/Output** 配送到其**最终目的地**。
 
 .. note::
-    Check out :doc:`inventory_flow` to determine if this inventory flow is 
-    the correct method for your needs.
+    查看 :doc:`inventory_flow` 以确定这种库存流是否适合您的需求。
 
-Configuration
+配置
 =============
 
-Install the Inventory module
+安装库存模块
 ----------------------------
 
-From the **App** menu, search and install the **Inventory** module.
+从**应用**菜单中，搜索并安装**库存**模块。
 
 .. image:: media/three_steps07.png
    :align: center
 
-You will also need to install the **Sales** module to be able to issue sales
-orders.
+您还需要安装**销售**模块，以便能够开具销售订单。
 
-Allow managing routes
+允许管理路线
 ---------------------
 
-Odoo configures movement of delivery orders via **routes**. Routes
-provide a mechanism to link different actions together. In this case, we
-will link the picking step to the shipping step.
+Odoo 通过**路线**配置配送订单的移动。路线提供了一种将不同操作连接在一起的机制。在这种情况下，我们将拣货步骤与发货步骤连接起来。
 
-To allow management of routes, go to :menuselection:`Configuration --> Settings`
+要允许管理路线，前往 :menuselection:`配置 --> 设置`
 
-Under :menuselection:`Location & Warehouse --> Routes`, activate the radio button
-**Advanced routing of products using rules**. Make sure that the option
-**Manage several locations per warehouse** is activated as well.
+在 :menuselection:`地点和仓库 --> 路线` 下，激活单选按钮**使用规则进行产品的高级路由**。确保选项**管理每个仓库的多个地点**也被激活。
 
 .. image:: media/three_steps05.png
    :align: center
 
-Configure the warehouse for Pick + Pack + Ship
+配置仓库进行拣货 + 打包 + 发货
 -----------------------------------------------
 
-Go to :menuselection:`Configuration --> Warehouses` and edit the warehouse that will be
-used.
+前往 :menuselection:`配置 --> 仓库` 并编辑将要使用的仓库。
 
-For outgoing shippings, set the option to **Make packages into a
-dedicated location, bring them to the output location for shipping (Pick
-+ Pack + Ship).**
+对于出库发货，将选项设置为**将包裹放入专用地点，将它们带到输出地点进行发货（拣货 + 打包 + 发货）**。
 
 .. image:: media/three_steps01.png
    :align: center
 
-Create a Sale Order
+创建销售订单
 ===================
 
-From the **Sale** module, create a sales order with some products to deliver.
+在**销售**模块中，创建一个需要交付的产品销售订单。
 
-Notice that we now see ``3`` transfers associated with this sales order
-in the **stat button** above the sales order.
+注意，我们现在在销售订单上方的**状态按钮**中看到与此销售订单关联的``3``个转移。
 
 .. image:: media/three_steps06.png
    :align: center
 
-If you click the button, you should now see three different pickings:
+如果点击按钮，您现在应该会看到三个不同的拣货：
 
-1.  The first with a reference **PICK** to designate the picking process,
+1.  第一个参考号为 **PICK**，表示拣货过程，
 
-2.  The second one with the reference **PACK** that is the packing process,
+2.  第二个参考号为 **PACK**，表示打包过程，
 
-3.  The last with a reference **OUT** to designate the shipping process.
+3.  最后一个参考号为 **OUT**，表示发货过程。
 
 .. image:: media/three_steps04.png
    :align: center
 
-Process a Delivery
+处理配送
 ==================
 
-How to Process the Picking Step?
+如何处理拣货步骤？
 --------------------------------
 
-Ensure that you have enough product in stock and Go to **Inventory** 
-and click on the **Waiting** link under the **Pick** kanban card.
+确保您有足够的库存产品，然后前往**库存**并点击 **拣货** 看板卡下的 **等待** 链接。
 
 .. image:: media/three_steps08.png
    :align: center
 
-Click on the picking that you want to process.
+点击您要处理的拣货单。
 
-Click on **Reserve** to reserve the products if they are available.
+点击 **预留** 以预留产品（如果它们可用）。
 
-Click on **Validate** to complete the move from **WH/Stock** to **WH/Packing Zone**.
+点击 **验证** 以完成从 **WH/Stock** 到 **WH/Packing Zone** 的移动。
 
-This has completed the picking Step and the **WH/PICK** should now show
-**Done** in the status column at the top of the page. The product has
-been moved from **WH/Stock** to **WH/Packing Zone** location, which makes the
-product available for the next step (Packing).
+这完成了拣货步骤，**WH/PICK** 现在应在页面顶部的状态栏中显示 **已完成**。产品已从 **WH/Stock** 移动到 **WH/Packing Zone** 位置，使产品可以进行下一步（打包）。
 
-How to Process the Packing Step?
+如何处理打包步骤？
 --------------------------------
 
-Go to **Inventory** and click on the **# TRANSFERS** link under the
-**Pack** kanban card.
+前往**库存**并点击**打包**看板卡下的 **# 转移** 链接。
 
 .. image:: media/three_steps03.png
    :align: center
 
-Click on the picking that you want to process.
+点击您要处理的拣货单。
 
-Click on **Validate** to complete the move from **WH/Packing Zone** to
-**WH/Output**.
+点击 **验证** 以完成从 **WH/Packing Zone** 到 **WH/Output** 的移动。
 
-This has completed the packing step and the **WH/PACK** should now show
-**Done** in the status column at the top of the page. The product has
-been moved from **WH/Packing Zone** to **WH/Output location**, which makes the
-product available for the next step (Shipping).
+这完成了打包步骤，**WH/PACK** 现在应在页面顶部的状态栏中显示 **已完成**。产品已从 **WH/Packing Zone** 移动到 **WH/Output** 位置，使产品可以进行下一步（发货）。
 
-How to Process the Shipping Step?
+如何处理发货步骤？
 ---------------------------------
 
-Go to **Inventory** and click on the **# TO DO** link under the
-**Delivery Orders** kanban card.
+前往**库存**并点击**配送订单**看板卡下的 **# 待办** 链接。
 
 .. image:: media/three_steps02.png
    :align: center
 
-Click on the picking that you want to process.
+点击您要处理的拣货单。
 
-Click on **Validate** to complete the move from **WH/Output** to the
-**customer** (Click **Apply** to assign the quantities based on the
-quantities listed in the **To Do** column).
+点击 **验证** 以完成从 **WH/Output** 到 **客户** 的移动（点击 **应用** 以根据**待办**列中列出的数量分配数量）。
 
-This has completed the shipping step and the **WH/OUT** should now show
-**Done** in the status column at the top of the page. The product has
-been shipped to the customer.
+这完成了发货步骤，**WH/OUT** 现在应在页面顶部的状态栏中显示 **已完成**。产品已运送给客户。
 
 .. todo::
-    Link to these sections when available
-    -  Process Overview: From sales orders to delivery orders
+    链接到这些部分（当可用时）
+    -  过程概述：从销售订单到配送订单
 
-    -  Process Overview: From purchase orders to receptions
+    -  过程概述：从采购订单到接收
