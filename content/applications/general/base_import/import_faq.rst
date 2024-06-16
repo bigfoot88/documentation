@@ -1,98 +1,69 @@
 ============================
-How to import data into Odoo
+如何导入数据到 Odoo
 ============================
 
-How to start
-------------
-You can import data on any Odoo's business object using either Excel 
-(.xlsx) or CSV (.csv) formats:
-contacts, products, bank statements, journal entries and even orders!
+如何开始
+--------
 
-Open the view of the object you want to populate and click *Import*.
+您可以使用 Excel (.xlsx) 或 CSV (.csv) 格式将数据导入到任何 Odoo 的业务对象中：联系人、产品、银行对账单、会计分录甚至订单！
+
+打开您要填充的对象视图，然后点击 *导入*。
 
 .. image:: media/import_button.png
     :align: center
 
-There you are provided with templates you can easily populate
-with your own data. Such templates can be imported in one click; 
-The data mapping is already done.
+在此页面，您将获得可以轻松填充您自己数据的模板。这些模板可以一键导入；数据映射已经完成。
 
+如何调整模板
+--------------
 
-How to adapt the template
--------------------------
-
-* Add, remove and sort columns to fit at best your data structure.
-* We advise to not remove the **ID** one (see why in the next section).
-* Set a unique ID to every single record by dragging down the ID sequencing.
+* 添加、删除和排序列以最适合您的数据结构。
+* 我们建议不要删除 **ID** 列（详见下一节原因）。
+* 通过向下拖动 ID 序列为每条记录设置唯一 ID。
 
 .. image:: media/dragdown.gif
     :align: center
 
-* When you add a new column, Odoo might not be able to map it automatically if its 
-  label doesn't fit any field in Odoo. Don't worry! You can map
-  new columns manually when you test the import. Search the list for the
-  corresponding field.
+* 当您添加新列时，如果标签不符合 Odoo 中的任何字段，Odoo 可能无法自动映射它。不要担心！您可以在测试导入时手动映射新列。在列表中搜索相应字段。
 
     .. image:: media/field_list.png
         :align: center
 
-  Then, use this field's label in your file in order to make it work
-  straight on the very next time.
+  然后，在您的文件中使用该字段的标签，以便下次可以直接使用。
 
+如何从其他应用程序导入
+--------------------------
 
-How to import from another application
---------------------------------------
+为了重新创建不同记录之间的关系，您应该使用原始应用程序中的唯一标识符并将其映射到 Odoo 中的 **ID** (外部 ID) 列。当您导入链接到第一个记录的另一个记录时，使用 **XXX/ID** (XXX/外部 ID) 对应原始唯一标识符。您也可以使用其名称找到此记录，但如果至少有两个记录具有相同名称，您将无法继续。
 
-In order to re-create relationships between different records, 
-you should use the unique identifier from the original application 
-and map it to the **ID** (External ID) column in Odoo. 
-When you import another record that links to the first one, 
-use **XXX/ID** (XXX/External ID) to the original unique identifier.
-You can also find this record using its name but you will be stuck 
-if at least 2 records have the same name.
+**ID** 还将用于在以后需要重新导入修改后的数据时更新原始导入，因此尽可能指定它是一个好习惯。
 
-The **ID** will also be used to update the original import 
-if you need to re-import modified data later, 
-it's thus good practice to specify it whenever possible.
+找不到要映射的字段
+----------------------
 
+Odoo 基于文件的前十行尝试找到每列的字段类型。例如，如果您有一列只包含数字，则只会显示整数类型的字段供您选择。虽然这种行为在大多数情况下很好且容易，但也有可能出错，或者您希望将列映射到默认未提议的字段。
 
-I cannot find the field I want to map my column to
---------------------------------------------------
-
-Odoo tries to find with some heuristic, based on the first ten lines of 
-the files, the type of field for each column inside your file. 
-For example if you have a column only containing numbers, 
-only the fields that are of type *Integer* will be displayed for you 
-to choose from. 
-While this behavior might be good and easy for most cases, 
-it is also possible that it goes wrong or that you want to 
-map your column to a field that is not proposed by default.
-
-If that happens, you just have to check the 
-** Show fields of relation fields (advanced)** option, 
-you will then be able to choose from the complete list of fields for each column.
+如果发生这种情况，您只需选中 **显示关系字段的所有字段（高级）** 选项，然后您将能够为每列选择完整字段列表。
 
 .. image:: media/field_list.png
   :align: center
 
-Where can I change the date import format?
-------------------------------------------
+如何更改日期导入格式
+------------------------
 
-Odoo can automatically detect if a column is a date, and it will try to guess the date format from a set of most commonly used date formats. While this process can work for many date formats, some date formats will not be recognized. This can cause confusion due to day-month inversions; it is difficult to guess which part of a date format is the day and which part is the month in a date such as '01-03-2016'.
+Odoo 可以自动检测列是否为日期，并尝试从最常用的日期格式集中猜测日期格式。虽然此过程适用于许多日期格式，但某些日期格式无法识别。这可能会由于日月颠倒而引起混淆；例如在 '01-03-2016' 这样的日期格式中，很难猜测哪个部分是日期，哪个部分是月份。
 
-To view which date format Odoo has found from your file you can check the **Date Format** that is shown when clicking on **Options** under the file selector. If this format is incorrect you can change it to your liking using the *ISO 8601* to define the format.
+要查看 Odoo 从文件中找到的日期格式，您可以点击文件选择器下的 **选项** 查看 **日期格式**。如果此格式不正确，您可以使用 *ISO 8601* 定义格式进行更改。
 
 .. note::
-    If you are importing an excel (.xls, .xlsx) file, you can use date cells to store dates as the display of dates in excel is different from the way it is stored. That way you will be sure that the date format is correct in Odoo whatever your locale date format is.
+    如果您正在导入 Excel (.xls, .xlsx) 文件，可以使用日期单元格存储日期，因为 Excel 中日期的显示方式与存储方式不同。这样，无论您的本地日期格式如何，您都可以确保 Odoo 中的日期格式正确。
 
+能否导入带货币符号的数字（例如：$32.00）？
+------------------------------------------
 
+可以，我们完全支持使用括号表示负号的数字以及带货币符号的数字。Odoo 还会自动检测您使用的千位分隔符和小数点分隔符（可以在 **选项** 中更改这些设置）。如果您使用的货币符号 Odoo 不识别，可能无法将其识别为数字并导致导入失败。
 
-Can I import numbers with currency sign (e.g.: $32.00)?
--------------------------------------------------------
-
-Yes, we fully support numbers with parenthesis to represent negative sign as well as numbers with currency sign attached to them. Odoo also automatically detect which thousand/decimal separator you use (you can change those under **options**). If you use a currency symbol that is not known to Odoo, it might not be recognized as a number though and it will crash.
-
-Examples of supported numbers (using thirty-two thousands as an example):
+支持的数字示例（以三万二千为例）：
 
 - 32.000,00
 - 32000,00
@@ -102,157 +73,75 @@ Examples of supported numbers (using thirty-two thousands as an example):
 - $ 32.000,00
 - (32000.00 €)
 
-Example that will not work:
+不支持的示例：
 
 - ABC 32.000,00
 - $ (32.000,00)
 
+导入预览表格显示不正确时该怎么办？
+------------------------------------------
 
+默认情况下，导入预览设置为逗号作为字段分隔符，双引号作为文本定界符。如果您的 CSV 文件没有这些设置，可以在选择文件后在 CSV 文件栏下的文件格式选项中进行修改。
 
-What can I do when the Import preview table isn't displayed correctly?
-----------------------------------------------------------------------
+请注意，如果您的 CSV 文件以制表符作为分隔符，Odoo 将无法检测到分隔符。您需要在电子表格应用程序中更改文件格式选项。请参见下一个问题。
 
-By default the Import preview is set on commas as field separators and quotation marks as text delimiters. If your csv file does not have these settings, you can modify the File Format Options (displayed under the Browse CSV file bar after you select your file).
-
-Note that if your CSV file has a tabulation as separator, Odoo will not detect the separations. You will need to change the file format options in your spreadsheet application. See the following question.
-
-
-
-How can I change the CSV file format options when saving in my spreadsheet application?
----------------------------------------------------------------------------------------
-
-If you edit and save CSV files in speadsheet applications, your computer's regional settings will be applied for the separator and delimiter. We suggest you use OpenOffice or LibreOffice Calc as they will allow you to modify all three options (in 'Save As' dialog box > Check the box 'Edit filter settings' > Save).
-
-Microsoft Excel will allow you to modify only the encoding when saving (in 'Save As' dialog box > click 'Tools' dropdown list > Encoding tab).
-
-
-
-What's the difference between Database ID and External ID?
-----------------------------------------------------------
-
-Some fields define a relationship with another object. For example, the country of a contact is a link to a record of the 'Country' object. When you want to import such fields, Odoo will have to recreate links between the different records. To help you import such fields, Odoo provides 3 mechanisms. You must use one and only one mechanism per field you want to import.
-
-For example, to reference the country of a contact, Odoo proposes you 3 different fields to import: 
-
-- Country: the name or code of the country
-- Country/Database ID: the unique Odoo ID for a record, defined by the ID postgresql column
-- Country/External ID: the ID of this record referenced in another application (or the .XML file that imported it) 
-
-For the country Belgium, you can use one of these 3 ways to import: 
-
-- Country: Belgium
-- Country/Database ID: 21
-- Country/External ID: base.be
-
-According to your need, you should use one of these 3 ways to reference records in relations. Here is when you should use one or the other, according to your need: 
-
-- Use Country: This is the easiest way when your data come from CSV files that have been created manually.
-- Use Country/Database ID: You should rarely use this notation. It's mostly used by developers as it's main advantage is to never have conflicts (you may have several records with the same name, but they always have a unique Database ID)
-- Use Country/External ID: Use External ID when you import data from a third party application.
-
-When you use External IDs, you can import CSV files with the "External ID" column to define the External ID of each record you import. Then, you will be able to make a reference to that record with columns like "Field/External ID". The following two CSV files give you an example for Products and their Categories.
-
-:download:`CSV file for categories
-<files/External_id_3rd_party_application_product_categories.csv>`.
-
-:download:`CSV file for Products
-<files/External_id_3rd_party_application_products.csv>`.
-
-What can I do if I have multiple matches for a field?
------------------------------------------------------
-
-If for example you have two product categories with the child name "Sellable" (ie. "Misc. Products/Sellable" & "Other Products/Sellable"), your validation is halted but you may still import your data. However, we recommend you do not import the data because they will all be linked to the first 'Sellable' category found in the Product Category list ("Misc. Products/Sellable"). We recommend you modify one of the duplicates' values or your product category hierarchy.
-
-However if you do not wish to change your configuration of product categories, we recommend you use make use of the external ID for this field 'Category'.
-
-
-
-How can I import a many2many relationship field (e.g. a customer that has multiple tags)?
------------------------------------------------------------------------------------------
-
-The tags should be separated by a comma without any spacing. For example, if you want your customer to be linked to both tags 'Manufacturer' and 'Retailer' then you will encode "Manufacturer,Retailer" in the same column of your CSV file.
-
-:download:`CSV file for Manufacturer, Retailer <files/m2m_customers_tags.csv>`
-
-
-How can I import a one2many relationship (e.g. several Order Lines of a Sales Order)?
--------------------------------------------------------------------------------------
-
-If you want to import sales order having several order lines; for each order line, you need to reserve a specific row in the CSV file.
-The first order line will be imported on the same row as the information relative to order.
-Any additional lines will need an additional row that does not have any information in the fields relative to the order.
-As an example, here is purchase.order_functional_error_line_cant_adpat.CSV file of some quotations you can import, based on demo data.
-
-:download:`File for some Quotations <files/purchase.order_functional_error_line_cant_adpat.csv>`.
-
-The following CSV file shows how to import purchase orders with their respective purchase order lines:
-
-:download:`Purchase orders with their respective purchase order lines <files/o2m_purchase_order_lines.csv>`.
-
-The following CSV file shows how to import customers and their respective contacts:
-
-:download:`Customers and their respective contacts <files/o2m_customers_contacts.csv>`.
-
-Can I import several times the same record?
+如何在电子表格应用程序中保存 CSV 文件时更改文件格式选项？
 -------------------------------------------
 
-If you import a file that contains one of the column "External ID" or "Database ID", records that have already been imported will be modified instead of being created.
-This is very useful as it allows you to import several times the same CSV file while having made some changes in between two imports.
-Odoo will take care of creating or modifying each record depending if it's new or not.
+如果您在电子表格应用程序中编辑并保存 CSV 文件，计算机的区域设置将应用于分隔符和定界符。我们建议您使用 OpenOffice 或 LibreOffice Calc，因为它们允许您修改所有三个选项（在“另存为”对话框中 > 勾选“编辑过滤器设置” > 保存）。
 
-This feature allows you to use the Import/Export tool of Odoo to modify a batch of records in your favorite spreadsheet application.
+Microsoft Excel 只允许您在保存时修改编码（在“另存为”对话框中 > 点击“工具”下拉列表 > 编码选项卡）。
 
+数据库 ID 和外部 ID 有什么区别？
+------------------------------------
 
+有些字段定义了与另一个对象的关系。例如，联系人的国家/地区是指向“国家/地区”对象记录的链接。当您想要导入此类字段时，Odoo 必须重新创建不同记录之间的链接。为帮助您导入此类字段，Odoo 提供了 3 种机制。对于要导入的每个字段，您必须使用一种且仅使用一种机制。
 
-What happens if I do not provide a value for a specific field?
---------------------------------------------------------------
+例如，要引用联系人的国家/地区，Odoo 提供了 3 种不同的字段进行导入：
 
-If you do not set all fields in your CSV file, Odoo will assign the default value for every non defined fields. But if you set fields with empty values in your CSV file, Odoo will set the EMPTY value in the field, instead of assigning the default value.
+- 国家/地区：国家/地区的名称或代码
+- 国家/地区/数据库 ID：记录的唯一 Odoo ID，由 ID postgresql 列定义
+- 国家/地区/外部 ID：在另一个应用程序中引用此记录的 ID（或导入它的 .XML 文件）
 
+对于比利时国家/地区，您可以使用这 3 种方式之一进行导入：
 
+- 国家/地区：比利时
+- 国家/地区/数据库 ID：21
+- 国家/地区/外部 ID：base.be
 
-How to export/import different tables from an SQL application to Odoo?
-----------------------------------------------------------------------
+根据您的需要，您应该使用其中一种方式来引用关系中的记录。以下是根据需要使用其中一种方式的情况：
 
-If you need to import data from different tables, you will have to recreate relations between records belonging to different tables. (e.g. if you import companies and persons, you will have to recreate the link between each person and the company they work for).
+- 使用国家/地区：当您的数据来自手动创建的 CSV 文件时，这是最简单的方式。
+- 使用国家/地区/数据库 ID：您应尽量少使用这种方式。它主要被开发人员使用，其主要优点是永远不会发生冲突（您可能有多个具有相同名称的记录，但它们总是具有唯一的数据库 ID）。
+- 使用国家/地区/外部 ID：当您从第三方应用程序导入数据时，使用外部 ID。
 
-To manage relations between tables, you can use the "External ID" facilities of Odoo. The "External ID" of a record is the unique identifier of this record in another application. This "External ID" must be unique accoss all the records of all objects, so it's a good practice to prefix this "External ID" with the name of the application or table. (like 'company_1', 'person_1' instead of '1')
+使用外部 ID 时，可以导入包含“外部 ID”列的 CSV 文件，以定义您导入的每个记录的外部 ID。然后，您可以使用类似“字段/外部 ID”的列引用该记录。以下两个 CSV 文件为产品及其类别提供了一个示例。
 
-As an example, suppose you have a SQL database with two tables you want to import: companies and
-persons. Each person belong to one company, so you will have to recreate the link between a person
-and the company he work for. (If you want to test this example, here is a :download:`dump of such a
-PostgreSQL database <files/database_import_test.sql>`)
+:download:`CSV 文件的类别
+<files/External_id_3rd_party_application_product_categories.csv>`.
 
-We will first export all companies and their "External ID". In PSQL, write the following command:
+:download:`CSV 文件的产品
+<files/External_id_3rd_party_application_products.csv>`.
 
-.. code-block:: sh
+如果字段有多个匹配项怎么办？
+-------------------------------
 
-    > copy (select 'company_'||id as "External ID",company_name as "Name",'True' as "Is a Company" from companies) TO '/tmp/company.csv' with CSV HEADER;
+例如，如果您有两个子名称为“可销售”的产品类别（即“杂项产品/可销售”和“其他产品/可销售”），您的验证将被中止，但您仍可以导入数据。然而，我们建议您不要导入数据，因为它们将全部链接到产品类别列表中的第一个“可销售”类别（“杂项产品/可销售”）。我们建议您修改其中一个重复值或产品类别层次结构。
 
-This SQL command will create the following CSV file::
+但是，如果您不希望更改产品类别的配置，我们建议您使用外部 ID 对此字段“类别”进行处理。
 
-    External ID,Name,Is a Company
-    company_1,Bigees,True
-    company_2,Organi,True
-    company_3,Boum,True
+如何导入多对多关系字段（例如拥有多个标签的客户）？
+-------------------------------------------
 
-To create the CSV file for persons, linked to companies, we will use the following SQL command in PSQL:
+标签应以逗号分隔且没有空格。例如，如果您希望客户与“制造商”和“零售商”这两个标签相关联，那么您应该在 CSV 文件的同一列中编码“制造商，零售商”。
 
-.. code-block:: sh
+:download:`制造商和零售商的 CSV 文件 <files/m2m_customers_tags.csv>`
 
-    > copy (select 'person_'||id as "External ID",person_name as "Name",'False' as "Is a Company",'company_'||company_id as "Related Company/External ID" from persons) TO '/tmp/person.csv' with CSV
+如何导入一对多关系（例如销售订单的多个订单行）？
+-------------------------------------------
 
-It will produce the following CSV file::
+如果要导入包含多个订单行的销售订单；对于每个订单行，您需要在 CSV 文件中保留特定的行。
+第一条订单行将导入到与订单相关信息相同的行。
+任何额外的行都需要一个不包含订单相关字段信息的额外行。
+例如，这里有一些可以导入的报价的 CSV 文件，基于演示数据。
 
-    External ID,Name,Is a Company,Related Company/External ID
-    person_1,Fabien,False,company_1
-    person_2,Laurence,False,company_1
-    person_3,Eric,False,company_2
-    person_4,Ramsy,False,company_3
-
-As you can see in this file, Fabien and Laurence are working for the Bigees company (company_1) and Eric is working for the Organi company. The relation between persons and companies is done using the External ID of the companies.
-We had to prefix the "External ID" by the name of the table to avoid a conflict of ID between persons and companies (person_1 and company_1 who shared the same ID 1 in the original database).
-
-The two files produced are ready to be imported in Odoo without any modifications.
-After having imported these two CSV files, you will have 4 contacts and 3 companies. (the firsts two contacts are linked to the first company).
-You must first import the companies and then the persons.
