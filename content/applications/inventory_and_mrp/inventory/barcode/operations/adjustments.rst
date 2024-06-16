@@ -1,24 +1,20 @@
 ================================================
-How to do an inventory adjustment with barcodes?
+如何使用条形码进行库存调整？
 ================================================
 
-From the Barcode application:
+从条形码应用程序中：
 
--   Click on **Inventory**
+-   点击 **库存**
 
 .. image:: media/adjustments01.png
     :align: center
 
--   Scan all the products (if you have 5 identical articles, scan it 5
-    times, or use the keyboard to set the quantity).
+-   扫描所有产品（如果你有 5 个相同的物品，请扫描 5 次，或者使用键盘设置数量）。
 
 .. note::
-    If you manage multiple locations, scan the location before scanning the
-    products. Eg. scan a shelf's barcode ; scan each product on the
-    shelf ; repeat for each shelf in the wharehouse.
+    如果你管理多个位置，请在扫描产品前扫描位置。例：扫描一个货架的条形码；扫描货架上的每个产品；对仓库中的每个货架重复此操作。
 
--   When you've scanned all the items of the location, validate the
-    inventory manually or by scanning the **Validate** barcode.
+-   当你扫描完该位置的所有物品后，可以手动验证库存或通过扫描 **验证** 条形码来完成。
 
 .. image:: media/adjustments02.png
     :align: center
