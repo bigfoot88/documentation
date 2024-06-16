@@ -1,107 +1,74 @@
 ==========================================================================
-How to send products to customers directly from suppliers (drop-shipping)?
+如何通过供应商直接向客户发送产品（直销）？
 ==========================================================================
 
-What is drop-shipping?
-----------------------
+什么是直销？
+------------
 
-Drop-Shipping is a system that allows orders taken from your store to be
-shipped straight from your supplier to your customer. On a usual
-delivery system, products are sent from your supplier to your warehouse
-to be put in stock, and then shipped to your customers after ordering.
-With drop-shipping, no item is stocked. When a customer places an order
-in your shop, the item is delivered straight from the supplier to the
-customer. Therefore, the product doesn't need to get through your
-warehouse.
+直销是一种系统，允许您从商店接收的订单直接从供应商发货到客户。通常的配送系统是，产品从供应商发送到您的仓库进行库存，然后在客户下单后再发货。而通过直销，商品不需要库存。当客户在您的商店下单时，商品直接从供应商送达客户。因此，产品无需经过您的仓库。
 
-Points to be considered while implementing drop-shipping
---------------------------------------------------------
+实施直销时需要考虑的要点
+----------------------------
 
--  Use drop-shipping only for the products you can't or don't want to
-   keep in stock. One reason is that you'll always make smaller
-   margins on items that are drop-shipped, so you should keep it
-   only for items that take up a lot of space in your warehouse.
+-  仅对您无法或不想库存的产品使用直销。一个原因是，直销商品的利润率往往较低，因此应将其仅用于占用仓库大量空间的商品。
 
--  Drop-shipping is best for niche products. Chances are that products
-   that are in high demand are being offered by large suppliers at a
-   fraction of the price you'll be able to charge, so using a more
-   costly shipping method won't be financially rewarding. But if
-   your product is unique, then it makes sense!
+-  直销最适合小众产品。高需求的产品很可能由大型供应商以比您能够收取的价格低得多的价格提供，因此使用更昂贵的运输方式不会带来经济回报。但如果您的产品独特，那么就很有意义了！
 
--  To protect your customers from bad experiences, test drop-shipping
-   companies for yourself beforehand and list the best ones.
+-  为了保护您的客户免受不良体验的影响，提前亲自测试直销公司并列出最佳公司。
 
--  Make sure time is not against you. Drop-shipping should take a
-   reasonable amount of time and surely not more than it would have
-   taken you to handle it all by yourself. It's also nice to be able
-   to provide your customers with a tracking number.
+-  确保时间不是您的敌人。直销应在合理的时间内完成，绝对不应超过您自己处理所需的时间。能够向客户提供跟踪号码也是不错的选择。
 
--  Items have to be available from your supplier. It's good to know if
-   the product you're selling is available upstream. If you don't
-   have that information, inform your customers that you don't hold
-   the item in stock and that it's subject to availability from a
-   third party.
+-  确保产品在您的供应商处有库存。了解您销售的产品是否在上游供应链中可用是非常重要的。如果没有这些信息，告知客户您没有库存，产品需从第三方供应商处获得。
 
 .. tip::
-    For more information and insights on Drop-shipping, read our blog on 
-    `What is drop-shipping and how to use it <https://www.odoo.com/blog/business-hacks-1/post/what-is-drop-shipping-and-how-to-use-it-250>`__.
+    想了解更多关于直销的信息和见解，请阅读我们的博客
+    `什么是直销以及如何使用 <https://www.odoo.com/blog/business-hacks-1/post/what-is-drop-shipping-and-how-to-use-it-250>`__。
 
-Configuring drop-shipping
--------------------------
+配置直销
+--------
 
--   Open the menu :menuselection:`Inventory --> Configuration --> Settings`. 
-    Go to **Location & Warehouse**, locate the **Dropshipping**
-    option and tick the box **Allow suppliers to deliver directly to
-    your customers**. Then, click on **Apply**.
+-   打开菜单 :menuselection:`库存 --> 配置 --> 设置`。前往 **位置和仓库**，找到 **直销**
+    选项并勾选 **允许供应商直接向客户发货**。然后，点击 **应用**。
 
 .. image:: media/dropshipping06.png
    :align: center
 
--  Then go to the menu :menuselection:`Sales --> Configuration --> Settings`.
-   Locate **Order Routing** and tick the box **Choose specific
-   routes on sales order lines (advanced)**. Click on **Apply**.
+-  然后前往菜单 :menuselection:`销售 --> 配置 --> 设置`。
+   找到 **订单路由** 并勾选 **在销售订单行上选择特定路线（高级）**。点击 **应用**。
 
 .. image:: media/dropshipping05.png
    :align: center
 
--  Now, open the menu :menuselection:`Sales --> Sales --> Products`. 
-   Add a supplier to the products you want to dropship.
+-  现在，打开菜单 :menuselection:`销售 --> 销售 --> 产品`。
+   将供应商添加到您想要直销的产品中。
 
 .. image:: media/dropshipping03.png
    :align: center
 
-How to send products from the suppliers directly to the customers
-=================================================================
+如何从供应商直接向客户发送产品
+=====================================
 
--  Create a **Sales Order** and specify on a sales order line for your
-   products that the route is **Dropshipping**.
+-  创建一个 **销售订单**，并在销售订单行上为您的产品指定 **直销** 路线。
 
 .. image:: media/dropshipping01.png
    :align: center
 
--  Open the menu :menuselection:`Purchases --> Purchases --> Requests for Quotation`.
-   The draft purchase order is automatically created from the
-   procurement with the drop-shipping route. Once the order is
-   confirmed, you will see that one shipment has been created.
+-  打开菜单 :menuselection:`采购 --> 采购 --> 询价单`。
+   草稿采购订单会自动从具有直销路线的采购需求中创建。一旦订单确认，您将看到一个发货已创建。
 
 .. image:: media/dropshipping04.png
    :align: center
 
--  To confirm the sending from the vendor to the customer, go back to
-   **Inventory** app. On the dashboard, click on **# TO RECEIVE** on
-   the dropship card.
+-  要确认从供应商到客户的发送，请返回 **库存** 应用。在仪表板上，点击直销卡上的 **# 待接收**。
 
 .. image:: media/dropshipping02.png
    :align: center
 
--  It will open the list of drop-shipping transfers. Validate the
-   transfer once it has been done. The items will be directly
-   delivered from the partner to the customer without transiting to
-   your warehouse.
+-  它将打开直销转移列表。转移完成后进行验证。物品将直接从合作伙伴送达客户，而不需要经过您的仓库。
 
 .. seealso::
     * :doc:`inventory_flow`
 
 .. todo::
-    Add link to this section when available
-    * How to analyse the performance of my vendors?
+    添加链接到此部分（待可用时）
+    * 如何分析我的供应商的表现？
