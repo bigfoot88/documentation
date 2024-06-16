@@ -1,44 +1,33 @@
 ===============================
-How to process delivery orders?
+如何处理送货订单？
 ===============================
 
-There are two approaches to process delivery orders: you can either work
-on printed documents (and scan lines on the documents), or on a screen
-(and scan products directly).
+处理送货订单有两种方法：您可以处理打印的文件（扫描文件上的条形码），或者在屏幕上操作（直接扫描产品）。
 
-Process printed delivery orders:
-================================
+处理打印的送货订单：
+=========================
 
--   Print delivery orders of the day by selecting all documents from the
-    **To Do** list and print **Picking Operations** from the top menu.
+-   通过选择**待办**列表中的所有文件，并从顶部菜单中打印**拣货操作**，来打印当天的送货订单。
 
--   Once you start processing your delivery orders, **scan the barcode** on
-    the top-right corner of the document to load the right record on
-    the screen.
+-   开始处理送货订单时，**扫描**文件右上角的条形码以在屏幕上加载正确的记录。
 
--   Then, **scan the barcode** of every product, or scan the barcode of the
-    product on the picking line if the barcode on the product is not
-    easily accessible, visible or is missing.
+-   然后，**扫描**每个产品的条形码，或者如果产品上的条形码不易获取、不可见或缺失，扫描拣货行上的条形码。
 
--   Once you scanned all products, scan the **Validate** barcode action to
-    finish the operation.
+-   扫描完所有产品后，扫描**验证**条形码操作以完成操作。
 
 .. image:: media/delivery01.png
     :align: center
 
-Process delivery orders from a computer or mobile device:
-=========================================================
+从电脑或移动设备处理送货订单：
+=================================
 
--   Load all the delivery orders marked as **To Do**, and open the first
-    one.
+-   加载所有标记为**待办**的送货订单，并打开第一个。
 
--   Pick up and scan each listed product.
+-   拿起并扫描每个列出的产品。
 
--   When you've picked all the items, click the **Validate** button or scan
-    the **Validate barcode** action to finish the Operation.
+-   拣完所有物品后，点击**验证**按钮或扫描**验证条形码**操作以完成操作。
 
--   Move to the next delivery order to process by clicking on the
-    top-right right **arrow** or scanning the **Pager-Next** barcode action.
+-   点击右上角的**箭头**或扫描**下一页**条形码操作，移动到下一个送货订单进行处理。
 
 .. image:: media/delivery02.png
     :align: center
