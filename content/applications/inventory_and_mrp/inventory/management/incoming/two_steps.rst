@@ -1,97 +1,77 @@
 ===========================================================
-How to unload your shipment to an input location? (2 steps)
+如何将货物卸载到输入位置？（2步）
 ===========================================================
 
-Overview
+概述
 ========
 
-Odoo uses routes to define exactly how you will handle the different
-receipt steps. The configuration is done at the level of the warehouse.
-By default, the reception is a one step process, but changing the
-configuration can allow to have 2 or even 3 steps.
+Odoo 使用路线来定义您将如何处理不同的接收步骤。配置是在仓库级别完成的。默认情况下，接收是一个步骤的过程，但更改配置可以允许有2步甚至3步。
 
-The 2 steps flow is the following : You receive the goods in an input
-area then transfer them from input area to your stock. As long as the
-goods are not transferred in your stock, they will not be available for
-further processing.
+2步流程如下：您在输入区域接收货物，然后将它们从输入区域转移到您的库存中。只要货物没有转移到您的库存中，它们将无法进行进一步处理。
 
-This is the case that will be explained in this document.
+本文将解释这种情况。
 
-Configuration
+配置
 =============
 
-Use advanced routes
+使用高级路线
 -------------------
 
-To allow management of routes, go to the menu
-:menuselection:`Inventory --> Configuration --> Settings`
+要允许管理路线，进入菜单 :menuselection:`库存 --> 配置 --> 设置`
 
 .. image:: media/two_steps05.png
    :align: center
 
-Ensure that the routes option **Advance routing of product using
-rules** is checked, then click on **Apply** to save changes.
+确保路线选项 **使用规则的产品高级路由** 被勾选，然后点击 **应用** 保存更改。
 
-Make sure that **"Manage several locations per warehouse"** is also
-ticked.
+确保 **"每个仓库管理多个位置"** 也被勾选。
 
-How to configure your warehouse ?
+如何配置您的仓库？
 ---------------------------------
 
-Go to the the menu :menuselection:`Inventory --> Configuration --> Warehouse`
-and choose the warehouse where you want to change reception methods.
+进入菜单 :menuselection:`库存 --> 配置 --> 仓库`，选择您要更改接收方式的仓库。
 
-By default, warehouses are configured with one step reception (option **Receive
-goods directly into stock**).
+默认情况下，仓库配置为一步接收（选项 **直接将货物接收到库存**）。
 
-To add the control step, tick **Unload in input location then go to
-stock (2 steps)**.
+要添加控制步骤，勾选 **在输入位置卸载然后转移到库存（2步）**。
 
 .. image:: media/two_steps02.png
    :align: center
 
-How to receipt a shipment in 2 steps?
+如何在2步中接收货物？
 =====================================
 
-How to process the Receipt step ?
+如何处理接收步骤？
 ---------------------------------
 
--  In the purchase module, create a **Request for Quotation**, then click on
-   the **Confirm order** button. You can see that there is one
-   **Shipment** related to purchase order in the **stat button**
-   above the purchase order form view. This is the receipt step.
+-  在采购模块中，创建一个 **询价单**，然后点击 **确认订单** 按钮。您可以看到有一个
+   **货物** 与采购订单相关联，在采购订单表单视图上方的 **状态按钮** 中。这是接收步骤。
 
 .. image:: media/two_steps03.png
    :align: center
 
--  Go to **Inventory** and click on the **# TO RECEIVE** link on the
-   **Receipts** card.
+-  进入 **库存** 并点击 **# 待接收** 链接在 **接收** 卡片上。
 
 .. image:: media/two_steps01.png
    :align: center
 
-Click on the receipt that you want to process, then click on **Validate** to
-complete the move from the **Vendor** to **WH/Input**.
+点击您要处理的接收单，然后点击 **验证** 完成从 **供应商** 到 **WH/Input** 的移动。
 
-This has completed the Receipt Step and the move referred with **WH/IN**. 
-The product has been moved from the **Vendor** to the **WH/Input** location, 
-which makes the product available for the next step.
+这已完成接收步骤，移动被称为 **WH/IN**。
+产品已从 **供应商** 移动到 **WH/Input** 位置，使得产品可用于下一步。
 
-How to transfer the receipt to your stock ? 
+如何将接收到的货物转移到您的库存？
 --------------------------------------------
 
-Go back to the **Inventory** dashboard. The waiting transfer is now
-ready. Click on the **# TRANSFERS** in the **Internal Transfers** to process
-the quality control.
+返回 **库存** 仪表板。待转移的货物现在准备好了。点击 **# 转移** 在 **内部转移** 卡片上处理质量控制。
 
 .. image:: media/two_steps04.png
    :align: center
 
-Click on the picking you want to process. Click on **Validate** to
-complete the move from **WH/Input** to **WH/Stock**.
+点击您要处理的拣货单。点击 **验证** 完成从 **WH/Input** 到 **WH/Stock** 的移动。
 
-This has completed the internal transfer step and the move referred with **WH/INT**. 
-The receipt has been moved to your stock.
+这已完成内部转移步骤，移动被称为 **WH/INT**。
+接收到的货物已被转移到您的库存。
 
 .. seealso::
     * :doc:`../delivery/inventory_flow`
