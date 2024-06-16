@@ -1,41 +1,33 @@
 ===================================================================
-How can I limit a delivery method to a certain number of countries?
+如何将配送方式限制在某些国家使用？
 ===================================================================
 
-Overview
+概述
 ========
 
-With Odoo, you can have different types of delivery methods, and you can
-limit them to a certain number of countries.
+在 Odoo 中，您可以设置不同类型的配送方式，并将其限制在某些国家使用。
 
-Configuration
+配置
 =============
 
-Go to the **Inventory** module, click on **Configuration** and then on
-**Delivery Methods**.
+进入 **库存** 模块，点击 **配置**，然后选择 **配送方式**。
 
 .. image:: media/delivery_countries01.png
     :align: center
 
-Select the delivery method that you want to change, or create a new one.
+选择您要更改的配送方式，或创建一个新的。
 
 .. image:: media/delivery_countries02.png
     :align: center
 
-In the **Destination** tab, choose the countries to which you want to
-apply this delivery method.
+在 **目的地** 标签下，选择您希望适用此配送方式的国家。
 
-Now, that this is done, Let's see the result.
+完成此操作后，让我们看看结果。
 
-If you go to the website, and you try to buy something, once you've
-entered your details and you proceed to the payment, the website will
-propose you only the delivery methods that apply to your shipping
-address.
+如果您访问网站并尝试购买某些商品，在输入详细信息并继续付款时，网站将只会向您提供适用于您收货地址的配送方式。
 
 .. image:: media/delivery_countries03.png
     :align: center
 
 .. note::
-    This process doesn't work in backend. We assume that when you
-    create a Sale Order, you know which delivery method you can use since
-    you created them.
+    此过程不适用于后台。我们假设当您创建销售订单时，您已经知道可以使用哪些配送方式，因为这些配送方式是由您创建的。
