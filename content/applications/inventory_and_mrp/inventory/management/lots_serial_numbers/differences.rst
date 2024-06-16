@@ -1,46 +1,29 @@
 ======================================================
-What's the difference between lots and serial numbers?
+批次号和序列号的区别
 ======================================================
 
-Introduction
-============
+简介
+====
 
-In Odoo, lots and serial numbers have similarities in their functional
-system but are different in their behavior. They are both managed within
-the **Inventory**, **Purchases** and **Sales** app.
+在 Odoo 中，批次号和序列号在功能系统上有相似之处，但在行为上却有所不同。它们都在 **库存**、**采购** 和 **销售** 应用中进行管理。
 
-**Lots** correspond to a certain number of products you received and store
-altogether in one single pack.
+**批次号** 对应于某一数量的产品，这些产品一起接收并存储在一个单独的包装中。
 
-**Serial numbers** are identification numbers given to one product in
-particular, to allow to track the history of the item from reception to
-delivery and after-sales.
+**序列号** 是特定产品的识别号码，用于跟踪该物品从接收到交付及售后的历史记录。
 
-When to use
------------
+何时使用
+----------
 
-**Lots** are interesting for products you receive in great quantity and for
-which a lot number can help in reportings, quality controls, or any
-other info. Lots will help identify a number of pieces having for
-instance a production fault. It can be useful for a batch production of
-clothes or food.
+**批次号** 适用于大量接收的产品，批次号有助于报告、质量控制或其他信息。批次号有助于识别具有生产故障的产品数量。例如，它可用于服装或食品的批量生产。
 
-**Serial numbers** are interesting for items that could require after-sales
-service, such as smartphones, laptops, fridges, and any electronic
-devices. You could use the manufacturer's serial number or your own,
-depending on the way you manage these products
+**序列号** 适用于可能需要售后服务的物品，如智能手机、笔记本电脑、冰箱和其他电子设备。您可以使用制造商的序列号或您自己的序列号，这取决于您管理这些产品的方式。
 
-When not to use
----------------
+何时不使用
+------------
 
-Storing consumable products such as kitchen roll, toilet paper, pens and
-paper blocks in lots would make no sense at all, as there are very few
-chances that you can return them for production fault.
+将消耗品（如厨房纸、卫生纸、笔和纸块）按批次存储毫无意义，因为几乎没有机会因生产故障而退回这些物品。
 
-On the other hand, giving a serial number to every product is a
-time-consuming task that will have a purpose only in the case of items
-that have a warranty and/or after-sales services. Putting a serial
-number on bread, for instance, makes no sense at all.
+另一方面，为每件产品分配序列号是一个耗时的任务，只有在物品有保修和/或售后服务的情况下才有意义。例如，在面包上放置序列号完全没有意义。
 
 .. seealso::
     * :doc:`serial_numbers`
