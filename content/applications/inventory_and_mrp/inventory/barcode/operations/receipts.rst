@@ -1,58 +1,45 @@
-=================================
-How to process incoming receipts?
-=================================
+==============================
+如何处理入库单？
+==============================
 
-There are two approaches to process incoming receipts: you can either
-work on printed documents (and scan lines on the documents), or on a
-screen (and scan products directly).
+处理入库单有两种方法：可以处理打印的文件（扫描文件上的行），也可以在屏幕上直接扫描产品。
 
-Process printed incoming receipts:
-==================================
+处理打印的入库单：
+====================
 
--   Print incoming receipts of the day by selecting all documents from
-    the **To Receive** list and print **Picking Operations** from the top
-    menu.
+- 通过选择 **待接收** 列表中的所有文件并从顶部菜单中打印 **拣货操作** 来打印当天的入库单。
 
--   Once you start processing your incoming receipts, scan the barcode on
-    the top-right corner of the document to load the right record on
-    the screen.
+- 开始处理入库单时，扫描文件右上角的条码以在屏幕上加载正确的记录。
 
--   Then, scan the barcode of every product, or scan the barcode of the
-    product on the picking line if the barcode on the product is not
-    easily accessible, visible or is missing.
+- 然后，扫描每个产品的条码，或者如果产品上的条码不容易接触、可见或缺失，可以扫描拣货行上的产品条码。
 
--   Once you scanned all products, scan the **Validate** barcode action to
-    finish the operation.
+- 扫描所有产品后，扫描 **验证** 条码操作以完成操作。
 
-Process incoming receipts from a computer or mobile device:
-===========================================================
+通过计算机或移动设备处理入库单：
+=======================================
 
--   Load all the incoming receipts marked as **To Receive**, and open the
-    first one.
+- 加载所有标记为 **待接收** 的入库单，并打开第一个。
 
--   Pick up and scan each listed product.
+- 拣选并扫描每个列出的产品。
 
--   When you've picked all the items, click the **Validate** button or scan
-    the **Validate** barcode action to finish the Operation.
+- 拣选所有项目后，点击 **验证** 按钮或扫描 **验证** 条码操作以完成操作。
 
--   Move to the next incoming receipt to process by clicking on the
-    top-right right **arrow** or scanning the **Pager-Next** barcode action.
+- 点击右上角的 **箭头** 或扫描 **下一页** 条码操作处理下一个入库单。
 
-Example
-========
+示例
+====
 
-Open operation interface.
+打开操作界面。
 
 .. image:: media/receipts01.png
     :align: center
 
-Scan.
+扫描。
 
 .. image:: media/receipts02.png
     :align: center
 
-The picking appears. Scan items and/or fill in information using the
-mouse and keyboard.
+拣货操作出现。扫描物品和/或使用鼠标和键盘填写信息。
 
 .. image:: media/receipts03.png
     :align: center
