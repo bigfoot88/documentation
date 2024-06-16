@@ -1,46 +1,37 @@
 ====================================================
-How to handle lots and serial numbers with barcodes?
+如何使用条形码处理批号和序列号
 ====================================================
 
-Lots Numbers can be encoded from incoming shipments, internal moves and
-outgoing deliveries:
+批号可以从来货、内部移动和发货中编码：
 
--   In the barcode interface, **scan** the products you want create a lot from
+-   在条形码界面，**扫描**你要创建批号的产品
 
--   If this product should be manage by lots, a window opens to help you
-    scan the lots/serial numbers
+-   如果该产品需要按批号管理，会弹出一个窗口帮助你扫描批号/序列号
 
--   **Scan** a lot barcode, **type** one manually or **leave empty** to generate one
-    automatically
+-   **扫描**一个批号条码，**手动输入**一个，或者**留空**以自动生成一个
 
--   Click or scan **Validate** once you are done
+-   完成后点击或扫描**验证**
 
-What is the difference between **Lots** and **Serial Numbers**?
+**批号**和**序列号**有什么区别？
 
--   **Lot** numbers are attributed to several identical products, so each
-    time you scan a lot number, Odoo will add one on the product
-    count.
+-   **批号**是分配给多个相同产品的，因此每次扫描批号时，Odoo 会在产品数量上增加一个。
 
--   On the opposite, a **serial number** is unique, and represented by only
-    one barcode, sticked on only one item. This means that Odoo won't
-    accept scanning the same serial number more than once per
-    operation.
+-   相反，**序列号**是唯一的，仅由一个条形码代表，贴在单个物品上。这意味着 Odoo 不会接受在同一操作中多次扫描相同的序列号。
 
 .. image:: media/lots_serial_numbers01.png
     :align: center
 
-Here, we configured **Lu - Petit Beukelaer** tracking by lots.
+在这里，我们配置了 **Lu - Petit Beukelaer** 通过批次进行跟踪。
 
 .. image:: media/lots_serial_numbers04.png
     :align: center
 
-Scan a product from this incoming shipment, then scan the lot number of
-each product (you can also use the keyboard).
+从此来货中扫描一个产品，然后扫描每个产品的批号（你也可以使用键盘）。
 
 .. image:: media/lots_serial_numbers02.png
     :align: center
 
-Click save/scan **Validate** and you are done.
+点击保存/扫描**验证**，你就完成了。
 
 .. image:: media/lots_serial_numbers03.png
     :align: center
