@@ -1,54 +1,45 @@
 ==========================================================
-How can you change the packaging type for your sale order?
+如何更改销售订单的包装类型？
 ==========================================================
 
-Overview
+概述
 ========
 
-Odoo gives you the possibility to change the default packaging type and
-adapt the packaging the way you want it, depending on the weight of the
-order.
+Odoo 允许您更改默认的包装类型，并根据订单的重量调整包装方式，以适应您的需求。
 
-Configuration
+配置
 =============
 
-In the **Inventory** module, Go to **Configuration** and then click on
-**Settings**.
+在 **库存** 模块中，进入 **配置** 并点击 **设置**。
 
-In :menuselection:`Traceability --> Packages`, flag **Record packages used on
-packing : pallets, boxes,...**
+在 :menuselection:`可追溯性 --> 包装` 中，勾选 **记录使用的包装：托盘、盒子等**。
 
 .. image:: media/packaging_type01.png
     :align: center
 
-*Sale process*
+*销售流程*
 
-In the **Sales** module, go to **Sales** and click on **Sale Order**.
+在 **销售** 模块中，进入 **销售** 并点击 **销售订单**。
 
-Create your new Sale Order, and **Confirm the Sale**.
+创建新的销售订单，并 **确认销售**。
 
 .. image:: media/packaging_type02.png
     :align: center
 
-Once you've confirmed the Sale, you need to click on **Delivery**, to be
-redirected to the Delivery order.
+一旦确认销售后，需要点击 **交货**，将被重定向到交货单。
 
-Click on **Edit**, and you can now change the packaging.
+点击 **编辑**，现在可以更改包装类型。
 
 .. image:: media/packaging_type03.png
     :align: center
 
-In the **Operations** tab, in the last column, change the **0** and put
-the number of products that you want to pack together. Then click on
-**Put in Pack**.
+在 **操作** 选项卡中，在最后一列更改 **0**，输入您想要一起打包的产品数量。然后点击 **放入包装**。
 
 .. image:: media/packaging_type04.png
     :align: center
 
-Choose the type of packaging that you want. You can also see that the
-weight has been adapted to your package, and you can change it manually
-if you want it to be more precise. Then click on **Save**.
+选择您想要的包装类型。您还可以看到重量已经根据您的包装进行了调整，如果希望更精确，也可以手动更改。然后点击 **保存**。
 
-Repeat the operation until all the products are put in pack.
+重复此操作，直到所有产品都被打包。
 
-Finally, click on **Validate** to confirm the delivery.
+最后，点击 **验证** 以确认交货。
