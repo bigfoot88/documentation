@@ -1,108 +1,82 @@
 ==================================
-How to make the initial inventory?
+如何进行初始库存盘点？
 ==================================
 
-One of the most important feature in an warehouse management software is
-to keep the inventory right.
+在仓库管理软件中，确保库存准确是最重要的功能之一。
 
-Once your products have been defined, it is time to make your initial
-inventory. You will reflect reality by inventorying the right quantities
-in the right locations.
+一旦定义了产品，就可以进行初始库存盘点。通过盘点正确位置的正确数量来反映现实情况。
 
-Product Configuration
+产品配置
 =====================
 
-In the Inventory module, open the :menuselection:`Inventory Control --> Products`,
-then click on **Create** to create a new product. Configure the
-product type so that it is **Stockable** and not a consumable.
+在库存模块中，打开 :menuselection:`库存控制 --> 产品`，然后点击 **创建** 按钮创建新产品。将产品类型配置为 **库存产品** 而不是消耗品。
 
 .. image:: media/initial01.png
    :align: center
 
-Start the initial inventory
+开始初始库存盘点
 ===========================
 
-Update the product quantity for one product
+更新单个产品的数量
 -------------------------------------------
 
-In the product you just created, you can see in the upper tiles that we
-have 0 product On Hand. Click on the **Update qty on Hand** button.
+在刚刚创建的产品中，可以在顶部面板看到当前库存为0。点击 **更新在手数量** 按钮。
 
-A new window opens. In the **New Quantity on Hand** field, type the
-quantity of product you currently hold in stock, then click on **Apply**.
+一个新窗口将打开。在 **新的在手数量** 字段中，输入当前库存数量，然后点击 **应用**。
 
 .. image:: media/initial02.png
    :align: center
 
 .. tip::
 
-	if you are using multiple locations for your warehouse, you will
-	be able to set the location of your product from this screen.
+	如果您使用多个仓库位置，可以在此界面设置产品的位置。
 
-You can now see from the On Hand tab that the quantity has been updated.
+现在，您可以在在手数量标签中看到数量已更新。
 
 .. image:: media/initial03.png
    :align: center
 
-Now, if you check the **Inventory Adjustments** in the **Inventory Control**
-menu, you will see that a new line named "INV: (name of your product)" has
-automatically been created and validated by the system.
+现在，如果检查 **库存调整** 菜单中的 **库存控制**，您会看到系统已自动创建并验证了一个名为“INV:（您的产品名称）”的新行。
 
 .. image:: media/initial04.png
    :align: center
 
-Multiple products at once
+一次处理多个产品
 -------------------------
 
-Create all the products for which you want to follow the stock (as
-stockable products). Once the required products in stock have been
-defined, use an initial inventory operation to put the current
-quantities into the system by location. Go to :menuselection:`Inventory Control -->
-Inventory Adjustments` to start your initial inventory.
+创建所有需要跟踪库存的产品（作为库存产品）。定义库存中所需产品后，通过初始库存操作按位置将当前数量输入系统。转到 :menuselection:`库存控制 --> 库存调整` 开始您的初始库存盘点。
 
-Give it a name (for example Initial Inventory) and select the stock
-location of your inventory. Note that when you select a parent location
-(such as Stock, which might be split into sub locations), you can also
-select the sub (or child) locations.
+给它一个名称（例如初始库存），并选择库存位置。请注意，当您选择父位置（如库存，其可能分为子位置）时，也可以选择子位置。
 
 .. image:: media/initial05.png
    :align: center
 
-You can choose between making an inventory for all products, for a few
-or only for one. In this case, we choose the **All products** option.
+您可以选择对所有产品进行盘点、仅对部分产品或仅对一个产品进行盘点。在本例中，我们选择 **所有产品** 选项。
 
 .. image:: media/initial06.png
    :align: center
 
 .. tip::
 
-	If you need your stock valuation to be done in a different period
-	than the one that will be selected by default according to the inventory
-	end date, enter the corresponding accounting period in the Force
-	Valuation Period field. The accounting module needs to be installed.
+	如果需要在默认选择的库存结束日期以外的期间进行库存估值，请在强制估值期间字段中输入相应的会计期间。需要安装会计模块。
 
-Click the **Start Inventory** button. Depending on the type of inventory you
-have chosen (all products or selected ones) you might have to add
-products manually by clicking on **Add an item**.
+点击 **开始库存盘点** 按钮。根据您选择的库存类型（所有产品或选定产品），您可能需要通过点击 **添加项目** 手动添加产品。
 
-Add the **Real Quantity** that you have in your stock for each product.
+添加每种产品在库存中的 **实际数量**。
 
 .. tip::
 
-	additional information will be available according to the options
-	you activated (multi-locations, serial number, consignee stocks).
+	根据您激活的选项（多位置、序列号、寄售库存），将提供附加信息。
 
 .. image:: media/initial07.png
    :align: center
 
-Click the **Validate Inventory** button to confirm the inventory and post
-it.
+点击 **验证库存** 按钮确认库存并发布。
 
-Reporting
+报告
 =========
 
-To check the current stock, go to :menuselection:`Inventory Control --> Products`,
-and click on the **list button**:
+要检查当前库存，转到 :menuselection:`库存控制 --> 产品`，然后点击 **列表按钮**：
 
 .. image:: media/initial08.png
    :align: center
