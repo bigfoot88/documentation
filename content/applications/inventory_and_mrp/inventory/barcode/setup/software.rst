@@ -1,62 +1,41 @@
 =====================================
-How to activate the barcodes in Odoo?
+如何在 Odoo 中激活条形码功能？
 =====================================
 
-The barcode scanning features can save you a lot of the time usually
-lost switching between the keyboard, the mouse and the scanner. Properly
-attributing barcodes to products, pickings locations, etc. allows you to
-work more efficiently by controlling the software almost exclusively
-with the barcode scanner.
+条形码扫描功能可以节省在键盘、鼠标和扫描仪之间切换时浪费的时间。为产品、拣货位置等正确分配条形码可以通过几乎完全使用条形码扫描器控制软件来提高工作效率。
 
-Set products barcodes
+设置产品条形码
 =====================
 
 .. image:: media/software01.png
     :align: center
 
-In order to fill a picking or to perform an inventory, you need to make
-sure that your products are encoded in Odoo along with their barcodes.
-If this is not already done, you can fill in the products barcodes
-through a handy interface. Go to 
-:menuselection:`Inventory --> Configuration --> Settings`
-and click :menuselection:`Operations --> Barcode Scanner`.
-Click Save, and go back into the previous screen to click Configure
-Product Barcodes.  This interface can also be accessed via the planner.
-
+为了完成拣货或进行库存盘点，您需要确保您的产品在 Odoo 中进行了编码并附有条形码。如果还没有完成，可以通过一个方便的界面来填写产品条形码。前往
+:menuselection:`Inventory --> Configuration --> Settings`，
+然后点击 :menuselection:`Operations --> Barcode Scanner`。
+点击保存，然后返回到前一个界面点击配置产品条形码。这个界面也可以通过计划器访问。
 
 .. note::
-    Product variants: be careful to add barcodes directly on the
-    variant, and not the template product (otherwise you won't be able to
-    differentiate them).
+    产品变体：请注意直接在变体上添加条形码，而不是在模板产品上（否则您将无法区分它们）。
 
-Set locations barcodes
+设置位置条形码
 ======================
 
 .. image:: media/software02.png
     :align: center
 
-If you manage multiple locations, you will find useful to attribute a
-barcode to each location and stick it on the location. You can configure
-the locations barcodes in 
-:menuselection:`Inventory --> Configuration --> Warehouse Management --> Locations`. 
-There is button in the **Print** menu that you
-can use to print the locations names and barcodes. There are 4 barcodes
-per page, arranged in a way that is convenient to print on sticker
-paper.
+如果您管理多个位置，为每个位置分配一个条形码并将其贴在位置上会很有用。您可以在
+:menuselection:`Inventory --> Configuration --> Warehouse Management --> Locations`
+中配置位置条形码。在 **打印** 菜单中有一个按钮，您可以用来打印位置名称和条形码。每页有四个条形码，排列方式便于打印在贴纸纸上。
 
-Example of location naming: **warehouse short name** - **location short
-name** - (**Corridor X** - **Shelf Y** - **Height Z**) Example: A032-025-133
+位置命名示例：**仓库简称** - **位置简称** - (**走廊 X** - **货架 Y** - **高度 Z**) 示例：A032-025-133
 
 .. image:: media/software03.png
     :align: center
 
-Barcode formats
+条形码格式
 ===============
 
-Most retail products use EAN-13 barcodes. They cannot be made up without
-proper authorization: you must pay the International Article Numbering
-Association a fee in exchange for an EAN code sequence (that's why no
-two products in a store will ever have the same EAN code).
+大多数零售产品使用 EAN-13 条形码。未经适当授权不能随意生成这些条形码：您必须向国际物品编号协会支付费用以换取 EAN 代码序列（这就是为什么商店里的两个产品永远不会有相同的 EAN 代码）。
 
-Still, as Odoo supports any string as a barcode, so you can always
-define your own barcode format for internal use.
+尽管如此，由于 Odoo 支持任何字符串作为条形码，因此您始终可以为内部使用定义自己的条形码格式。
