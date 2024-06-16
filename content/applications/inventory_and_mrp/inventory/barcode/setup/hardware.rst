@@ -1,65 +1,35 @@
 ===========================
-Set up your barcode scanner
+设置你的条形码扫描器
 ===========================
 
-Getting started with barcode scanning in Odoo is fairly easy. Yet, a
-good user experience relies on an appropriate hardware setup. This guide
-will help you through the task of choosing and configuring the barcode
-scanner.
+在 Odoo 中开始使用条形码扫描相对简单。然而，一个良好的用户体验依赖于适当的硬件设置。本指南将帮助你选择和配置条形码扫描器。
 
-Find the barcode scanner that suits your needs
-==============================================
+选择适合你需求的条形码扫描器
+=================================
 
-The 3 recommended type of barcode scanners to work with the Odoo
-**Inventory** and **Barcode Scanning** apps are the **USB scanner**, **the bluetooth
-scanner** and the **mobile computer scanner**.
+推荐用于 Odoo **库存**和**条形码扫描**应用的三种条形码扫描器类型是**USB 扫描器**、**蓝牙扫描器**和**移动计算机扫描器**。
 
 .. image:: media/hardware02.png
     :align: center
 
--   If you scan products at a computer location, the **USB scanner** is the
-    way to go. Simply plug it in the computer to start scanning. Just
-    make sure when you buy it that the scanner is compatible with
-    your keyboard layout or can be configured to be so.
+-   如果你在电脑位置扫描产品，**USB 扫描器**是首选。只需将其插入电脑即可开始扫描。购买时请确保扫描器与键盘布局兼容或可以配置为兼容。
 
--   The **bluetooth scanner** can be paired with a smartphone or a tablet and
-    is a good choice if you want to be mobile but don't need a big
-    investment. An approach is to log in Odoo on you smartphone, pair
-    the bluetooth scanner with the smartphone and work in the
-    warehouse with the possibility to check your smartphone
-    from time to time and use the software 'manually'.
+-   **蓝牙扫描器**可以与智能手机或平板电脑配对，如果你希望移动但不想进行大量投资，这是一个不错的选择。一种方法是登录 Odoo 到智能手机上，将蓝牙扫描器与智能手机配对，并在仓库中工作，可以随时查看智能手机并手动使用软件。
 
--   For heavy use, the **mobile computer scanner** is the handiest solution.
-    It consists of a small computer with a built-in barcode scanner.
-    This one can turn out to be a very productive solution, however
-    you need to make sure that is is capable of running Odoo smoothly.
-    The most recent models using Android + Google Chrome or Windows +
-    Internet Explorer Mobile should do the job. However, due to the
-    variety of models and configurations on the market, it is
-    essential to test it first.
+-   对于频繁使用，**移动计算机扫描器**是最方便的解决方案。它由一个带内置条形码扫描器的小型计算机组成。这种解决方案可以非常高效，但你需要确保它能够流畅运行 Odoo。最新的使用 Android + Google Chrome 或 Windows + Internet Explorer Mobile 的型号应该可以胜任。不过，由于市场上型号和配置的多样性，测试是必要的。
 
-Configure your barcode scanner
-==============================
+配置你的条形码扫描器
+=======================
 
-Keyboard layout
----------------
+键盘布局
+---------
 
 .. image:: media/hardware01.png
     :align: center
 
-An USB barcode scanner needs to be configured to use the same keyboard
-layout as your operating system. Otherwise, your scanner won't translate
-characters correctly (replacing a 'A' with a 'Q' for example). Most
-scanners are configured by scanning the appropriate barcode in the user
-manual.
+USB 条形码扫描器需要配置为使用与操作系统相同的键盘布局。否则，扫描器将无法正确翻译字符（例如将 'A' 替换为 'Q'）。大多数扫描器可以通过扫描用户手册中的相应条形码来配置。
 
-Automatic carriage return
--------------------------
+自动回车
+---------
 
-By default, Odoo has a 50 milliseconds delay between each successive
-scan (it helps avoid accidental double scanning). If you want to
-suppress this delay, you can configure your scanner to insert a carriage
-return at the end of each barcode. This is usually the default
-configuration and can be explicitly configured by scanning a specific
-barcode in the user manual ('CR suffix ON', 'Apply Enter for suffix',
-etc.).
+默认情况下，Odoo 在每次连续扫描之间有 50 毫秒的延迟（有助于避免意外的双重扫描）。如果你想消除这种延迟，可以配置扫描器在每个条形码的末尾插入一个回车符。这通常是默认配置，也可以通过扫描用户手册中的特定条形码（例如“CR suffix ON”、“Apply Enter for suffix”等）来显式配置。
