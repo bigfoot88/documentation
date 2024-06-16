@@ -1,50 +1,39 @@
 ===============================
-How to adapt an import template
+如何调整导入模板
 ===============================
 
-Import templates are provided in the import tool of the most common data to
-import (contacts, products, bank statements, etc.).
-You can open them with any spreadsheets software (Microsoft Office, 
-OpenOffice, Google Drive, etc.).
+导入工具提供了常见数据的导入模板（联系人、产品、银行对账单等）。你可以使用任意电子表格软件（ Microsoft Office、 OpenOffice、 Google Drive 等）打开这些模板。
 
-How to customize the file
+如何自定义文件
 =========================
 
-* Remove columns you don't need. We advise to not remove the *ID* one (see
-  why here below).
-* Set a unique ID to every single record by dragging down the ID sequencing.
+* 删除不需要的列。建议不要删除 *ID* 列（详见下文原因）。
+* 通过向下拖动 ID 序列，为每条记录设置唯一的 ID。
 
 .. image:: media/dragdown.gif
     :align: center
 
-* When you add a new column, Odoo might not be able to map it automatically if its 
-  label doesn't fit any field of the system. 
-  If so, find the corresponding field using the search.
+* 当你添加新列时，如果其标签不符合系统中的任何字段， Odoo 可能无法自动映射该列。
+  如果发生这种情况，请使用搜索找到对应的字段。
 
     .. image:: media/field_list.png
         :align: center
 
-  Then, use the label you found in your import template in order to make it work
-  straight away the very next time you try to import.
+  然后，在你的导入模板中使用找到的标签，以便下次尝试导入时能够立即生效。
 
-Why an “ID” column
+为什么需要 “ID” 列
 ==================
 
-The **ID** (External ID) is an unique identifier for the line item.
-Feel free to use the one of your previous software to ease the transition to Odoo.
+**ID**（外部 ID）是每条记录的唯一标识符。随意使用你之前软件中的 ID，以便轻松过渡到 Odoo。
 
-Setting an ID is not mandatory when importing but it helps in many cases:
+导入时设置 ID 不是强制性的，但在许多情况下会有所帮助：
 
-* Update imports: you can import the same file several times without creating duplicates;
-* Import relation fields (see here below).
+* 更新导入：你可以多次导入同一个文件而不会创建重复项；
+* 导入关系字段（详见下文）。
 
-How to import relation fields
+如何导入关系字段
 =============================
 
-An Odoo object is always related to many other objects (e.g. a product is linked
-to product categories, attributes, vendors, etc.). To import those relations you need to
-import the records of the related object first from their own list menu.
+Odoo 对象总是与许多其他对象相关联（例如，产品与产品类别、属性、供应商等相关联）。要导入这些关系，你需要首先从它们自己的列表菜单中导入相关对象的记录。
 
-You can do it using either the name of the related record or its ID. The ID is expected when
-two records have the same name. In such a case add " / ID" at the end of the column title
-(e.g. for product attributes: Product Attributes / Attribute / ID).
+你可以使用相关记录的名称或 ID 来导入。当两个记录具有相同名称时，需要使用 ID。在这种情况下，在列标题末尾添加“ / ID”（例如，对于产品属性：产品属性 / 属性 / ID）。
