@@ -1,47 +1,34 @@
 =================
-How to add a user
+如何添加用户
 =================
 
-Odoo provides you with the option to add additional users at any given
-point.
+Odoo 提供了随时添加其他用户的选项。
 
-Add individual users
-====================
+添加单个用户
+=============
 
-From the Settings module, go to the submenu :menuselection:`Users --> Users` and click on
-**CREATE.** First add the name of your new user and the professional
-email address - the one he will use to log into Odoo instance - and a
-picture.
+在设置模块中，进入子菜单 :menuselection:`用户 --> 用户`，然后点击 **创建**。首先，添加新用户的姓名和专业电子邮件地址（用于登录 Odoo 实例的邮箱），并上传一张照片。
 
 .. image:: media/add_user01.png
     :align: center
 
-Under Access Rights, you can choose which applications your user can
-access and use. Different levels of rights are available depending on
-the app.
+在“访问权限”下，您可以选择用户可以访问和使用的应用程序。根据不同的应用程序，有不同级别的权限可供选择。
 
-When you’re done editing the page and have clicked on **SAVE**, an
-invitation email will automatically be sent to the user. The user must
-click on it to accept the invitation to your instance and create a
-log-in.
+当您编辑完页面并点击 **保存** 后，一封邀请邮件将自动发送给用户。用户必须点击邮件中的链接接受邀请，并创建登录账号。
 
 .. image:: media/add_user02.png
     :align: center
 
 .. note::
-    Remember that each additional user will increase your subscription fees.
-    Refer to our `*Pricing page* <https://www.odoo.com/pricing>`__ for more information.
+    请记住，每增加一个用户，您的订阅费用就会增加。有关更多信息，请参阅我们的 `*定价页面* <https://www.odoo.com/pricing>`__。
 
 .. image:: media/add_user03.png
     :align: center
 
 .. tip::
-    You can also add a new user on the fly from your dashboard. From the above screenshot,
-    enter the email address of the user you would like to add and click on **INVITE**.
-    The user will receive an email invite containing a link to set his password. You
-    will then be able to define his accesses rights under the :menuselection:`Settings --> Users menu`.
+    您还可以直接从仪表板添加新用户。从上面的截图中，输入您要添加的用户的电子邮件地址，然后点击 **邀请**。用户将收到包含设置密码链接的电子邮件邀请。然后，您可以在 :menuselection:`设置 --> 用户` 菜单下定义他的访问权限。
 
 .. seealso::
-    * `Deactivating Users <../../db_management/documentation.html#deactivating-users>`_
+    * `停用用户 <../../db_management/documentation.html#deactivating-users>`_
 
-.. todo:: Add link to How to add companies
+.. todo:: 添加如何添加公司的链接
