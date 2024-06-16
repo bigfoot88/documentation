@@ -1,42 +1,33 @@
 =================================
-How do I cancel a delivery order?
+如何取消配送订单？
 =================================
 
-Overview
+概述
 ========
 
-Odoo gives you the possibility to cancel a delivery method whether it
-has been validated to fast, it needs to be modified or for any other
-reason.
+Odoo 允许您取消配送方式，不论是因为操作过快、需要修改，还是其他任何原因。
 
-Some carriers are more flexible than others, so make sure to cancel your
-delivery order as fast as possible if it needs to be done so you don't
-have any bad surprise.
+某些承运商比其他承运商更灵活，因此如果需要取消配送订单，请尽快进行操作，以免产生不必要的麻烦。
 
-Sale process
+销售流程
 ============
 
-Go to the **Sales** module, click on **Sales** and then on **Sales
-Order**. Then click on the sale order you want to cancel.
+进入 **销售** 模块，点击 **销售**，然后点击 **销售订单**。接着点击您想要取消的销售订单。
 
 .. image:: media/cancel_order01.png
     :align: center
 
-Click on the **Delivery** button, in the upper right corner of the sale
-order.
+在销售订单的右上角，点击 **配送** 按钮。
 
 .. image:: media/cancel_order02.png
     :align: center
 
-Now, click on the **Additional info** tab and you will see that next to
-the **Carrier Tracking Reference**, there is a **Cancel** button. Click
-on it to cancel the delivery.
+现在，点击 **附加信息** 标签，您会看到 **承运人追踪参考** 旁边有一个 **取消** 按钮。点击它以取消配送。
 
 .. image:: media/cancel_order03.png
     :align: center
 
-To make sure that your delivery is cancelled, check in the history, you
-will receive the confirmation of the cancellation.
+为了确保您的配送已取消，请在历史记录中查看，您将收到取消的确认信息。
 
 .. image:: media/cancel_order04.png
     :align: center
