@@ -1,126 +1,90 @@
 =============================================================
-How to add a quality control step in goods receipt? (3 steps)
+如何在货物收货中添加质量控制步骤？（3 步骤）
 =============================================================
 
-Overview
+概述
 ========
 
-In many companies, it is necessary to assess the received good. The goal
-is to check that the products correspond to the quality requirements
-agreed with the suppliers. Therefore, adding a quality control step in
-the goods receipt process can become essential.
+在许多公司中，有必要对收到的货物进行评估。目标是检查产品是否符合与供应商商定的质量要求。因此，在货物收货过程中增加质量控制步骤变得至关重要。
 
-Odoo uses routes to define exactly how you will handle the different
-receipt steps. The configuration is done at the level of the warehouse.
-By default, the reception is a one step process, but changing the
-configuration can allow to have 2 or even 3 steps.
+Odoo 使用路线来定义您将如何处理不同的收货步骤。配置是在仓库级别完成的。默认情况下，接收是一个步骤过程，但更改配置可以允许有 2 或甚至 3 步骤。
 
-The 3 steps flow is as follows: You receive the goods in an input
-area, then transfer them into quality area for quality control. When
-the quality check has been processed, you can move the goods from QC
-to stock. Of course, you may change the quantity and only transfer to
-stock the quantity that is valid and decide that you will return the
-quantity that is not good.
+三步骤流程如下：您在输入区接收货物，然后将其转移到质量区进行质量控制。当质量检查完成后，您可以将货物从 QC 转移到库存中。当然，您可以更改数量，只将有效数量转移到库存中，并决定退回不合格的数量。
 
-This is the case that will be explained in this document.
+本文将解释这种情况。
 
-Configuration
+配置
 =============
 
-Use advanced routes
+使用高级路线
 -------------------
 
-To allow management of routes, go to the menu
-:menuselection:`Inventory --> Configuration --> Settings`.
+要允许管理路线，请转到菜单 :menuselection:`库存 --> 配置 --> 设置`。
 
 .. image:: media/three_steps06.png
    :align: center
 
-Ensure that the routes option **Advance routing of product using
-rules** is checked, then click on **Apply** to save changes.
+确保选中路线选项 **使用规则的高级产品路由**，然后点击 **应用** 保存更改。
 
-Make sure that **Manage several locations per warehouse** is also
-ticked.
+确保也勾选 **每个仓库管理多个地点**。
 
-How to add a quality control step in goods receipt?
+如何在货物收货中添加质量控制步骤？
 ---------------------------------------------------
 
-Go to the menu :menuselection:`Inventory --> Configuration --> Warehouse` and
-choose the warehouse where you want to change reception methods.
+转到菜单 :menuselection:`库存 --> 配置 --> 仓库` 并选择要更改接收方法的仓库。
 
-By default, warehouses are configured with one step reception (**Receive
-goods directly into stock**).
+默认情况下，仓库配置为一步接收（**直接将货物接收到库存中**）。
 
-To add quality control before transfer goods into stock location, tick
-**Unload in input location, go through a quality control before being
-admitted in stock (3 steps)**.
+要在将货物转移到库存地点之前添加质量控制，请勾选 **在输入地点卸货，通过质量控制后才被允许进入库存（3 步骤）**。
 
 .. image:: media/three_steps01.png
    :align: center
 
-How to control a receipt?
+如何控制收货？
 =========================
 
-How to process the receipt step ?
+如何处理收货步骤？
 ---------------------------------
 
--  In the **Purchase** app, create a **Request for Quotation**. Click on the
-   **Confirm order** button. You can see that there is one **Shipment**
-   related to purchase order in the stat button above the
-   purchase order form view. This is the receipt step.
+- 在 **采购** 应用中，创建一个 **报价请求**。点击 **确认订单** 按钮。您可以看到有一个 **发货** 与采购订单相关，在采购订单表单视图上方的统计按钮中。这是收货步骤。
 
 .. image:: media/three_steps04.png
    :align: center
 
--  Go to **Inventory** and click on the link **# TO RECEIVE** in the **Receipts** card.
+- 转到 **库存** 并点击 **收货** 卡片中的链接 **# 待收货**。
 
 .. image:: media/three_steps02.png
    :align: center
 
-- Click on the receipt that you want to process. Click on **Validate** to
-  complete the move from the **Vendor** location to **WH/Input**.
+- 点击您想要处理的收货单。点击 **验证** 完成从 **供应商** 地点到 **WH/输入** 的移动。
 
-This has completed the receipt step and the status column at the top of
-the page for **WH/IN** should now show **Done**. The product has been moved
-from the **Vendor** to the **WH/Input** location, which makes the product
-available for the next step (Move to the quality control zone)
+这已经完成了收货步骤，页面顶部 **WH/IN** 的状态列现在应该显示 **完成**。产品已经从 **供应商** 移动到 **WH/输入** 地点，这使得产品可用于下一步（移动到质量控制区）。
 
-How to move your product from the receipt zone to the quality control zone ?
+如何将产品从收货区移动到质量控制区？
 ----------------------------------------------------------------------------
 
-Go to the **Inventory** dashboard. You will see that there is one
-transfer ready (the move to the quality control zone) and one waiting
-(the move to the stock after the control). Click on the link **# TRANSFERS** in
-the **Internal Transfers** to process the quality control.
+转到 **库存** 仪表板。您会看到有一个转移准备就绪（移动到质量控制区）和一个等待中（控制后移动到库存）。点击 **内部转移** 中的链接 **# 转移** 处理质量控制。
 
 .. image:: media/three_steps03.png
    :align: center
 
-Click on the picking that you want to process.
+点击您想要处理的拣货。
 
-Click on **Validate** to complete the move from **WH/Input** to **WH/Quality
-Control**.
+点击 **验证** 完成从 **WH/输入** 到 **WH/质量控制** 的移动。
 
-This has completed the internal transfer step and the status column at
-the top of the page for **WH/INT** should now show **Done**. The receipt is
-now ready to be controlled.
+这已经完成了内部转移步骤，页面顶部 **WH/INT** 的状态列现在应该显示 **完成**。收货现在准备进行控制。
 
-How to to process the quality control ? 
+如何进行质量控制？
 ----------------------------------------
 
-Go back to the **Inventory** dashboard. The waiting transfer is now
-ready. Click on the link **# TRANSFERS** in the **Internal Transfers** card to process
-the quality control.
+返回 **库存** 仪表板。等待中的转移现在已准备就绪。点击 **内部转移** 卡片中的链接 **# 转移** 处理质量控制。
 
 .. image:: media/three_steps05.png
    :align: center
 
-Click on the last picking to process. Click on **Validate** to complete
-the move from **WH/Quality Control** to **WH/Stock**.
+点击最后一个要处理的拣货。点击 **验证** 完成从 **WH/质量控制** 到 **WH/库存** 的移动。
 
-This has completed the quality control step and the status column at the
-top of the page for **WH/INT** should now show **Done**. The receipt has
-been controlled and has moved to your stock.
+这已经完成了质量控制步骤，页面顶部 **WH/INT** 的状态列现在应该显示 **完成**。收货已被控制并已移动到您的库存中。
 
 .. seealso::
     * :doc:`../delivery/inventory_flow`
