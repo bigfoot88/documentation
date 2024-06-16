@@ -1,125 +1,97 @@
-================================
-How to work with serial numbers?
-================================
+==============================
+如何处理序列号？
+==============================
 
-Introduction
-============
+简介
+====
 
-Serial Number Tracking is used to track products with serial numbers on
-every transactions. You can track the current location of the product
-with serial numbers. When the products are moved from one location to
-another location, the system will automatically identify the current
-location of the product based on last movement of the product. So you
-can get the last location where the products are moved.
+序列号追踪用于在每次交易中跟踪带有序列号的产品。您可以通过序列号追踪产品的当前位置。当产品从一个地点移动到另一个地点时，系统会根据产品的最后一次移动自动识别产品的当前位置。因此，您可以获取产品的最后移动位置。
 
-The double-entry management in Odoo enables you to run very advanced
-traceability.
+Odoo中的双重条目管理使您能够运行非常高级的可追溯性。
 
-Setting up
-==========
+设置
+====
 
-Application configuration
--------------------------
+应用配置
+--------
 
-You need activate the tracking of serial numbers in the settings. In the
-**Inventory** application, go to :menuselection:`Configuration --> Settings`, 
-select **Track lots or serial numbers**.
+您需要在设置中激活序列号的追踪功能。在 **库存** 应用中，进入 :menuselection:`配置 --> 设置`，选择 **追踪批次或序列号**。
 
 .. image:: media/serial_numbers01.png
    :align: center
 
-Then click on **Apply**.
+然后点击 **应用**。
 
-Product Configuration
----------------------
+产品配置
+--------
 
-Finally, you have to configure which products you want to track in lots.
+最后，您需要配置要追踪哪些产品。
 
-Go into :menuselection:`Inventory Control --> Products`, and open the product 
-of your choice. Click on **Edit**, and in the **Inventory** tab, select **By Unique
-Serial Number**, then click on **Save**.
+进入 :menuselection:`库存控制 --> 产品`，打开您选择的产品。点击 **编辑**，在 **库存** 标签中，选择 **按唯一序列号**，然后点击 **保存**。
 
 .. image:: media/serial_numbers02.png
    :align: center
 
-Manage Serial Numbers
-=====================
+管理序列号
+===========
 
-Transfers
----------
+转移
+----
 
-In order to process a transfer of a product tracked by serial number,
-you have to input the number(s).
-In order to be able to assign serial numbers to products with tracking features
-enabled you will first need to mark your transfer as to do. Click on the **Mark
-as TODO** button to display the Lot Split icon.
+为了处理由序列号追踪的产品的转移，您需要输入序列号。在能够为启用追踪功能的产品分配序列号之前，您需要先将转移标记为待办。点击 **标记为待办** 按钮以显示批次拆分图标。
 
-Click on the serial number icon :
+点击序列号图标：
 
 .. image:: media/serial_numbers03.png
    :align: center
 
-A window will pop-up. Click on **Add an item** and fill in the serial
-numbers.
+会弹出一个窗口。点击 **添加项目** 并填写序列号。
 
 .. image:: media/serial_numbers04.png
    :align: center
 
-If you move products that already have serial numbers assigned, those
-will appear in the list. Just click on the **+** icon to confirm that you
-are moving those serial numbers.
+如果您移动的产品已经分配了序列号，它们会出现在列表中。只需点击 **+** 图标确认您正在移动这些序列号。
 
 .. image:: media/serial_numbers05.png
    :align: center
 
 .. note::
-    In the scanner interface, you just have to scan the serial numbers.
+    在扫描仪界面中，您只需扫描序列号。
 
-Inventory adjustment
---------------------
+库存调整
+--------
 
-Inventory of a product tracked by serial numbers can be done in 2 ways:
+序列号追踪的产品库存可以通过两种方式进行：
 
--  Classic inventory by products
+-  经典的产品库存
 
--  Inventory of a serial number
+-  序列号库存
 
-When doing a classic inventory, there is a **Serial Number** column. If the
-product has already been assigned with a number, it is already
-pre-filled.
+进行经典库存时，有一个 **序列号** 列。如果产品已经分配了序列号，它会被预填充。
 
-Click on **Add an item** if the product has not been inventoried yet. You
-can easily create serial numbers, just type in a new number in the
-column.
+如果产品尚未盘点，点击 **添加项目**。您可以轻松创建序列号，只需在列中输入新号码。
 
 .. image:: media/serial_numbers06.png
    :align: center
 
-The quantity should be 1 for each line.
+每行的数量应为 1。
 
-You can also just do the inventory of a serial number. In this case, you
-will have to fill in the serial number. You can also create a new one
-from here. Just type in the number, a window will pop out to link it to
-a product.
+您也可以只对序列号进行库存盘点。在这种情况下，您需要填写序列号。您也可以在此处创建一个新的序列号。只需输入号码，一个窗口会弹出以将其链接到一个产品。
 
 .. image:: media/serial_numbers07.png
    :align: center
 
-Serial Number traceability
-==========================
+序列号追踪
+===========
 
-The serial number given to these items allow you to keep track of where
-they were received, put in stock, to whom they were sold and where they
-were shipped to.
+给这些项目的序列号使您能够追踪它们的接收地点、库存地点、销售对象及其运送地点。
 
-To track an item, open the **Inventory** module, and in :menuselection:`Inventory
-Control --> Serial Numbers/lots`, click on the serial number corresponding
-to your search.
+要追踪某个项目，请打开 **库存** 模块，在 :menuselection:`库存控制 --> 序列号/批次` 中，点击对应的序列号。
 
 .. image:: media/serial_numbers08.png
    :align: center
 
-You can have more details by clicking on the **Traceability** button :
+您可以通过点击 **追溯** 按钮查看更多详细信息：
 
 .. image:: media/serial_numbers09.png
    :align: center
