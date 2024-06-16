@@ -1,24 +1,22 @@
 ===============================
-How to do an internal transfer?
+如何进行内部调拨？
 ===============================
 
-In Odoo, there are two types of internal transfers:
+在 Odoo 中，有两种类型的内部调拨：
 
--   Those initiated automatically by the system (for example, a quality
-    control)
+-   系统自动发起的（例如，质量控制）
 
--   Those created by a worker (for example, through the internal transfer
-    area of the dashboard).
+-   由员工创建的（例如，通过仪表板的内部调拨区域）
 
-To make an Internal Transfer:
+进行内部调拨的方法如下：
 
-1. From the home of the barcode application, scan the **source location**
+1. 从条码应用程序的首页，扫描 **来源位置**
 
-2. Pick up and **scan the products**
+2. 拿起并 **扫描产品**
 
-3. Scan the **destination location**
+3. 扫描 **目的地位置**
 
-4. **Validate** the transfer to finish it
+4. **验证** 调拨以完成操作
 
 .. image:: media/internal01.png
     :align: center
