@@ -1,67 +1,52 @@
 ======================================================
-How to process delivery orders in one step (shipping)?
+如何一步处理配送订单（发货）
 ======================================================
 
-Overview
+概述
 ========
 
-When an order goes to the shipping department for final delivery, Odoo
-is set up by default to utilize a one-step operation: once all goods are
-available, they are able to be shipped in a single delivery order.
+当订单进入配送部门进行最终配送时，Odoo 默认使用一步操作：一旦所有商品准备就绪，即可在一个配送订单中发货。
 
-Configuration
+配置
 =============
 
-There is no configuration needed. The default outgoing shipments are
-configured to be directly delivered from the stock.
+无需进行配置。默认的出库配置为直接从库存中发货。
 
-However, if **advance routes** is activated and you set another shipping
-configuration on your warehouse, you can set it back to the one-step
-delivery configuration. Go to :menuselection:`Configuration --> Warehouses` 
-and edit the concerned warehouse.
+但是，如果启用了 **高级路线** 并且您在仓库中设置了其他配送配置，可以将其重新设置为一步配送配置。前往 :menuselection:`Configuration --> Warehouses` 并编辑相关仓库。
 
-Set the outgoing shippings the option to **Ship directly from stock
-(Ship Only)**
+将出库配置设置为 **直接从库存发货（仅发货）**。
 
 .. image:: media/one_step01.png
    :align: center
 
-Create a Sales Order
+创建销售订单
 ====================
 
-Create a sales order (From quotation to sales order) with some products
-to deliver.
+创建一个包含需配送产品的销售订单（从报价到销售订单）。
 
-Notice that we now see ``1`` delivery associated with this sales order
-in the **stat button** above the sales order.
+注意，我们现在在销售订单上方的 **状态按钮** 中看到与此销售订单关联的 ``1`` 个配送。
 
 .. image:: media/one_step03.png
    :align: center
 
-If you click on the **1 Delivery** stat button, you should now see your
-picking.
+点击 **1 个配送** 状态按钮，现在应该会看到您的拣货单。
 
-Process a Delivery
+处理配送
 ==================
 
-Go to **Inventory** and click on the **# TO DO** link under the
-**Delivery Orders** kanban card.
+前往 **库存** 并点击 **# 待办** 链接，位于 **配送订单** 看板卡片下方。
 
 .. image:: media/one_step02.png
    :align: center
 
-Click on the picking that you want to process.
+点击您要处理的拣货单。
 
-Click on **Validate** to complete the move from **WH/Output** to the
-**customer**.
+点击 **验证** 完成从 **WH/Output** 到 **客户** 的移动。
 
-This has completed the **Shipping Step** and the WH/OUT should now show
-**Done** in the status column at the top of the page, which means the
-product has been shipped to the customer.
-
+这已完成 **配送步骤**，在页面顶部的状态列中 WH/OUT 应显示为 **完成**，这意味着产品已发货到客户。
 
 .. todo::
-    Ajouter un lien vers ces pages quand elles existeront
-    -  Process Overview: From sales orders to delivery orders
+    添加这些页面的链接（当它们存在时）
+    -  流程概述：从销售订单到配送订单
 
-    -  Process Overview: From purchase orders to receptions
+    -  流程概述：从采购订单到接收
