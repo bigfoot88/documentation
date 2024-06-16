@@ -1,131 +1,107 @@
 =========================================
-How to manage lots of identical products?
+如何管理大量相同产品？
 =========================================
 
-Overview
+概述
 ========
 
-Lots are useful for products you receive in great quantity and for which
-a lot number can help in reportings, quality controls, or any other
-info. Lots will help identify a number of pieces having for instance a
-production fault. It can be useful for a batch production of clothes or
-food.
+批次管理对于接收大量产品并且批号可以帮助报告、质量控制或任何其他信息时非常有用。批次管理可以帮助识别存在生产缺陷的多个产品。这在衣物或食品的批量生产中非常有用。
 
-Odoo has the capacity to manage lots ensuring compliance with the
-traceability requirements imposed by the majority of industries.
+Odoo 具有管理批次的能力，确保符合大多数行业要求的可追溯性要求。
 
-The double-entry management in Odoo enables you to run very advanced
-traceability.
+Odoo 的双重条目管理使您能够运行非常高级的可追溯性。
 
-Setting up
+设置
 ==========
 
-Application configuration
+应用配置
 -------------------------
 
-You need activate the tracking of lots in the settings. In the **Inventory**
-application, go to :menuselection:`Configuration --> Settings`, 
-select **Track lots or serial numbers**
+您需要在设置中激活批次跟踪。在 **Inventory** 应用中，前往 :menuselection:`Configuration --> Settings`，选择 **Track lots or serial numbers**。
 
 .. image:: media/lots01.png
     :align: center
 
-In order to have an advanced management of the lots, you should also
-select **Manage several locations per warehouse**.
+为了对批次进行高级管理，您还应选择 **Manage several locations per warehouse**。
 
 .. image:: media/lots02.png
     :align: center
 
-Then click on **Apply**.
+然后点击 **Apply**。
 
-Operation types configuration
+操作类型配置
 -----------------------------
 
-You also need to set up how you will manage lots for each operations.
-In the **Inventory** application, go to 
-:menuselection:`Configuration --> Operation Types`.
+您还需要设置如何为每个操作管理批次。在 **Inventory** 应用中，前往 :menuselection:`Configuration --> Operation Types`。
 
-For each type (receipts, internal transfers, deliveries,...), you can
-set if you can create new lot numbers or only use existing lot numbers.
+对于每种类型（接收、内部转移、交付等），您可以设置是否可以创建新批次号或仅使用现有批次号。
 
 .. image:: media/lots03.png
     :align: center
 
-Product Configuration
+产品配置
 ---------------------
 
-Finally, you have to configure which products you want to track in lots.
+最后，您必须配置要在批次中跟踪的产品。
 
-Go into :menuselection:`Inventory Control --> Products`, and open the product of your
-choice. Click on **Edit**, and in the **Inventory** tab, select **Tracking by
-Lots**, then click on **Save**.
+进入 :menuselection:`Inventory Control --> Products`，打开您选择的产品。点击 **Edit**，在 **Inventory** 选项卡中选择 **Tracking by Lots**，然后点击 **Save**。
 
 .. image:: media/lots04.png
     :align: center
 
-Manage lots
+管理批次
 ===========
 
-Transfers
+转移
 ---------
 
-In order to process a transfer of a product tracked by lot, you have to
-input the lot number(s).
+为了处理跟踪批次的产品转移，您必须输入批次号。
 
-Click on the lot icon :
+点击批次图标：
 
 .. image:: media/lots05.png
     :align: center
 
-A window will pop-up. Click on **Add an item** and fill in the lot
-number and the quantity.
+将弹出一个窗口。点击 **Add an item** 并填写批次号和数量。
 
 .. image:: media/lots06.png
     :align: center
 
-Depending on your operation type configuration, you will be able to fill
-in new lot numbers, or only use existing ones.
+根据您的操作类型配置，您将能够填写新批次号或仅使用现有批次号。
 
 .. note::
-    In the scanner interface, you just have to scan the lot numbers.
+    在扫描器界面中，您只需扫描批次号。
 
-Inventory adjustment
+库存调整
 --------------------
 
-Inventory of a product tracked by lot can be done in 2 ways:
+可以通过两种方式进行跟踪批次产品的库存：
 
--  Classic inventory by products
+-  按产品进行经典库存
 
--  Inventory of a lot
+-  按批次进行库存
 
-When doing a classic inventory, there is a **Serial Number** column. If the
-product has already been assigned with a number, it is already
-pre-filled.
+进行经典库存时，有一个 **Serial Number** 列。如果产品已经分配了编号，则该列已预填充。
 
-Click on **Add an item** if the product has not been inventoried yet. You
-can easily create lots, just type in a new lot number in the column.
+如果产品尚未入库，点击 **Add an item**。您可以轻松创建批次，只需在列中输入一个新批次号。
 
 .. image:: media/lots07.png
     :align: center
 
-You can also just do the inventory of a lot. In this case, you will have
-to fill in the **Lot number**. You can also create a new lot from here. Just
-type in the number, a window will pop out to link the number to a
-product.
+您也可以仅对批次进行库存。在这种情况下，您需要填写 **Lot number**。您还可以在这里创建一个新批次。只需输入编号，一个窗口将弹出以将编号链接到产品。
 
 .. image:: media/lots08.png
     :align: center
 
-Lots traceability
+批次可追溯性
 =================
 
-You can check the lot traceability from 
-:menuselection:`Inventory --> Inventory Control --> Serial Numbers/Lots`
+您可以从 :menuselection:`Inventory --> Inventory Control --> Serial Numbers/Lots` 检查批次可追溯性。
 
 .. image:: media/lots09.png
     :align: center
 
-You can have more details by clicking on the **Traceability** button :
+您可以通过点击 **Traceability** 按钮获取更多详细信息：
 
 .. image:: media/lots10.png
     :align: center
