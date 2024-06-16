@@ -1,38 +1,30 @@
-================================
-How can I change the label type?
-================================
+=========================
+如何更改标签类型？
+=========================
 
-Overview
-========
+概述
+====
 
-With Odoo, you can choose among different types of labels for your
-delivery orders. Follow the steps below and give an appropriate label
-type to your delivery.
+在 Odoo 中，您可以为您的发货单选择不同类型的标签。请按照以下步骤为您的发货单选择合适的标签类型。
 
-Configuration
-=============
+配置
+====
 
-In the **Inventory** module, Go to **Configuration** and click on
-**Delivery methods**.
+在 **库存** 模块中，转到 **配置** 并点击 **发货方式**。
 
-Choose a delivery method and then click on **Edit**.
+选择一种发货方式，然后点击 **编辑**。
 
 .. image:: media/label_type01.png
     :align: center
 
-In the **Pricing** tab, under **Fedex label stock type**, you can choose
-one of the label types available. The availability will vary depending
-on the carrier.
+在 **定价** 标签下，您可以在 **Fedex 标签库存类型** 中选择可用的标签类型。可用性将根据承运人而有所不同。
 
 .. image:: media/label_type02.png
     :align: center
 
-Once this is done, you can see the result if you go to the Sales module
-and you create a new sale order.
+完成此操作后，您可以进入 **销售** 模块并创建一个新的销售订单查看结果。
 
-As you confirm the sale and validate the delivery with the carrier for
-which you have modified the label type, The label will appear in your
-history.
+当您确认销售并验证您所更改标签类型的承运人的发货时，标签将出现在您的历史记录中。
 
 .. image:: media/label_type03.png
     :align: center
@@ -43,8 +35,7 @@ history.
 .. image:: media/label_type05.png
     :align: center
 
-The default label type is paper letter, and if you choose the label type
-bottom half for example, here is the difference :
+默认的标签类型是纸质信件，如果您选择底部一半标签类型，例如，这里是区别：
 
 .. image:: media/label_type06.png
     :align: center
