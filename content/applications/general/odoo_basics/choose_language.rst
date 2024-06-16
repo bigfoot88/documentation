@@ -1,58 +1,44 @@
 ================================
-Manage Odoo in your own language
+在您的语言中管理 Odoo
 ================================
 
-Odoo provides you with the option to manage Odoo in different languages,
-and each user can use Odoo in his own language .
+Odoo 提供了在不同语言中管理 Odoo 的选项，每个用户都可以使用自己的语言来使用 Odoo 。
 
-Load your desired language
+加载您需要的语言
 ==========================
 
-The first thing to do is to load your desired language on your Odoo
-instance.
+首先要做的是在您的 Odoo 实例中加载您需要的语言。
 
-From the general dashboard click on the **Settings** app; on the top
-left of the page select :menuselection:`Translations --> Load a Translation`,
-select a language to install and click on **LOAD.**
+从通用仪表板点击 **设置** 应用；在页面左上角选择 :menuselection:`翻译 --> 加载翻译`, 选择要安装的语言并点击 **加载。**
 
 .. image:: media/choose_language01.png
     :align: center
 
 .. note::
 
-    If you check the "Websites to translate" checkbox you will have the option
-    to change the navigation language on your website.
+    如果您选中 "要翻译的网站" 复选框，您将可以在您的网站上更改导航语言。
 
-Change your language
+更改您的语言
 ====================
 
-You can change the language to the installed language by going to the
-drop-down menu at the top right side of the screen, choose
-**Preferences**.
+您可以通过右上角的下拉菜单更改为已安装的语言，选择 **偏好设置**。
 
 .. image:: media/choose_language02.png
     :align: center
 
-Then change the Language setting to your installed language and click
-**SAVE.**
+然后将语言设置更改为已安装的语言并点击 **保存。**
 
 .. image:: media/choose_language03.png
     :align: center
 
-Open a new menu to view the changes.
+打开一个新菜单以查看更改。
 
-Change another user's language
+更改其他用户的语言
 ==============================
 
-Odoo also gives you the possibility for each user to choose his
-preferred language.
+Odoo 还允许每个用户选择自己喜欢的语言。
 
-To change the language for a different user, choose :menuselection:`Users --> Users`
-from the Settings app. Here you have a list of all users and you can
-choose the user who you'd like to change the language for. Select the
-user and click on **Edit** in the top left corner. Under Preferences you
-can change the Language to any previously installed language and click
-**SAVE.**
+要为其他用户更改语言，请从设置应用中选择 :menuselection:`用户 --> 用户`。这里有所有用户的列表，您可以选择要更改语言的用户。选择该用户并点击左上角的 **编辑**。在偏好设置下，您可以将语言更改为任何已安装的语言并点击 **保存。**
 
 .. image:: media/choose_language04.png
     :align: center
