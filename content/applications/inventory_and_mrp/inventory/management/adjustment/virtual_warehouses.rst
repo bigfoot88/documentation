@@ -1,52 +1,34 @@
 ======================================
-TaKing stock from different warehouses
+从不同仓库提取库存
 ======================================
 
-When you plan to deliver a customer, you don’t know in advance if the
-products will come from Warehouse A or Warehouse B. You may, in some
-cases, need to take stock from different warehouses. With *Odoo*, you
-can configure this by using the concept of virtual warehouses. Let us
-show you how to set those virtual warehouses.
+在计划向客户交付货物时，事先并不知道产品将来自仓库 A 还是仓库 B。在某些情况下，可能需要从不同的仓库提取库存。使用 *Odoo*，可以通过虚拟仓库的概念来配置这一点。让我们展示如何设置这些虚拟仓库。
 
-Set up virtual warehouses
+设置虚拟仓库
 =========================
 
-Let’s say you have two warehouses: Warehouse A and Warehouse B. Create a
-new warehouse, that will be a virtual one. It will allow you to take the
-stock from A or B. To do so, go to your inventory app settings and
-enable the multi-warehouses feature. Then, go to the warehouses menu and
-click on create.
+假设有两个仓库：仓库 A 和仓库 B。创建一个新的虚拟仓库，它将允许从 A 或 B 中提取库存。为此，进入库存应用的设置并启用多仓库功能。然后，进入仓库菜单并点击创建。
 
 .. image:: media/virtual_warehouse01.png
    :align: center
 
 .. note::
-	The *Storage Location* feature will be automatically enabled. Good
-	news, because you will need it later in the process.
+	*存储位置* 功能将自动启用。这是个好消息，因为在后续过程中将需要它。
 
-Now, you have to make sure that the main stock locations of warehouse A
-and warehouse B are children locations of the main stock location of
-warehouse A + B. Go to the locations menu, and edit the main location of
-your two warehouses. Then, change their parent location to main location
-of warehouse A+B.
+现在，必须确保仓库 A 和仓库 B 的主要库存位置是仓库 A + B 的主要库存位置的子位置。进入位置菜单，编辑两个仓库的主要位置。然后，将它们的父位置更改为仓库 A + B 的主要位置。
 
 .. image:: media/virtual_warehouse02.png
    :align: center
 
-Sell a product from the virtual warehouse
+从虚拟仓库销售产品
 =========================================
 
-Let’s say you have two products, one stored in warehouse A and one
-stored in warehouse B. Now, you can create a new quotation for one of
-each product. Go to other information and choose Warehouse A+B in the
-shipping information.
+假设有两个产品，一个存储在仓库 A，另一个存储在仓库 B。现在，可以为每种产品创建一个新的报价。进入其他信息，并在运输信息中选择仓库 A+B。
 
 .. image:: media/virtual_warehouse03.png
    :align: center
 
-Once you have done it, you can convert it to a sales order. Then, a
-delivery order will be automatically generated, with a product reserved
-in warehouse A and one in warehouse B.
+完成此操作后，可以将其转换为销售订单。然后，将自动生成一个交货单，产品将在仓库 A 和仓库 B 中预留。
 
 .. image:: media/virtual_warehouse04.png
    :align: center
