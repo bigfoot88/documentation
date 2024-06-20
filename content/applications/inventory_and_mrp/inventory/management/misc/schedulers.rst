@@ -1,60 +1,38 @@
 ====================================
-How to configure and run schedulers?
+如何配置和运行调度程序
 ====================================
 
-What is a scheduler
+什么是调度程序
 ===================
 
-The scheduler is the calculation engine which plans and prioritises
-production and purchasing automatically according to the rules defined
-on products. By default, the scheduler is set to run once a day (Odoo
-automatically creates a **Scheduled Action** for this).
+调度程序是计算引擎，它根据产品上定义的规则自动计划和优先安排生产和采购。默认情况下，调度程序设置为每天运行一次（Odoo 会自动创建一个 **Scheduled Action** 以实现这一点）。
 
-Calculating Requirements / Scheduling
+计算需求 / 调度
 -------------------------------------
 
-Scheduling only validates procurements that are confirmed but not yet
-started. These procurement reservations will themselves start
-production, tasks or purchases depending on the configuration of the
-requested product.
+调度仅验证已确认但尚未开始的采购。这些采购预定将根据所请求产品的配置自行启动生产、任务或采购。
 
-You take into account the priority of operations when starting
-reservations and procurements. Urgent requests, those with a date in the
-past, or requests with a date earlier than the others will be started
-first. In case there are not enough products in stock to satisfy all the
-requests, you can be sure that the most urgent requests will be produced
-first.
+在开始预定和采购时，需要考虑操作的优先级。紧急请求、过去的日期或日期早于其他请求的请求将优先启动。如果库存中的产品数量不足以满足所有请求，可以确保最紧急的请求将首先被生产。
 
-Configure and run the scheduler
+配置和运行调度程序
 ===============================
 
-Run the scheduler manually
+手动运行调度程序
 --------------------------
 
-This feature is not visible by default. You have to enable **debug mode** to
-see this. To enable debug mode, go to :menuselection:`Help --> About` and click on
-**Activate the developer mode**.
+此功能默认不可见。你必须启用 **调试模式** 才能看到。要启用调试模式，请转到 :menuselection:`帮助 --> 关于` 并点击 **激活开发者模式**。
 
-You can also start the scheduler manually from the menu 
-:menuselection:`Inventory --> Schedulers --> Run Schedulers`. The scheduler 
-uses all the relevant parameters defined for products, suppliers 
-and the company to determine the priorities between the different 
-production orders, deliveries and supplier purchases.
+你也可以从菜单 :menuselection:`库存 --> 调度程序 --> 运行调度程序` 手动启动调度程序。调度程序使用为产品、供应商和公司定义的所有相关参数来确定不同生产订单、交货和供应商采购之间的优先级。
 
 .. image:: media/schedulers02.png
    :align: center
 
-Configure and run the scheduler (only for advanced users)
+配置和运行调度程序（仅限高级用户）
 ---------------------------------------------------------
 
-This feature is not visible by default. You have to enable **debug mode** to
-see this. To enable debug mode, go to :menuselection:`Help -> About` and click on
-**Activate the developer mode**.
+此功能默认不可见。你必须启用 **调试模式** 才能看到。要启用调试模式，请转到 :menuselection:`帮助 -> 关于` 并点击 **激活开发者模式**。
 
-You can set the starting time of the scheduler by modifying the
-corresponding action in the menu 
-:menuselection:`Settings --> Technical --> Automation --> Scheduled Actions`. 
-Modify the Run mrp Scheduler configuration.
+你可以通过修改菜单 :menuselection:`设置 --> 技术 --> 自动化 --> 计划动作` 中的相应操作来设置调度程序的启动时间。修改运行 mrp 调度程序配置。
 
 .. image:: media/schedulers01.png
    :align: center
