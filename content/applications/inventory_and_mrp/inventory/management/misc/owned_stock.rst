@@ -1,40 +1,28 @@
 =======================================
-How to manage stock that you don't own?
+管理寄售库存
 =======================================
 
-Introduction
-============
+介绍
+====
 
-Some suppliers can sometimes offer you to store and sell products
-without having to buy those items: this technique is called **consignee
-stock**.
+有些供应商有时会提供给你存储和销售产品而无需购买这些商品：这种技术称为 **寄售库存**。
 
-Consignee stock is a great way for manufacturers and suppliers to launch
-new products. As resellers may be reluctant to buying a product that
-they are not sure to be able to sell, consignee stock will allow them to
-propose an item to check its market without having to pay for it in the
-first place.
+寄售库存是制造商和供应商推出新产品的一种极好方式。由于经销商可能对购买他们不确定能否销售的产品持犹豫态度，寄售库存将允许他们在不先支付的情况下，提供产品以测试市场反应。
 
-Odoo has the ability to manage consignee stocks through the advanced
-settings.
+Odoo 通过高级设置能够管理寄售库存。
 
-Configuration
-=============
+配置
+====
 
-Open the menu :menuselection:`Inventory --> Configuration --> Settings`, 
-and in the **Product Owners** section, select **Manage consignee stocks (advanced)**,
-then click on **Apply**.
+打开菜单 :menuselection:`库存 --> 配置 --> 设置`，在 **产品所有者** 部分，选择 **管理寄售库存（高级）**，然后点击 **应用**。
 
 .. image:: media/owned_stock02.png
    :align: center
 
-Reception of Consignee Stock
-============================
+接收寄售库存
+==============
 
-In the Inventory's Dashboard, open the **Receipts** and create a new
-reception. You can see that in the right side of the page, a new
-**Owner** line has appeared. You can specify the partner which owns the
-stock or leave it blank if you are the owner.
+在库存的仪表板中，打开 **收货单** 并创建一个新的接收单。你会看到在页面的右侧出现了一条新的 **所有者** 行。你可以指定拥有库存的合作伙伴，或者如果你是所有者，可以将其留空。
 
 .. image:: media/owned_stock01.png
    :align: center
