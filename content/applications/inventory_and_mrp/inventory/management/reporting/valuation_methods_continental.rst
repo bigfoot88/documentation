@@ -3,24 +3,20 @@
 :custom-js: coa-valuation-continental.js,misc.js
 
 ==========================================================
-How to do an inventory valuation? (Continental Accounting)
+如何进行存货估价？（大陆会计）
 ==========================================================
 
-Every year your inventory valuation has to be recorded in your 
-balance sheet. This implies two main choices:
+每年都需要在资产负债表中记录存货估价。这意味着要做出两个主要选择：
 
-- the way you compute the cost of your stored items 
-  (Standard vs. Average vs. Real Price);
+- 计算储存物品成本的方法（标准价格 vs. 平均价格 vs. 实际价格）；
+- 将存货价值记录到账簿中的方式（定期 vs. 永续）。
 
-- the way you record the inventory value into your books 
-  (periodic vs. Perpetual).
-
-Costing Method
+成本计算方法
 ==============
 
 .. rst-class:: alternatives doc-aside
 
-Standard Price 
+标准价格 
   .. rst-class:: values-table
 
   .. list-table::
@@ -28,44 +24,41 @@ Standard Price
      :header-rows: 1
      :stub-columns: 1
 
-     * - Operation
-       - Unit Cost
-       - Qty On Hand
-       - Delta Value
-       - Inventory Value
+     * - 操作
+       - 单位成本
+       - 现存数量
+       - 增量价值
+       - 存货价值
      * -
        - €10
        - 0
        -
        - €0
-     * - Receive 8 Products at €10
+     * - 收到 8 件产品，单价为 €10
        - €10
        - 8
        - +8*€10
        - €80
-     * - Receive 4 Products at €16
+     * - 收到 4 件产品，单价为 €16
        - €10
        - 12
        - +4*€10
        - €120
-     * - Deliver 10 Products
+     * - 交付 10 件产品
        - €10
        - 2
        - | -10*€10
          |
        - €20
-     * - Receive 2 Products at €9
+     * - 收到 2 件产品，单价为 €9
        - €10
        - 4
        - +2*€10
        - €40
 
-  **Standard Price** means you estimate the cost price based 
-  on direct materials, direct labor and manufacturing overhead 
-  at the end of a specific period (usually once a year). You 
-  enter this cost price in the product form.
+  **标准价格** 意味着你基于直接材料、直接人工和制造间接费用在特定期间结束时（通常为每年一次）估算成本价格。你在产品表单中输入此成本价格。
 
-Average Price
+平均价格
   .. rst-class:: values-table
 
   .. list-table::
@@ -73,54 +66,48 @@ Average Price
      :header-rows: 1
      :stub-columns: 1
 
-     * - Operation
-       - Unit Cost
-       - Qty On Hand
-       - Delta Value
-       - Inventory Value
+     * - 操作
+       - 单位成本
+       - 现存数量
+       - 增量价值
+       - 存货价值
      * -
        - €0
        - 0
        -
        - €0
-     * - Receive 8 Products at €10
+     * - 收到 8 件产品，单价为 €10
        - €10
        - 8
        - +8*€10
        - €80
-     * - Receive 4 Products at €16
+     * - 收到 4 件产品，单价为 €16
        - €12
        - 12
        - +4*€16
        - €144
-     * - Deliver 10 Products
+     * - 交付 10 件产品
        - €12
        - 2
        - | -10*€12
          |
        - €24
-     * - Receive 2 Products at €6
+     * - 收到 2 件产品，单价为 €6
        - €9
        - 4
        - +2*€6
        - €36
 
-  The **Average Price** method recomputes the cost price as a receipt order 
-  has been processed, based on prices defined in tied purchase orders:
-  FORMULA (see here attached)
+  **平均价格** 方法在每次处理收货单时重新计算成本价格，基于相关采购订单中定义的价格：
+  公式（见附件）
 
-  The average cost does not change when products leave the warehouse.
+  当产品离开仓库时，平均成本不会改变。
 
-  From an accounting point of view, this method is mainly justified in 
-  case of huge purchase price variations and is quite unusual due to its 
-  operational complexity. Your actually need a software like Odoo to 
-  easily keep this cost up-to-date.
+  从会计角度来看，此方法在采购价格大幅波动的情况下主要具有合理性，但由于其操作复杂性，较为不常见。实际上，你需要类似 Odoo 的软件来轻松保持此成本的最新状态。
 
-  This method is dedicated to advanced users. It requires well established 
-  business processes because the order in which you process receipt orders 
-  matters in the cost computation.
+  此方法专用于高级用户。它要求建立完善的业务流程，因为处理收货单的顺序在成本计算中很重要。
 
-FIFO
+先进先出（FIFO）
   .. rst-class:: values-table
 
   .. list-table::
@@ -128,52 +115,43 @@ FIFO
      :header-rows: 1
      :stub-columns: 1
 
-     * - Operation
-       - Unit Cost
-       - Qty On Hand
-       - Delta Value
-       - Inventory Value
+     * - 操作
+       - 单位成本
+       - 现存数量
+       - 增量价值
+       - 存货价值
      * -
        - €0
        - 0
        -
        - €0
-     * - Receive 8 Products at €10
+     * - 收到 8 件产品，单价为 €10
        - €10
        - 8
        - +8*€10
        - €80
-     * - Receive 4 Products at €16
+     * - 收到 4 件产品，单价为 €16
        - €12
        - 12
        - +4*€16
        - €144
-     * - Deliver 10 Products
+     * - 交付 10 件产品
        - €16
        - 2
        - | -8*€10
          | -2*€16
        - €32
-     * - Receive 2 Products at €6
+     * - 收到 2 件产品，单价为 €6
        - €11
        - 4
        - +2*€6
        - €44
 
-  For **Real Price** (FIFO, LIFO, FEFO, etc), the costing is further 
-  refined by the removal strategy set on the warehouse location 
-  or product's internal category. The default strategy is FIFO. With 
-  such method, your inventory value is computed from the real cost 
-  of your stored products (cfr. Quantitative Valuation) and not from 
-  the cost price shown in the product form. Whenever you ship items, 
-  the cost price is reset to the cost of the last item(s) shipped. 
-  This cost price is used to value any product not received from a 
-  purchase order (e.g. inventory adjustments).
+  对于 **实际价格**（FIFO、LIFO、FEFO 等），成本进一步由仓库位置或产品内部类别上设置的移除策略来细化。默认策略是 FIFO。使用这种方法，你的存货价值是根据储存产品的实际成本计算的（参见定量估价），而不是根据产品表单中显示的成本价格。每当你发货时，成本价格会重置为最后一件（或几件）发货的成本。这一成本价格用于估值任何未从采购订单接收的产品（如库存调整）。
 
-  FIFO is advised if you manage all your workflow into Odoo (Sales, 
-  Purchases, Inventory). It suits any kind of users.
+  如果你在 Odoo 中管理所有工作流程（销售、采购、库存），建议使用 FIFO。适用于任何类型的用户。
 
-LIFO (not accepted in IFRS)
+后进先出（LIFO，不被 IFRS 接受）
   .. rst-class:: values-table
 
   .. list-table::
@@ -181,75 +159,56 @@ LIFO (not accepted in IFRS)
      :header-rows: 1
      :stub-columns: 1
 
-     * - Operation
-       - Unit Cost
-       - Qty On Hand
-       - Delta Value
-       - Inventory Value
+     * - 操作
+       - 单位成本
+       - 现存数量
+       - 增量价值
+       - 存货价值
      * -
        - €0
        - 0
        -
        - €0
-     * - Receive 8 Products at €10
+     * - 收到 8 件产品，单价为 €10
        - €10
        - 8
        - +8*€10
        - €80
-     * - Receive 4 Products at €16
+     * - 收到 4 件产品，单价为 €16
        - €12
        - 12
        - +4*€16
        - €144
-     * - Deliver 10 Products
+     * - 交付 10 件产品
        - €10
        - 2
        - | -4*€16
          | -6*€10
        - €20
-     * - Receive 2 Products at €6
+     * - 收到 2 件产品，单价为 €6
        - €8
        - 4
        - +2*€6
        - €32
 
-  For **Real Price** (FIFO, LIFO, FEFO, etc), the costing is further 
-  refined by the removal strategy set on the warehouse location 
-  or product's internal category. The default strategy is FIFO. 
-  With such method, your inventory value is computed from the 
-  real cost of your stored products (cfr. Quantitative Valuation) 
-  and not from the cost price shown in the product form. Whenever 
-  you ship items, the cost price is reset to the cost of the last 
-  item(s) shipped. This cost price is used to value any product 
-  not received from a purchase order (e.g. inventory adjustments).
+  对于 **实际价格**（FIFO、LIFO、FEFO 等），成本进一步由仓库位置或产品内部类别上设置的移除策略来细化。默认策略是 FIFO。使用这种方法，你的存货价值是根据储存产品的实际成本计算的（参见定量估价），而不是根据产品表单中显示的成本价格。每当你发货时，成本价格会重置为最后一件（或几件）发货的成本。这一成本价格用于估值任何未从采购订单接收的产品（如库存调整）。
 
-  LIFO is not permitted outside the United States.
+  LIFO 在美国以外地区不被允许。
 
-Odoo allows any method. The default one is **Standard Price**. 
-To change it, check **Use a 'Fixed', 'Real' or 'Average' price 
-costing method** in Purchase settings. Then set the costing 
-method from products' internal categories. Categories show up 
-in the Inventory tab of the product form.
+Odoo 允许任何方法。默认方法是 **标准价格**。要更改此设置，请在采购设置中勾选 **使用 '固定'、'实际' 或 '平均' 价格成本计算方法**。然后在产品的内部类别中设置成本计算方法。类别显示在产品表单的库存选项卡中。
 
-Whatever the method is, Odoo provides a full inventory valuation
-in :menuselection:`Inventory --> Reports --> Inventory Valuation` 
-(i.e. current quantity in stock * cost price).
+无论使用何种方法，Odoo 都提供完整的库存估价报告，路径为 :menuselection:`库存 --> 报表 --> 库存估价`（即当前库存数量 * 成本价格）。
 
-Periodic Inventory Valuation
-============================
+定期存货估价
+==============
 
-In a periodic inventory valuation, goods reception and 
-outgoing shipments have no direct impact in the accounting. 
-At the end of the month or year, the accountant posts one 
-journal entry representing the value of the physical inventory. 
+在定期存货估价中，货物接收和出库对会计没有直接影响。在月末或年末，会计人员会做一份代表实物库存价值的日记账分录。
 
-This is the default configuration in Odoo and it works 
-out-of-the-box. Check following operations and find out how 
-Odoo is managing the accounting postings.
+这是 Odoo 中的默认配置，并且可以开箱即用。请检查以下操作，了解 Odoo 如何管理会计分录。
 
 .. rst-class:: alternatives doc-aside
 
-Vendor Bill
+供应商账单
   .. rst-class:: values-table
 
   ============================= ===== ======
@@ -257,16 +216,16 @@ Vendor Bill
   ============================= ===== ======
   Assets: Inventory                50
   Assets: Deferred Tax Assets    4.68
-  Liabilities: Accounts Payable	       54.68
+  Liabilities: Accounts Payable        54.68
   ============================= ===== ======
 
-  Configuration:
-    * Purchased Goods: defined on the product or on the internal category of related product (Expense Account field)
-    * Deferred Tax Assets: defined on the tax used on the purchase order line
-    * Accounts Payable: defined on the vendor related to the bill
-Goods Receptions
-  No Journal Entry
-Customer Invoice
+  配置：
+    * 采购商品：在产品或相关产品的内部类别上定义（费用账户字段）
+    * 递延税资产：在采购订单行上使用的税定义
+    * 应付账款：在与账单相关的供应商上定义
+货物接收
+  无日记账分录
+客户发票
   .. rst-class:: values-table
 
   ===================================== ===== ======
@@ -277,57 +236,49 @@ Customer Invoice
   Assets: Accounts Receivable             109
   ===================================== ===== ======
 
-  Configuration:
-    * Revenues: defined on the product or on the internal category of related product (Income Account field)
-    * Deferred Tax Liabilities: defined on the tax used on the invoice line
-    * Accounts Receivable: defined on the customer (Receivable Account)
+  配置：
+    * 收入：在产品或相关产品的内部类别上定义（收入账户字段）
+    * 递延税负债：在发票行上使用的税定义
+    * 应收账款：在客户（应收账户）上定义
 
-  The fiscal position used on the invoice may have a rule that replaces the
-  Income Account or the tax defined on the product by another one.
-Customer Shipping
-  No Journal Entry
-Manufacturing Orders
-  No Journal Entry
+  发票中使用的财务状况可能有一个规则，该规则将替换产品上定义的收入账户或税。
+
+客户发货
+  无日记账分录
+生产订单
+  无日记账分录
 
 .. raw:: html
 
    <hr style="float: none; visibility: hidden; margin: 0;">
 
-At the end of the month/year, your company does a physical inventory 
-or just relies on the inventory in Odoo to value the stock into your books.
+在月末/年末，公司进行实物库存盘点或仅依赖 Odoo 中的库存来估价账簿中的库存。
 
-Create a journal entry to move the stock variation value from your 
-Profit&Loss section to your assets. 
+创建一个日记账分录，将库存变动值从利润和亏损部分转移到资产部分。
 
 .. h:div:: doc-aside
 
   .. rst-class:: values-table
 
   ===================================== ===== ======
-  \                                     Debit Credit
+  \                                     借方 贷方
   ===================================== ===== ======
-  Assets: Inventory                         X     
-  Expenses: Inventory Variations                   X            
+  资产：库存                                 X     
+  费用：库存变动                                   X            
   ===================================== ===== ======
 
-  If the stock value decreased, the **Inventory** account is credited
-  and the **Inventory Variations** debited.
+  如果库存价值减少，**库存** 账户贷记，**库存变动** 账户借记。
    
 .. raw:: html
 
    <hr style="float: none; visibility: hidden; margin: 0;">
 
-Perpetual Inventory Valuation
-=============================
+永续存货估价
+============
 
-In a perpetual inventory valuation, goods receptions and 
-outgoing shipments are posted in your books in real time. 
-The books are therefore always up-to-date. This mode is 
-dedicated to expert accountants and advanced users only. 
-As opposed to periodic valuation, it requires some extra 
-configuration & testing.
+在永续存货估价中，货物接收和出库会实时记录在账簿中。因此账簿总是最新的。这种模式仅适用于专家会计和高级用户。与定期估价相比，它需要一些额外的配置和测试。
 
-Let's take the case of a reseller.
+让我们以一家经销商为例。
 
 .. h:div:: valuation-chart-continental doc-aside
 
@@ -339,19 +290,17 @@ Let's take the case of a reseller.
 
 .. h:div:: doc-aside
   
-   **Configuration:**
+   **配置：**
 
-   - Accounts Receivable/Payable: defined on the partner (Accounting tab)
+   - 应收/应付账款：在合作伙伴（会计选项卡）上定义
 
-   - Deferred Tax Assets/Liabilities: defined on the tax used on the invoice line
+   - 递延税资产/负债：在发票行上使用的税定义
 
-   - Revenues/Expenses: defined by default on product's internal category; can be 
-     also set in product form (Accounting tab) as a replacement value.
+   - 收入/费用：默认在产品的内部类别上定义；也可以在产品表单（会计选项卡）中设置为替代值
 
-   - Inventory Variations: to set as Stock Input/Output Account in product's internal 
-     category
+   - 库存变动：在产品的内部类别中设置为库存输入/输出账户
      
-   - Inventory: to set as Stock Valuation Account in product's internal category
+   - 库存：在产品的内部类别中设置为库存估价账户
 
 .. seealso::
 
