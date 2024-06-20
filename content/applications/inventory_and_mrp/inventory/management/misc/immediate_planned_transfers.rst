@@ -1,40 +1,25 @@
-Immediate & Planned Transfers
+立即和计划转移
 =============================
 
-In Odoo, you can create two types of transfers: immediate or planned
-transfers.
+在 Odoo 中，你可以创建两种类型的转移：立即转移或计划转移。
 
-Immediate Transfers
+立即转移
 -------------------
 
-When you create a transfer manually, it is by default an immediate
-transfer.
+当你手动创建一个转移时，默认情况下它是一个立即转移。
 
-In the case of an immediate transfer, you directly encode the products
-and quantities you are processing, there is no reservation that applies.
-This is why the column "Initial Demand" is not editable. You only fill
-in the column "Done" for the quantities.
+在立即转移的情况下，你直接输入要处理的产品和数量，不涉及任何预订。这就是为什么“初始需求”列不可编辑。你只需要填写“已完成”列的数量。
 
-This is for example used when you are transferring goods from a location
-A to a location B and that this is not planned (you are processing the
-transfer right now).
+例如，当你将货物从位置 A 转移到位置 B，而这是未计划的（你现在正在处理转移），就会使用这种方式。
 
-Planned Transfers
+计划转移
 -----------------
 
-When a transfer is generated automatically (from a sales order or
-purchase order for example), it is a planned transfer. This means that
-there is an initial demand and that reservation applies on this initial
-demand.
+当转移是自动生成的（例如，从销售订单或采购订单生成），它就是一个计划转移。这意味着有一个初始需求，并且预订适用于这个初始需求。
 
-If you want to create a planned transfer manually, you can do it from
-the inventory dashboard.
+如果你想手动创建一个计划转移，可以从库存仪表板进行操作。
 
 .. image:: media/immediate_planned_transfers01.png
     :align: center
 
-In that case, you will have to enter the initial demand first (how many
-units are you supposed to proceed), then to mark your transfer as to do.
-Once this is done, you will be able to reserve the products and to
-process the transfer.
-
+在这种情况下，你首先需要输入初始需求（你需要处理多少单位），然后将转移标记为“待办”。完成此操作后，你将能够预订产品并处理转移。
