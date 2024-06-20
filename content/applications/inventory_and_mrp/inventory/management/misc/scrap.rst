@@ -1,106 +1,91 @@
 ======================
-How to scrap products?
+如何报废产品？
 ======================
 
-Overview
+概述
 ========
 
-Scrap means waste that either has no economic value or only the value of
-its basic material
+报废是指没有经济价值或只有基本材料回收价值的废弃物。
 
-content recoverable through recycling.
+在您的仓库中，有时会发现因损坏、过期或其他原因而无法使用的产品。通常在拣货或盘点时会注意到这些产品。
 
-In your warehouse you sometimes find products that are damaged or that
-are unusable due to expiry or for some other reason. You often notice
-this during picking or physical inventory.
+由于这些产品无法正常销售或存储，因此需要报废产品。
 
-Since you cannot normally sell or store these products, you have to
-scrap product.
+报废物品不会在系统中作为库存的一部分显示，报废材料将被物理转移到报废区域。
 
-When goods are scrapped they are not reflected in the system as a part
-of the inventory. The scrapped material will be physically moved to
-scrap area.
-
-Configuration
+配置
 =============
 
-When you install inventory management, odoo automatically creates one
-default scrap location, namely **Virtual location/Scrapped**.
+当您安装库存管理模块时，Odoo 会自动创建一个默认的报废位置，即 **虚拟位置/报废**。
 
-To create an extra scrap location, Go to 
-:menuselection:`Inventory --> Configuration --> Settings`
-and check **Manage several locations per warehouse**,
-then click on **Apply**.
+要创建额外的报废位置，进入 
+:menuselection:`库存 --> 配置 --> 设置`
+并勾选 **管理每个仓库的多个位置**，
+然后点击 **应用**。
 
 .. image:: media/scrap06.png
    :align: center
 
-After applying **Manage several location per warehouse**, you can create
-a new scrap location in 
-:menuselection:`Configuration --> Warehouse Management --> Locations.`
+应用 **管理每个仓库的多个位置** 后，您可以在 
+:menuselection:`配置 --> 仓库管理 --> 位置` 
+中创建新的报废位置。
 
 .. note::
-    To define a scrap location, you have to check **Is a Scrap Location?** 
-    on location form view.
+    要定义报废位置，您需要在位置表单视图中勾选 **是报废位置？** 。
 
-Different ways to scrap product
+不同的报废产品方式
 ===============================
 
-Odoo provides several ways to scrap products.
+Odoo 提供了几种报废产品的方式。
 
-1) Scrap from Receipt (Initial Demand tab).
+1) 从收货单报废（初始需求标签）。
 -----------------------------------------------
 
-To scrap product from incoming shipment, Go to 
-:menuselection:`Inventory --> Dashboard --> Receipts`.
+要从进货单中报废产品，进入 
+:menuselection:`库存 --> 仪表板 --> 收货`。
 
 .. image:: media/scrap08.png
    :align: center
 
-Open the incoming shipment, and in the **Initial demand** tab, click on the
-scrap products button.
+打开进货单，在 **初始需求** 标签中，点击报废产品按钮。
 
 .. image:: media/scrap01.png
    :align: center
 
-2) Scrap from delivery order (Initial Demand tab) .
+2) 从发货单报废（初始需求标签）。
 -------------------------------------------------------
 
-To scrap product from outgoing shipment, Go to 
-:menuselection:`Inventory --> Dashboard --> Delivery Orders`
+要从出货单中报废产品，进入 
+:menuselection:`库存 --> 仪表板 --> 发货单`。
 
 .. image:: media/scrap07.png
    :align: center
 
-Open the outgoing shipment, and in the **Initial demand** tab, click on the
-scrap products button on stock move in initial demand tab.
+打开出货单，在 **初始需求** 标签中，点击初始需求标签中的报废产品按钮。
 
 .. image:: media/scrap03.png
    :align: center
 
-3) Scrap from internal transfer (Initial Demand tab).
+3) 从内部转移报废（初始需求标签）。
 ----------------------------------------------------------
 
-To scrap product from internal transfer, Go to 
-:menuselection:`Inventory --> Dashboard --> Internal Transfers`
+要从内部转移中报废产品，进入 
+:menuselection:`库存 --> 仪表板 --> 内部转移`。
 
 .. image:: media/scrap05.png
    :align: center
 
-Open the internal transfer, and in the **Initial demand** tab, click on the
-scrap products button on stock move in initial demand tab.
+打开内部转移单，在 **初始需求** 标签中，点击初始需求标签中的报废产品按钮。
 
 .. image:: media/scrap02.png
    :align: center
 
-When you click on scrap button, a popup will open. You can enter the
-quantity of products, and specify the scrap location, then click on
-**Scrap**. 
+当您点击报废按钮时，会弹出一个窗口。您可以输入产品数量，并指定报废位置，然后点击 **报废**。
 
 .. image:: media/scrap04.png
    :align: center
 
 .. note::
-    To allow change scrap location on wizard, you have to select 
-    **Manage several location per warehouse** in the settings at
-    :menuselection:`Inventory --> Configuration --> Settings`
+    要允许在弹窗中更改报废位置，您需要在
+    :menuselection:`库存 --> 配置 --> 设置` 
+    中选择 **管理每个仓库的多个位置**。
